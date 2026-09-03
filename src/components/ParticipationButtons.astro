@@ -8,51 +8,87 @@ interface Props {
 }
 
 const { round, compact = false } = Astro.props;
-const providers = round.providers.map((config) => {
-    const meta = providerRegistry.getMeta(config.type);
-    const href = config.enabled ? providerRegistry.getParticipationUrl(config) : undefined;
-    return { href, meta };
-  });
-const links = providers.filter((provider): provider is typeof provider & { href: string } => Boolean(provider.href));
+const providers = [
+  ...new Map(
+    round.providers.map((config) => {
+      const meta = providerRegistry.getMeta(config.type);
+      const href = config.enabled ? providerRegistry.getParticipationUrl(config) : undefined;
+      return [config.type, { href, meta }] as const;
+    }),
+  ).values(),
+];
+const links = providers.filter((provider) => Boolean(provider.href));
+const missingProviders = providers.filter((provider) => !provider.href);
+const primaryLink = links[0];
 ---
 
-{links.length > 0 ? (
+{providers.length === 1 ? (
   <div class:list={["participation-buttons", { "participation-buttons--compact": compact }]}>
-    {links.map((link) => (
+    {primaryLink ? (
       <a
         class="btn btn-primary participation-button"
-        href={link.href}
+        href={primaryLink.href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Принять участие через ${link.meta.label}`}
+        aria-label={`Войти в текущий раунд через ${primaryLink.meta.label}`}
       >
         <span class="participation-button__copy">
-          <strong>Принять участие</strong>
-          <small>через {link.meta.label}</small>
+          <strong>Войти в текущий раунд</strong>
+          <small>через {primaryLink.meta.label}</small>
         </span>
         <span class="participation-button__arrow" aria-hidden="true">↗</span>
       </a>
-    ))}
-  </div>
-) : (
-  <>
-    {providers.length > 0 && (
-      <div class:list={["participation-buttons", { "participation-buttons--compact": compact }]}>
-        {providers.map(({ meta }) => (
-          <span class="btn btn-primary participation-button participation-button--disabled" aria-disabled="true">
-            <span class="participation-button__copy">
-              <strong>Принять участие</strong>
-              <small>через {meta.label}</small>
-            </span>
-            <span class="participation-button__arrow" aria-hidden="true">↗</span>
-          </span>
-        ))}
-      </div>
+    ) : (
+      <span class="btn btn-primary participation-button participation-button--disabled" aria-disabled="true">
+        <span class="participation-button__copy">
+          <strong>Войти в текущий раунд</strong>
+          <small>Ссылка появится после настройки</small>
+        </span>
+        <span class="participation-button__arrow" aria-hidden="true">↗</span>
+      </span>
     )}
-    {providers.length > 0 && (
+    {missingProviders.length > 0 && (
       <p class="participation-placeholder" role="status">
-        Ссылка на участие появится после настройки {providers.map(({ meta }) => meta.label).join(" или ")}.
+        Ссылка на участие появится после настройки {missingProviders[0]?.meta.label}.
       </p>
     )}
-  </>
-)}
+  </div>
+): providers.length > 1 ? (
+  <div
+    class:list={[
+      "participation-buttons",
+      "participation-buttons--multi",
+      { "participation-buttons--compact": compact },
+    ]}
+  >
+    <strong class="participation-buttons__heading">Войти в текущий раунд</strong>
+    <div class="participation-buttons__options">
+      {providers.map(({ href, meta }) => (
+        href ? (
+          <a
+            class="participation-option"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Войти в текущий раунд через ${meta.label}`}
+          >
+            {meta.label} <span aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <span class="participation-option participation-option--disabled" aria-disabled="true">
+            {meta.label} <span aria-hidden="true">↗</span>
+          </span>
+        )
+      ))}
+    </div>
+    {links.length === 0 ? (
+      <p class="participation-placeholder" role="status">
+        Ссылки на участие появятся после настройки {providers.map(({ meta }) => meta.label).join(" или ")}.
+      </p>
+    ) : missingProviders.length > 0 ? (
+      <p class="participation-placeholder" role="status">
+        Ссылка на участие появится после настройки {missingProviders.map(({ meta }) => meta.label).join(" или ")}.
+      </p>
+    ) : null}
+  </div>
+): null}

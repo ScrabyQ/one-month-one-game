@@ -15,7 +15,7 @@
       "url": "https://litzabronwyn.itch.io/find-the-light",
       "coverUrl": "https://img.itch.zone/aW1nLzI2NzIwMzQucG5n/300x240%23cb/63KEOB.png",
       "description": "A micro RPG about darkness and feelings.",
-      "submittedAt": "2019-11-11 01:45:59",
+      "submittedAt": "2026-09-02 18:40:00",
       "tags": ["Physical games"]
     },
     {
@@ -31,7 +31,7 @@
       "url": "https://npckc.itch.io/the-monster-club",
       "coverUrl": "https://img.itch.zone/aW1nLzI2ODIwMjkucG5n/300x240%23cb/vdvnXI.png",
       "description": "RECRUITING MEMBERS NOW!",
-      "submittedAt": "2019-11-14 05:47:40",
+      "submittedAt": "2026-09-03T09:15:00+03:00",
       "tags": ["Physical games"]
     },
     {
@@ -47,7 +47,7 @@
       "url": "https://fencedforest.itch.io/onomancy",
       "coverUrl": "https://img.itch.zone/aW1nLzI2NTkxMDIucG5n/300x240%23cb/2i5P9p.png",
       "description": "A system-agnostic modular ruleset for campaign games.",
-      "submittedAt": "2019-11-07 00:01:42",
+      "submittedAt": "2026-09-01 12:00:00",
       "tags": ["Physical games"]
     },
     {
@@ -63,7 +63,7 @@
       "url": "https://pixelpaladin.itch.io/dragoncard",
       "coverUrl": "https://img.itch.zone/aW1nLzI2ODI5NzYucG5n/300x240%23c/f7mvXs.png",
       "description": "A text based adventure / RPG game with a compact source code.",
-      "submittedAt": "2019-11-14 14:38:26",
+      "submittedAt": "2026-08-31T08:00:00+03:00",
       "platforms": ["web"]
     },
     {
@@ -77,7 +77,7 @@
       },
       "url": "https://itch.io",
       "description": "Демо-запись без обложки — для проверки аккуратного fallback.",
-      "submittedAt": "2019-11-05 10:20:00"
+      "submittedAt": "2026-08-28 10:20:00"
     }
   ]
 }

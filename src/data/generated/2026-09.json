@@ -1,7 +1,2776 @@
 {
   "roundId": "2026-09",
-  "syncedAt": "2026-09-03T18:03:36.054Z",
+  "syncedAt": "2026-09-03T19:11:40.599Z",
   "games": [
+    {
+      "id": "myindie:55b69a59-343e-434f-a8d0-28182fb0c931",
+      "provider": "myindie",
+      "providerGameId": "55b69a59-343e-434f-a8d0-28182fb0c931",
+      "title": "My Tedious Routine",
+      "slug": "my-tedious-routine",
+      "author": {
+        "name": "Neon",
+        "id": "8ffefdcc-82f4-4d9d-a1ef-30e6b4973ee7",
+        "alias": "neon"
+      },
+      "url": "https://myindie.net/games/game/my-tedious-routine",
+      "score": 2.35,
+      "submittedAt": "Sat Jul 04 2026 20:07:57 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:11d74918-954a-4097-bcc5-5cf9a5f63d3e",
+      "provider": "myindie",
+      "providerGameId": "11d74918-954a-4097-bcc5-5cf9a5f63d3e",
+      "title": "ManlyGun",
+      "slug": "manlygun",
+      "author": {
+        "name": "Limekys",
+        "id": "e513fb92-60c3-40d7-a998-fc15def1a745",
+        "alias": "limekys"
+      },
+      "url": "https://myindie.net/games/game/manlygun",
+      "score": 1.85,
+      "submittedAt": "Sat Jul 04 2026 17:55:26 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "topdown"
+      ]
+    },
+    {
+      "id": "myindie:3fa8bf52-67a6-44fd-bd66-6fe383272ee8",
+      "provider": "myindie",
+      "providerGameId": "3fa8bf52-67a6-44fd-bd66-6fe383272ee8",
+      "title": "Коронка Жмёт?",
+      "slug": "koronka-zhmyot",
+      "author": {
+        "name": "roman_Kilqekov",
+        "id": "2ea0adac-f8bb-4b41-a172-b00c0a640795",
+        "alias": "romankilqekov"
+      },
+      "url": "https://myindie.net/games/game/koronka-zhmyot",
+      "coverUrl": "https://myindie.net/games/3fa8bf52-67a6-44fd-bd66-6fe383272ee8/tumb_b_q8tgbeapkdh7rh.jpeg",
+      "score": 2.97,
+      "submittedAt": "Sat Jul 04 2026 17:55:23 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:0fbb7fc0-8cdd-411e-88e3-f5fe7bb72b70",
+      "provider": "myindie",
+      "providerGameId": "0fbb7fc0-8cdd-411e-88e3-f5fe7bb72b70",
+      "title": "Рассудок",
+      "slug": "rassudok",
+      "author": {
+        "name": "Latr1sizeX",
+        "id": "2d35de15-a3c8-446d-b57e-3ec1a1445fcd",
+        "alias": "latr1sizex"
+      },
+      "url": "https://myindie.net/games/game/rassudok",
+      "coverUrl": "https://myindie.net/games/0fbb7fc0-8cdd-411e-88e3-f5fe7bb72b70/tumb_b_b9ubeqmsnjyzhl.jpeg",
+      "score": 1.93,
+      "submittedAt": "Sat Jul 04 2026 17:53:36 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:6efc7ba5-f725-41dc-82f2-6d099fc1b696",
+      "provider": "myindie",
+      "providerGameId": "6efc7ba5-f725-41dc-82f2-6d099fc1b696",
+      "title": "Седьмой",
+      "slug": "sedmoj",
+      "author": {
+        "name": "Jenkinks",
+        "id": "89b7ab28-d364-4aca-b0c2-2b86937afae6",
+        "alias": "jenkinks"
+      },
+      "url": "https://myindie.net/games/game/sedmoj",
+      "coverUrl": "https://myindie.net/games/6efc7ba5-f725-41dc-82f2-6d099fc1b696/tumb_b_cncrqvkk6n0mpp.jpeg",
+      "score": 2.92,
+      "submittedAt": "Sat Jul 04 2026 17:53:24 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:3d7b8eec-cac5-4868-a3e5-61d055eb5608",
+      "provider": "myindie",
+      "providerGameId": "3d7b8eec-cac5-4868-a3e5-61d055eb5608",
+      "title": "BURN. THEM. ALL",
+      "slug": "burn-them-all",
+      "author": {
+        "name": "lilkr",
+        "id": "0adc0b12-04d5-4f25-a76e-c81795c24bd8",
+        "alias": "lilkr"
+      },
+      "url": "https://myindie.net/games/game/burn-them-all",
+      "coverUrl": "https://myindie.net/games/3d7b8eec-cac5-4868-a3e5-61d055eb5608/tumb_b_1l2keonh9mv1b7.png",
+      "score": 2.36,
+      "submittedAt": "Sat Jul 04 2026 17:51:45 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:20565c6c-4d49-4d40-ba80-ff0b559fedc7",
+      "provider": "myindie",
+      "providerGameId": "20565c6c-4d49-4d40-ba80-ff0b559fedc7",
+      "title": "Kill Switch",
+      "slug": "kill-switch_wov",
+      "author": {
+        "name": "St1tch",
+        "id": "c61ab5dc-3bb1-4a35-82ca-7190ac8bf130",
+        "alias": "st1tch"
+      },
+      "url": "https://myindie.net/games/game/kill-switch_wov",
+      "coverUrl": "https://myindie.net/games/20565c6c-4d49-4d40-ba80-ff0b559fedc7/tumb_b_tvohe2gdykuhab.gif",
+      "score": 3.42,
+      "submittedAt": "Sat Jul 04 2026 17:50:57 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "simulation",
+        "horror",
+        "management",
+        "2d",
+        "atmospheric",
+        "survival",
+        "pixelart"
+      ]
+    },
+    {
+      "id": "myindie:d62f725b-4fb5-4e37-a4b0-b0e391338f36",
+      "provider": "myindie",
+      "providerGameId": "d62f725b-4fb5-4e37-a4b0-b0e391338f36",
+      "title": "clone ban",
+      "slug": "clone-ban",
+      "author": {
+        "name": "MrTick1812",
+        "id": "1f9576a9-0520-457b-9287-6862e041ef4c",
+        "alias": "mrtick1812"
+      },
+      "url": "https://myindie.net/games/game/clone-ban",
+      "coverUrl": "https://myindie.net/games/d62f725b-4fb5-4e37-a4b0-b0e391338f36/tumb_b_z6q3bp88fenbdp.png",
+      "score": 2.51,
+      "submittedAt": "Sat Jul 04 2026 17:47:22 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:251b3cd2-01e9-4f48-94b5-412672bd46a5",
+      "provider": "myindie",
+      "providerGameId": "251b3cd2-01e9-4f48-94b5-412672bd46a5",
+      "title": "REMEMBER: you are loved",
+      "slug": "remember-you-are-loved",
+      "author": {
+        "name": "krillbat",
+        "id": "d6396be1-bcd9-4a38-b95e-c3ac6944802a",
+        "alias": "krillbat"
+      },
+      "url": "https://myindie.net/games/game/remember-you-are-loved",
+      "coverUrl": "https://myindie.net/games/251b3cd2-01e9-4f48-94b5-412672bd46a5/tumb_b_n3ilwxbq9zduiu.jpg",
+      "score": 2.6,
+      "submittedAt": "Sat Jul 04 2026 17:47:11 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:2851769f-fe9b-479e-a590-6c1be454f43f",
+      "provider": "myindie",
+      "providerGameId": "2851769f-fe9b-479e-a590-6c1be454f43f",
+      "title": "Don't peer into the darkness",
+      "slug": "dont-peer-into-the-dark",
+      "author": {
+        "name": "kekrria",
+        "id": "6b9f45f7-2212-4803-af04-64660b8b0875",
+        "alias": "kekrria"
+      },
+      "url": "https://myindie.net/games/game/dont-peer-into-the-dark",
+      "coverUrl": "https://myindie.net/games/2851769f-fe9b-479e-a590-6c1be454f43f/tumb_b_aggocynf7sohbq.jpeg",
+      "score": 3.6,
+      "submittedAt": "Sat Jul 04 2026 17:40:24 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "2d",
+        "topdowm.pixel_art",
+        "horror"
+      ]
+    },
+    {
+      "id": "myindie:f6f39272-a2d3-47c1-a418-a53d00dec957",
+      "provider": "myindie",
+      "providerGameId": "f6f39272-a2d3-47c1-a418-a53d00dec957",
+      "title": "Повинуйся!",
+      "slug": "povinujsya",
+      "author": {
+        "name": "famil1an",
+        "id": "a6ddcb19-dff7-46ae-b921-7e6c9fd5c0b2",
+        "alias": "famil1an"
+      },
+      "url": "https://myindie.net/games/game/povinujsya",
+      "coverUrl": "https://myindie.net/games/f6f39272-a2d3-47c1-a418-a53d00dec957/tumb_b_xtxtzu0t30p4is.png",
+      "score": 3.23,
+      "submittedAt": "Sat Jul 04 2026 17:39:04 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "bullet-hell",
+        "adventure",
+        "top-down"
+      ]
+    },
+    {
+      "id": "myindie:29f82916-1bbf-403f-8b0b-4d088d7d2854",
+      "provider": "myindie",
+      "providerGameId": "29f82916-1bbf-403f-8b0b-4d088d7d2854",
+      "title": "Frosty Trouble",
+      "slug": "frosty-trouble",
+      "author": {
+        "name": "liff",
+        "id": "0b197f8e-184b-41c9-8283-75aa4fa2b08b",
+        "alias": "liff"
+      },
+      "url": "https://myindie.net/games/game/frosty-trouble",
+      "coverUrl": "https://myindie.net/games/29f82916-1bbf-403f-8b0b-4d088d7d2854/tumb_b_iosl6mrkadmn5m.png",
+      "score": 3.3,
+      "submittedAt": "Sat Jul 04 2026 17:36:05 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:fcdf36b4-e28d-42da-976e-fc92ca649870",
+      "provider": "myindie",
+      "providerGameId": "fcdf36b4-e28d-42da-976e-fc92ca649870",
+      "title": "Диагноз",
+      "slug": "diagnoz",
+      "author": {
+        "name": "Batyr",
+        "id": "411fa85c-0d3e-4619-9c78-ad60faf31ae0",
+        "alias": "batyr"
+      },
+      "url": "https://myindie.net/games/game/diagnoz",
+      "coverUrl": "https://myindie.net/games/fcdf36b4-e28d-42da-976e-fc92ca649870/tumb_b_hyhzy9mwp9oyfc.png",
+      "score": 2.61,
+      "submittedAt": "Sat Jul 04 2026 17:35:43 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:4b66931e-b0e7-4cba-afdb-c3255130e537",
+      "provider": "myindie",
+      "providerGameId": "4b66931e-b0e7-4cba-afdb-c3255130e537",
+      "title": "Проклятая тень",
+      "slug": "proklyataya-ten_a0i",
+      "author": {
+        "name": "alljay",
+        "id": "a1a2a0da-067b-44f8-9a91-4fb07e2130eb",
+        "alias": "alljay"
+      },
+      "url": "https://myindie.net/games/game/proklyataya-ten_a0i",
+      "coverUrl": "https://myindie.net/games/4b66931e-b0e7-4cba-afdb-c3255130e537/tumb_b_eucto2ll3cwps9.png",
+      "score": 3.79,
+      "submittedAt": "Sat Jul 04 2026 17:31:44 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "пиксельная",
+        "2д",
+        "сложная",
+        "проклятие",
+        "мистика",
+        "платформер",
+        "побег"
+      ]
+    },
+    {
+      "id": "myindie:487db5e0-a2ec-41da-9f4b-02db4ea9d2f5",
+      "provider": "myindie",
+      "providerGameId": "487db5e0-a2ec-41da-9f4b-02db4ea9d2f5",
+      "title": "Всё как всегда",
+      "slug": "vsyo-kak-vsegda",
+      "author": {
+        "name": "maroon_imp",
+        "id": "73cf6f77-51ec-4423-a1ea-752d20abd1f2",
+        "alias": "maroonimp"
+      },
+      "url": "https://myindie.net/games/game/vsyo-kak-vsegda",
+      "coverUrl": "https://myindie.net/games/487db5e0-a2ec-41da-9f4b-02db4ea9d2f5/tumb_b_7hbzh1vydvizgt.png",
+      "score": 3.72,
+      "submittedAt": "Sat Jul 04 2026 17:23:08 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:beb1ab05-fe4e-4bac-aff8-2ae23a4f3fae",
+      "provider": "myindie",
+      "providerGameId": "beb1ab05-fe4e-4bac-aff8-2ae23a4f3fae",
+      "title": "Kotolaba",
+      "slug": "kotolaba",
+      "author": {
+        "name": "Kosd",
+        "id": "0df1f116-987f-48a8-bcf1-9386726c4716",
+        "alias": "kosd"
+      },
+      "url": "https://myindie.net/games/game/kotolaba",
+      "coverUrl": "https://myindie.net/games/beb1ab05-fe4e-4bac-aff8-2ae23a4f3fae/tumb_b_e63kqf5vgfpf3i.png",
+      "score": 3.26,
+      "submittedAt": "Sat Jul 04 2026 17:20:34 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:f0f02813-02ec-4b9b-902f-ef99967c5b66",
+      "provider": "myindie",
+      "providerGameId": "f0f02813-02ec-4b9b-902f-ef99967c5b66",
+      "title": "MUSIC FACTORY",
+      "slug": "music-factory",
+      "author": {
+        "name": "vcroc",
+        "id": "d16c00ae-98fc-46e3-8d74-0dba8479a390",
+        "alias": "vcroc"
+      },
+      "url": "https://myindie.net/games/game/music-factory",
+      "coverUrl": "https://myindie.net/games/f0f02813-02ec-4b9b-902f-ef99967c5b66/tumb_b_hejlurd1c511dc.png",
+      "score": 3.26,
+      "submittedAt": "Sat Jul 04 2026 17:20:09 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "bullet-hell"
+      ]
+    },
+    {
+      "id": "myindie:4c6246f2-d99b-4f98-ae48-096f2583fa18",
+      "provider": "myindie",
+      "providerGameId": "4c6246f2-d99b-4f98-ae48-096f2583fa18",
+      "title": "Brazen Meat",
+      "slug": "brazen-meat",
+      "author": {
+        "name": "SavvaRevolti",
+        "id": "316c0962-485e-43f1-b6ff-acefb87e327f",
+        "alias": "savvarevolti"
+      },
+      "url": "https://myindie.net/games/game/brazen-meat",
+      "coverUrl": "https://myindie.net/games/4c6246f2-d99b-4f98-ae48-096f2583fa18/tumb_b_sqmaliejjgnghx.png",
+      "score": 2.85,
+      "submittedAt": "Sat Jul 04 2026 17:11:15 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:addc2ab3-9356-4e2d-a80b-e85c6ca4c0b9",
+      "provider": "myindie",
+      "providerGameId": "addc2ab3-9356-4e2d-a80b-e85c6ca4c0b9",
+      "title": "Turn the cloak",
+      "slug": "turn-the-cloak",
+      "author": {
+        "name": "pixelshmak",
+        "id": "26cb616c-c4aa-43bc-8fec-35d26c51f903",
+        "alias": "pixelshmak"
+      },
+      "url": "https://myindie.net/games/game/turn-the-cloak",
+      "coverUrl": "https://myindie.net/games/addc2ab3-9356-4e2d-a80b-e85c6ca4c0b9/tumb_b_5pqexy2tkb5yx1.gif",
+      "score": 2.31,
+      "submittedAt": "Sat Jul 04 2026 17:11:09 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:9a4f41d7-9d73-466c-a3cc-43ee5f143643",
+      "provider": "myindie",
+      "providerGameId": "9a4f41d7-9d73-466c-a3cc-43ee5f143643",
+      "title": "Изнанка",
+      "slug": "iznanka",
+      "author": {
+        "name": "Apacher",
+        "id": "e16769f3-7434-434f-8661-65eb4f0473d3",
+        "alias": "apacher"
+      },
+      "url": "https://myindie.net/games/game/iznanka",
+      "coverUrl": "https://myindie.net/games/9a4f41d7-9d73-466c-a3cc-43ee5f143643/tumb_b_btwuglzz3qt6e4.png",
+      "score": 3.71,
+      "submittedAt": "Sat Jul 04 2026 17:09:24 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "джем",
+        "gml",
+        "pixelart"
+      ]
+    },
+    {
+      "id": "myindie:02ed250e-6f16-46bc-b9f7-4acac3f69ff2",
+      "provider": "myindie",
+      "providerGameId": "02ed250e-6f16-46bc-b9f7-4acac3f69ff2",
+      "title": "BetterMeow?",
+      "slug": "bettermeow",
+      "author": {
+        "name": "slonik",
+        "id": "a2bbf740-3eb4-4874-83ec-ea576992ed7a",
+        "alias": "slonik"
+      },
+      "url": "https://myindie.net/games/game/bettermeow",
+      "coverUrl": "https://myindie.net/games/02ed250e-6f16-46bc-b9f7-4acac3f69ff2/tumb_b_dcgszclmucgmqo.jpeg",
+      "score": 2.94,
+      "submittedAt": "Sat Jul 04 2026 17:02:43 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:a9fa1d7a-4272-4594-8ba6-8f99bea113f9",
+      "provider": "myindie",
+      "providerGameId": "a9fa1d7a-4272-4594-8ba6-8f99bea113f9",
+      "title": "Mirror_Shot",
+      "slug": "mirrorshot",
+      "author": {
+        "name": "h3aertstopper",
+        "id": "4b93a987-d18c-448d-8491-95133ba026d0",
+        "alias": "h3aertstopper"
+      },
+      "url": "https://myindie.net/games/game/mirrorshot",
+      "coverUrl": "https://myindie.net/games/a9fa1d7a-4272-4594-8ba6-8f99bea113f9/tumb_b_8wxvibfap7u3gj.png",
+      "score": 2.96,
+      "submittedAt": "Sat Jul 04 2026 17:00:05 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:ed422b6e-7319-4a39-890c-791014557b8a",
+      "provider": "myindie",
+      "providerGameId": "ed422b6e-7319-4a39-890c-791014557b8a",
+      "title": "Shallow Knight",
+      "slug": "shallow-knight",
+      "author": {
+        "name": "xelboy",
+        "id": "2c10ea60-dd3d-47d7-a5e3-bf0d5df31c0f",
+        "alias": "xelboy"
+      },
+      "url": "https://myindie.net/games/game/shallow-knight",
+      "coverUrl": "https://myindie.net/games/ed422b6e-7319-4a39-890c-791014557b8a/tumb_b_ka7ff5yb3imlww.png",
+      "score": 3.57,
+      "submittedAt": "Sat Jul 04 2026 16:49:58 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "souls-like",
+        "hardcore",
+        "roguelike"
+      ]
+    },
+    {
+      "id": "myindie:e27f5641-b378-49c9-a26b-c620c4b918cf",
+      "provider": "myindie",
+      "providerGameId": "e27f5641-b378-49c9-a26b-c620c4b918cf",
+      "title": "Is it me?",
+      "slug": "is-it-me",
+      "author": {
+        "name": "Skyline_rozan",
+        "id": "eb0a4a15-8b6c-4d1b-9f23-27ff97343ee2",
+        "alias": "skylinerozan"
+      },
+      "url": "https://myindie.net/games/game/is-it-me",
+      "coverUrl": "https://myindie.net/games/e27f5641-b378-49c9-a26b-c620c4b918cf/tumb_b_yhnebnatw783wd.png",
+      "score": 3.22,
+      "submittedAt": "Sat Jul 04 2026 16:42:35 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "indie",
+        "rpg",
+        "horror"
+      ]
+    },
+    {
+      "id": "myindie:32400325-8950-4605-b6c1-5d9db817d6db",
+      "provider": "myindie",
+      "providerGameId": "32400325-8950-4605-b6c1-5d9db817d6db",
+      "title": "SvinoSave",
+      "slug": "svinosave",
+      "author": {
+        "name": "This_Denis",
+        "id": "460432ba-5841-43ec-b90c-e5cc798f1dc5",
+        "alias": "thisdenis"
+      },
+      "url": "https://myindie.net/games/game/svinosave",
+      "coverUrl": "https://myindie.net/games/32400325-8950-4605-b6c1-5d9db817d6db/tumb_b_lg3p1sfkh36iej.jpg",
+      "score": 2.05,
+      "submittedAt": "Sat Jul 04 2026 16:38:57 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:ffde3f5a-2d46-4c61-847f-5ce31a387ac7",
+      "provider": "myindie",
+      "providerGameId": "ffde3f5a-2d46-4c61-847f-5ce31a387ac7",
+      "title": "Blood River",
+      "slug": "blood-river",
+      "author": {
+        "name": "SuperSonic",
+        "id": "2d2f47b0-cec5-4a68-963a-699dd29302ae",
+        "alias": "supersonic"
+      },
+      "url": "https://myindie.net/games/game/blood-river",
+      "coverUrl": "https://myindie.net/games/ffde3f5a-2d46-4c61-847f-5ce31a387ac7/tumb_b_zsoqyck2io12oj.png",
+      "score": 2.5,
+      "submittedAt": "Sat Jul 04 2026 16:30:25 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "карточная",
+        "логика"
+      ]
+    },
+    {
+      "id": "myindie:bee16ace-695a-45a4-a2ce-058f22b22124",
+      "provider": "myindie",
+      "providerGameId": "bee16ace-695a-45a4-a2ce-058f22b22124",
+      "title": "SOLDIER NAMED VITALYA",
+      "slug": "s0ldier-named-vitalya",
+      "author": {
+        "name": "SLIT_SLIT_GAME",
+        "id": "98cf62c2-6635-4ef9-9e5f-d66e3dc91db6",
+        "alias": "slitslitgame"
+      },
+      "url": "https://myindie.net/games/game/s0ldier-named-vitalya",
+      "coverUrl": "https://myindie.net/games/bee16ace-695a-45a4-a2ce-058f22b22124/tumb_b_w8bbgsl9ezhyya.png",
+      "score": 3.77,
+      "submittedAt": "Sat Jul 04 2026 16:23:51 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "#level10jam",
+        "#demogame",
+        "#playnow",
+        "#freegame",
+        "#actiongame",
+        "#arcadegame",
+        "#gamejam",
+        "#щёлкачи",
+        "#giveanswer",
+        "#soldiernamedvitalya",
+        "#soldiernamedvitalyagame",
+        "#demo",
+        "#newgame",
+        "#level10games",
+        "#indiegame",
+        "#shootergame",
+        "#thesect",
+        "#spironis",
+        "#level10game",
+        "#myindiegame",
+        "#myindie",
+        "#gamedev",
+        "#indiedev",
+        "#level10"
+      ]
+    },
+    {
+      "id": "myindie:1acc7a70-ae20-4548-8f22-1fbe3c5b39c7",
+      "provider": "myindie",
+      "providerGameId": "1acc7a70-ae20-4548-8f22-1fbe3c5b39c7",
+      "title": "complex",
+      "slug": "complex",
+      "author": {
+        "name": "dyadya_mosturbek",
+        "id": "a2b6605c-4b3f-4482-b26c-ea8ae84b9640",
+        "alias": "dyadyamosturbek"
+      },
+      "url": "https://myindie.net/games/game/complex",
+      "coverUrl": "https://myindie.net/games/1acc7a70-ae20-4548-8f22-1fbe3c5b39c7/tumb_b_xtoqu4imsv7u5x.JPG",
+      "score": 2.32,
+      "submittedAt": "Sat Jul 04 2026 16:14:48 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "3d",
+        "complex",
+        "levels",
+        "хоррор"
+      ]
+    },
+    {
+      "id": "myindie:e16880a7-6ddf-46ff-b4ae-6e469cebfe79",
+      "provider": "myindie",
+      "providerGameId": "e16880a7-6ddf-46ff-b4ae-6e469cebfe79",
+      "title": "Lab Rat",
+      "slug": "lab-rat",
+      "author": {
+        "name": "Gn0rl",
+        "id": "76d05c1a-6eba-41e5-b515-f16eebc9e8e9",
+        "alias": "gn0rl"
+      },
+      "url": "https://myindie.net/games/game/lab-rat",
+      "coverUrl": "https://myindie.net/games/e16880a7-6ddf-46ff-b4ae-6e469cebfe79/tumb_b_pi1kqvhj3y2iph.png",
+      "score": 2.13,
+      "submittedAt": "Sat Jul 04 2026 16:08:51 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:4a2958fb-e734-4145-9c5b-8f85160c7fc6",
+      "provider": "myindie",
+      "providerGameId": "4a2958fb-e734-4145-9c5b-8f85160c7fc6",
+      "title": "tiny bone",
+      "slug": "tiny-bone",
+      "author": {
+        "name": "zubami",
+        "id": "3c9aa65c-6e5f-4fa7-8262-099ad2e16d89",
+        "alias": "zubami"
+      },
+      "url": "https://myindie.net/games/game/tiny-bone",
+      "coverUrl": "https://myindie.net/games/4a2958fb-e734-4145-9c5b-8f85160c7fc6/tumb_b_vhchlhyncavhhc.png",
+      "score": 2.05,
+      "submittedAt": "Sat Jul 04 2026 16:05:06 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "arenasurvivor"
+      ]
+    },
+    {
+      "id": "myindie:0ce45b89-62b4-4224-bad1-951fd65005cd",
+      "provider": "myindie",
+      "providerGameId": "0ce45b89-62b4-4224-bad1-951fd65005cd",
+      "title": "Последний жилец",
+      "slug": "poslednij-zhilec",
+      "author": {
+        "name": "Maksi",
+        "id": "967294e2-cac9-4d0f-9849-14f64f42665f",
+        "alias": "maksi"
+      },
+      "url": "https://myindie.net/games/game/poslednij-zhilec",
+      "coverUrl": "https://myindie.net/games/0ce45b89-62b4-4224-bad1-951fd65005cd/tumb_b_qyb3nekztcsmii.png",
+      "score": 3.09,
+      "submittedAt": "Sat Jul 04 2026 15:34:35 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:1d2d1f08-8a27-4160-a035-44ee4eb14eff",
+      "provider": "myindie",
+      "providerGameId": "1d2d1f08-8a27-4160-a035-44ee4eb14eff",
+      "title": "Терминальная стадия",
+      "slug": "terminalnaya-stadiya_p1n",
+      "author": {
+        "name": "IcePiecesGames",
+        "id": "35a276ba-a8ea-46ab-b2e1-502c95276c63",
+        "alias": "icepiecesgames"
+      },
+      "url": "https://myindie.net/games/game/terminalnaya-stadiya_p1n",
+      "coverUrl": "https://myindie.net/games/1d2d1f08-8a27-4160-a035-44ee4eb14eff/tumb_b_ge9q0ivnkmwz7p.jpg",
+      "score": 3.19,
+      "submittedAt": "Sat Jul 04 2026 15:30:36 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:66ae0cf4-3940-4863-b552-d63f4a816d07",
+      "provider": "myindie",
+      "providerGameId": "66ae0cf4-3940-4863-b552-d63f4a816d07",
+      "title": "Damn, I should have sold it!",
+      "slug": "damn-i-should-have-sold-it",
+      "author": {
+        "name": "mx_ruby",
+        "id": "29643a92-b77f-42f6-9eeb-af7fa70b6098",
+        "alias": "mxruby"
+      },
+      "url": "https://myindie.net/games/game/damn-i-should-have-sold-it",
+      "coverUrl": "https://myindie.net/games/66ae0cf4-3940-4863-b552-d63f4a816d07/tumb_b_io8ry8cxz8pc8l.png",
+      "score": 2.84,
+      "submittedAt": "Sat Jul 04 2026 15:09:32 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "pixel-art",
+        "2d"
+      ]
+    },
+    {
+      "id": "myindie:581576a2-b010-4007-b0db-f13571bec5bc",
+      "provider": "myindie",
+      "providerGameId": "581576a2-b010-4007-b0db-f13571bec5bc",
+      "title": "Identity Test",
+      "slug": "identity-test_u3r",
+      "author": {
+        "name": "r4e4eedr",
+        "id": "93cb4983-2e45-4430-855c-a24706c1d3c5",
+        "alias": "r4e4eedr"
+      },
+      "url": "https://myindie.net/games/game/identity-test_u3r",
+      "coverUrl": "https://myindie.net/games/581576a2-b010-4007-b0db-f13571bec5bc/tumb_b_jk0jk894z9xubt.png",
+      "score": 3.59,
+      "submittedAt": "Sat Jul 04 2026 14:56:45 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "puzzle",
+        "horror",
+        "ps1"
+      ]
+    },
+    {
+      "id": "myindie:ec7af92a-592a-47ae-a3ce-4b6fc2f2aa7d",
+      "provider": "myindie",
+      "providerGameId": "ec7af92a-592a-47ae-a3ce-4b6fc2f2aa7d",
+      "title": "Bring Me Glory!",
+      "slug": "bring-me-glory",
+      "author": {
+        "name": "Lisa",
+        "id": "87c746da-a906-43ac-9148-5b2a12de5c7b",
+        "alias": "lisa"
+      },
+      "url": "https://myindie.net/games/game/bring-me-glory",
+      "coverUrl": "https://myindie.net/games/ec7af92a-592a-47ae-a3ce-4b6fc2f2aa7d/tumb_b_xdwlc8dljwmx60.jpeg",
+      "score": 3.51,
+      "submittedAt": "Sat Jul 04 2026 14:48:42 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "dragon",
+        "fantasy",
+        "idle",
+        "management",
+        "incremental"
+      ]
+    },
+    {
+      "id": "myindie:cd30876e-081e-418e-8b06-4f6651aacdc4",
+      "provider": "myindie",
+      "providerGameId": "cd30876e-081e-418e-8b06-4f6651aacdc4",
+      "title": "Шиндос 96 by Vultervid",
+      "slug": "shindos-96-by-vultervid",
+      "author": {
+        "name": "Vultervid",
+        "id": "0d5bece1-32bf-49c4-907e-f9f67e5f5785",
+        "alias": "vultervid"
+      },
+      "url": "https://myindie.net/games/game/shindos-96-by-vultervid",
+      "coverUrl": "https://myindie.net/games/cd30876e-081e-418e-8b06-4f6651aacdc4/tumb_b_pgf4bbgb8cppny.jpg",
+      "score": 1.85,
+      "submittedAt": "Sat Jul 04 2026 14:37:51 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:75a3efbd-fdc0-4a6a-a3fb-c8436f7409ba",
+      "provider": "myindie",
+      "providerGameId": "75a3efbd-fdc0-4a6a-a3fb-c8436f7409ba",
+      "title": "Nice play",
+      "slug": "nice-play",
+      "author": {
+        "name": "blinochek",
+        "id": "6db7ea7c-0701-4e09-9e2b-f37119688bc7",
+        "alias": "blinochek"
+      },
+      "url": "https://myindie.net/games/game/nice-play",
+      "coverUrl": "https://myindie.net/games/75a3efbd-fdc0-4a6a-a3fb-c8436f7409ba/tumb_b_q65a4yqvd3bmks.png",
+      "score": 2.4,
+      "submittedAt": "Sat Jul 04 2026 14:06:10 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:1e8cdb5e-2567-49fb-a3f2-e21bcd187e0a",
+      "provider": "myindie",
+      "providerGameId": "1e8cdb5e-2567-49fb-a3f2-e21bcd187e0a",
+      "title": "Захватчик",
+      "slug": "zahvatchik",
+      "author": {
+        "name": "Am0ris",
+        "id": "2a7e7653-059f-453b-9a82-e90bb4b39b45",
+        "alias": "am0ris"
+      },
+      "url": "https://myindie.net/games/game/zahvatchik",
+      "coverUrl": "https://myindie.net/games/1e8cdb5e-2567-49fb-a3f2-e21bcd187e0a/tumb_b_ubh7s66icqhbt4.jpg",
+      "score": 2.72,
+      "submittedAt": "Sat Jul 04 2026 13:38:50 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "idle",
+        "clicker",
+        "2d",
+        "singleplayer",
+        "strategy",
+        "short",
+        "management",
+        "minimalist",
+        "sci-fi",
+        "dark",
+        "atmospheric",
+        "unity",
+        "incremental",
+        "roguelite"
+      ]
+    },
+    {
+      "id": "myindie:e9e09fde-f393-4245-bd56-1317b0a386eb",
+      "provider": "myindie",
+      "providerGameId": "e9e09fde-f393-4245-bd56-1317b0a386eb",
+      "title": "OtherSide",
+      "slug": "otherside",
+      "author": {
+        "name": "Ettaris",
+        "id": "79f48d44-86f2-47f3-9718-c347547a78c9",
+        "alias": "ettaris"
+      },
+      "url": "https://myindie.net/games/game/otherside",
+      "coverUrl": "https://myindie.net/games/e9e09fde-f393-4245-bd56-1317b0a386eb/tumb_b_nrnervdikuvdhd.png",
+      "score": 2.95,
+      "submittedAt": "Sat Jul 04 2026 12:22:43 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "fps",
+        "шутер",
+        "сюжет"
+      ]
+    },
+    {
+      "id": "myindie:bf8be42c-e313-498f-97c4-b3318b13794b",
+      "provider": "myindie",
+      "providerGameId": "bf8be42c-e313-498f-97c4-b3318b13794b",
+      "title": "LVL10 unnamed gmae",
+      "slug": "lvl10-unnamed-gmae",
+      "author": {
+        "name": "NikolayL",
+        "id": "641c1d72-088a-4bef-96d5-30531105f2a2",
+        "alias": "nikolayl"
+      },
+      "url": "https://myindie.net/games/game/lvl10-unnamed-gmae",
+      "score": 1.42,
+      "submittedAt": "Sat Jul 04 2026 12:12:50 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "eva"
+      ]
+    },
+    {
+      "id": "myindie:2e2a3806-50a2-4df6-9eba-1c4254c3078c",
+      "provider": "myindie",
+      "providerGameId": "2e2a3806-50a2-4df6-9eba-1c4254c3078c",
+      "title": "Лабиринт Брата Кота",
+      "slug": "brat-kot",
+      "author": {
+        "name": "phanopera",
+        "id": "66e8ace1-adf9-4d3d-8354-8ec0aab4076c",
+        "alias": "phanopera"
+      },
+      "url": "https://myindie.net/games/game/brat-kot",
+      "coverUrl": "https://myindie.net/games/2e2a3806-50a2-4df6-9eba-1c4254c3078c/tumb_b_xr1l1usp5cnmg7.jpg",
+      "score": 3.04,
+      "submittedAt": "Sat Jul 04 2026 10:26:05 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:a627c99f-9876-4ff5-a1c2-88f936b60401",
+      "provider": "myindie",
+      "providerGameId": "a627c99f-9876-4ff5-a1c2-88f936b60401",
+      "title": "Dungeon Master",
+      "slug": "dungeon-master",
+      "author": {
+        "name": "FruitSoil",
+        "id": "93d71de0-889d-48b5-abd3-df59b156f6d1",
+        "alias": "fruitsoil"
+      },
+      "url": "https://myindie.net/games/game/dungeon-master",
+      "coverUrl": "https://myindie.net/games/a627c99f-9876-4ff5-a1c2-88f936b60401/tumb_b_gbw7ffhamfrbbr.png",
+      "score": 3.68,
+      "submittedAt": "Sat Jul 04 2026 02:09:33 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:5c8648f7-6d0a-492d-a1d1-6dff1cf1ea51",
+      "provider": "myindie",
+      "providerGameId": "5c8648f7-6d0a-492d-a1d1-6dff1cf1ea51",
+      "title": "Self-Bow",
+      "slug": "self-bow",
+      "author": {
+        "name": "Vasiliy",
+        "id": "7a213021-98f5-4b2f-bab1-09551391831c",
+        "alias": "vasiliy"
+      },
+      "url": "https://myindie.net/games/game/self-bow",
+      "coverUrl": "https://myindie.net/games/5c8648f7-6d0a-492d-a1d1-6dff1cf1ea51/tumb_b_gti6yxhanmh13u.png",
+      "score": 1.96,
+      "submittedAt": "Sat Jul 04 2026 01:58:28 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:ca9edd12-16d0-4a2c-ab24-d2851e8ed0ac",
+      "provider": "myindie",
+      "providerGameId": "ca9edd12-16d0-4a2c-ab24-d2851e8ed0ac",
+      "title": "Other Side",
+      "slug": "other-side",
+      "author": {
+        "name": "SasMatress",
+        "id": "dd51bc6e-7423-400e-b7f5-e7a7be5641f1",
+        "alias": "sasmatress"
+      },
+      "url": "https://myindie.net/games/game/other-side",
+      "coverUrl": "https://myindie.net/games/ca9edd12-16d0-4a2c-ab24-d2851e8ed0ac/tumb_b_8vwbizbu2hfnbg.png",
+      "score": 2.46,
+      "submittedAt": "Fri Jul 03 2026 23:57:34 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:b399c418-d6a0-4af5-a74f-0448bc676356",
+      "provider": "myindie",
+      "providerGameId": "b399c418-d6a0-4af5-a74f-0448bc676356",
+      "title": "Ритуал",
+      "slug": "ritual_yjw",
+      "author": {
+        "name": "Dsl",
+        "id": "f5b25232-c450-41b5-af53-ee42074b8d11",
+        "alias": "dsl"
+      },
+      "url": "https://myindie.net/games/game/ritual_yjw",
+      "coverUrl": "https://myindie.net/games/b399c418-d6a0-4af5-a74f-0448bc676356/tumb_b_n7espkpwuaapt9.jpg",
+      "score": 2.72,
+      "submittedAt": "Fri Jul 03 2026 20:29:08 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "actions",
+        "survival",
+        "horror"
+      ]
+    },
+    {
+      "id": "myindie:f69a479b-a415-4df8-87f0-976416c12e46",
+      "provider": "myindie",
+      "providerGameId": "f69a479b-a415-4df8-87f0-976416c12e46",
+      "title": "ZP ne budet!",
+      "slug": "ty-boss",
+      "author": {
+        "name": "Edward_Newgate",
+        "id": "e56e1c09-65a4-4965-8f3b-0679b97e13dd",
+        "alias": "edwardnewgate"
+      },
+      "url": "https://myindie.net/games/game/ty-boss",
+      "score": 1.18,
+      "submittedAt": "Fri Jul 03 2026 14:47:34 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:cdc08968-219b-4c4f-9aed-b6acfd799358",
+      "provider": "myindie",
+      "providerGameId": "cdc08968-219b-4c4f-9aed-b6acfd799358",
+      "title": "TOO FAST",
+      "slug": "too-fast_bgi",
+      "author": {
+        "name": "aerwyn",
+        "id": "554ee4b8-8a57-45df-b932-b75a65ab0d10",
+        "alias": "aerwyn"
+      },
+      "url": "https://myindie.net/games/game/too-fast_bgi",
+      "coverUrl": "https://myindie.net/games/cdc08968-219b-4c4f-9aed-b6acfd799358/tumb_b_2kn6zloeqoupxa.png",
+      "score": 1.97,
+      "submittedAt": "Fri Jul 03 2026 11:32:03 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "kids",
+        "2d",
+        "family-friendly",
+        "clicker",
+        "arcade",
+        "casual",
+        "pixelart",
+        "levels",
+        "reaction",
+        "simulation",
+        "indie"
+      ]
+    },
+    {
+      "id": "myindie:9ef38cf6-2d0e-41d3-aec5-ee116d749c23",
+      "provider": "myindie",
+      "providerGameId": "9ef38cf6-2d0e-41d3-aec5-ee116d749c23",
+      "title": "Fractured Edges",
+      "slug": "fractured-edges",
+      "author": {
+        "name": "Uxtor7448",
+        "id": "a36874e0-01b5-472e-a104-cd501fda9bdb",
+        "alias": "uxtor7448"
+      },
+      "url": "https://myindie.net/games/game/fractured-edges",
+      "coverUrl": "https://myindie.net/games/9ef38cf6-2d0e-41d3-aec5-ee116d749c23/tumb_b_lkfnnzfubgvnni.png",
+      "score": 2.39,
+      "submittedAt": "Thu Jul 02 2026 22:28:45 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "godot",
+        "horror",
+        "3d"
+      ]
+    },
+    {
+      "id": "myindie:0b54f174-cf5f-40bf-8a36-f28fdb30fa82",
+      "provider": "myindie",
+      "providerGameId": "0b54f174-cf5f-40bf-8a36-f28fdb30fa82",
+      "title": "Cree pahohma N!",
+      "slug": "cree-pahohma-n",
+      "author": {
+        "name": "Kingzombie3",
+        "id": "b3121c81-e854-4e7e-8813-1b0b9f3eb5fe",
+        "alias": "kingzombie3"
+      },
+      "url": "https://myindie.net/games/game/cree-pahohma-n",
+      "coverUrl": "https://myindie.net/games/0b54f174-cf5f-40bf-8a36-f28fdb30fa82/tumb_b_mhy3gy2z4lkivx.png",
+      "score": 1.83,
+      "submittedAt": "Thu Jul 02 2026 12:00:24 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "аркада",
+        "взрывы",
+        "unity"
+      ]
+    },
+    {
+      "id": "myindie:3d1247b8-54ef-4ba0-a125-b1b680b24fa9",
+      "provider": "myindie",
+      "providerGameId": "3d1247b8-54ef-4ba0-a125-b1b680b24fa9",
+      "title": "You won't pass",
+      "slug": "you-wont-pass",
+      "author": {
+        "name": "Ganwords",
+        "id": "9b211a1c-e71c-44bf-bb46-44da0721df3b",
+        "alias": "ganwords"
+      },
+      "url": "https://myindie.net/games/game/you-wont-pass",
+      "coverUrl": "https://myindie.net/games/3d1247b8-54ef-4ba0-a125-b1b680b24fa9/tumb_b_zkv9b5lkmo2q8b.jpg",
+      "score": 1.82,
+      "submittedAt": "Thu Jul 02 2026 11:09:55 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "казуальая",
+        "карточная"
+      ]
+    },
+    {
+      "id": "myindie:93900405-53bb-4c0d-89d7-88d893bf8a01",
+      "provider": "myindie",
+      "providerGameId": "93900405-53bb-4c0d-89d7-88d893bf8a01",
+      "title": "BioFail",
+      "slug": "biofail",
+      "author": {
+        "name": "langonier",
+        "id": "6de35e25-b82b-4c13-8363-37cd691dc505",
+        "alias": "langonier"
+      },
+      "url": "https://myindie.net/games/game/biofail",
+      "coverUrl": "https://myindie.net/games/93900405-53bb-4c0d-89d7-88d893bf8a01/tumb_b_eeflkbcmffw3ja.jpg",
+      "score": 3.05,
+      "submittedAt": "Thu Jul 02 2026 11:05:40 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "singleplayer",
+        "survivalhorror",
+        "horror",
+        "sci-fi",
+        "biohazard",
+        "atmospheric",
+        "dark",
+        "noir",
+        "exploration",
+        "post-apocalyptic",
+        "adventure",
+        "dystopian",
+        "quest",
+        "puzzle",
+        "indie",
+        "point&click"
+      ]
+    },
+    {
+      "id": "myindie:aad16fc0-d344-45a9-8c33-5621e34f8a05",
+      "provider": "myindie",
+      "providerGameId": "aad16fc0-d344-45a9-8c33-5621e34f8a05",
+      "title": "Логово злодея",
+      "slug": "zloj-genij",
+      "author": {
+        "name": "Damsteel",
+        "id": "8a554fbd-3a94-45ee-bb4b-ca0a3e34ca99",
+        "alias": "damsteel"
+      },
+      "url": "https://myindie.net/games/game/zloj-genij",
+      "coverUrl": "https://myindie.net/games/aad16fc0-d344-45a9-8c33-5621e34f8a05/tumb_b_grxaqur3ylxo5q.png",
+      "score": 4.07,
+      "submittedAt": "Thu Jul 02 2026 06:59:22 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:499204bc-c979-49a6-b2e8-906f6d8eae7d",
+      "provider": "myindie",
+      "providerGameId": "499204bc-c979-49a6-b2e8-906f6d8eae7d",
+      "title": "Censoria",
+      "slug": "censoria",
+      "author": {
+        "name": "lanaro",
+        "id": "c4c5be9f-7662-4332-8241-5a544e9eb5c8",
+        "alias": "lanaro"
+      },
+      "url": "https://myindie.net/games/game/censoria",
+      "coverUrl": "https://myindie.net/games/499204bc-c979-49a6-b2e8-906f6d8eae7d/tumb_b_be2v4ixqozasiv.png",
+      "score": 3.82,
+      "submittedAt": "Wed Jul 01 2026 19:37:02 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:b16bdee4-59d8-4e21-82bc-94fa3921c5e1",
+      "provider": "myindie",
+      "providerGameId": "b16bdee4-59d8-4e21-82bc-94fa3921c5e1",
+      "title": "psycho's room",
+      "slug": "psychos-room_wzn",
+      "author": {
+        "name": "Dedlinet",
+        "id": "72f2ece6-0987-4a6d-9b2d-9338f5cfdfab",
+        "alias": "dedlinet"
+      },
+      "url": "https://myindie.net/games/game/psychos-room_wzn",
+      "coverUrl": "https://myindie.net/games/b16bdee4-59d8-4e21-82bc-94fa3921c5e1/tumb_b_7f5sqr9hmxxan8.png",
+      "score": 2.87,
+      "submittedAt": "Wed Jul 01 2026 19:15:34 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:d71ebe7c-0f72-4d53-b552-38f8d847aac3",
+      "provider": "myindie",
+      "providerGameId": "d71ebe7c-0f72-4d53-b552-38f8d847aac3",
+      "title": "Пагубная авантюра",
+      "slug": "bumazhnoe-podzemele",
+      "author": {
+        "name": "SOXA",
+        "id": "27bec103-2ae2-4778-85ba-0159f0105944",
+        "alias": "soxa"
+      },
+      "url": "https://myindie.net/games/game/bumazhnoe-podzemele",
+      "coverUrl": "https://myindie.net/games/d71ebe7c-0f72-4d53-b552-38f8d847aac3/tumb_b_0xikhboxa9fxwq.png",
+      "score": 3.93,
+      "submittedAt": "Wed Jul 01 2026 19:05:36 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "noai",
+        "поэтапныйбой"
+      ]
+    },
+    {
+      "id": "myindie:e9b78b1a-8d92-43ae-9c2a-fb7c5979869d",
+      "provider": "myindie",
+      "providerGameId": "e9b78b1a-8d92-43ae-9c2a-fb7c5979869d",
+      "title": "ZERRA,planet killer",
+      "slug": "zerraplanet-killer",
+      "author": {
+        "name": "Pcorp",
+        "id": "a9cfe1da-8db0-406a-b05a-f642df112bec",
+        "alias": "pcorp"
+      },
+      "url": "https://myindie.net/games/game/zerraplanet-killer",
+      "coverUrl": "https://myindie.net/games/e9b78b1a-8d92-43ae-9c2a-fb7c5979869d/tumb_b_ftnwrvfenvbzlh.png",
+      "score": 2.05,
+      "submittedAt": "Wed Jul 01 2026 16:20:38 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "активные",
+        "быстрые",
+        "bullethell"
+      ]
+    },
+    {
+      "id": "myindie:3551ccb0-62fe-4cac-adae-c162a66a1b05",
+      "provider": "myindie",
+      "providerGameId": "3551ccb0-62fe-4cac-adae-c162a66a1b05",
+      "title": "Antagonist",
+      "slug": "antagonist",
+      "author": {
+        "name": "BREADDOG",
+        "id": "20913dbc-715c-43ed-b45d-c4530acb8808",
+        "alias": "breaddog"
+      },
+      "url": "https://myindie.net/games/game/antagonist",
+      "coverUrl": "https://myindie.net/games/3551ccb0-62fe-4cac-adae-c162a66a1b05/tumb_b_vz7ldc5chfnlay.png",
+      "score": 3.08,
+      "submittedAt": "Wed Jul 01 2026 12:42:35 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "psx",
+        "antagonist",
+        "ретро",
+        "девочки",
+        "аниме",
+        "антагонист",
+        "убийтво"
+      ]
+    },
+    {
+      "id": "myindie:01cb8182-9ea0-4244-b376-c9fb85d03701",
+      "provider": "myindie",
+      "providerGameId": "01cb8182-9ea0-4244-b376-c9fb85d03701",
+      "title": "Loop",
+      "slug": "petlya",
+      "author": {
+        "name": "Gazolina",
+        "id": "0d7c6bc5-49b1-47f2-9947-3742d69c2d0d",
+        "alias": "gazolina"
+      },
+      "url": "https://myindie.net/games/game/petlya",
+      "coverUrl": "https://myindie.net/games/01cb8182-9ea0-4244-b376-c9fb85d03701/tumb_b_kh8hjyf7wmecmt.png",
+      "score": 3.23,
+      "submittedAt": "Wed Jul 01 2026 11:07:26 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "pixelart",
+        "pixel",
+        "2d"
+      ]
+    },
+    {
+      "id": "myindie:3f35da6e-cf6a-45b8-872b-f99d66a0f6c6",
+      "provider": "myindie",
+      "providerGameId": "3f35da6e-cf6a-45b8-872b-f99d66a0f6c6",
+      "title": "DO NOT MISS",
+      "slug": "do-not-miss",
+      "author": {
+        "name": "BehindThePixels",
+        "id": "29989cdc-61da-4ad1-9711-ae567e82d1be",
+        "alias": "behindthepixels"
+      },
+      "url": "https://myindie.net/games/game/do-not-miss",
+      "coverUrl": "https://myindie.net/games/3f35da6e-cf6a-45b8-872b-f99d66a0f6c6/tumb_b_shoedkaow3vf25.png",
+      "score": 3.74,
+      "submittedAt": "Wed Jul 01 2026 06:54:16 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:1e54508d-4102-427d-a593-a63df251ea31",
+      "provider": "myindie",
+      "providerGameId": "1e54508d-4102-427d-a593-a63df251ea31",
+      "title": "Убит собой",
+      "slug": "ubit-soboj",
+      "author": {
+        "name": "total",
+        "id": "adb82075-b6b1-4f4f-96db-c179b361600b",
+        "alias": "total"
+      },
+      "url": "https://myindie.net/games/game/ubit-soboj",
+      "coverUrl": "https://myindie.net/games/1e54508d-4102-427d-a593-a63df251ea31/tumb_b_hdn5lslva5twe0.png",
+      "score": 3.38,
+      "submittedAt": "Wed Jul 01 2026 05:39:22 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "головоломка",
+        "sci-fi"
+      ]
+    },
+    {
+      "id": "myindie:b1513806-5c5a-4a9d-ba7c-63a254c76e3f",
+      "provider": "myindie",
+      "providerGameId": "b1513806-5c5a-4a9d-ba7c-63a254c76e3f",
+      "title": "Archivarius",
+      "slug": "archivarius",
+      "author": {
+        "name": "Loogdumass",
+        "id": "45efa450-752d-45d2-9f86-5b9e82c7a29a",
+        "alias": "loogdumass"
+      },
+      "url": "https://myindie.net/games/game/archivarius",
+      "coverUrl": "https://myindie.net/games/b1513806-5c5a-4a9d-ba7c-63a254c76e3f/tumb_b_r6d1mmcscaoyff.png",
+      "score": 2.36,
+      "submittedAt": "Tue Jun 30 2026 20:48:45 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "джем10лвл",
+        "видсверху",
+        "сюжет",
+        "память",
+        "попадаетвврразум",
+        "архивариус",
+        "годот."
+      ]
+    },
+    {
+      "id": "myindie:b4e9b0a2-b1ae-409e-acd7-335c5903fd5d",
+      "provider": "myindie",
+      "providerGameId": "b4e9b0a2-b1ae-409e-acd7-335c5903fd5d",
+      "title": "булетхел бомжара",
+      "slug": "bulethel-bomzhara",
+      "author": {
+        "name": "mrtim",
+        "id": "41682c8d-179d-4371-bbab-7512aadca5f6",
+        "alias": "mrtim"
+      },
+      "url": "https://myindie.net/games/game/bulethel-bomzhara",
+      "coverUrl": "https://myindie.net/games/b4e9b0a2-b1ae-409e-acd7-335c5903fd5d/tumb_b_60hse4cpiqilnp.png",
+      "score": 3.22,
+      "submittedAt": "Tue Jun 30 2026 10:51:41 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "survivor",
+        "bullethell"
+      ]
+    },
+    {
+      "id": "myindie:82ba3b32-bb65-4369-bfe9-af7b97379987",
+      "provider": "myindie",
+      "providerGameId": "82ba3b32-bb65-4369-bfe9-af7b97379987",
+      "title": "Wrong Army",
+      "slug": "wrong-army",
+      "author": {
+        "name": "Shnizeluk",
+        "id": "7a5d1411-f628-4108-90af-7bcc999b10eb",
+        "alias": "shnizeluk"
+      },
+      "url": "https://myindie.net/games/game/wrong-army",
+      "coverUrl": "https://myindie.net/games/82ba3b32-bb65-4369-bfe9-af7b97379987/tumb_b_37q0udruizdgdw.png",
+      "score": 2.92,
+      "submittedAt": "Tue Jun 30 2026 10:35:41 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "2d",
+        "action",
+        "shooter",
+        "top-down",
+        "singleplayer"
+      ]
+    },
+    {
+      "id": "myindie:ebd33523-d888-412d-b5d6-c0d16dbab1cf",
+      "provider": "myindie",
+      "providerGameId": "ebd33523-d888-412d-b5d6-c0d16dbab1cf",
+      "title": "самый обычный геймджем",
+      "slug": "samyj-obychnyj-gejmdzhem",
+      "author": {
+        "name": "ThatMaidGuy",
+        "id": "a2c2a184-cc13-4ccd-ac3f-7f085c46e49d",
+        "alias": "thatmaidguy"
+      },
+      "url": "https://myindie.net/games/game/samyj-obychnyj-gejmdzhem",
+      "coverUrl": "https://myindie.net/games/ebd33523-d888-412d-b5d6-c0d16dbab1cf/tumb_b_79vnsu1ryhcqpu.png",
+      "score": 3.85,
+      "submittedAt": "Tue Jun 30 2026 07:14:53 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:15329541-fbc7-4cce-9fa7-c036a9e0a69b",
+      "provider": "myindie",
+      "providerGameId": "15329541-fbc7-4cce-9fa7-c036a9e0a69b",
+      "title": "Alone in the bunker",
+      "slug": "alone-in-the-bunker_v3t",
+      "author": {
+        "name": "Ark",
+        "id": "bf6f03ac-e777-435b-8346-3e5ffb0f05f5",
+        "alias": "ark"
+      },
+      "url": "https://myindie.net/games/game/alone-in-the-bunker_v3t",
+      "coverUrl": "https://myindie.net/games/15329541-fbc7-4cce-9fa7-c036a9e0a69b/tumb_b_5gi6gfhhshtiqj.png",
+      "score": 2.09,
+      "submittedAt": "Mon Jun 29 2026 20:56:44 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "pixel-art",
+        "horror",
+        "solo",
+        "top-down",
+        "bunker"
+      ]
+    },
+    {
+      "id": "myindie:b0ac9ee9-bcd0-45bc-a62a-87b8b6df8d10",
+      "provider": "myindie",
+      "providerGameId": "b0ac9ee9-bcd0-45bc-a62a-87b8b6df8d10",
+      "title": "Mindfiller",
+      "slug": "mindfiller",
+      "author": {
+        "name": "sadbone",
+        "id": "5cdbe153-e41d-49de-968e-1a976f1bc16d",
+        "alias": "sadbone"
+      },
+      "url": "https://myindie.net/games/game/mindfiller",
+      "coverUrl": "https://myindie.net/games/b0ac9ee9-bcd0-45bc-a62a-87b8b6df8d10/tumb_b_wqcyagk76wixcr.png",
+      "score": 3.86,
+      "submittedAt": "Mon Jun 29 2026 20:54:06 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "аркада",
+        "подземелья",
+        "путешествие",
+        "магия",
+        "пазл"
+      ]
+    },
+    {
+      "id": "myindie:584dc89b-3e92-4784-b942-78eb6f1b9dca",
+      "provider": "myindie",
+      "providerGameId": "584dc89b-3e92-4784-b942-78eb6f1b9dca",
+      "title": "Turtle",
+      "slug": "turtle",
+      "author": {
+        "name": "Biba",
+        "id": "4161eae8-db9e-4d00-93c0-2e8b8263b5c2",
+        "alias": "biba"
+      },
+      "url": "https://myindie.net/games/game/turtle",
+      "coverUrl": "https://myindie.net/games/584dc89b-3e92-4784-b942-78eb6f1b9dca/tumb_b_yhxr7rtidjjfxk.jpg",
+      "score": 2.93,
+      "submittedAt": "Mon Jun 29 2026 20:50:01 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "экшен"
+      ]
+    },
+    {
+      "id": "myindie:029bb719-e808-4bda-974e-517b2c4b3f17",
+      "provider": "myindie",
+      "providerGameId": "029bb719-e808-4bda-974e-517b2c4b3f17",
+      "title": "Relieve your hunger",
+      "slug": "relieve-your-hunger",
+      "author": {
+        "name": "bread_thief_dev",
+        "id": "c0c8933a-a4c6-4a69-b733-b7f8c94a4b42",
+        "alias": "breadthiefdev"
+      },
+      "url": "https://myindie.net/games/game/relieve-your-hunger",
+      "coverUrl": "https://myindie.net/games/029bb719-e808-4bda-974e-517b2c4b3f17/tumb_b_iudltcykipxdus.png",
+      "score": 3.32,
+      "submittedAt": "Mon Jun 29 2026 17:57:18 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "low-poly",
+        "roguelike",
+        "unity",
+        "action",
+        "dark-fantasy",
+        "parasite",
+        "procedural-generation",
+        "survival",
+        "rpg"
+      ]
+    },
+    {
+      "id": "myindie:1862e6a5-68e4-4838-8651-143cc7eb1c36",
+      "provider": "myindie",
+      "providerGameId": "1862e6a5-68e4-4838-8651-143cc7eb1c36",
+      "title": "Crown of the Necromancer",
+      "slug": "crown-of-the-necromancer",
+      "author": {
+        "name": "antzom",
+        "id": "f9bd07b2-8920-405f-82d6-ba0ccbdbb036",
+        "alias": "antzom"
+      },
+      "url": "https://myindie.net/games/game/crown-of-the-necromancer",
+      "coverUrl": "https://myindie.net/games/1862e6a5-68e4-4838-8651-143cc7eb1c36/tumb_b_wrkpsh66cz1gcz.png",
+      "score": 2.2,
+      "submittedAt": "Mon Jun 29 2026 15:04:31 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:c9d48872-7a45-4f4d-b3a8-ecde55a7418d",
+      "provider": "myindie",
+      "providerGameId": "c9d48872-7a45-4f4d-b3a8-ecde55a7418d",
+      "title": "Don't Get Committed",
+      "slug": "dont-get-committed",
+      "author": {
+        "name": "Lacost",
+        "id": "beca03f4-f109-49ba-9451-24844c558782",
+        "alias": "lacost"
+      },
+      "url": "https://myindie.net/games/game/dont-get-committed",
+      "coverUrl": "https://myindie.net/games/c9d48872-7a45-4f4d-b3a8-ecde55a7418d/tumb_b_lqxlliklfwar9g.png",
+      "score": 3.71,
+      "submittedAt": "Mon Jun 29 2026 14:55:51 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:f826bf89-9bf7-4e92-a440-e90fb439c9e4",
+      "provider": "myindie",
+      "providerGameId": "f826bf89-9bf7-4e92-a440-e90fb439c9e4",
+      "title": "Expedition 13",
+      "slug": "expedition-13",
+      "author": {
+        "name": "Jil",
+        "id": "45570a65-df71-4484-895a-faea6c230df9",
+        "alias": "jil"
+      },
+      "url": "https://myindie.net/games/game/expedition-13",
+      "coverUrl": "https://myindie.net/games/f826bf89-9bf7-4e92-a440-e90fb439c9e4/tumb_b_iaybnqghbvw9sk.png",
+      "score": 3.92,
+      "submittedAt": "Mon Jun 29 2026 14:02:24 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:d6955f9f-3e5f-4399-98f9-55f0c4daba74",
+      "provider": "myindie",
+      "providerGameId": "d6955f9f-3e5f-4399-98f9-55f0c4daba74",
+      "title": "Парасомния",
+      "slug": "gipnos",
+      "author": {
+        "name": "Solenoid",
+        "id": "7844cd5a-bf59-4d5d-b968-d43ac2ed5ae3",
+        "alias": "solenoid"
+      },
+      "url": "https://myindie.net/games/game/gipnos",
+      "coverUrl": "https://myindie.net/games/d6955f9f-3e5f-4399-98f9-55f0c4daba74/tumb_b_86fx32uidvvgwt.png",
+      "score": 4.06,
+      "submittedAt": "Mon Jun 29 2026 13:09:12 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "принцесса",
+        "сюжет",
+        "головоломка"
+      ]
+    },
+    {
+      "id": "myindie:2ee5d673-f88b-46e6-851d-1d836584840d",
+      "provider": "myindie",
+      "providerGameId": "2ee5d673-f88b-46e6-851d-1d836584840d",
+      "title": "BROKEN MIRROR",
+      "slug": "broken-mirror",
+      "author": {
+        "name": "TOTALLL",
+        "id": "c40e24fa-058e-40c7-b16e-93edba258b6d",
+        "alias": "totalll"
+      },
+      "url": "https://myindie.net/games/game/broken-mirror",
+      "coverUrl": "https://myindie.net/games/2ee5d673-f88b-46e6-851d-1d836584840d/tumb_b_q2cptihjjo329y.png",
+      "score": 2.83,
+      "submittedAt": "Mon Jun 29 2026 09:13:33 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "психологическийхоррор",
+        "хоррор",
+        "геймджем",
+        "индиигра",
+        "brokenmirro"
+      ]
+    },
+    {
+      "id": "myindie:ea46db3a-5442-44ce-a59b-5033384f3b39",
+      "provider": "myindie",
+      "providerGameId": "ea46db3a-5442-44ce-a59b-5033384f3b39",
+      "title": "Overcome Your Fear",
+      "slug": "auto-machia",
+      "author": {
+        "name": "PSI",
+        "id": "8bb15f4c-5274-4f47-be89-c4bf1348bc49",
+        "alias": "psi"
+      },
+      "url": "https://myindie.net/games/game/auto-machia",
+      "coverUrl": "https://myindie.net/games/ea46db3a-5442-44ce-a59b-5033384f3b39/tumb_b_zzs83unvrzudqv.jpeg",
+      "score": 2.94,
+      "submittedAt": "Mon Jun 29 2026 05:36:09 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:a7245c84-6dd2-4b56-86af-892510cf9fe8",
+      "provider": "myindie",
+      "providerGameId": "a7245c84-6dd2-4b56-86af-892510cf9fe8",
+      "title": "S.H.R.I.M.P",
+      "slug": "shrimp",
+      "author": {
+        "name": "YatsuGashir",
+        "id": "2d9f0925-7ec1-409f-9af8-8986ef57df5a",
+        "alias": "yatsugashir"
+      },
+      "url": "https://myindie.net/games/game/shrimp",
+      "coverUrl": "https://myindie.net/games/a7245c84-6dd2-4b56-86af-892510cf9fe8/tumb_b_gso395eovqtwtf.png",
+      "score": 3.18,
+      "submittedAt": "Sun Jun 28 2026 21:13:18 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "bullethell",
+        "fish"
+      ]
+    },
+    {
+      "id": "myindie:bad58e33-ff1f-4686-aff2-7f5a7c247933",
+      "provider": "myindie",
+      "providerGameId": "bad58e33-ff1f-4686-aff2-7f5a7c247933",
+      "title": "False Alibi",
+      "slug": "false-alibi",
+      "author": {
+        "name": "Sdt",
+        "id": "c9a5a47c-629b-4988-8b4f-8214a9eb4a09",
+        "alias": "sdt"
+      },
+      "url": "https://myindie.net/games/game/false-alibi",
+      "coverUrl": "https://myindie.net/games/bad58e33-ff1f-4686-aff2-7f5a7c247933/tumb_b_8avn09rnqeqftn.png",
+      "score": 3.35,
+      "submittedAt": "Sun Jun 28 2026 20:12:38 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:a3260fdc-472b-4a57-a057-fff0962a25de",
+      "provider": "myindie",
+      "providerGameId": "a3260fdc-472b-4a57-a057-fff0962a25de",
+      "title": "Fenestra",
+      "slug": "fenestra",
+      "author": {
+        "name": "hotelpools",
+        "id": "3664224b-50a8-4517-9982-e4ec4fbcdaaa",
+        "alias": "hotelpools"
+      },
+      "url": "https://myindie.net/games/game/fenestra",
+      "coverUrl": "https://myindie.net/games/a3260fdc-472b-4a57-a057-fff0962a25de/tumb_b_fd5az4ahany6vy.png",
+      "score": 3.34,
+      "submittedAt": "Sun Jun 28 2026 20:10:43 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:553459d0-54d6-427a-b660-094e0c80a339",
+      "provider": "myindie",
+      "providerGameId": "553459d0-54d6-427a-b660-094e0c80a339",
+      "title": "Help me, please",
+      "slug": "help-me-please",
+      "author": {
+        "name": "Rababro",
+        "id": "f30eb89f-ec52-45c6-8256-7c411bdb043a",
+        "alias": "rababro"
+      },
+      "url": "https://myindie.net/games/game/help-me-please",
+      "coverUrl": "https://myindie.net/games/553459d0-54d6-427a-b660-094e0c80a339/tumb_b_wduzcnefjurhwv.jpg",
+      "score": 3.58,
+      "submittedAt": "Sun Jun 28 2026 20:06:27 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:b59dd35e-38c2-4ff6-98e9-825016f82aeb",
+      "provider": "myindie",
+      "providerGameId": "b59dd35e-38c2-4ff6-98e9-825016f82aeb",
+      "title": "КАРМА",
+      "slug": "karma",
+      "author": {
+        "name": "iwling",
+        "id": "a4599d69-6ae9-4cf7-99f1-69368094f69e",
+        "alias": "iwling"
+      },
+      "url": "https://myindie.net/games/game/karma",
+      "coverUrl": "https://myindie.net/games/b59dd35e-38c2-4ff6-98e9-825016f82aeb/tumb_b_3kk28339fxfmga.jpg",
+      "score": 2.86,
+      "submittedAt": "Sun Jun 28 2026 17:12:23 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "fps",
+        "singleplayer",
+        "karma",
+        "psychological",
+        "психология",
+        "карма"
+      ]
+    },
+    {
+      "id": "myindie:48b4b931-d76a-4701-870e-6d35bc527921",
+      "provider": "myindie",
+      "providerGameId": "48b4b931-d76a-4701-870e-6d35bc527921",
+      "title": "СОЦ.БЮРО ПГ-93",
+      "slug": "socbyuro-pg-93",
+      "author": {
+        "name": "AnastasiaHook",
+        "id": "bfd50b97-af41-40d9-89c9-c33216462880",
+        "alias": "anastasiahook"
+      },
+      "url": "https://myindie.net/games/game/socbyuro-pg-93",
+      "coverUrl": "https://myindie.net/games/48b4b931-d76a-4701-870e-6d35bc527921/tumb_b_bi1dnzeywnftjp.png",
+      "score": 3.99,
+      "submittedAt": "Sun Jun 28 2026 16:35:02 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "ностальгия",
+        "point-and-click",
+        "чб",
+        "90е",
+        "артхаус"
+      ]
+    },
+    {
+      "id": "myindie:e589adcb-6251-42ae-acdd-29869563bd93",
+      "provider": "myindie",
+      "providerGameId": "e589adcb-6251-42ae-acdd-29869563bd93",
+      "title": "NaIitMMofG",
+      "slug": "noisegame",
+      "author": {
+        "name": "ItsUltrakillTimeV2",
+        "id": "02e1fc1d-5f72-4eac-84a5-257302a1b50e",
+        "alias": "itsultrakilltimev2"
+      },
+      "url": "https://myindie.net/games/game/noisegame",
+      "coverUrl": "https://myindie.net/games/e589adcb-6251-42ae-acdd-29869563bd93/tumb_b_lumkbzumkwiz5z.png",
+      "score": 1.1,
+      "submittedAt": "Sun Jun 28 2026 15:58:52 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:a7a3d456-33c4-46ff-abe3-57e2cea1b865",
+      "provider": "myindie",
+      "providerGameId": "a7a3d456-33c4-46ff-abe3-57e2cea1b865",
+      "title": "World 42",
+      "slug": "world-42",
+      "author": {
+        "name": "foX_Void",
+        "id": "ba393864-95b6-4587-8130-639ca0be0063",
+        "alias": "foxvoid"
+      },
+      "url": "https://myindie.net/games/game/world-42",
+      "coverUrl": "https://myindie.net/games/a7a3d456-33c4-46ff-abe3-57e2cea1b865/tumb_b_ukmtf7jqngd5kp.png",
+      "score": 3.57,
+      "submittedAt": "Sun Jun 28 2026 15:51:18 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:4e95557b-a348-44f5-8d02-ade402ed9c0b",
+      "provider": "myindie",
+      "providerGameId": "4e95557b-a348-44f5-8d02-ade402ed9c0b",
+      "title": "Fallen Enemy",
+      "slug": "fallen-enemy_ngg",
+      "author": {
+        "name": "DadPsix",
+        "id": "fa0b6e7e-3c67-4385-ae82-37d8e915a8ea",
+        "alias": "dadpsix"
+      },
+      "url": "https://myindie.net/games/game/fallen-enemy_ngg",
+      "coverUrl": "https://myindie.net/games/4e95557b-a348-44f5-8d02-ade402ed9c0b/tumb_b_plenkxdi4vf5lx.png",
+      "score": 2.97,
+      "submittedAt": "Sun Jun 28 2026 14:33:31 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:f544d0c2-0167-4ce9-ba9b-0d7b1c9f1cff",
+      "provider": "myindie",
+      "providerGameId": "f544d0c2-0167-4ce9-ba9b-0d7b1c9f1cff",
+      "title": "SELINA",
+      "slug": "selina",
+      "author": {
+        "name": "D Layer",
+        "id": "922d81b4-bee7-4af4-bfd8-1c7743635835",
+        "alias": "d-layer"
+      },
+      "url": "https://myindie.net/games/game/selina",
+      "coverUrl": "https://myindie.net/games/f544d0c2-0167-4ce9-ba9b-0d7b1c9f1cff/tumb_b_ale2zor5bjsapu.jpg",
+      "score": 2.82,
+      "submittedAt": "Sun Jun 28 2026 12:47:28 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:04d7dc9a-f325-4b43-bee5-2acc7d270964",
+      "provider": "myindie",
+      "providerGameId": "04d7dc9a-f325-4b43-bee5-2acc7d270964",
+      "title": "Место для пикника [нет музыки]",
+      "slug": "ssv",
+      "author": {
+        "name": "xevin",
+        "id": "adae8aa7-3523-4d47-afe0-dc6923ee1464",
+        "alias": "xevin"
+      },
+      "url": "https://myindie.net/games/game/ssv",
+      "coverUrl": "https://myindie.net/games/04d7dc9a-f325-4b43-bee5-2acc7d270964/tumb_b_zrbjsqtahp5fcy.png",
+      "score": 3.22,
+      "submittedAt": "Sun Jun 28 2026 12:07:40 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "3d",
+        "bullethell"
+      ]
+    },
+    {
+      "id": "myindie:80c35927-ccf8-4ddc-a5eb-0a7c8ed757dc",
+      "provider": "myindie",
+      "providerGameId": "80c35927-ccf8-4ddc-a5eb-0a7c8ed757dc",
+      "title": "Достать хвосты (Tails out)",
+      "slug": "dostat-hvosty-tails-out",
+      "author": {
+        "name": "Siponik",
+        "id": "bd195464-4673-4234-8ff5-c40b30ca5a78",
+        "alias": "siponik"
+      },
+      "url": "https://myindie.net/games/game/dostat-hvosty-tails-out",
+      "coverUrl": "https://myindie.net/games/80c35927-ccf8-4ddc-a5eb-0a7c8ed757dc/tumb_b_ml4lvvjbhbnakh.png",
+      "score": 4.05,
+      "submittedAt": "Sun Jun 28 2026 11:04:39 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "детектив",
+        "фури"
+      ]
+    },
+    {
+      "id": "myindie:3e4c3a8f-16aa-41a4-8ba4-fbf426339ad1",
+      "provider": "myindie",
+      "providerGameId": "3e4c3a8f-16aa-41a4-8ba4-fbf426339ad1",
+      "title": "В чужом обличии",
+      "slug": "v-chuzhom-oblichii",
+      "author": {
+        "name": "reviver200",
+        "id": "743ff19f-446d-45a3-8b45-24a5f886934b",
+        "alias": "reviver200"
+      },
+      "url": "https://myindie.net/games/game/v-chuzhom-oblichii",
+      "coverUrl": "https://myindie.net/games/3e4c3a8f-16aa-41a4-8ba4-fbf426339ad1/tumb_b_bwnmvhe6az13cc.jpg",
+      "score": 3.47,
+      "submittedAt": "Sun Jun 28 2026 10:11:25 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:dd91cb34-b35b-47a4-b0e6-976912aaca31",
+      "provider": "myindie",
+      "providerGameId": "dd91cb34-b35b-47a4-b0e6-976912aaca31",
+      "title": "I am peaceful!",
+      "slug": "i-am-peaceful",
+      "author": {
+        "name": "bogomol",
+        "id": "7cf34bf0-9064-4381-80c0-29974a70379e",
+        "alias": "bogomol"
+      },
+      "url": "https://myindie.net/games/game/i-am-peaceful",
+      "coverUrl": "https://myindie.net/games/dd91cb34-b35b-47a4-b0e6-976912aaca31/tumb_b_wlydz7i6omqllw.png",
+      "score": 1.36,
+      "submittedAt": "Sun Jun 28 2026 09:14:52 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "#i_am_peacefule!"
+      ]
+    },
+    {
+      "id": "myindie:2d6aa304-ed6d-4f49-b6bf-e712f9972e0e",
+      "provider": "myindie",
+      "providerGameId": "2d6aa304-ed6d-4f49-b6bf-e712f9972e0e",
+      "title": "Exorcism Corporation",
+      "slug": "exorcism-corporation",
+      "author": {
+        "name": "Apaxis",
+        "id": "4edefbb7-51b2-43eb-ba79-84a30dcb1605",
+        "alias": "apaxis"
+      },
+      "url": "https://myindie.net/games/game/exorcism-corporation",
+      "coverUrl": "https://myindie.net/games/2d6aa304-ed6d-4f49-b6bf-e712f9972e0e/tumb_b_uxhwzywah7ssg5.png",
+      "score": 2.59,
+      "submittedAt": "Sun Jun 28 2026 08:36:24 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:ef71585f-679e-4d94-9758-12b848f2b503",
+      "provider": "myindie",
+      "providerGameId": "ef71585f-679e-4d94-9758-12b848f2b503",
+      "title": "Святой Клинок",
+      "slug": "svyatoj-klinok",
+      "author": {
+        "name": "solo",
+        "id": "f764be22-324d-4c8b-9b60-7d788747a0fe",
+        "alias": "solo"
+      },
+      "url": "https://myindie.net/games/game/svyatoj-klinok",
+      "coverUrl": "https://myindie.net/games/ef71585f-679e-4d94-9758-12b848f2b503/tumb_b_ve1ueh8z9nulck.png",
+      "score": 3.05,
+      "submittedAt": "Sun Jun 28 2026 05:19:40 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "#myindielevel10",
+        "#врагэтоты"
+      ]
+    },
+    {
+      "id": "myindie:410d8f49-a075-4eb5-aa7d-c7c7ed385976",
+      "provider": "myindie",
+      "providerGameId": "410d8f49-a075-4eb5-aa7d-c7c7ed385976",
+      "title": "Сказание о Змее Ба́лоре",
+      "slug": "skazanie-o-zmee-balore",
+      "author": {
+        "name": "CreatorLynx",
+        "id": "9144ec6d-7c00-4139-a5ca-798e7c4424b3",
+        "alias": "creatorlynx"
+      },
+      "url": "https://myindie.net/games/game/skazanie-o-zmee-balore",
+      "coverUrl": "https://myindie.net/games/410d8f49-a075-4eb5-aa7d-c7c7ed385976/tumb_b_ynci9bketuue2q.png",
+      "score": 2.28,
+      "submittedAt": "Sun Jun 28 2026 01:58:17 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "сюжетный",
+        "walkingsimulator",
+        "narrative",
+        "мифологический",
+        "симуляторходьбы"
+      ]
+    },
+    {
+      "id": "myindie:0e9e5583-3da9-4f68-adab-15e2a2d80c87",
+      "provider": "myindie",
+      "providerGameId": "0e9e5583-3da9-4f68-adab-15e2a2d80c87",
+      "title": "LaDrago",
+      "slug": "ladraga",
+      "author": {
+        "name": "Croxy",
+        "id": "a4e53e87-2315-4160-8177-e582af7561e6",
+        "alias": "croxy"
+      },
+      "url": "https://myindie.net/games/game/ladraga",
+      "coverUrl": "https://myindie.net/games/0e9e5583-3da9-4f68-adab-15e2a2d80c87/tumb_b_uiqow0uzsh1txa.jpg",
+      "score": 3.26,
+      "submittedAt": "Sun Jun 28 2026 00:11:07 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "маги",
+        "roguelike",
+        "vampirelike",
+        "дракон",
+        "арена",
+        "средневековье",
+        "фентези",
+        "прокачка",
+        "магия",
+        "рыцари",
+        "мана",
+        "многоврагов"
+      ]
+    },
+    {
+      "id": "myindie:612c77c6-29f1-4bff-8241-573415e3cd02",
+      "provider": "myindie",
+      "providerGameId": "612c77c6-29f1-4bff-8241-573415e3cd02",
+      "title": "ОЙ-ЁЙ",
+      "slug": "ne-ssy_6v1",
+      "author": {
+        "name": "ArcasHH",
+        "id": "57ecbb87-3217-4cc9-9f07-efbc378e92a2",
+        "alias": "arcashh"
+      },
+      "url": "https://myindie.net/games/game/ne-ssy_6v1",
+      "coverUrl": "https://myindie.net/games/612c77c6-29f1-4bff-8241-573415e3cd02/tumb_b_viz73ywxdswj3x.png",
+      "score": 4.54,
+      "submittedAt": "Sun Jun 28 2026 00:05:37 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "2d",
+        "top-down",
+        "atmospheric",
+        "art"
+      ]
+    },
+    {
+      "id": "myindie:aa8f73b2-0eee-4daa-b536-1bd783699563",
+      "provider": "myindie",
+      "providerGameId": "aa8f73b2-0eee-4daa-b536-1bd783699563",
+      "title": "Grave New World",
+      "slug": "grave-new-world",
+      "author": {
+        "name": "dwang",
+        "id": "1c9ae034-0dba-4579-9bdf-7467d0a6ca4b",
+        "alias": "dwang"
+      },
+      "url": "https://myindie.net/games/game/grave-new-world",
+      "coverUrl": "https://myindie.net/games/aa8f73b2-0eee-4daa-b536-1bd783699563/tumb_b_7tsa0lao2pui8y.jpg",
+      "score": 3.61,
+      "submittedAt": "Sat Jun 27 2026 22:57:56 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:054410ba-7e72-4e75-9642-8e1d3c13c5bc",
+      "provider": "myindie",
+      "providerGameId": "054410ba-7e72-4e75-9642-8e1d3c13c5bc",
+      "title": "Insect",
+      "slug": "insect",
+      "author": {
+        "name": "HEYDA4HNK",
+        "id": "9e20e381-ee1e-47b0-b158-c3aa127774f2",
+        "alias": "heyda4hnk"
+      },
+      "url": "https://myindie.net/games/game/insect",
+      "coverUrl": "https://myindie.net/games/054410ba-7e72-4e75-9642-8e1d3c13c5bc/tumb_b_x5utepvngk94pr.jpg",
+      "score": 3.63,
+      "submittedAt": "Sat Jun 27 2026 22:35:20 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:eaff9fe3-09cc-40aa-9938-bf399dd6a528",
+      "provider": "myindie",
+      "providerGameId": "eaff9fe3-09cc-40aa-9938-bf399dd6a528",
+      "title": "СамокАД",
+      "slug": "samokad",
+      "author": {
+        "name": "wafelefaw",
+        "id": "7f8680da-830c-46b1-98d8-3183ad23896c",
+        "alias": "wafelefaw"
+      },
+      "url": "https://myindie.net/games/game/samokad",
+      "coverUrl": "https://myindie.net/games/eaff9fe3-09cc-40aa-9938-bf399dd6a528/tumb_b_kg58bvdmbxzz1b.png",
+      "score": 4.26,
+      "submittedAt": "Sat Jun 27 2026 21:27:52 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "fun",
+        "simulator",
+        "runner",
+        "delivery"
+      ]
+    },
+    {
+      "id": "myindie:a3ff9888-15f6-471a-a3c2-1de59ecbd001",
+      "provider": "myindie",
+      "providerGameId": "a3ff9888-15f6-471a-a3c2-1de59ecbd001",
+      "title": "COPYKILL - KILL YOUR PAST SELF",
+      "slug": "me-myself-and-die",
+      "author": {
+        "name": "ScoobySnacks",
+        "id": "406c4b6e-331a-4c18-977b-a9dbafccb840",
+        "alias": "scoobysnacks"
+      },
+      "url": "https://myindie.net/games/game/me-myself-and-die",
+      "coverUrl": "https://myindie.net/games/a3ff9888-15f6-471a-a3c2-1de59ecbd001/tumb_b_kzrd5wwh5tikxb.png",
+      "score": 4.32,
+      "submittedAt": "Sat Jun 27 2026 19:42:39 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:644f329f-2a36-484b-9916-2bf8c318fafc",
+      "provider": "myindie",
+      "providerGameId": "644f329f-2a36-484b-9916-2bf8c318fafc",
+      "title": "On the Threshold of Peace",
+      "slug": "on-the-threshold-of-peace",
+      "author": {
+        "name": "Benjamin",
+        "id": "1b76ab4c-7cb9-4354-9e2d-801767b45fe5",
+        "alias": "benjamin"
+      },
+      "url": "https://myindie.net/games/game/on-the-threshold-of-peace",
+      "coverUrl": "https://myindie.net/games/644f329f-2a36-484b-9916-2bf8c318fafc/tumb_b_ug8zwgfuheakso.png",
+      "score": 2.88,
+      "submittedAt": "Sat Jun 27 2026 19:13:36 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:e31dad24-8fcd-46a5-8776-6b2df017c75c",
+      "provider": "myindie",
+      "providerGameId": "e31dad24-8fcd-46a5-8776-6b2df017c75c",
+      "title": "Тёмный властелин",
+      "slug": "tyomnyj-vlastelin",
+      "author": {
+        "name": "Rognlosh",
+        "id": "05493b76-5b6a-4aba-b11f-c5855703a6b6",
+        "alias": "rognlosh"
+      },
+      "url": "https://myindie.net/games/game/tyomnyj-vlastelin",
+      "coverUrl": "https://myindie.net/games/e31dad24-8fcd-46a5-8776-6b2df017c75c/tumb_b_dehcevzwco9qsn.jpg",
+      "score": 3.54,
+      "submittedAt": "Sat Jun 27 2026 19:08:37 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:d177c015-c9f2-4ee3-8aa4-6ad05430cb0c",
+      "provider": "myindie",
+      "providerGameId": "d177c015-c9f2-4ee3-8aa4-6ad05430cb0c",
+      "title": "Лесная полянка",
+      "slug": "lesnaya-polyanka",
+      "author": {
+        "name": "gogoweru",
+        "id": "8e2144cb-4225-492d-abc5-3652374a39bb",
+        "alias": "gogoweru"
+      },
+      "url": "https://myindie.net/games/game/lesnaya-polyanka",
+      "coverUrl": "https://myindie.net/games/d177c015-c9f2-4ee3-8aa4-6ad05430cb0c/tumb_b_ufdgimnfpsmayq.png",
+      "score": 3.09,
+      "submittedAt": "Sat Jun 27 2026 17:41:30 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "инди",
+        "хоррор",
+        "стелс",
+        "славянскаямифология",
+        "леший",
+        "лес",
+        "охота",
+        "3d"
+      ]
+    },
+    {
+      "id": "myindie:e3f6a6e6-f241-4882-a901-cef5fb9bd7a3",
+      "provider": "myindie",
+      "providerGameId": "e3f6a6e6-f241-4882-a901-cef5fb9bd7a3",
+      "title": "QUARANTINE",
+      "slug": "quarantine",
+      "author": {
+        "name": "Andy",
+        "id": "6baba22a-e0e6-46f1-b430-83436ab7f05a",
+        "alias": "andy"
+      },
+      "url": "https://myindie.net/games/game/quarantine",
+      "coverUrl": "https://myindie.net/games/e3f6a6e6-f241-4882-a901-cef5fb9bd7a3/tumb_b_45hzptxtzm5gzv.png",
+      "score": 3.99,
+      "submittedAt": "Sat Jun 27 2026 17:40:39 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:a75faed5-9695-462a-b742-00f895a6df9b",
+      "provider": "myindie",
+      "providerGameId": "a75faed5-9695-462a-b742-00f895a6df9b",
+      "title": "Powerlord",
+      "slug": "powerlord",
+      "author": {
+        "name": "Alrocraft",
+        "id": "bc6fc69a-e0af-4dbc-9035-2fe278d5d641",
+        "alias": "alrocraft"
+      },
+      "url": "https://myindie.net/games/game/powerlord",
+      "coverUrl": "https://myindie.net/games/a75faed5-9695-462a-b742-00f895a6df9b/tumb_b_qvf0gmyih7yw9q.png",
+      "score": 3.46,
+      "submittedAt": "Sat Jun 27 2026 17:08:09 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "3d"
+      ]
+    },
+    {
+      "id": "myindie:c68096a5-207f-4143-a07b-2d06b08b07d8",
+      "provider": "myindie",
+      "providerGameId": "c68096a5-207f-4143-a07b-2d06b08b07d8",
+      "title": "NecroTech.exe",
+      "slug": "necrotechexe",
+      "author": {
+        "name": "lex.mash",
+        "id": "ee4226f1-60da-498b-936e-aef7ca5c052f",
+        "alias": "lexmash"
+      },
+      "url": "https://myindie.net/games/game/necrotechexe",
+      "coverUrl": "https://myindie.net/games/c68096a5-207f-4143-a07b-2d06b08b07d8/tumb_b_itnr5rxux7h6br.png",
+      "score": 3.81,
+      "submittedAt": "Sat Jun 27 2026 16:50:51 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:09d1eb89-f464-4edb-b778-ac44a160cc1c",
+      "provider": "myindie",
+      "providerGameId": "09d1eb89-f464-4edb-b778-ac44a160cc1c",
+      "title": "A special player",
+      "slug": "a-special-player",
+      "author": {
+        "name": "keikuethas",
+        "id": "a3cb3230-6c9d-4d86-92e2-51a22589342e",
+        "alias": "keikuethas"
+      },
+      "url": "https://myindie.net/games/game/a-special-player",
+      "coverUrl": "https://myindie.net/games/09d1eb89-f464-4edb-b778-ac44a160cc1c/tumb_b_wkzonpgxrjk8he.jpg",
+      "score": 2.15,
+      "submittedAt": "Sat Jun 27 2026 16:13:05 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "story",
+        "single",
+        "2d"
+      ]
+    },
+    {
+      "id": "myindie:bebeea45-7a35-4902-8149-54a2ff3330bf",
+      "provider": "myindie",
+      "providerGameId": "bebeea45-7a35-4902-8149-54a2ff3330bf",
+      "title": "Traced Out",
+      "slug": "traced-out",
+      "author": {
+        "name": "TIMMITR",
+        "id": "18ff994a-cc56-4e1c-a0d2-da3d1c463464",
+        "alias": "timmitr"
+      },
+      "url": "https://myindie.net/games/game/traced-out",
+      "coverUrl": "https://myindie.net/games/bebeea45-7a35-4902-8149-54a2ff3330bf/tumb_b_6xx1tlglyslgfh.png",
+      "score": 2.6,
+      "submittedAt": "Sat Jun 27 2026 15:53:16 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:ab991562-8844-4011-ac7c-5f223b60f785",
+      "provider": "myindie",
+      "providerGameId": "ab991562-8844-4011-ac7c-5f223b60f785",
+      "title": "Катастрофа в лаборатории Нердозавра",
+      "slug": "katastrofa-v-laboratorii-nerdozavra",
+      "author": {
+        "name": "epigrodel",
+        "id": "823028cb-774b-4352-ba45-2b906dedf7f9",
+        "alias": "epigrodel"
+      },
+      "url": "https://myindie.net/games/game/katastrofa-v-laboratorii-nerdozavra",
+      "coverUrl": "https://myindie.net/games/ab991562-8844-4011-ac7c-5f223b60f785/tumb_b_mcvjrmo8tnrj8c.png",
+      "score": 2.76,
+      "submittedAt": "Sat Jun 27 2026 15:42:29 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "рогалик",
+        "минимализм",
+        "шутер"
+      ]
+    },
+    {
+      "id": "myindie:fc6f01bd-19ac-42ac-861b-64a12768757a",
+      "provider": "myindie",
+      "providerGameId": "fc6f01bd-19ac-42ac-861b-64a12768757a",
+      "title": "Шепот глубин",
+      "slug": "shepot-glubiny",
+      "author": {
+        "name": "DmitryLavrov",
+        "id": "8eed5939-a409-43af-97e7-53de393a3f2a",
+        "alias": "dmitrylavrov"
+      },
+      "url": "https://myindie.net/games/game/shepot-glubiny",
+      "coverUrl": "https://myindie.net/games/fc6f01bd-19ac-42ac-861b-64a12768757a/tumb_b_vqasj4tdeqqmyo.jpg",
+      "score": 2.75,
+      "submittedAt": "Sat Jun 27 2026 13:16:05 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:b812cf41-9ae0-4860-81d5-a754fcca2ad6",
+      "provider": "myindie",
+      "providerGameId": "b812cf41-9ae0-4860-81d5-a754fcca2ad6",
+      "title": "Exterminate The TeleTubbies",
+      "slug": "telepusik-killer",
+      "author": {
+        "name": "Maksosko",
+        "id": "a31322ba-9491-4bc0-9e51-d6ac6db00de0",
+        "alias": "maksosko"
+      },
+      "url": "https://myindie.net/games/game/telepusik-killer",
+      "coverUrl": "https://myindie.net/games/b812cf41-9ae0-4860-81d5-a754fcca2ad6/tumb_b_cp5a4ggzb2aynh.png",
+      "score": 2.36,
+      "submittedAt": "Sat Jun 27 2026 13:10:29 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "scifi",
+        "telepusiki"
+      ]
+    },
+    {
+      "id": "myindie:38641fac-86af-4b2d-bbb0-9d188ed30307",
+      "provider": "myindie",
+      "providerGameId": "38641fac-86af-4b2d-bbb0-9d188ed30307",
+      "title": "Two Faces Child",
+      "slug": "two-faces-child_k5y",
+      "author": {
+        "name": "WoltIx",
+        "id": "c2742ddb-1773-4a7c-9082-81001c5053d4",
+        "alias": "woltix"
+      },
+      "url": "https://myindie.net/games/game/two-faces-child_k5y",
+      "score": 1.67,
+      "submittedAt": "Sat Jun 27 2026 12:53:35 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "psychologic_horror",
+        "horror",
+        "roguelike"
+      ]
+    },
+    {
+      "id": "myindie:146c96d8-ff39-4b0b-89cb-d634bc04610e",
+      "provider": "myindie",
+      "providerGameId": "146c96d8-ff39-4b0b-89cb-d634bc04610e",
+      "title": "Мимикрейд",
+      "slug": "mimikrejd",
+      "author": {
+        "name": "2MiTrickster",
+        "id": "a5341005-1d5d-4c72-84ee-22c1e3280b16",
+        "alias": "2mitrickster"
+      },
+      "url": "https://myindie.net/games/game/mimikrejd",
+      "coverUrl": "https://myindie.net/games/146c96d8-ff39-4b0b-89cb-d634bc04610e/tumb_b_cqawf3hk8n8pkv.png",
+      "score": 3.4,
+      "submittedAt": "Sat Jun 27 2026 12:40:00 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "г",
+        "т",
+        "е",
+        "и"
+      ]
+    },
+    {
+      "id": "myindie:578a8ab9-f4d3-441d-9f47-1f2225fe9545",
+      "provider": "myindie",
+      "providerGameId": "578a8ab9-f4d3-441d-9f47-1f2225fe9545",
+      "title": "Тюлений Остров / Seal Island",
+      "slug": "tyulenij-ostrov",
+      "author": {
+        "name": "Fearawl",
+        "id": "e0463722-96c5-443f-b3f2-1975fc8ac1ee",
+        "alias": "fearawl"
+      },
+      "url": "https://myindie.net/games/game/tyulenij-ostrov",
+      "coverUrl": "https://myindie.net/games/578a8ab9-f4d3-441d-9f47-1f2225fe9545/tumb_b_d6dcbc5iwectoa.png",
+      "score": 4.05,
+      "submittedAt": "Sat Jun 27 2026 12:34:15 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "singleplayer",
+        "survival",
+        "incremental",
+        "clicker",
+        "resourcemanagement",
+        "atmospheric",
+        "dark",
+        "2d",
+        "hand-drawn",
+        "narrative"
+      ]
+    },
+    {
+      "id": "myindie:0035dd80-5479-4ace-aa55-e17fbe2a3e61",
+      "provider": "myindie",
+      "providerGameId": "0035dd80-5479-4ace-aa55-e17fbe2a3e61",
+      "title": "Первопричина",
+      "slug": "pervoprichina",
+      "author": {
+        "name": "Na9asaki",
+        "id": "6b2fce22-fc31-4722-9860-2452b40b1c95",
+        "alias": "na9asaki"
+      },
+      "url": "https://myindie.net/games/game/pervoprichina",
+      "coverUrl": "https://myindie.net/games/0035dd80-5479-4ace-aa55-e17fbe2a3e61/tumb_b_vonk2atqqbq4lh.png",
+      "score": 3.92,
+      "submittedAt": "Sat Jun 27 2026 11:51:03 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "resourcemanagment",
+        "rts",
+        "менеджментресурсов",
+        "ртс"
+      ]
+    },
+    {
+      "id": "myindie:2709982d-45ab-4ff9-8f25-c7bda0822ab1",
+      "provider": "myindie",
+      "providerGameId": "2709982d-45ab-4ff9-8f25-c7bda0822ab1",
+      "title": "Испеки себя сам",
+      "slug": "ispeki-sebya-sam",
+      "author": {
+        "name": "Gremlin",
+        "id": "315eb512-d06b-4d34-bd03-cde87f1c1545",
+        "alias": "gremlin"
+      },
+      "url": "https://myindie.net/games/game/ispeki-sebya-sam",
+      "coverUrl": "https://myindie.net/games/2709982d-45ab-4ff9-8f25-c7bda0822ab1/tumb_b_xhsphtsdwh6a4k.png",
+      "score": 1.97,
+      "submittedAt": "Sat Jun 27 2026 11:37:47 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:7016a35b-eb98-4dde-984b-69fb15a3b688",
+      "provider": "myindie",
+      "providerGameId": "7016a35b-eb98-4dde-984b-69fb15a3b688",
+      "title": "Бумажные комнаты",
+      "slug": "bumazhnye-komnaty",
+      "author": {
+        "name": "programmer.dmitry",
+        "id": "becf5584-4772-4852-81ef-5e360c2dd303",
+        "alias": "programmerdmitry"
+      },
+      "url": "https://myindie.net/games/game/bumazhnye-komnaty",
+      "coverUrl": "https://myindie.net/games/7016a35b-eb98-4dde-984b-69fb15a3b688/tumb_b_uwkslkql5zyn4e.png",
+      "score": 3.53,
+      "submittedAt": "Sat Jun 27 2026 11:17:02 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:32fefaac-b1d8-4431-8d49-bc7e659f3d7b",
+      "provider": "myindie",
+      "providerGameId": "32fefaac-b1d8-4431-8d49-bc7e659f3d7b",
+      "title": "BROken Game",
+      "slug": "broken-game",
+      "author": {
+        "name": "luneo",
+        "id": "9b0b3d77-d05b-4209-9f00-9c3ca628ca30",
+        "alias": "luneo"
+      },
+      "url": "https://myindie.net/games/game/broken-game",
+      "coverUrl": "https://myindie.net/games/32fefaac-b1d8-4431-8d49-bc7e659f3d7b/tumb_b_p7lef99yg3eryg.png",
+      "score": 4.24,
+      "submittedAt": "Sat Jun 27 2026 09:43:45 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "головоломка",
+        "аркада"
+      ]
+    },
+    {
+      "id": "myindie:8c738821-05ed-4cf5-8abd-06a5d9102c9f",
+      "provider": "myindie",
+      "providerGameId": "8c738821-05ed-4cf5-8abd-06a5d9102c9f",
+      "title": "The Last Potion",
+      "slug": "the-last-potion",
+      "author": {
+        "name": "NEKOS-Game",
+        "id": "050d9a47-cee6-4b04-8a84-d757c9501bb6",
+        "alias": "nekos-game"
+      },
+      "url": "https://myindie.net/games/game/the-last-potion",
+      "coverUrl": "https://myindie.net/games/8c738821-05ed-4cf5-8abd-06a5d9102c9f/tumb_b_j1gdxtgpqjmrfq.png",
+      "score": 3.21,
+      "submittedAt": "Sat Jun 27 2026 09:22:00 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "short",
+        "stealth",
+        "top-down",
+        "fantasy",
+        "potion",
+        "3d",
+        "lvl10",
+        "delivery",
+        "magic",
+        "unity",
+        "gamejam"
+      ]
+    },
+    {
+      "id": "myindie:6be8e7d6-a3a9-4ed0-95c8-16e82423a2e6",
+      "provider": "myindie",
+      "providerGameId": "6be8e7d6-a3a9-4ed0-95c8-16e82423a2e6",
+      "title": "Umbracide",
+      "slug": "ten",
+      "author": {
+        "name": "lina_xwz82",
+        "id": "bf53364a-3b72-40b8-9bc4-71023f9169d7",
+        "alias": "linaxwz82"
+      },
+      "url": "https://myindie.net/games/game/ten",
+      "coverUrl": "https://myindie.net/games/6be8e7d6-a3a9-4ed0-95c8-16e82423a2e6/tumb_b_wrwcwvisys9qti.PNG",
+      "score": 4.02,
+      "submittedAt": "Sat Jun 27 2026 09:20:15 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "#gamejam",
+        "#arcade",
+        "#roguelike"
+      ]
+    },
+    {
+      "id": "myindie:181a1794-ba94-49dc-a64f-1b73a1c158a6",
+      "provider": "myindie",
+      "providerGameId": "181a1794-ba94-49dc-a64f-1b73a1c158a6",
+      "title": "Playroom Warfare",
+      "slug": "playroom-warfare",
+      "author": {
+        "name": "MagistrZ",
+        "id": "67c1c650-a60f-43e3-8875-4a6e4b279f94",
+        "alias": "magistrz"
+      },
+      "url": "https://myindie.net/games/game/playroom-warfare",
+      "coverUrl": "https://myindie.net/games/181a1794-ba94-49dc-a64f-1b73a1c158a6/tumb_b_ujkxzfhztyxn4p.png",
+      "score": 1.83,
+      "submittedAt": "Sat Jun 27 2026 09:04:56 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:8533d345-4dd5-4e9f-a38a-f99ff2ac97f2",
+      "provider": "myindie",
+      "providerGameId": "8533d345-4dd5-4e9f-a38a-f99ff2ac97f2",
+      "title": "The Deal: All-In",
+      "slug": "the-deal-all-in",
+      "author": {
+        "name": "leha1337",
+        "id": "2819b3d4-0457-4ea5-af4b-9b57e3a90667",
+        "alias": "leha1337"
+      },
+      "url": "https://myindie.net/games/game/the-deal-all-in",
+      "coverUrl": "https://myindie.net/games/8533d345-4dd5-4e9f-a38a-f99ff2ac97f2/tumb_b_wngecbkwijjg7s.jpeg",
+      "score": 3.55,
+      "submittedAt": "Sat Jun 27 2026 08:24:58 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "русский",
+        "деньги",
+        "бабки",
+        "казино",
+        "бизнес",
+        "симулятор",
+        "лудка",
+        "казик",
+        "зедил",
+        "олин",
+        "юнити",
+        "бизнесмен",
+        "10",
+        "лвл10",
+        "джем",
+        "английский",
+        "3д"
+      ]
+    },
+    {
+      "id": "myindie:4ffbe8f1-6d4a-4c4d-90ca-e5560900b04b",
+      "provider": "myindie",
+      "providerGameId": "4ffbe8f1-6d4a-4c4d-90ca-e5560900b04b",
+      "title": "Джекилл/Хайд",
+      "slug": "temporal-trail",
+      "author": {
+        "name": "MaxGriazev",
+        "id": "df4f72d9-aa2b-4a46-a5fd-8a2c8b2d03f5",
+        "alias": "maxgriazev"
+      },
+      "url": "https://myindie.net/games/game/temporal-trail",
+      "coverUrl": "https://myindie.net/games/4ffbe8f1-6d4a-4c4d-90ca-e5560900b04b/tumb_b_a5amw6iw1puyqt.png",
+      "score": 3.77,
+      "submittedAt": "Sat Jun 27 2026 08:13:40 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:326ecba8-8937-4492-b722-88e2ca3b9d85",
+      "provider": "myindie",
+      "providerGameId": "326ecba8-8937-4492-b722-88e2ca3b9d85",
+      "title": "Пират на секретной службе",
+      "slug": "pirat-na-sluzhbe-u-imperatora",
+      "author": {
+        "name": "Vogd",
+        "id": "3b495d52-8366-4587-ad5e-84b8bdaaec24",
+        "alias": "vogd"
+      },
+      "url": "https://myindie.net/games/game/pirat-na-sluzhbe-u-imperatora",
+      "coverUrl": "https://myindie.net/games/326ecba8-8937-4492-b722-88e2ca3b9d85/tumb_b_lxjy4xjfy36bup.png",
+      "score": 4,
+      "submittedAt": "Sat Jun 27 2026 08:04:16 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "император",
+        "пират",
+        "враг"
+      ]
+    },
+    {
+      "id": "myindie:aa4c0f40-d8d7-49e7-9bb4-256fdea25d15",
+      "provider": "myindie",
+      "providerGameId": "aa4c0f40-d8d7-49e7-9bb4-256fdea25d15",
+      "title": "Вервольф Петрович",
+      "slug": "vervolf-petrovich",
+      "author": {
+        "name": "Kumkvat",
+        "id": "a01d3fc5-4731-4705-adb3-e34d13ff777c",
+        "alias": "kumkvat"
+      },
+      "url": "https://myindie.net/games/game/vervolf-petrovich",
+      "coverUrl": "https://myindie.net/games/aa4c0f40-d8d7-49e7-9bb4-256fdea25d15/tumb_b_x5gti814kbliqq.png",
+      "score": 2.11,
+      "submittedAt": "Sat Jun 27 2026 07:10:45 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:ac2ee279-9844-4ad7-9313-a1ab792d9196",
+      "provider": "myindie",
+      "providerGameId": "ac2ee279-9844-4ad7-9313-a1ab792d9196",
+      "title": "В тебе",
+      "slug": "v-tebe",
+      "author": {
+        "name": "vadimmos",
+        "id": "ebbd92a1-603c-4c2c-a3f1-cc13f4708833",
+        "alias": "vadimmos"
+      },
+      "url": "https://myindie.net/games/game/v-tebe",
+      "coverUrl": "https://myindie.net/games/ac2ee279-9844-4ad7-9313-a1ab792d9196/tumb_b_xhspa1wdspboej.png",
+      "score": 3.35,
+      "submittedAt": "Sat Jun 27 2026 06:19:03 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "top-down"
+      ]
+    },
+    {
+      "id": "myindie:6bc0a243-1fd8-43b3-9291-a00d66dbf5c9",
+      "provider": "myindie",
+      "providerGameId": "6bc0a243-1fd8-43b3-9291-a00d66dbf5c9",
+      "title": "MR.Beardy:the history of killer",
+      "slug": "mrbeardythe-history-of-killer",
+      "author": {
+        "name": "Heshi",
+        "id": "f418e430-fd32-401f-aed4-3100ddb2b18c",
+        "alias": "heshi"
+      },
+      "url": "https://myindie.net/games/game/mrbeardythe-history-of-killer",
+      "coverUrl": "https://myindie.net/games/6bc0a243-1fd8-43b3-9291-a00d66dbf5c9/tumb_b_3jwshon06oayqa.jpg",
+      "score": 2.65,
+      "submittedAt": "Sat Jun 27 2026 05:55:52 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "arcade",
+        "mini-games.",
+        "killer",
+        "puzzle",
+        "interactivenovel",
+        "novel",
+        "visualnovel",
+        "endings",
+        "epilogue",
+        "menu"
+      ]
+    },
+    {
+      "id": "myindie:d62b5ee4-6e0c-4b32-9b82-db80ee8448d5",
+      "provider": "myindie",
+      "providerGameId": "d62b5ee4-6e0c-4b32-9b82-db80ee8448d5",
+      "title": "The Shifter 🌓",
+      "slug": "the-shifter",
+      "author": {
+        "name": "Beshamon",
+        "id": "b4831dca-1304-4a11-a1c3-da305af6a004",
+        "alias": "beshamon"
+      },
+      "url": "https://myindie.net/games/game/the-shifter",
+      "coverUrl": "https://myindie.net/games/d62b5ee4-6e0c-4b32-9b82-db80ee8448d5/tumb_b_v5uugzn0bzwmmf.jpg",
+      "score": 4.48,
+      "submittedAt": "Fri Jun 26 2026 22:23:31 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:a792916d-a21e-46fe-810b-d24b7d0ed81f",
+      "provider": "myindie",
+      "providerGameId": "a792916d-a21e-46fe-810b-d24b7d0ed81f",
+      "title": "Subject: Me. Postjam",
+      "slug": "subject-me",
+      "author": {
+        "name": "ankuladin",
+        "id": "7ebd9f91-137c-434e-aa18-66d389667ebc",
+        "alias": "ankuladin"
+      },
+      "url": "https://myindie.net/games/game/subject-me",
+      "coverUrl": "https://myindie.net/games/a792916d-a21e-46fe-810b-d24b7d0ed81f/tumb_b_m8j64r7w8ufvrq.jpg",
+      "score": 3.57,
+      "submittedAt": "Fri Jun 26 2026 22:17:47 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "narrative",
+        "survival"
+      ]
+    },
+    {
+      "id": "myindie:af53381b-363c-420b-9834-fa331b3d257f",
+      "provider": "myindie",
+      "providerGameId": "af53381b-363c-420b-9834-fa331b3d257f",
+      "title": "Heroes Shall Fall",
+      "slug": "heroes-shall-fall",
+      "author": {
+        "name": "borschtstudios",
+        "id": "00c3c379-459a-40af-9dd2-e2260419434f",
+        "alias": "borschtstudios"
+      },
+      "url": "https://myindie.net/games/game/heroes-shall-fall",
+      "coverUrl": "https://myindie.net/games/af53381b-363c-420b-9834-fa331b3d257f/tumb_b_3m00fx9nbjws96.png",
+      "score": 3.84,
+      "submittedAt": "Fri Jun 26 2026 22:07:38 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "retro",
+        "pixelart",
+        "pixel",
+        "1bit",
+        "towerdefence"
+      ]
+    },
+    {
+      "id": "myindie:a40763d0-56d7-424c-9122-898d5d569045",
+      "provider": "myindie",
+      "providerGameId": "a40763d0-56d7-424c-9122-898d5d569045",
+      "title": "СИЗО \"Песочница\"",
+      "slug": "sizo-pesochnica",
+      "author": {
+        "name": "kristinka",
+        "id": "1e2ead04-718c-41c6-9d77-0489488c3e0d",
+        "alias": "kristinka"
+      },
+      "url": "https://myindie.net/games/game/sizo-pesochnica",
+      "coverUrl": "https://myindie.net/games/a40763d0-56d7-424c-9122-898d5d569045/tumb_b_cm18cu3g23udji.png",
+      "score": 3.72,
+      "submittedAt": "Fri Jun 26 2026 21:52:39 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:844dc651-e137-4515-9889-6a07491ad92a",
+      "provider": "myindie",
+      "providerGameId": "844dc651-e137-4515-9889-6a07491ad92a",
+      "title": "Vindicta",
+      "slug": "vindicta",
+      "author": {
+        "name": "Freeman",
+        "id": "6df3092a-18f7-4ada-b8d1-7e86ded12a78",
+        "alias": "freeman"
+      },
+      "url": "https://myindie.net/games/game/vindicta",
+      "coverUrl": "https://myindie.net/games/844dc651-e137-4515-9889-6a07491ad92a/tumb_b_plgbrg4dtubeud.PNG",
+      "score": 3.77,
+      "submittedAt": "Fri Jun 26 2026 21:38:23 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "myindielevel10"
+      ]
+    },
+    {
+      "id": "myindie:24065419-2585-4d73-9b39-4fb8f6433d5e",
+      "provider": "myindie",
+      "providerGameId": "24065419-2585-4d73-9b39-4fb8f6433d5e",
+      "title": "I Fixed It!",
+      "slug": "i-fixed-it",
+      "author": {
+        "name": "RadioVanya",
+        "id": "8e6b4cd3-4311-4440-ae62-5412f3078b50",
+        "alias": "radiovanya"
+      },
+      "url": "https://myindie.net/games/game/i-fixed-it",
+      "coverUrl": "https://myindie.net/games/24065419-2585-4d73-9b39-4fb8f6433d5e/tumb_b_zrnvqvpfskerti.png",
+      "score": 3.34,
+      "submittedAt": "Fri Jun 26 2026 21:28:21 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "myindielevel10",
+        "simulation",
+        "puzzle",
+        "unity",
+        "game"
+      ]
+    },
+    {
+      "id": "myindie:941d27a7-8452-44f1-9330-eed09b5414ea",
+      "provider": "myindie",
+      "providerGameId": "941d27a7-8452-44f1-9330-eed09b5414ea",
+      "title": "We Are the Plague",
+      "slug": "we-are-the-plague",
+      "author": {
+        "name": "ostsergey",
+        "id": "fa63e6a4-9b23-44a6-b06b-bf63a216361f",
+        "alias": "ostsergey"
+      },
+      "url": "https://myindie.net/games/game/we-are-the-plague",
+      "coverUrl": "https://myindie.net/games/941d27a7-8452-44f1-9330-eed09b5414ea/tumb_b_4nqqqj6rweuame.png",
+      "score": 4.18,
+      "submittedAt": "Fri Jun 26 2026 21:12:00 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "roguelike",
+        "incremental"
+      ]
+    },
+    {
+      "id": "myindie:8f308b0c-f8be-491a-8126-86746a92868d",
+      "provider": "myindie",
+      "providerGameId": "8f308b0c-f8be-491a-8126-86746a92868d",
+      "title": "The Anomaly Case",
+      "slug": "the-anomaly-case",
+      "author": {
+        "name": "Coulneff",
+        "id": "1c82e7b6-b5d1-489b-9cd1-7f12606275f0",
+        "alias": "coulneff"
+      },
+      "url": "https://myindie.net/games/game/the-anomaly-case",
+      "coverUrl": "https://myindie.net/games/8f308b0c-f8be-491a-8126-86746a92868d/tumb_b_g5y2fo84uhigcc.png",
+      "score": 3.7,
+      "submittedAt": "Fri Jun 26 2026 20:26:59 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:d232ead8-df11-42c9-8fa9-1e1b1ff9c6a0",
+      "provider": "myindie",
+      "providerGameId": "d232ead8-df11-42c9-8fa9-1e1b1ff9c6a0",
+      "title": "ЭХО-9",
+      "slug": "eho-9",
+      "author": {
+        "name": "kerniee",
+        "id": "82254a6f-b594-484d-823d-096e8e1a777c",
+        "alias": "kerniee"
+      },
+      "url": "https://myindie.net/games/game/eho-9",
+      "coverUrl": "https://myindie.net/games/d232ead8-df11-42c9-8fa9-1e1b1ff9c6a0/tumb_b_b7t1w02w3gptvs.png",
+      "score": 4.13,
+      "submittedAt": "Fri Jun 26 2026 20:14:12 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "story",
+        "bevy",
+        "retrofuturism",
+        "2d",
+        "sci-fi",
+        "terminal"
+      ]
+    },
+    {
+      "id": "myindie:f1dbff0e-9572-47ac-b042-744d68cf6fc7",
+      "provider": "myindie",
+      "providerGameId": "f1dbff0e-9572-47ac-b042-744d68cf6fc7",
+      "title": "Орбитальный Защитник: Амнезия",
+      "slug": "orbitalnyj-likvidator",
+      "author": {
+        "name": "vovanlinkin",
+        "id": "b36d230f-dd52-43d2-9dcc-322475e90b43",
+        "alias": "vovanlinkin"
+      },
+      "url": "https://myindie.net/games/game/orbitalnyj-likvidator",
+      "coverUrl": "https://myindie.net/games/f1dbff0e-9572-47ac-b042-744d68cf6fc7/tumb_b_z5cmrkof0khhdn.png",
+      "score": 3.68,
+      "submittedAt": "Fri Jun 26 2026 20:01:04 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "выбор",
+        "сигналы",
+        "космос",
+        "амнезия"
+      ]
+    },
+    {
+      "id": "myindie:63ff03c8-5b7c-4179-8e3e-af06cd8191d0",
+      "provider": "myindie",
+      "providerGameId": "63ff03c8-5b7c-4179-8e3e-af06cd8191d0",
+      "title": "Ночной эксперимент",
+      "slug": "nochnoj-eksperiment",
+      "author": {
+        "name": "Alex228",
+        "id": "9a5f18ad-6ce1-469f-9642-508fdad393e3",
+        "alias": "alex228"
+      },
+      "url": "https://myindie.net/games/game/nochnoj-eksperiment",
+      "coverUrl": "https://myindie.net/games/63ff03c8-5b7c-4179-8e3e-af06cd8191d0/tumb_b_d9webqbwszr2sp.png",
+      "score": 2.56,
+      "submittedAt": "Fri Jun 26 2026 19:56:15 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "хоррор",
+        "триллер",
+        "реалистика",
+        "атмосферная",
+        "симуляторходьбы"
+      ]
+    },
+    {
+      "id": "myindie:d26b96e2-9a19-407c-8ab2-068d54156ce7",
+      "provider": "myindie",
+      "providerGameId": "d26b96e2-9a19-407c-8ab2-068d54156ce7",
+      "title": "The Call of Seal \\ Зов тюленя",
+      "slug": "the-call-of-seal-zov-tyulenya",
+      "author": {
+        "name": "SkreT1kk",
+        "id": "7606e2ea-1b4d-435f-bce3-dfacd55ddcb4",
+        "alias": "skret1kk"
+      },
+      "url": "https://myindie.net/games/game/the-call-of-seal-zov-tyulenya",
+      "coverUrl": "https://myindie.net/games/d26b96e2-9a19-407c-8ab2-068d54156ce7/tumb_b_7rtvk0kneczei8.jpeg",
+      "score": 2.98,
+      "submittedAt": "Fri Jun 26 2026 19:28:35 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:cdbeeeab-7215-4ba2-8a90-51f977e1d006",
+      "provider": "myindie",
+      "providerGameId": "cdbeeeab-7215-4ba2-8a90-51f977e1d006",
+      "title": "Ray of Sunsmile",
+      "slug": "sergeyiwillwinyou",
+      "author": {
+        "name": "ChiFu",
+        "id": "b43ade3f-11a3-4490-a292-9aed39639cb4",
+        "alias": "chifu"
+      },
+      "url": "https://myindie.net/games/game/sergeyiwillwinyou",
+      "coverUrl": "https://myindie.net/games/cdbeeeab-7215-4ba2-8a90-51f977e1d006/tumb_b_uk0mlzwbgfas47.png",
+      "score": 4.01,
+      "submittedAt": "Fri Jun 26 2026 18:41:27 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+      "id": "myindie:945a9d5e-8317-48a5-94f0-a33f45ad7158",
+      "provider": "myindie",
+      "providerGameId": "945a9d5e-8317-48a5-94f0-a33f45ad7158",
+      "title": "Hex & Caps",
+      "slug": "hex-and-caps",
+      "author": {
+        "name": "P1nk1e",
+        "id": "151578b4-9f3c-4516-bd27-a8cc969c4ed1",
+        "alias": "p1nk1e"
+      },
+      "url": "https://myindie.net/games/game/hex-and-caps",
+      "coverUrl": "https://myindie.net/games/945a9d5e-8317-48a5-94f0-a33f45ad7158/tumb_b_wctkv1s3qs9wvz.png",
+      "score": 3.15,
+      "submittedAt": "Fri Jun 26 2026 18:40:06 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "менеджмент",
+        "инкременталка",
+        "фентези"
+      ]
+    },
+    {
+      "id": "myindie:808deb7e-76c9-4537-bd5c-3acb9b95679a",
+      "provider": "myindie",
+      "providerGameId": "808deb7e-76c9-4537-bd5c-3acb9b95679a",
+      "title": "Cat's Anarchy",
+      "slug": "enemy-in-reflection",
+      "author": {
+        "name": "shishinda",
+        "id": "a4e48532-b463-4585-addf-3865767100f0",
+        "alias": "shishinda"
+      },
+      "url": "https://myindie.net/games/game/enemy-in-reflection",
+      "coverUrl": "https://myindie.net/games/808deb7e-76c9-4537-bd5c-3acb9b95679a/tumb_b_0uh410hcfzmpfz.png",
+      "score": 3.1,
+      "submittedAt": "Fri Jun 26 2026 18:12:13 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "puzzle",
+        "casual",
+        "animals",
+        "arcade",
+        "simulation",
+        "adventure",
+        "cats"
+      ]
+    },
+    {
+      "id": "myindie:51639906-7e7d-4471-9ec7-c4a7e3f906bb",
+      "provider": "myindie",
+      "providerGameId": "51639906-7e7d-4471-9ec7-c4a7e3f906bb",
+      "title": "Рефлекс самоубийцы",
+      "slug": "refleks-samoubijcy",
+      "author": {
+        "name": "ShinyMoon",
+        "id": "eac7fba3-d167-4c54-b96e-939e59b8dab3",
+        "alias": "shinymoon"
+      },
+      "url": "https://myindie.net/games/game/refleks-samoubijcy",
+      "coverUrl": "https://myindie.net/games/51639906-7e7d-4471-9ec7-c4a7e3f906bb/tumb_b_gfifwyfpw2dafl.png",
+      "score": 2.54,
+      "submittedAt": "Fri Jun 26 2026 18:10:29 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "horror",
+        "shooter"
+      ]
+    },
+    {
+      "id": "myindie:66152dd6-9e50-46d4-b0f7-55d0d814833c",
+      "provider": "myindie",
+      "providerGameId": "66152dd6-9e50-46d4-b0f7-55d0d814833c",
+      "title": "Шёпот стен",
+      "slug": "whisper-of-the-walls",
+      "author": {
+        "name": "saltario",
+        "id": "652084eb-e687-42a0-81be-fb2df6277e72",
+        "alias": "saltario"
+      },
+      "url": "https://myindie.net/games/game/whisper-of-the-walls",
+      "coverUrl": "https://myindie.net/games/66152dd6-9e50-46d4-b0f7-55d0d814833c/tumb_b_il3zeamnqh8tbv.png",
+      "score": 4.14,
+      "submittedAt": "Fri Jun 26 2026 18:05:15 GMT+0000 (Coordinated Universal Time)",
+      "tags": [
+        "unity",
+        "gamejam",
+        "horror"
+      ]
+    },
     {
       "id": "itch:710773",
       "provider": "itch",

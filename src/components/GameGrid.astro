@@ -1,20 +1,31 @@
 ---
 import type { GameEntry, JamRound } from "../lib/domain/types";
+import { getLatestGame } from "../lib/games/presentation";
 import EmptyGamesState from "./EmptyGamesState.astro";
 import GameCard from "./GameCard.astro";
 
 interface Props {
   games: GameEntry[];
   round: JamRound;
+  highlightLatest?: boolean;
+  latestGame?: GameEntry;
+  now?: Date;
 }
 
-const { games, round } = Astro.props;
+const { games, round, highlightLatest = false, latestGame, now = new Date() } = Astro.props;
+const resolvedLatestGame = highlightLatest ? latestGame ?? getLatestGame(games) : undefined;
 ---
 
 {games.length > 0 ? (
   <div class="game-grid">
     {games.map((game, index) => (
-      <GameCard game={game} index={index} loading={index < 4 ? "eager" : "lazy"} />
+      <GameCard
+        game={game}
+        index={index}
+        loading={index < 4 ? "eager" : "lazy"}
+        isLatest={resolvedLatestGame?.id === game.id}
+        now={now}
+      />
     ))}
   </div>
 ) : (

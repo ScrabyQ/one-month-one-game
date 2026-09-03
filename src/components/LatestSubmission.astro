@@ -1,0 +1,23 @@
+---
+import type { GameEntry } from "../lib/domain/types";
+import { getSubmissionPresentation } from "../lib/games/presentation";
+
+interface Props {
+  game?: GameEntry;
+  now?: Date;
+}
+
+const { game, now = new Date() } = Astro.props;
+const submission = game ? getSubmissionPresentation(game.submittedAt, now) : undefined;
+---
+
+{game && submission?.iso && submission.label && (
+  <div class="latest-submission" aria-label="Последнее пополнение">
+    <span class="eyebrow">Последнее пополнение</span>
+    <p>
+      <strong>{game.title}</strong>
+      <span> · {game.author.name}</span>
+      <time datetime={submission.iso}> · {submission.label}</time>
+    </p>
+  </div>
+)}

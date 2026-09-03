@@ -2,22 +2,37 @@
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import { withBase } from "../lib/site";
+import { jams } from "../config/jams";
+import type { JamRound } from "../lib/domain/types";
+import { DEFAULT_SOCIAL_IMAGE, getRoundPresentation } from "../lib/jams/presentation";
+import { getFeaturedRound } from "../lib/jams/status";
+import { getAbsoluteSiteUrl, withBase } from "../lib/site";
 
 interface Props {
   title: string;
   description: string;
   canonicalPath?: string;
+  round?: JamRound;
 }
 
-const { title, description, canonicalPath = "/" } = Astro.props;
-const canonicalUrl = Astro.site
-  ? new URL(withBase(canonicalPath), Astro.site).toString()
-  : undefined;
+const { title, description, canonicalPath = "/", round } = Astro.props;
+const featuredRound = getFeaturedRound(jams, new Date());
+const displayRound = round ?? featuredRound;
+const displayPresentation = getRoundPresentation(displayRound);
+const socialImagePath = round ? displayPresentation.socialImage : DEFAULT_SOCIAL_IMAGE;
+const canonicalUrl = getAbsoluteSiteUrl(canonicalPath, Astro.site);
+const socialImageUrl = getAbsoluteSiteUrl(socialImagePath, Astro.site);
+const socialImageAlt = round
+  ? `Один месяц — одна игра, раунд ${displayRound.round}, ${displayRound.monthLabel}`
+  : "Один месяц — одна игра, ежемесячный игровой челлендж";
 ---
 
 <!doctype html>
-<html lang="ru" data-theme="one-month">
+<html
+  lang="ru"
+  data-theme="one-month"
+  style={`--round-accent: ${displayPresentation.accent}`}
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -27,7 +42,13 @@ const canonicalUrl = Astro.site
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary" />
+    {socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+    {socialImageUrl && <meta property="og:image:width" content="1200" />}
+    {socialImageUrl && <meta property="og:image:height" content="630" />}
+    {socialImageUrl && <meta property="og:image:alt" content={socialImageAlt} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    {socialImageUrl && <meta name="twitter:image" content={socialImageUrl} />}
+    {socialImageUrl && <meta name="twitter:image:alt" content={socialImageAlt} />}
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
@@ -35,10 +56,10 @@ const canonicalUrl = Astro.site
   </head>
   <body>
     <a class="skip-link" href="#content">Перейти к содержимому</a>
-    <Header />
+    <Header round={displayRound} currentRound={featuredRound} />
     <main id="content">
       <slot />
     </main>
-    <Footer />
+    <Footer currentRound={featuredRound} />
   </body>
 </html>

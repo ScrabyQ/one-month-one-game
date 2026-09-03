@@ -1,13 +1,19 @@
 ---
+import type { JamRound } from "../lib/domain/types";
+import { formatRoundNumber } from "../lib/i18n/ru";
 import { withBase } from "../lib/site";
-import { jams } from "../config/jams";
-import { getFeaturedRound } from "../lib/jams/status";
 
+interface Props {
+  round: JamRound;
+  currentRound: JamRound;
+}
+
+const { round, currentRound } = Astro.props;
 const currentPath = Astro.url.pathname;
 const homePath = new URL(withBase("/"), Astro.url).pathname;
 const archivePath = new URL(withBase("/archive/"), Astro.url).pathname;
 const currentRoundPath = new URL(
-  withBase("/jam/" + getFeaturedRound(jams, new Date()).slug + "/"),
+  withBase("/jam/" + currentRound.slug + "/"),
   Astro.url,
 ).pathname;
 const isCurrentPath = (path: string) => currentPath === path;
@@ -17,7 +23,7 @@ const isCurrentMonth = currentPath === homePath || currentPath === currentRoundP
 <header class="site-header">
   <div class="shell site-header__inner">
     <a class="brand" href={withBase("/")} aria-label="Один месяц — одна игра, на главную">
-      <span class="brand__mark" aria-hidden="true">01</span>
+      <span class="brand__mark" aria-hidden="true">{formatRoundNumber(round.round)}</span>
       <span class="brand__text">Один месяц<br /><span>одна игра</span></span>
     </a>
 

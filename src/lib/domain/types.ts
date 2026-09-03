@@ -58,6 +58,11 @@ export type MyIndieProviderConfig = {
 // Add future provider-specific config variants here without changing UI models.
 export type ProviderConfig = ItchProviderConfig | MyIndieProviderConfig;
 
+export interface RoundPresentation {
+  accent?: string;
+  socialImage?: string;
+}
+
 export interface JamRound {
   id: string;
   round: number;
@@ -72,4 +77,5 @@ export interface JamRound {
   endsAt: string;
   providers: ProviderConfig[];
   dataMode?: JamDataMode;
+  presentation?: RoundPresentation;
 }

@@ -1,30 +1,8 @@
 import type { GameEntry } from "../domain/types";
-
-const titleCollator = new Intl.Collator("ru-RU", {
-  numeric: true,
-  sensitivity: "base",
-});
-
-function timestamp(game: GameEntry): number {
-  if (!game.submittedAt) return Number.NaN;
-  const parsed = Date.parse(game.submittedAt);
-  return Number.isFinite(parsed) ? parsed : Number.NaN;
-}
+import { sortGamesBySubmission } from "../games/presentation";
 
 export function sortGames(games: readonly GameEntry[]): GameEntry[] {
-  return [...games].sort((left, right) => {
-    const leftTime = timestamp(left);
-    const rightTime = timestamp(right);
-
-    if (Number.isFinite(leftTime) && Number.isFinite(rightTime) && leftTime !== rightTime) {
-      return rightTime - leftTime;
-    }
-    if (Number.isFinite(leftTime) !== Number.isFinite(rightTime)) {
-      return Number.isFinite(leftTime) ? -1 : 1;
-    }
-
-    return titleCollator.compare(left.title, right.title) || left.id.localeCompare(right.id);
-  });
+  return sortGamesBySubmission(games);
 }
 
 export function deduplicateGames(games: readonly GameEntry[]): GameEntry[] {

@@ -10,7 +10,7 @@ const repositoryName = process.env.GITHUB_REPOSITORY?.split("/").at(-1);
 const repositoryOwner = process.env.GITHUB_REPOSITORY_OWNER;
 const siteUrl =
   process.env.PUBLIC_SITE_URL ??
-  (repositoryOwner ? `https://${repositoryOwner}.github.io` : undefined);
+  (repositoryOwner ? `https://${repositoryOwner}.github.io` : "https://scrabyq.github.io");
 const base = normalizeBase(
   process.env.PUBLIC_BASE ?? repositoryName ?? "OneMonthOneGame",
 );

@@ -69,4 +69,12 @@ export const GameSnapshotSchema = z.object({
   games: z.array(GameEntrySchema),
 });
 
+export const JamRoundPresentationSchema = z.object({
+  accent: z
+    .string()
+    .regex(/^#[\da-f]{6}$/i, "Accent must use #RRGGBB format")
+    .optional(),
+  socialImage: z.string().min(1).optional(),
+});
+
 export type ItchEntriesResponse = z.infer<typeof ItchEntriesResponseSchema>;

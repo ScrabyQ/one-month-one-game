@@ -31,13 +31,17 @@ export const jams: JamRound[] = [
         jamUrl: "https://myindie.net/jams/jam/myindie-level-10"
      }
     ],
+    presentation: {
+      accent: "#d8ff5c",
+      socialImage: "/og/round-002.png",
+    },
   },
   {
     id: "2026-08",
     round: 1,
     slug: "2026-08",
     title: challengeTitle,
-    monthLabel: "Сентябрь 2026",
+    monthLabel: "Август 2026",
     theme: "Тема будет объявлена",
     themeState: "pending",
     themeAnnouncement: "Какая-то тема",
@@ -54,5 +58,9 @@ export const jams: JamRound[] = [
         jamUrl: "https://itch.io/jam/REPLACE_WITH_REAL_JAM_SLUG",
       },
     ],
+    presentation: {
+      accent: "#ff8a75",
+      socialImage: "/og/round-001.png",
+    },
   },
 ];

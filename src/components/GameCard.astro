@@ -1,5 +1,6 @@
 ---
 import type { GameEntry } from "../lib/domain/types";
+import { getSubmissionPresentation } from "../lib/games/presentation";
 import { getInitials } from "../lib/ui";
 import ProviderBadge from "./ProviderBadge.astro";
 
@@ -7,18 +8,21 @@ interface Props {
   game: GameEntry;
   index: number;
   loading?: "eager" | "lazy";
+  isLatest?: boolean;
+  now?: Date;
 }
 
-const { game, index, loading = "lazy" } = Astro.props;
+const { game, index, loading = "lazy", isLatest = false, now = new Date() } = Astro.props;
 const initials = getInitials(game.title);
+const submission = getSubmissionPresentation(game.submittedAt, now);
 ---
 
 <a
-  class="game-card"
+  class:list={["game-card", { "game-card--latest": isLatest }]}
   href={game.url}
   target="_blank"
   rel="noopener noreferrer"
-  aria-label={`Открыть игру «${game.title}» на внешней площадке`}
+  aria-label={`Открыть игру «${game.title}» на внешней площадке${isLatest ? ", последнее пополнение" : ""}`}
 >
   <div class="game-card__cover" data-cover-frame>
     <div class="cover-fallback" aria-hidden="true">
@@ -35,6 +39,7 @@ const initials = getInitials(game.title);
       />
     )}
     <span class="game-card__number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+    {isLatest && <span class="game-card__latest">Последнее пополнение</span>}
   </div>
   <div class="game-card__body">
     <div class="game-card__title-row">
@@ -42,6 +47,12 @@ const initials = getInitials(game.title);
       <ProviderBadge provider={game.provider} />
     </div>
     <p class="game-card__author">{game.author.name}</p>
+    {submission.iso && submission.dateLabel && (
+      <div class="game-card__submission">
+        <time datetime={submission.iso}>{submission.dateLabel}</time>
+        {submission.isRecent && <span class="game-card__new">NEW</span>}
+      </div>
+    )}
     {game.description && <p class="game-card__description">{game.description}</p>}
     <span class="game-card__external" aria-hidden="true">Смотреть игру <span>↗</span></span>
   </div>

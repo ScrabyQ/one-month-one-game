@@ -1,0 +1,1227 @@
+{
+  "roundId": "2026-08",
+  "syncedAt": "2026-09-03T19:11:40.823Z",
+  "games": [
+    {
+      "id": "itch:710773",
+      "provider": "itch",
+      "title": "UntilYouSee",
+      "author": {
+        "name": "sorrelhaze",
+        "url": "https://sorrelhaze.itch.io/"
+      },
+      "url": "https://sorrelhaze.itch.io/untilyousee",
+      "providerEntryId": "710773",
+      "providerGameId": "3645080",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjk5NTk2LnBuZw==/300x240%23c/elZgSK.png",
+      "description": "Хоррор, в котором адаптация ведет к поражению",
+      "submittedAt": "2025-06-15 08:58:51"
+    },
+    {
+      "id": "itch:710769",
+      "provider": "itch",
+      "title": "BRAINSTORM",
+      "author": {
+        "name": "Papus Games",
+        "url": "https://papus-games.itch.io/"
+      },
+      "url": "https://papus-games.itch.io/brainstorm",
+      "providerEntryId": "710769",
+      "providerGameId": "3640975",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxMDE4LnBuZw==/300x240%23c/BPo9DY.png",
+      "submittedAt": "2025-06-15 08:56:02",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710768",
+      "provider": "itch",
+      "title": "FORESTER - Evening Jam Version",
+      "author": {
+        "name": "stevegamer",
+        "url": "https://stevegamer.itch.io/"
+      },
+      "url": "https://stevegamer.itch.io/forester",
+      "providerEntryId": "710768",
+      "providerGameId": "3635829",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNzAyMjAxLnBuZw==/300x240%23c/%2B0WNtp.png",
+      "description": "Unravel the Mystery of Lantern Boy",
+      "submittedAt": "2025-06-15 08:55:59"
+    },
+    {
+      "id": "itch:710767",
+      "provider": "itch",
+      "title": "Stepanych's adventures!",
+      "author": {
+        "name": "RTC_Team",
+        "url": "https://rtc-team.itch.io/"
+      },
+      "url": "https://rtc-team.itch.io/stepanadventures",
+      "providerEntryId": "710767",
+      "providerGameId": "3645066",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwMDg1LnBuZw==/300x240%23c/IkD6DM.png",
+      "submittedAt": "2025-06-15 08:55:48"
+    },
+    {
+      "id": "itch:710766",
+      "provider": "itch",
+      "title": "Not enough senses",
+      "author": {
+        "name": "TwelfthS",
+        "url": "https://twelfths.itch.io/"
+      },
+      "url": "https://twelfths.itch.io/not-enough-senses",
+      "providerEntryId": "710766",
+      "providerGameId": "3644449",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwODAyLnBuZw==/300x240%23c/D4hiQx.png",
+      "description": "A game where you use selected sensoric abilities to pass through rooms",
+      "submittedAt": "2025-06-15 08:55:00",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710765",
+      "provider": "itch",
+      "title": "Podval Of The Dark",
+      "author": {
+        "name": "ArtemT25",
+        "url": "https://artemt25.itch.io/"
+      },
+      "url": "https://artemt25.itch.io/podval-of-the-dark",
+      "providerEntryId": "710765",
+      "providerGameId": "3645299",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxMTkyLnBuZw==/300x240%23c/qGBgBf.png",
+      "submittedAt": "2025-06-15 08:54:15"
+    },
+    {
+      "id": "itch:710763",
+      "provider": "itch",
+      "title": "SizeMatters",
+      "author": {
+        "name": "zidan-banan",
+        "url": "https://zidan-banan.itch.io/"
+      },
+      "url": "https://zidan-banan.itch.io/sizematters",
+      "providerEntryId": "710763",
+      "providerGameId": "3645290",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNzE1MTE2LnBuZw==/300x240%23c/ghj4iZ.png",
+      "description": "Portal-like puzzle platformer",
+      "submittedAt": "2025-06-15 08:52:50",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710762",
+      "provider": "itch",
+      "title": "Thief Trace",
+      "author": {
+        "name": "Wyzal",
+        "url": "https://wyzal.itch.io/"
+      },
+      "url": "https://wyzal.itch.io/thief-trace",
+      "providerEntryId": "710762",
+      "providerGameId": "3644900",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxNTY5LnBuZw==/300x240%23c/s%2BCSyY.png",
+      "description": "Get to the jewels through crowds of guards, remembering the tracks",
+      "submittedAt": "2025-06-15 08:52:23",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710760",
+      "provider": "itch",
+      "title": "Butterfly Simulator",
+      "author": {
+        "name": "kivix",
+        "url": "https://kivix.itch.io/"
+      },
+      "url": "https://kivix.itch.io/butterfly-simulator",
+      "providerEntryId": "710760",
+      "providerGameId": "3645292",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxMjA5LnBuZw==/300x240%23c/lj6%2FQc.png",
+      "submittedAt": "2025-06-15 08:51:23",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710758",
+      "provider": "itch",
+      "title": "Get used to it",
+      "author": {
+        "name": "Overkane",
+        "url": "https://overkanex.itch.io/"
+      },
+      "url": "https://overkanex.itch.io/get-used-to-it",
+      "providerEntryId": "710758",
+      "providerGameId": "3639247",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxNDQ2LnBuZw==/300x240%23c/rjGp4h.png",
+      "description": "Короткая игра про адаптивность",
+      "submittedAt": "2025-06-15 08:49:59",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710757",
+      "provider": "itch",
+      "title": "Late Night Lunch",
+      "author": {
+        "name": "MikeOrVibe",
+        "url": "https://mike-mrvibe48.itch.io/"
+      },
+      "url": "https://mike-mrvibe48.itch.io/latenightlunch",
+      "providerEntryId": "710757",
+      "providerGameId": "3642613",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjc5NjQ1LnBuZw==/300x240%23c/WLMisN.png",
+      "description": "Порой, Кеше приходится кушать ночью. Сегодня такая ночь.",
+      "submittedAt": "2025-06-15 08:49:47",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710756",
+      "provider": "itch",
+      "title": "AI Zombie",
+      "author": {
+        "name": "BeachFun",
+        "url": "https://beachfun.itch.io/"
+      },
+      "url": "https://beachfun.itch.io/ai-zombie",
+      "providerEntryId": "710756",
+      "providerGameId": "3644245",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNzM2NzQwLnBuZw==/300x240%23c/XpJQCt.png",
+      "description": "Сбеги из логова мородеров апокалипсиса после пробуждения",
+      "submittedAt": "2025-06-15 08:48:30"
+    },
+    {
+      "id": "itch:710755",
+      "provider": "itch",
+      "title": "Magic in forest",
+      "author": {
+        "name": "Rpt87gtm",
+        "url": "https://rpt87gtm.itch.io/"
+      },
+      "url": "https://rpt87gtm.itch.io/magic-in-forest",
+      "providerEntryId": "710755",
+      "providerGameId": "3645284",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxMTg1LnBuZw==/300x240%23c/gGAEix.png",
+      "description": "Пробую в 3д",
+      "submittedAt": "2025-06-15 08:47:59",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710753",
+      "provider": "itch",
+      "title": "Last Check-Up: retinal burn",
+      "author": {
+        "name": "MrPu4i",
+        "url": "https://mrpu4i.itch.io/"
+      },
+      "url": "https://mrpu4i.itch.io/last-check-up-retinal-burn",
+      "providerEntryId": "710753",
+      "providerGameId": "3643559",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxNDU3LnBuZw==/300x240%23c/v3Xg4C.png",
+      "description": "\"Last Check-Up: retinal burn\" by team \"3 жизни\"",
+      "submittedAt": "2025-06-15 08:40:52"
+    },
+    {
+      "id": "itch:710751",
+      "provider": "itch",
+      "title": "One Head, One Bot",
+      "author": {
+        "name": "KART0HA",
+        "url": "https://kart0ha.itch.io/"
+      },
+      "url": "https://kart0ha.itch.io/one-head-one-robot",
+      "providerEntryId": "710751",
+      "providerGameId": "3644542",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwOTkxLnBuZw==/300x240%23c/PaAMi6.png",
+      "submittedAt": "2025-06-15 08:38:11",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710750",
+      "provider": "itch",
+      "title": "Cotton Heart",
+      "author": {
+        "name": "TWTwoFace",
+        "url": "https://twtwoface.itch.io/"
+      },
+      "url": "https://twtwoface.itch.io/cotton-heart",
+      "providerEntryId": "710750",
+      "providerGameId": "3644920",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg5NjM4LnBuZw==/300x240%23c/xvhwZs.png",
+      "description": "Stoty tale",
+      "submittedAt": "2025-06-15 08:37:51",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710749",
+      "provider": "itch",
+      "title": "through the cold peaks",
+      "author": {
+        "name": "edinburghfog",
+        "url": "https://edinburghfog.itch.io/"
+      },
+      "url": "https://edinburghfog.itch.io/through-the-cold-peaks",
+      "providerEntryId": "710749",
+      "providerGameId": "3645198",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxMDQzLnBuZw==/300x240%23c/ty5ycS.png",
+      "submittedAt": "2025-06-15 08:37:08"
+    },
+    {
+      "id": "itch:710748",
+      "provider": "itch",
+      "title": "Null: Recalibration",
+      "author": {
+        "name": "primegamer",
+        "url": "https://primegamer.itch.io/"
+      },
+      "url": "https://primegamer.itch.io/null-recalibration",
+      "providerEntryId": "710748",
+      "providerGameId": "3645177",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwOTM2LnBuZw==/300x240%23c/0JLTzf.png",
+      "submittedAt": "2025-06-15 08:35:05",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710747",
+      "provider": "itch",
+      "title": "Smith's dream",
+      "author": {
+        "name": "Surrogate",
+        "url": "https://surrogate.itch.io/"
+      },
+      "url": "https://surrogate.itch.io/smiths-dream",
+      "providerEntryId": "710747",
+      "providerGameId": "3645179",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwOTUyLnBuZw==/300x240%23c/g9f2sz.png",
+      "description": "Сон, в котором вы должны найти пропавших котиков",
+      "submittedAt": "2025-06-15 08:30:55"
+    },
+    {
+      "id": "itch:710746",
+      "provider": "itch",
+      "title": "Drugs Adaptation",
+      "author": {
+        "name": "Head in Box",
+        "url": "https://maxfilar.itch.io/"
+      },
+      "url": "https://maxfilar.itch.io/drugs-adaptation",
+      "providerEntryId": "710746",
+      "providerGameId": "3645263",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwOTg3LnBuZw==/300x240%23c/rtrdg6.png",
+      "description": "Адаптируйтесь под тесты в психбольнице, чтобы выйти из нее",
+      "submittedAt": "2025-06-15 08:29:42",
+      "platforms": [
+        "windows",
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710742",
+      "provider": "itch",
+      "title": "Life of Vlad",
+      "author": {
+        "name": "vlados",
+        "url": "https://vlad-wyverna.itch.io/"
+      },
+      "url": "https://vlad-wyverna.itch.io/lifeofvlad",
+      "providerEntryId": "710742",
+      "providerGameId": "3645242",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxMzg0LnBuZw==/300x240%23c/5EF25Z.png",
+      "submittedAt": "2025-06-15 08:21:54",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710740",
+      "provider": "itch",
+      "title": "Breachin' In",
+      "author": {
+        "name": "DeadCat1337",
+        "url": "https://deadcat1337.itch.io/"
+      },
+      "url": "https://deadcat1337.itch.io/breachin-in",
+      "providerEntryId": "710740",
+      "providerGameId": "3645232",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkyNTY2LnBuZw==/300x240%23c/%2FShg6a.png",
+      "description": "Sensory adaptation in hardcore mode. Adapt or die.",
+      "submittedAt": "2025-06-15 08:17:53",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710739",
+      "provider": "itch",
+      "title": "ZeroResistance",
+      "author": {
+        "name": "furyohfury",
+        "url": "https://furyohfury.itch.io/"
+      },
+      "url": "https://furyohfury.itch.io/zeroresistance",
+      "providerEntryId": "710739",
+      "providerGameId": "3645231",
+      "submittedAt": "2025-06-15 08:17:47",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710737",
+      "provider": "itch",
+      "title": "Last life",
+      "author": {
+        "name": "Pelv two",
+        "url": "https://pelv-two.itch.io/"
+      },
+      "url": "https://pelv-two.itch.io/last-life",
+      "providerEntryId": "710737",
+      "providerGameId": "3643188",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjgwMDcxLnBuZw==/300x240%23c/zOT7%2B1.png",
+      "description": "Sensory adaptation",
+      "submittedAt": "2025-06-15 08:17:38",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710738",
+      "provider": "itch",
+      "title": "The fate of the boy depends only on you",
+      "author": {
+        "name": "GutarCompany",
+        "url": "https://gutarcompany.itch.io/"
+      },
+      "url": "https://gutarcompany.itch.io/the-fate-of-the-boy-depends-only-on-you",
+      "providerEntryId": "710738",
+      "providerGameId": "3645052",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwNzM0LnBuZw==/300x240%23c/%2BoEU7h.png",
+      "submittedAt": "2025-06-15 08:17:38",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710732",
+      "provider": "itch",
+      "title": "Overheat",
+      "author": {
+        "name": "mysteriousorange",
+        "url": "https://mysteriousorange.itch.io/"
+      },
+      "url": "https://mysteriousorange.itch.io/overheat",
+      "providerEntryId": "710732",
+      "providerGameId": "3645210",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwNzQyLnBuZw==/300x240%23c/VPUMxA.png",
+      "description": "Что-то здесь не так...",
+      "submittedAt": "2025-06-15 08:09:15",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710730",
+      "provider": "itch",
+      "title": "Smart Age Finder Age Calculator Tool",
+      "author": {
+        "name": "App Craze",
+        "url": "https://appcraze.itch.io/"
+      },
+      "url": "https://appcraze.itch.io/smart-age-finder-age-calculator-tool",
+      "providerEntryId": "710730",
+      "providerGameId": "3645164",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwNjY4LmpwZw==/300x240%23c/jZliE%2F.jpg",
+      "description": "Short Description Instantly calculate your exact age in year month day & next birthday!",
+      "submittedAt": "2025-06-15 08:08:28",
+      "tags": [
+        "Tools"
+      ],
+      "platforms": [
+        "android"
+      ]
+    },
+    {
+      "id": "itch:710728",
+      "provider": "itch",
+      "title": "Ну как, чувствуешь?",
+      "author": {
+        "name": "phanopera",
+        "url": "https://phanopera.itch.io/"
+      },
+      "url": "https://phanopera.itch.io/do-you-feel",
+      "providerEntryId": "710728",
+      "providerGameId": "3644732",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg3NjIxLnBuZw==/300x240%23c/okSFQy.png",
+      "submittedAt": "2025-06-15 08:06:22",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710727",
+      "provider": "itch",
+      "title": "Your Destination",
+      "author": {
+        "name": "raining-cat",
+        "url": "https://raining-cat.itch.io/"
+      },
+      "url": "https://raining-cat.itch.io/your-destination",
+      "providerEntryId": "710727",
+      "providerGameId": "3645211",
+      "description": "Walk and try not to die",
+      "submittedAt": "2025-06-15 08:05:49",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710726",
+      "provider": "itch",
+      "title": "Insert Human Only",
+      "author": {
+        "name": "MakoTeam",
+        "url": "https://makoteam.itch.io/"
+      },
+      "url": "https://makoteam.itch.io/insert-human-only",
+      "providerEntryId": "710726",
+      "providerGameId": "3644943",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwMjY2LnBuZw==/300x240%23c/To0AKA.png",
+      "submittedAt": "2025-06-15 08:04:19",
+      "platforms": [
+        "windows",
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710723",
+      "provider": "itch",
+      "title": "Проснись и пой, SLEEPBOY (или же Ssee No Evil)",
+      "author": {
+        "name": "i___shindev",
+        "url": "https://i-shindev.itch.io/"
+      },
+      "url": "https://i-shindev.itch.io/ssee-no-evil-2025",
+      "providerEntryId": "710723",
+      "providerGameId": "3645166",
+      "coverUrl": "https://img.itch.zone/aW1nLzIyODU5NzQ4LnBuZw==/300x240%23c/lFZElD.png",
+      "description": "Непреодолимое влечение к облегчению",
+      "submittedAt": "2025-06-15 07:55:56",
+      "platforms": [
+        "windows",
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710718",
+      "provider": "itch",
+      "title": "Старый тир",
+      "author": {
+        "name": "Maddeis",
+        "url": "https://maddeis.itch.io/"
+      },
+      "url": "https://maddeis.itch.io/vningjamgametestforshoteanditch",
+      "providerEntryId": "710718",
+      "providerGameId": "3645034",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg5NzEwLmpwZw==/300x240%23c/jz5ORC.jpg",
+      "description": "A short visual novel about an old shooting range and a man recovering from betrayal and divorce.",
+      "submittedAt": "2025-06-15 07:23:08",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710717",
+      "provider": "itch",
+      "title": "Choku",
+      "author": {
+        "name": "alexemenov",
+        "url": "https://alexemenov.itch.io/"
+      },
+      "url": "https://alexemenov.itch.io/choku",
+      "providerEntryId": "710717",
+      "providerGameId": "3644903",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg5MTAxLnBuZw==/300x240%23c/fEUKzf.png",
+      "description": "Echo Hunt",
+      "submittedAt": "2025-06-15 07:21:05",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710716",
+      "provider": "itch",
+      "title": "Blind knight: sense awakening",
+      "author": {
+        "name": "tikakalia",
+        "url": "https://tikakalia.itch.io/"
+      },
+      "url": "https://tikakalia.itch.io/blind-knight-sense-awakening",
+      "providerEntryId": "710716",
+      "providerGameId": "3645140",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwMzg1LnBuZw==/300x240%23c/xBHDvY.png",
+      "description": "Вы потеряли всё — и пришло время вернуть чувства. Одно за другим.",
+      "submittedAt": "2025-06-15 07:19:54"
+    },
+    {
+      "id": "itch:710711",
+      "provider": "itch",
+      "title": "Tangle Jump",
+      "author": {
+        "name": "ArcasHH",
+        "url": "https://arcashh.itch.io/"
+      },
+      "url": "https://arcashh.itch.io/tangle-jump",
+      "providerEntryId": "710711",
+      "providerGameId": "3639308",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg5MjM5LnBuZw==/300x240%23c/7WFwMa.png",
+      "description": "The controls keep changing! Can you adapt on the fly and beat all levels?",
+      "submittedAt": "2025-06-15 07:07:13",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710708",
+      "provider": "itch",
+      "title": "Инь Янь",
+      "author": {
+        "name": "bullf1nch",
+        "url": "https://bullf1nch.itch.io/"
+      },
+      "url": "https://bullf1nch.itch.io/yin-yang",
+      "providerEntryId": "710708",
+      "providerGameId": "3645089",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg5NjYwLnBuZw==/300x240%23c/%2FvOOCo.png",
+      "description": "Игра за 72 часа, сделанная для Evening Jam",
+      "submittedAt": "2025-06-15 07:00:36",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710676",
+      "provider": "itch",
+      "title": "TheTrojan",
+      "author": {
+        "name": "Ninit",
+        "url": "https://ninit.itch.io/"
+      },
+      "url": "https://ninit.itch.io/thetrojan",
+      "providerEntryId": "710676",
+      "providerGameId": "3644955",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg5MzAyLnBuZw==/300x240%23c/jib%2FUE.png",
+      "description": "It's already in you, get used to it",
+      "submittedAt": "2025-06-15 05:34:22",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710675",
+      "provider": "itch",
+      "title": "Adapt and shoot",
+      "author": {
+        "name": "BodyAlex",
+        "url": "https://bodyalex.itch.io/"
+      },
+      "url": "https://bodyalex.itch.io/adapt-and-shoot",
+      "providerEntryId": "710675",
+      "providerGameId": "3642856",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxMTk1LnBuZw==/300x240%23c/e2Ckj5.png",
+      "description": "Шутер про физику и адаптацию игрока",
+      "submittedAt": "2025-06-15 05:30:54",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "id": "itch:710667",
+      "provider": "itch",
+      "title": "OMNIFUSE",
+      "author": {
+        "name": "saikoistyping",
+        "url": "https://imsaiko.itch.io/"
+      },
+      "url": "https://imsaiko.itch.io/omnifuse",
+      "providerEntryId": "710667",
+      "providerGameId": "3643396",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjk0MTg0LnBuZw==/300x240%23c/k9V4eE.png",
+      "description": "Lost, then found.",
+      "submittedAt": "2025-06-15 04:37:27",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710665",
+      "provider": "itch",
+      "title": "FEEL YOUR BEER",
+      "author": {
+        "name": "Adult_Alice",
+        "url": "https://adult-alice.itch.io/"
+      },
+      "url": "https://adult-alice.itch.io/feel-your-beer",
+      "providerEntryId": "710665",
+      "providerGameId": "3644904",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg4NzM0LnBuZw==/300x240%23c/iPMud2.png",
+      "description": "Успей продегустировать всё пиво",
+      "submittedAt": "2025-06-15 04:19:44",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710664",
+      "provider": "itch",
+      "title": "Сенсорная Магия",
+      "author": {
+        "name": "vadimmos",
+        "url": "https://birvad.itch.io/"
+      },
+      "url": "https://birvad.itch.io/sensory-magic",
+      "providerEntryId": "710664",
+      "providerGameId": "3644888",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg4OTExLnBuZw==/300x240%23c/CwvI%2By.png",
+      "description": "адаптируй сенсоры и найди выход",
+      "submittedAt": "2025-06-15 04:02:39",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710659",
+      "provider": "itch",
+      "title": "Feel Your Way",
+      "author": {
+        "name": "BobTeil",
+        "url": "https://bobteil.itch.io/"
+      },
+      "url": "https://bobteil.itch.io/feel-your-way",
+      "providerEntryId": "710659",
+      "providerGameId": "3644746",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg3ODcwLmpwZw==/300x240%23c/yLqkmz.jpg",
+      "description": "Find the way out from the maze in the dark",
+      "submittedAt": "2025-06-15 03:33:45",
+      "platforms": [
+        "windows",
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710657",
+      "provider": "itch",
+      "title": "The sails of death",
+      "author": {
+        "name": "EgorFR328",
+        "url": "https://egorfr328.itch.io/"
+      },
+      "url": "https://egorfr328.itch.io/the-sails-of-death",
+      "providerEntryId": "710657",
+      "providerGameId": "3644827",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg4MDc2LnBuZw==/300x240%23c/VK5%2BH9.png",
+      "description": "Паруса смерти - игра про происшествие на космическом корабле.",
+      "submittedAt": "2025-06-15 03:13:33"
+    },
+    {
+      "id": "itch:710650",
+      "provider": "itch",
+      "title": "I am a snake",
+      "author": {
+        "name": "croha",
+        "url": "https://croha.itch.io/"
+      },
+      "url": "https://croha.itch.io/i-am-a-snake",
+      "providerEntryId": "710650",
+      "providerGameId": "3644747",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg3NjkxLnBuZw==/300x240%23c/DUrAVt.png",
+      "description": "snake from nokia, змейка из нокии",
+      "submittedAt": "2025-06-15 02:42:05",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710640",
+      "provider": "itch",
+      "title": "I Can See",
+      "author": {
+        "name": "JungleBird Games",
+        "url": "https://junglebird.itch.io/"
+      },
+      "url": "https://junglebird.itch.io/i-can-see",
+      "providerEntryId": "710640",
+      "providerGameId": "3644278",
+      "coverUrl": "https://img.itch.zone/aW1nLzIyMzk0NDcwLnBuZw==/300x240%23c/EjfT3%2B.png",
+      "description": "A short game about your... senses",
+      "submittedAt": "2025-06-15 02:11:25",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710631",
+      "provider": "itch",
+      "title": "C0N XII",
+      "author": {
+        "name": "poglad_ds",
+        "url": "https://poglad-ds.itch.io/"
+      },
+      "url": "https://poglad-ds.itch.io/c0n-xii",
+      "providerEntryId": "710631",
+      "providerGameId": "3644619",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg3MDEyLnBuZw==/300x240%23c/iWNoiU.png",
+      "description": "are you sleeping?",
+      "submittedAt": "2025-06-15 01:30:52",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710627",
+      "provider": "itch",
+      "title": "The Friday",
+      "author": {
+        "name": "soundeni",
+        "url": "https://soundeni.itch.io/"
+      },
+      "url": "https://soundeni.itch.io/the-friday",
+      "providerEntryId": "710627",
+      "providerGameId": "3641815",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjc3OTk2LnBuZw==/300x240%23c/ZRKpAQ.png",
+      "description": "Типичный путь домой из клуба в пятницу",
+      "submittedAt": "2025-06-15 00:58:15",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710626",
+      "provider": "itch",
+      "title": "Наблюдатель",
+      "author": {
+        "name": "valerioriae",
+        "url": "https://valerioriae.itch.io/"
+      },
+      "url": "https://valerioriae.itch.io/nabludatel",
+      "providerEntryId": "710626",
+      "providerGameId": "3644632",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg3MjI5LnBuZw==/300x240%23c/bDXLIg.png",
+      "description": "Травля в школе: адаптация или сопротивление?",
+      "submittedAt": "2025-06-15 00:45:27",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710624",
+      "provider": "itch",
+      "title": "Glazopolz",
+      "author": {
+        "name": "Krokozabra",
+        "url": "https://krokozabra.itch.io/"
+      },
+      "url": "https://krokozabra.itch.io/glazopolz",
+      "providerEntryId": "710624",
+      "providerGameId": "3644506",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg2MjEwLnBuZw==/300x240%23c/IzGdj%2B.png",
+      "description": "it has glaza and it polzet",
+      "submittedAt": "2025-06-15 00:06:46",
+      "platforms": [
+        "windows",
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710617",
+      "provider": "itch",
+      "title": "Sensor Tower",
+      "author": {
+        "name": "Andcode",
+        "url": "https://andcode.itch.io/"
+      },
+      "url": "https://andcode.itch.io/sensor-tower",
+      "providerEntryId": "710617",
+      "providerGameId": "3643272",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg2MDk2LnBuZw==/300x240%23c/7UVxs5.png",
+      "description": "Top-down tower shooter — survive the swarm, upgrade your firepower, and keep the darkness at bay.",
+      "submittedAt": "2025-06-14 23:15:05",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710615",
+      "provider": "itch",
+      "title": "Cave",
+      "author": {
+        "name": "replimok",
+        "url": "https://replimok.itch.io/"
+      },
+      "url": "https://replimok.itch.io/cave",
+      "providerEntryId": "710615",
+      "providerGameId": "3644482",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg2MjM5LnBuZw==/300x240%23c/V0AErZ.png",
+      "description": "Простая прогулка в горы обернулась несчатсным случаем",
+      "submittedAt": "2025-06-14 23:09:27",
+      "platforms": [
+        "windows",
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710603",
+      "provider": "itch",
+      "title": "Just One Second",
+      "author": {
+        "name": "MorPo GameDev",
+        "url": "https://morpo-gamedev.itch.io/"
+      },
+      "url": "https://morpo-gamedev.itch.io/just-one-second",
+      "providerEntryId": "710603",
+      "providerGameId": "3644317",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg1MjUyLnBuZw==/300x240%23c/7cn9dR.png",
+      "description": "Игра про мальчика сражающегося за покой в доме!",
+      "submittedAt": "2025-06-14 21:58:05",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710578",
+      "provider": "itch",
+      "title": "SoloColonius",
+      "author": {
+        "name": "vanes10476",
+        "url": "https://vanes10476.itch.io/"
+      },
+      "url": "https://vanes10476.itch.io/solo-colonius",
+      "providerEntryId": "710578",
+      "providerGameId": "3639999",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNzI2MjMyLnBuZw==/300x240%23c/VVPDJx.png",
+      "description": "Колония скоро прибудет - нужно подготовиться, а ты остался один",
+      "submittedAt": "2025-06-14 20:30:06",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710571",
+      "provider": "itch",
+      "title": "PlatFinger",
+      "author": {
+        "name": "Che-Roll",
+        "url": "https://che-roll.itch.io/"
+      },
+      "url": "https://che-roll.itch.io/platfinger",
+      "providerEntryId": "710571",
+      "providerGameId": "3644159",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjg0NTQ5LnBuZw==/300x240%23c/tmtUz%2B.png",
+      "description": "Игра про игру на телефоне! Играть нужно на пк! Стоп что?",
+      "submittedAt": "2025-06-14 20:24:15"
+    },
+    {
+      "id": "itch:710566",
+      "provider": "itch",
+      "title": "Scotopic",
+      "author": {
+        "name": "LiftyForever",
+        "url": "https://liftyforever.itch.io/"
+      },
+      "url": "https://liftyforever.itch.io/scotopic",
+      "providerEntryId": "710566",
+      "providerGameId": "3643833",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNzU2MDQ4LmpwZw==/300x240%23c/rO81OL.jpg",
+      "description": "Escape the harsh winter environment while keeping your senses functional.",
+      "submittedAt": "2025-06-14 20:20:18",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710559",
+      "provider": "itch",
+      "title": "BLINKED",
+      "author": {
+        "name": "SergioPoverony",
+        "url": "https://sergiopoverony.itch.io/"
+      },
+      "url": "https://sergiopoverony.itch.io/blinked",
+      "providerEntryId": "710559",
+      "providerGameId": "3643548",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjgxMTE0LnBuZw==/300x240%23c/ZH9ZL6.png",
+      "description": "Don's stop blinking",
+      "submittedAt": "2025-06-14 20:11:31",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710556",
+      "provider": "itch",
+      "title": "Revealed",
+      "author": {
+        "name": "Borukai",
+        "url": "https://borukai.itch.io/"
+      },
+      "url": "https://borukai.itch.io/revealed",
+      "providerEntryId": "710556",
+      "providerGameId": "3644070",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwOTc0LnBuZw==/300x240%23c/BJx6gP.png",
+      "description": "Shooter in the dark, shine and listen to survive",
+      "submittedAt": "2025-06-14 19:43:12",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710540",
+      "provider": "itch",
+      "title": "SmeAr",
+      "author": {
+        "name": "RuLe0G",
+        "url": "https://rule0g.itch.io/"
+      },
+      "url": "https://rule0g.itch.io/smear",
+      "providerEntryId": "710540",
+      "providerGameId": "3640544",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjYzMzQzLnBuZw==/300x240%23c/Wt3wTY.png",
+      "description": "Ты не видишь путь - пока не пройдешь его",
+      "submittedAt": "2025-06-14 18:37:23",
+      "platforms": [
+        "windows",
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710532",
+      "provider": "itch",
+      "title": "Senses Protocol",
+      "author": {
+        "name": "ekiden",
+        "url": "https://ekiden.itch.io/"
+      },
+      "url": "https://ekiden.itch.io/senses-protocol",
+      "providerEntryId": "710532",
+      "providerGameId": "3638225",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjgxMTc3LnBuZw==/300x240%23c/wNgL8G.png",
+      "description": "Senses Protocol — мини-игра с тестами на сенсорного восприятия.",
+      "submittedAt": "2025-06-14 17:58:55",
+      "platforms": [
+        "windows",
+        "osx",
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710497",
+      "provider": "itch",
+      "title": "SenseShift",
+      "author": {
+        "name": "YStudio",
+        "url": "https://yedilstudio.itch.io/"
+      },
+      "url": "https://yedilstudio.itch.io/senseshift",
+      "providerEntryId": "710497",
+      "providerGameId": "3643525",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjgxMDMzLnBuZw==/300x240%23c/PfQj%2BZ.png",
+      "description": "evening gamejam",
+      "submittedAt": "2025-06-14 16:00:18",
+      "platforms": [
+        "osx",
+        "android"
+      ]
+    },
+    {
+      "id": "itch:710470",
+      "provider": "itch",
+      "title": "Sense Adapt",
+      "author": {
+        "name": "SKLT Studio",
+        "url": "https://sklt-studio.itch.io/"
+      },
+      "url": "https://sklt-studio.itch.io/sense-adapt",
+      "providerEntryId": "710470",
+      "providerGameId": "3643327",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjc5NjEzLnBuZw==/300x240%23c/kF0eVR.png",
+      "description": "адаптируйся чтобы пройти эту игру.",
+      "submittedAt": "2025-06-14 14:21:34",
+      "platforms": [
+        "windows",
+        "android"
+      ]
+    },
+    {
+      "id": "itch:710446",
+      "provider": "itch",
+      "title": "Color Adaptation",
+      "author": {
+        "name": "DoubleMadness",
+        "url": "https://doublemadness.itch.io/"
+      },
+      "url": "https://doublemadness.itch.io/color-adaptation",
+      "providerEntryId": "710446",
+      "providerGameId": "3643196",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjc4OTA2LnBuZw==/300x240%23c/xNkuGE.png",
+      "description": "Попробуйте пройти уровни понимая цвета заново!",
+      "submittedAt": "2025-06-14 13:03:50",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710439",
+      "provider": "itch",
+      "title": "Adapt To Dark",
+      "author": {
+        "name": "ArtSvetlakov",
+        "url": "https://artsvetlakov.itch.io/"
+      },
+      "url": "https://artsvetlakov.itch.io/adapt-to-dark",
+      "providerEntryId": "710439",
+      "providerGameId": "3643083",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkxNTEyLmpwZWc=/300x240%23c/1SufwU.jpeg",
+      "description": "The game about an astronaut who survived a shipwreck and ended up in some unknown cave.",
+      "submittedAt": "2025-06-14 11:56:12",
+      "platforms": [
+        "windows",
+        "android"
+      ]
+    },
+    {
+      "id": "itch:710438",
+      "provider": "itch",
+      "title": "Don't lose the glove",
+      "author": {
+        "name": "Gregorio",
+        "url": "https://grigoriy-art.itch.io/"
+      },
+      "url": "https://grigoriy-art.itch.io/dontlosetheglove",
+      "providerEntryId": "710438",
+      "providerGameId": "3641640",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjkwNTEyLnBuZw==/300x240%23c/o24bNf.png",
+      "description": "2D Indie Horror",
+      "submittedAt": "2025-06-14 11:47:46",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:710427",
+      "provider": "itch",
+      "title": "Disbound",
+      "author": {
+        "name": "KATYAN46",
+        "url": "https://katyan46.itch.io/"
+      },
+      "url": "https://katyan46.itch.io/disbound-eveningjam",
+      "providerEntryId": "710427",
+      "providerGameId": "3642963",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjc3Mzk2LnBuZw==/300x240%23c/ucNM8b.png",
+      "submittedAt": "2025-06-14 10:49:29",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:710213",
+      "provider": "itch",
+      "title": "Plane Evade",
+      "author": {
+        "name": "Khopesh",
+        "url": "https://lord-khopesh.itch.io/"
+      },
+      "url": "https://lord-khopesh.itch.io/plane-evade",
+      "providerEntryId": "710213",
+      "providerGameId": "3641267",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjY3NDA4LnBuZw==/300x240%23c/AtfVfz.png",
+      "description": "Simple Side scroller",
+      "submittedAt": "2025-06-13 17:59:29"
+    },
+    {
+      "id": "itch:710147",
+      "provider": "itch",
+      "title": "one unity cube horizon",
+      "author": {
+        "name": "shaneomac101",
+        "url": "https://shaneomac101.itch.io/"
+      },
+      "url": "https://shaneomac101.itch.io/horizon",
+      "providerEntryId": "710147",
+      "providerGameId": "3639782",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjU4MTYwLnBuZw==/300x240%23c/KyO9cr.png",
+      "submittedAt": "2025-06-13 14:55:50"
+    },
+    {
+      "id": "itch:710085",
+      "provider": "itch",
+      "title": "Adapt or Die",
+      "author": {
+        "name": "Let's Develop",
+        "url": "https://letsdevelop.itch.io/"
+      },
+      "url": "https://letsdevelop.itch.io/adapt-or-die",
+      "providerEntryId": "710085",
+      "providerGameId": "3640311",
+      "coverUrl": "https://img.itch.zone/aW1nLzIxNjYyMDEzLnBuZw==/300x240%23c/qlsvS4.png",
+      "description": "Привыкай — или умри",
+      "submittedAt": "2025-06-13 11:10:09",
+      "platforms": [
+        "windows"
+      ]
+    },
+    {
+      "id": "itch:709897",
+      "provider": "itch",
+      "title": "Flappy bird 2",
+      "author": {
+        "name": "jisu5",
+        "url": "https://gamingprojisu5.itch.io/"
+      },
+      "url": "https://gamingprojisu5.itch.io/flappy-bird-2",
+      "providerEntryId": "709897",
+      "providerGameId": "3195221",
+      "coverUrl": "https://img.itch.zone/aW1nLzE5MDkwMjc4LmpwZw==/300x240%23c/OsDxuH.jpg",
+      "description": "Flappy bird game with additional features like many different maps and birds",
+      "submittedAt": "2025-06-12 11:20:58",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "itch:709896",
+      "provider": "itch",
+      "title": "Senrei",
+      "author": {
+        "name": "jisu5",
+        "url": "https://gamingprojisu5.itch.io/"
+      },
+      "url": "https://gamingprojisu5.itch.io/senrei",
+      "providerEntryId": "709896",
+      "providerGameId": "3477724",
+      "coverUrl": "https://img.itch.zone/aW1nLzIwNzQ4MzE1LnBuZw==/300x240%23c/pIgKZV.png",
+      "description": "Will you save her — or arrive too late?",
+      "submittedAt": "2025-06-12 11:20:46",
+      "platforms": [
+        "web"
+      ]
+    }
+  ]
+}

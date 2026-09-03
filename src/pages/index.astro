@@ -4,6 +4,7 @@ import ArchivePreview from "../components/ArchivePreview.astro";
 import GameGrid from "../components/GameGrid.astro";
 import Hero from "../components/Hero.astro";
 import HowToParticipate from "../components/HowToParticipate.astro";
+import LatestSubmission from "../components/LatestSubmission.astro";
 import Layout from "../layouts/Layout.astro";
 import { jams } from "../config/jams";
 import { getSnapshotForRound } from "../lib/data/snapshots";
@@ -14,11 +15,13 @@ import {
   validateJamRounds,
 } from "../lib/jams/status";
 import type { GameSnapshot } from "../lib/domain/types";
+import { getLatestGame } from "../lib/games/presentation";
 
 validateJamRounds(jams);
 const now = new Date();
 const featuredRound = getFeaturedRound(jams, now);
 const featuredSnapshot = getSnapshotForRound(featuredRound);
+const latestGame = getLatestGame(featuredSnapshot.games);
 const archiveRounds = getFinishedRounds(jams, now)
   .filter((round) => round.id !== featuredRound.id)
   .slice(0, 4);
@@ -31,6 +34,7 @@ const archiveSnapshots = new Map<string, GameSnapshot>(
   title={`${featuredRound.monthLabel} — Один месяц, одна игра`}
   description="Ежемесячный челлендж для разработчиков игр: одна тема, один месяц, одна законченная игра."
   canonicalPath="/"
+  round={featuredRound}
 >
   <Hero
     round={featuredRound}
@@ -46,10 +50,17 @@ const archiveSnapshots = new Map<string, GameSnapshot>(
         <p class="eyebrow">{featuredRound.monthLabel}</p>
         <h2 id="gallery-title">Галерея месяца</h2>
         <p class="section-heading__subheading">Игры участников текущего раунда</p>
+        <LatestSubmission game={latestGame} now={now} />
       </div>
       <p class="section-heading__aside">Каждая игра — ещё одна законченная история.</p>
     </div>
-    <GameGrid games={featuredSnapshot.games} round={featuredRound} />
+    <GameGrid
+      games={featuredSnapshot.games}
+      round={featuredRound}
+      highlightLatest
+      latestGame={latestGame}
+      now={now}
+    />
   </section>
 
   <AboutChallenge />

@@ -1,6 +1,6 @@
 ---
 import type { GameSnapshot, JamRound, JamStatus } from "../lib/domain/types";
-import { formatGameCount, formatRoundNumber } from "../lib/i18n/ru";
+import { formatGameCount, formatProviderCount, formatRoundNumber } from "../lib/i18n/ru";
 import {
   formatJamDateRange,
   getStatusLabel,
@@ -19,10 +19,14 @@ interface Props {
 const { round, snapshot, status, compact = false } = Astro.props;
 const theme = getThemePresentation(round);
 const statusLabel = getStatusLabel(status);
+const providerCount = new Set(
+  round.providers.filter((provider) => provider.enabled).map((provider) => provider.type),
+).size;
 ---
 
 <section class:list={["hero", { "hero--compact": compact }]}>
   <div class="shell">
+    <span class="hero__round-number" aria-hidden="true">{formatRoundNumber(round.round)}</span>
     <div class="hero__meta">
       <div class="hero__round-context">
         <span class="eyebrow">Раунд {formatRoundNumber(round.round)}</span>
@@ -61,6 +65,10 @@ const statusLabel = getStatusLabel(status);
         <strong>{formatJamDateRange(round)}</strong>
       </div>
       <Countdown round={round} />
+      <div class="hero__metric">
+        <span class="hero__metric-label">Площадки</span>
+        <strong>{formatProviderCount(providerCount)}</strong>
+      </div>
       <div class="hero__metric hero__metric--right">
         <span class="hero__metric-label">Уже в галерее</span>
         <strong>{formatGameCount(snapshot.games.length)}</strong>

@@ -1,6 +1,7 @@
 ---
 import type { GameSnapshot, JamRound } from "../lib/domain/types";
-import { formatGameCount } from "../lib/i18n/ru";
+import { formatGameCount, formatRoundNumber } from "../lib/i18n/ru";
+import { getRoundPresentation } from "../lib/jams/presentation";
 import { getArchiveTheme } from "../lib/jams/status";
 import { withBase } from "../lib/site";
 import ArchiveEmptyState from "./ArchiveEmptyState.astro";
@@ -24,16 +25,24 @@ const { rounds, snapshots } = Astro.props;
 
   {rounds.length > 0 ? (
     <ul class="archive-preview__list">
-      {rounds.map((round) => (
-        <li>
-          <a class="archive-row" href={withBase(`/jam/${round.slug}/`)}>
-            <span class="archive-row__month">{round.monthLabel}</span>
-            <span class="archive-row__theme">«{getArchiveTheme(round)}»</span>
-            <span class="archive-row__count">{formatGameCount(snapshots.get(round.id)?.games.length ?? 0)}</span>
-            <span class="archive-row__arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-      ))}
+      {rounds.map((round) => {
+        const presentation = getRoundPresentation(round);
+        return (
+          <li>
+            <a
+              class="archive-row archive-row--preview"
+              href={withBase(`/jam/${round.slug}/`)}
+              style={`--round-accent: ${presentation.accent}`}
+            >
+              <span class="archive-row__index" aria-hidden="true">{formatRoundNumber(round.round)}</span>
+              <span class="archive-row__month">{round.monthLabel}</span>
+              <span class="archive-row__theme">«{getArchiveTheme(round)}»</span>
+              <span class="archive-row__count">{formatGameCount(snapshots.get(round.id)?.games.length ?? 0)}</span>
+              <span class="archive-row__arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        );
+      })}
     </ul>
   ) : (
     <ArchiveEmptyState compact />

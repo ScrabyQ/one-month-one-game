@@ -1,10 +1,13 @@
 ---
+import type { JamRound } from "../lib/domain/types";
 import { withBase } from "../lib/site";
-import { jams } from "../config/jams";
-import { getFeaturedRound } from "../lib/jams/status";
 
+interface Props {
+  currentRound: JamRound;
+}
+
+const { currentRound } = Astro.props;
 const currentYear = new Date().getFullYear();
-const currentRound = getFeaturedRound(jams, new Date());
 ---
 
 <footer class="site-footer">

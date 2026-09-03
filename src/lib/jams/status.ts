@@ -1,4 +1,5 @@
 import type { JamRound, JamStatus } from "../domain/types";
+import { getRoundPresentation } from "./presentation";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const SECOND_MS = 1000;
@@ -28,6 +29,7 @@ function assertRound(round: JamRound): { start: Date; end: Date } {
   if (round.themeState !== "announced" && round.themeState !== "pending") {
     throw new Error(`Jam round ${round.slug} has an invalid theme state`);
   }
+  getRoundPresentation(round);
   for (const provider of round.providers) {
     if (provider.type === "itch" || provider.type === "myindie") {
       try {
