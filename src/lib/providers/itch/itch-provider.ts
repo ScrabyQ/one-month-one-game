@@ -8,6 +8,7 @@ import { normalizeItchEntries } from "./itch-normalizer";
 
 const REQUEST_TIMEOUT_MS = 15_000;
 const MAX_RETRIES = 2;
+const PLACEHOLDER_JAM_SLUG = "REPLACE_WITH_REAL_JAM_SLUG";
 
 const defaultSleep = (milliseconds: number) =>
   new Promise<void>((resolve) => setTimeout(resolve, milliseconds));
@@ -93,6 +94,8 @@ export class ItchProvider implements GameProvider<ProviderConfig> {
   }
 
   getParticipationUrl(config: ProviderConfig): string | undefined {
-    return config.type === "itch" && config.enabled ? config.jamUrl : undefined;
+    if (config.type !== "itch" || !config.enabled) return undefined;
+    if (config.jamUrl.includes(PLACEHOLDER_JAM_SLUG)) return undefined;
+    return config.jamUrl;
   }
 }

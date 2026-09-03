@@ -54,7 +54,9 @@ npm run sync -- --all
 1. Создайте новый публичный jam на itch.io.
 2. Получите его числовой `JAM_ID`.
 3. Добавьте новый объект в `jams`.
-4. Укажите `monthLabel`, `theme`, `startsAt`, `endsAt` и описание.
+4. Укажите `monthLabel`, `theme`, `themeState`, `startsAt`, `endsAt` и описание.
+   Для объявленной темы используйте `themeState: "announced"`; пока тема не готова —
+   `themeState: "pending"` и, при необходимости, `themeAnnouncement`.
 5. Включите itch provider:
 
    ```ts

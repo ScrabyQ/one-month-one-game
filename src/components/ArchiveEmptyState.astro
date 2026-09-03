@@ -1,0 +1,15 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<div class:list={["archive-empty-state", { "archive-empty-state--compact": compact }]} role="status">
+  <span class="archive-empty-state__index" aria-hidden="true">01</span>
+  <div>
+    <p class="archive-empty-state__title">Это первый раунд.</p>
+    <p class="archive-empty-state__copy">Архив начнёт расти уже со следующего месяца.</p>
+  </div>
+</div>

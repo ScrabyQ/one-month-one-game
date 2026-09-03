@@ -1,75 +1,51 @@
 ---
 import type { JamRound } from "../lib/domain/types";
-import { getCountdownLabel, getJamStatus } from "../lib/jams/status";
+import { getCountdownParts } from "../lib/jams/status";
 
 interface Props {
   round: JamRound;
 }
 
 const { round } = Astro.props;
-const initialStatus = getJamStatus(round, new Date());
-const initialLabel = getCountdownLabel(round, new Date());
+const initialCountdown = getCountdownParts(round, new Date());
 ---
 
-<div class="countdown" data-countdown-shell>
-  <span class="countdown__label">Статус раунда</span>
+<div class="jam-countdown" data-countdown-shell>
+  <span class="jam-countdown__label" data-countdown-label>{initialCountdown.label}</span>
   <time
-    class="countdown__value"
-    datetime={initialStatus === "upcoming" ? round.startsAt : round.endsAt}
+    class="jam-countdown__value"
+    datetime={initialCountdown.targetAt}
     data-countdown
     data-start={round.startsAt}
     data-end={round.endsAt}
-    data-status={initialStatus}
+    data-status={initialCountdown.status}
     aria-live="polite"
-  >{initialLabel}</time>
+    aria-atomic="true"
+  >{initialCountdown.value}</time>
 </div>
 
 <script>
+  import { getCountdownPartsForDates } from "../lib/jams/status";
+
   const countdownElements = document.querySelectorAll<HTMLElement>("[data-countdown]");
 
-  function russianPlural(value: number, one: string, few: string, many: string): string {
-    const absolute = Math.abs(value) % 100;
-    const last = absolute % 10;
-    if (absolute >= 11 && absolute <= 19) return many;
-    if (last === 1) return one;
-    if (last >= 2 && last <= 4) return few;
-    return many;
-  }
-
-  function remainingLabel(totalMinutes: number): string {
-    const minutes = Math.max(1, Math.ceil(totalMinutes));
-    if (minutes >= 24 * 60) {
-      const days = Math.ceil(minutes / (24 * 60));
-      return `${days} ${russianPlural(days, "день", "дня", "дней")}`;
-    }
-
-    const hours = Math.floor(minutes / 60);
-    const rest = minutes % 60;
-    const parts = [];
-    if (hours > 0) parts.push(`${hours} ${russianPlural(hours, "час", "часа", "часов")}`);
-    if (rest > 0) parts.push(`${rest} ${russianPlural(rest, "минута", "минуты", "минут")}`);
-    return parts.join(" ") || "меньше минуты";
-  }
-
   function updateCountdown(element: HTMLElement): void {
-    const start = new Date(element.dataset.start ?? "").getTime();
-    const end = new Date(element.dataset.end ?? "").getTime();
-    const now = Date.now();
-    const status = now < start ? "upcoming" : now < end ? "active" : "finished";
-    element.dataset.status = status;
+    const parts = getCountdownPartsForDates(
+      element.dataset.start ?? "",
+      element.dataset.end ?? "",
+      new Date(),
+    );
+    const shell = element.closest("[data-countdown-shell]");
+    const label = shell?.querySelector<HTMLElement>("[data-countdown-label]");
 
-    if (status === "finished") {
-      element.textContent = "Джем завершён";
-      return;
-    }
+    if (!label) return;
 
-    const target = status === "upcoming" ? start : end;
-    const prefix = status === "upcoming" ? "Начнётся через" : "До конца";
-    element.textContent = `${prefix} ${remainingLabel((target - now) / 60000)}`;
+    label.textContent = parts.label;
+    element.textContent = parts.value;
+    element.dataset.status = parts.status;
+    element.setAttribute("datetime", parts.targetAt);
+    window.setTimeout(() => updateCountdown(element), parts.refreshAfterMs);
   }
 
-  countdownElements.forEach((element) => {
-    updateCountdown(element);
-    window.setInterval(() => updateCountdown(element), 30_000);
-  });
+  countdownElements.forEach((element) => updateCountdown(element));
 </script>

@@ -10,10 +10,10 @@ const { round } = Astro.props;
 ---
 
 <div class="empty-games" role="status">
-  <span class="empty-games__glyph" aria-hidden="true">✳</span>
+  <span class="empty-games__index" aria-hidden="true">00</span>
   <div>
     <p class="empty-games__title">Пока здесь пусто.</p>
-    <p class="empty-games__copy">Стань первым, кто закончит игру в этом месяце.</p>
+    <p class="empty-games__copy">Стань первым,<br />кто закончит игру в этом месяце.</p>
   </div>
   <ParticipationButtons round={round} compact />
 </div>

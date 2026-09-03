@@ -10,6 +10,16 @@ const enabledConfig = {
 };
 
 describe("ItchProvider", () => {
+  it("does not expose a placeholder participation URL", () => {
+    expect(
+      new ItchProvider().getParticipationUrl({
+        ...enabledConfig,
+        jamUrl: "https://itch.io/jam/REPLACE_WITH_REAL_JAM_SLUG",
+      }),
+    ).toBeUndefined();
+    expect(new ItchProvider().getParticipationUrl(enabledConfig)).toBe(enabledConfig.jamUrl);
+  });
+
   it("retries a temporary server failure and returns normalized entries", async () => {
     let calls = 0;
     const fetchImpl: typeof fetch = async () => {

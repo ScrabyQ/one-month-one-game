@@ -8,15 +8,12 @@ interface Props {
 }
 
 const { round, compact = false } = Astro.props;
-const links = round.providers
-  .filter((config) => config.enabled)
-  .map((config) => {
+const providers = round.providers.map((config) => {
     const meta = providerRegistry.getMeta(config.type);
-    const href = providerRegistry.getParticipationUrl(config);
-    return href ? { href, label: `Участвовать на ${meta.label}`, meta } : undefined;
-  })
-  .filter((link): link is NonNullable<typeof link> => Boolean(link));
-const configuredProviders = round.providers.map((config) => providerRegistry.getMeta(config.type));
+    const href = config.enabled ? providerRegistry.getParticipationUrl(config) : undefined;
+    return { href, meta };
+  });
+const links = providers.filter((provider): provider is typeof provider & { href: string } => Boolean(provider.href));
 ---
 
 {links.length > 0 ? (
@@ -27,26 +24,35 @@ const configuredProviders = round.providers.map((config) => providerRegistry.get
         href={link.href}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={`Принять участие через ${link.meta.label}`}
       >
-        <span>{link.label}</span>
+        <span class="participation-button__copy">
+          <strong>Принять участие</strong>
+          <small>через {link.meta.label}</small>
+        </span>
         <span class="participation-button__arrow" aria-hidden="true">↗</span>
       </a>
     ))}
   </div>
 ) : (
   <>
-    {configuredProviders.length > 0 && (
+    {providers.length > 0 && (
       <div class:list={["participation-buttons", { "participation-buttons--compact": compact }]}>
-        {configuredProviders.map((meta) => (
+        {providers.map(({ meta }) => (
           <span class="btn btn-primary participation-button participation-button--disabled" aria-disabled="true">
-            <span>Участвовать на {meta.label}</span>
+            <span class="participation-button__copy">
+              <strong>Принять участие</strong>
+              <small>через {meta.label}</small>
+            </span>
             <span class="participation-button__arrow" aria-hidden="true">↗</span>
           </span>
         ))}
       </div>
     )}
-    <p class="participation-placeholder" role="status">
-      Ссылка на участие появится после настройки itch.io JAM_ID.
-    </p>
+    {providers.length > 0 && (
+      <p class="participation-placeholder" role="status">
+        Ссылка на участие появится после настройки {providers.map(({ meta }) => meta.label).join(" или ")}.
+      </p>
+    )}
   </>
 )}

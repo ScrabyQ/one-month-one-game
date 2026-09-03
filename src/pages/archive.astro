@@ -3,12 +3,13 @@ import ArchiveList from "../components/ArchiveList.astro";
 import Layout from "../layouts/Layout.astro";
 import { jams } from "../config/jams";
 import { getSnapshotForRound } from "../lib/data/snapshots";
-import { validateJamRounds } from "../lib/jams/status";
+import ArchiveEmptyState from "../components/ArchiveEmptyState.astro";
+import { getFinishedRounds, validateJamRounds } from "../lib/jams/status";
 import type { GameSnapshot } from "../lib/domain/types";
 
 validateJamRounds(jams);
 const now = new Date();
-const rounds = [...jams].sort((left, right) => +new Date(right.startsAt) - +new Date(left.startsAt));
+const rounds = getFinishedRounds(jams, now);
 const snapshots = new Map<string, GameSnapshot>(
   rounds.map((round) => [round.id, getSnapshotForRound(round)]),
 );
@@ -25,6 +26,6 @@ const snapshots = new Map<string, GameSnapshot>(
     <p>Каждый месяц остаётся здесь — вместе с темой и играми, которые удалось довести до конца.</p>
   </section>
   <section class="archive-section section-shell" aria-label="Список раундов">
-    <ArchiveList rounds={rounds} snapshots={snapshots} now={now} />
+    {rounds.length > 0 ? <ArchiveList rounds={rounds} snapshots={snapshots} /> : <ArchiveEmptyState />}
   </section>
 </Layout>

@@ -1,7 +1,9 @@
 ---
 import type { GameSnapshot, JamRound } from "../lib/domain/types";
 import { formatGameCount } from "../lib/i18n/ru";
+import { getArchiveTheme } from "../lib/jams/status";
 import { withBase } from "../lib/site";
+import ArchiveEmptyState from "./ArchiveEmptyState.astro";
 
 interface Props {
   rounds: JamRound[];
@@ -21,20 +23,19 @@ const { rounds, snapshots } = Astro.props;
   </div>
 
   {rounds.length > 0 ? (
-    <div class="archive-preview__list">
+    <ul class="archive-preview__list">
       {rounds.map((round) => (
-        <a class="archive-row" href={withBase(`/jam/${round.slug}/`)}>
-          <span class="archive-row__month">{round.monthLabel}</span>
-          <span class="archive-row__theme">«{round.theme}»</span>
-          <span class="archive-row__count">{formatGameCount(snapshots.get(round.id)?.games.length ?? 0)}</span>
-          <span class="archive-row__arrow" aria-hidden="true">↗</span>
-        </a>
+        <li>
+          <a class="archive-row" href={withBase(`/jam/${round.slug}/`)}>
+            <span class="archive-row__month">{round.monthLabel}</span>
+            <span class="archive-row__theme">«{getArchiveTheme(round)}»</span>
+            <span class="archive-row__count">{formatGameCount(snapshots.get(round.id)?.games.length ?? 0)}</span>
+            <span class="archive-row__arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
   ) : (
-    <div class="archive-empty">
-      <span aria-hidden="true">01</span>
-      <p>Это первый раунд. Архив начнёт заполняться после следующего месяца.</p>
-    </div>
+    <ArchiveEmptyState compact />
   )}
 </section>

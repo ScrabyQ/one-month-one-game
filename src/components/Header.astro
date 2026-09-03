@@ -1,5 +1,17 @@
 ---
 import { withBase } from "../lib/site";
+import { jams } from "../config/jams";
+import { getFeaturedRound } from "../lib/jams/status";
+
+const currentPath = Astro.url.pathname;
+const homePath = new URL(withBase("/"), Astro.url).pathname;
+const archivePath = new URL(withBase("/archive/"), Astro.url).pathname;
+const currentRoundPath = new URL(
+  withBase("/jam/" + getFeaturedRound(jams, new Date()).slug + "/"),
+  Astro.url,
+).pathname;
+const isCurrentPath = (path: string) => currentPath === path;
+const isCurrentMonth = currentPath === homePath || currentPath === currentRoundPath;
 ---
 
 <header class="site-header">
@@ -10,16 +22,32 @@ import { withBase } from "../lib/site";
     </a>
 
     <nav class="site-nav site-nav--desktop" aria-label="Основная навигация">
-      <a href={withBase("/")}>Текущий месяц</a>
-      <a href={withBase("/archive/")}>Архив</a>
+      <a
+        class:list={{ "site-nav__current": isCurrentMonth }}
+        href={withBase("/")}
+        aria-current={isCurrentMonth ? "page" : undefined}
+      >Текущий месяц</a>
+      <a
+        class:list={{ "site-nav__current": isCurrentPath(archivePath) }}
+        href={withBase("/archive/")}
+        aria-current={isCurrentPath(archivePath) ? "page" : undefined}
+      >Архив</a>
       <a href={withBase("/#about")}>О проекте</a>
     </nav>
 
     <details class="mobile-nav">
       <summary aria-label="Открыть меню"><span aria-hidden="true">Меню</span><span class="mobile-nav__icon" aria-hidden="true">+</span></summary>
       <nav class="site-nav site-nav--mobile" aria-label="Мобильная навигация">
-        <a href={withBase("/")}>Текущий месяц</a>
-        <a href={withBase("/archive/")}>Архив</a>
+        <a
+          class:list={{ "site-nav__current": isCurrentMonth }}
+          href={withBase("/")}
+          aria-current={isCurrentMonth ? "page" : undefined}
+        >Текущий месяц</a>
+        <a
+          class:list={{ "site-nav__current": isCurrentPath(archivePath) }}
+          href={withBase("/archive/")}
+          aria-current={isCurrentPath(archivePath) ? "page" : undefined}
+        >Архив</a>
         <a href={withBase("/#about")}>О проекте</a>
       </nav>
     </details>

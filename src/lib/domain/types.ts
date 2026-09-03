@@ -2,6 +2,8 @@ export type ProviderId = "itch" | (string & {});
 
 export type JamStatus = "upcoming" | "active" | "finished";
 
+export type JamThemeState = "announced" | "pending";
+
 export type JamDataMode = "live" | "demo";
 
 export interface GameEntry {
@@ -51,6 +53,8 @@ export interface JamRound {
   title: string;
   monthLabel: string;
   theme: string;
+  themeState: JamThemeState;
+  themeAnnouncement?: string;
   description?: string;
   startsAt: string;
   endsAt: string;

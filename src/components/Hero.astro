@@ -1,7 +1,11 @@
 ---
 import type { GameSnapshot, JamRound, JamStatus } from "../lib/domain/types";
 import { formatGameCount } from "../lib/i18n/ru";
-import { getStatusLabel } from "../lib/jams/status";
+import {
+  formatJamDateRange,
+  getStatusLabel,
+  getThemePresentation,
+} from "../lib/jams/status";
 import Countdown from "./Countdown.astro";
 import ParticipationButtons from "./ParticipationButtons.astro";
 
@@ -13,19 +17,22 @@ interface Props {
 }
 
 const { round, snapshot, status, compact = false } = Astro.props;
+const theme = getThemePresentation(round);
+const statusLabel = getStatusLabel(status);
 ---
 
 <section class:list={["hero", { "hero--compact": compact }]}>
   <div class="shell">
     <div class="hero__meta">
-      <span class="eyebrow">{round.monthLabel}</span>
-      <div class="hero__status-row">
-        {round.dataMode === "demo" && <span class="demo-badge">ДЕМО-ДАННЫЕ</span>}
+      <div class="hero__round-context">
+        <span class="eyebrow">{round.monthLabel}</span>
+        <span class="hero__round-divider" aria-hidden="true">·</span>
         <span class:list={["status-badge", `status-badge--${status}`]}>
           <span class="status-badge__dot" aria-hidden="true"></span>
-          {getStatusLabel(status)}
+          {statusLabel}
         </span>
       </div>
+      {round.dataMode === "demo" && <span class="demo-badge">ДЕМО-ДАННЫЕ</span>}
     </div>
 
     <div class="hero__grid">
@@ -35,18 +42,26 @@ const { round, snapshot, status, compact = false } = Astro.props;
         <p class="hero__intro">Сделай. Закончи. Покажи.</p>
       </div>
 
-      <div class="hero__theme-block">
+      <div class:list={["hero__theme-block", { "hero__theme-block--pending": !theme.isAnnounced }]}>
         <p class="eyebrow hero__theme-label">Тема месяца</p>
-        <p class="hero__theme">«{round.theme}»</p>
+        {theme.isAnnounced ? (
+          <p class="hero__theme">«{theme.text}»</p>
+        ) : (
+          <p class="hero__theme-placeholder">{theme.text}</p>
+        )}
         <p class="hero__description">{round.description}</p>
         <ParticipationButtons round={round} />
       </div>
     </div>
 
     <div class="hero__footer">
+      <div class="hero__metric">
+        <span class="hero__metric-label">Даты раунда</span>
+        <strong>{formatJamDateRange(round)}</strong>
+      </div>
       <Countdown round={round} />
-      <div class="hero__count">
-        <span class="countdown__label">В галерее</span>
+      <div class="hero__metric hero__metric--right">
+        <span class="hero__metric-label">Уже в галерее</span>
         <strong>{formatGameCount(snapshot.games.length)}</strong>
       </div>
     </div>

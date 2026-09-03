@@ -1,0 +1,47 @@
+---
+import type { JamRound } from "../lib/domain/types";
+import { providerRegistry } from "../lib/providers/registry";
+
+interface Props {
+  round: JamRound;
+}
+
+const { round } = Astro.props;
+const providerLabels = [...new Set(round.providers.map((config) => providerRegistry.getMeta(config.type).label))];
+const uploadDestination = providerLabels.length === 1
+  ? providerLabels[0]
+  : providerLabels.length > 1
+    ? "поддерживаемую площадку"
+    : "площадку";
+
+const steps = [
+  { number: "01", title: "Сделай игру", detail: "Одна законченная идея" },
+  { number: "02", title: `Загрузи на ${uploadDestination}`, detail: "Страница игры остаётся на площадке" },
+  { number: "03", title: "Отправь в джем", detail: "Добавь игру в текущий раунд" },
+  { number: "04", title: "Появись здесь", detail: "Мы подтянем её автоматически" },
+];
+---
+
+<section id="participate" class="how-section section-shell" aria-labelledby="how-title">
+  <div class="section-heading how-section__heading">
+    <div>
+      <p class="eyebrow">Участие</p>
+      <h2 id="how-title">Как участвовать</h2>
+    </div>
+    <p class="section-heading__aside">Доведи маленькую идею до конца и покажи результат.</p>
+  </div>
+
+  <ol class="how-steps">
+    {steps.map((step) => (
+      <li class="how-step">
+        <span class="how-step__number" aria-hidden="true">{step.number}</span>
+        <div>
+          <h3>{step.title}</h3>
+          <p>{step.detail}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <p class="how-section__note">Игры появляются здесь автоматически после отправки в джем.</p>
+</section>

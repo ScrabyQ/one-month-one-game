@@ -5,7 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import { jams } from "../../config/jams";
 import { getSnapshotForRound } from "../../lib/data/snapshots";
 import type { JamRound } from "../../lib/domain/types";
-import { getJamStatus, validateJamRounds } from "../../lib/jams/status";
+import { getJamStatus, getThemePresentation, validateJamRounds } from "../../lib/jams/status";
 import { withBase } from "../../lib/site";
 
 export function getStaticPaths() {
@@ -20,11 +20,13 @@ const { round } = Astro.props as { round: JamRound };
 const now = new Date();
 const snapshot = getSnapshotForRound(round);
 const status = getJamStatus(round, now);
+const theme = getThemePresentation(round);
+const themeDescription = theme.isAnnounced ? `тема «${theme.text}»` : theme.text;
 ---
 
 <Layout
   title={`${round.monthLabel} — Один месяц, одна игра`}
-  description={`${round.monthLabel}: тема «${round.theme}», игры и ссылки на площадки.`}
+  description={`${round.monthLabel}: ${themeDescription}, игры и ссылки на площадки.`}
   canonicalPath={`/jam/${round.slug}/`}
 >
   <div class="round-breadcrumb shell">

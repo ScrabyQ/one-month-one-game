@@ -1,11 +1,20 @@
 ---
 import { withBase } from "../lib/site";
+import { jams } from "../config/jams";
+import { getFeaturedRound } from "../lib/jams/status";
+
+const currentYear = new Date().getFullYear();
+const currentRound = getFeaturedRound(jams, new Date());
 ---
 
 <footer class="site-footer">
   <div class="shell site-footer__inner">
     <p>Один месяц — одна игра</p>
-    <a href={withBase("/#about")}>Сделать и закончить</a>
-    <p class="site-footer__note">Статическая витрина независимых игр</p>
+    <nav class="site-footer__links" aria-label="Ссылки в подвале">
+      <a href={withBase("/jam/" + currentRound.slug + "/")}>Текущий раунд</a>
+      <a href={withBase("/#participate")}>Принять участие</a>
+      <a href={withBase("/archive/")}>Архив</a>
+    </nav>
+    <p class="site-footer__note">{currentYear} · Статическая витрина независимых игр</p>
   </div>
 </footer>

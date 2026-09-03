@@ -3,19 +3,24 @@ import AboutChallenge from "../components/AboutChallenge.astro";
 import ArchivePreview from "../components/ArchivePreview.astro";
 import GameGrid from "../components/GameGrid.astro";
 import Hero from "../components/Hero.astro";
+import HowToParticipate from "../components/HowToParticipate.astro";
 import Layout from "../layouts/Layout.astro";
 import { jams } from "../config/jams";
 import { getSnapshotForRound } from "../lib/data/snapshots";
-import { getFeaturedRound, getJamStatus, validateJamRounds } from "../lib/jams/status";
+import {
+  getFeaturedRound,
+  getFinishedRounds,
+  getJamStatus,
+  validateJamRounds,
+} from "../lib/jams/status";
 import type { GameSnapshot } from "../lib/domain/types";
 
 validateJamRounds(jams);
 const now = new Date();
 const featuredRound = getFeaturedRound(jams, now);
 const featuredSnapshot = getSnapshotForRound(featuredRound);
-const archiveRounds = [...jams]
+const archiveRounds = getFinishedRounds(jams, now)
   .filter((round) => round.id !== featuredRound.id)
-  .sort((left, right) => +new Date(right.startsAt) - +new Date(left.startsAt))
   .slice(0, 4);
 const archiveSnapshots = new Map<string, GameSnapshot>(
   archiveRounds.map((round) => [round.id, getSnapshotForRound(round)]),
@@ -33,11 +38,14 @@ const archiveSnapshots = new Map<string, GameSnapshot>(
     status={getJamStatus(featuredRound, now)}
   />
 
+  <HowToParticipate round={featuredRound} />
+
   <section class="gallery-section section-shell" aria-labelledby="gallery-title">
     <div class="section-heading section-heading--gallery">
       <div>
         <p class="eyebrow">{featuredRound.monthLabel}</p>
         <h2 id="gallery-title">Галерея месяца</h2>
+        <p class="section-heading__subheading">Игры участников текущего раунда</p>
       </div>
       <p class="section-heading__aside">Каждая игра — ещё одна законченная история.</p>
     </div>
