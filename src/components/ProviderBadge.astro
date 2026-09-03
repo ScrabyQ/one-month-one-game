@@ -1,0 +1,16 @@
+---
+import type { ProviderId } from "../lib/domain/types";
+import { providerRegistry } from "../lib/providers/registry";
+
+interface Props {
+  provider: ProviderId;
+}
+
+const { provider } = Astro.props;
+const meta = providerRegistry.getMeta(provider);
+---
+
+<span class="provider-badge" data-provider={provider} title={`Источник: ${meta.label}`}>
+  <span class="provider-badge__dot" aria-hidden="true"></span>
+  {meta.badgeLabel}
+</span>

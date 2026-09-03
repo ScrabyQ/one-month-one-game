@@ -1,0 +1,47 @@
+{
+  "generated_on": 1788448899.352,
+  "jam_games": [
+    {
+      "id": 901,
+      "url": "/jam/example/rate/901",
+      "created_at": "2026-09-02 12:30:00",
+      "game": {
+        "id": 1901,
+        "title": "Полуночный сигнал",
+        "url": "https://signal-maker.itch.io/midnight-signal",
+        "short_text": "Найди частоту, пока город спит.",
+        "cover": "https://img.itch.zone/example-cover.png",
+        "user": {
+          "id": 42,
+          "name": "Signal Maker",
+          "url": "https://signal-maker.itch.io"
+        },
+        "tags": [
+          { "name": "Puzzle", "url": "/games/puzzle" },
+          { "name": "Puzzle", "url": "/games/puzzle" },
+          { "name": "Atmospheric" }
+        ],
+        "platforms": ["web", "windows"]
+      }
+    },
+    {
+      "id": 902,
+      "created_at": "2026-09-01 08:00:00",
+      "game": {
+        "id": 1902,
+        "title": "Тихий протокол",
+        "url": "https://quiet-team.itch.io/silent-protocol",
+        "user": {
+          "name": "Команда Quiet"
+        }
+      }
+    },
+    {
+      "id": 903,
+      "game": {
+        "id": 1903,
+        "title": "Запись без ссылки"
+      }
+    }
+  ]
+}

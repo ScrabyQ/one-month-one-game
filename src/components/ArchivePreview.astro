@@ -1,0 +1,40 @@
+---
+import type { GameSnapshot, JamRound } from "../lib/domain/types";
+import { formatGameCount } from "../lib/i18n/ru";
+import { withBase } from "../lib/site";
+
+interface Props {
+  rounds: JamRound[];
+  snapshots: Map<string, GameSnapshot>;
+}
+
+const { rounds, snapshots } = Astro.props;
+---
+
+<section class="archive-preview section-shell">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Следы прошлых месяцев</p>
+      <h2>Архив</h2>
+    </div>
+    <a class="text-link" href={withBase("/archive/")}>Смотреть весь архив <span aria-hidden="true">↗</span></a>
+  </div>
+
+  {rounds.length > 0 ? (
+    <div class="archive-preview__list">
+      {rounds.map((round) => (
+        <a class="archive-row" href={withBase(`/jam/${round.slug}/`)}>
+          <span class="archive-row__month">{round.monthLabel}</span>
+          <span class="archive-row__theme">«{round.theme}»</span>
+          <span class="archive-row__count">{formatGameCount(snapshots.get(round.id)?.games.length ?? 0)}</span>
+          <span class="archive-row__arrow" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  ) : (
+    <div class="archive-empty">
+      <span aria-hidden="true">01</span>
+      <p>Это первый раунд. Архив начнёт заполняться после следующего месяца.</p>
+    </div>
+  )}
+</section>

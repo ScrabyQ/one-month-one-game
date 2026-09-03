@@ -1,0 +1,60 @@
+---
+import type { GameEntry } from "../lib/domain/types";
+import { getInitials } from "../lib/ui";
+import ProviderBadge from "./ProviderBadge.astro";
+
+interface Props {
+  game: GameEntry;
+  index: number;
+  loading?: "eager" | "lazy";
+}
+
+const { game, index, loading = "lazy" } = Astro.props;
+const initials = getInitials(game.title);
+---
+
+<a
+  class="game-card"
+  href={game.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`Открыть игру «${game.title}» на внешней площадке`}
+>
+  <div class="game-card__cover" data-cover-frame>
+    <div class="cover-fallback" aria-hidden="true">
+      <span class="cover-fallback__mark">{initials}</span>
+      <span class="cover-fallback__caption">один месяц<br />одна игра</span>
+    </div>
+    {game.coverUrl && (
+      <img
+        src={game.coverUrl}
+        alt={`Обложка игры «${game.title}»`}
+        loading={loading}
+        decoding="async"
+        data-cover-image
+      />
+    )}
+    <span class="game-card__number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+  </div>
+  <div class="game-card__body">
+    <div class="game-card__title-row">
+      <h3>{game.title}</h3>
+      <ProviderBadge provider={game.provider} />
+    </div>
+    <p class="game-card__author">{game.author.name}</p>
+    {game.description && <p class="game-card__description">{game.description}</p>}
+  </div>
+</a>
+
+<script>
+  document.querySelectorAll<HTMLImageElement>("[data-cover-image]").forEach((image) => {
+    image.addEventListener(
+      "error",
+      () => {
+        image.hidden = true;
+        image.closest("[data-cover-frame]")?.setAttribute("data-image-failed", "true");
+      },
+      { once: true },
+    );
+  });
+</script>

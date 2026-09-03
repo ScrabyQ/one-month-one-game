@@ -1,0 +1,27 @@
+---
+import { withBase } from "../lib/site";
+---
+
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="brand" href={withBase("/")} aria-label="Один месяц — одна игра, на главную">
+      <span class="brand__mark" aria-hidden="true">01</span>
+      <span class="brand__text">Один месяц<br /><span>одна игра</span></span>
+    </a>
+
+    <nav class="site-nav site-nav--desktop" aria-label="Основная навигация">
+      <a href={withBase("/")}>Текущий месяц</a>
+      <a href={withBase("/archive/")}>Архив</a>
+      <a href={withBase("/#about")}>О проекте</a>
+    </nav>
+
+    <details class="mobile-nav">
+      <summary aria-label="Открыть меню"><span aria-hidden="true">Меню</span><span class="mobile-nav__icon" aria-hidden="true">+</span></summary>
+      <nav class="site-nav site-nav--mobile" aria-label="Мобильная навигация">
+        <a href={withBase("/")}>Текущий месяц</a>
+        <a href={withBase("/archive/")}>Архив</a>
+        <a href={withBase("/#about")}>О проекте</a>
+      </nav>
+    </details>
+  </div>
+</header>

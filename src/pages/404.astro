@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { withBase } from "../lib/site";
+---
+
+<Layout
+  title="Страница не найдена — Один месяц, одна игра"
+  description="Такой страницы нет, но есть ещё много игр."
+  canonicalPath="/404/"
+>
+  <section class="not-found section-shell">
+    <p class="eyebrow">Ошибка 404</p>
+    <h1>Идея<br /><span>потерялась.</span></h1>
+    <p>Вернись на главную и посмотри, что закончили другие.</p>
+    <a class="btn btn-primary" href={withBase("/")}>На главную <span aria-hidden="true">↗</span></a>
+  </section>
+</Layout>

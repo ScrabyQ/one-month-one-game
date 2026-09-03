@@ -1,0 +1,30 @@
+---
+import ArchiveList from "../components/ArchiveList.astro";
+import Layout from "../layouts/Layout.astro";
+import { jams } from "../config/jams";
+import { getSnapshotForRound } from "../lib/data/snapshots";
+import { validateJamRounds } from "../lib/jams/status";
+import type { GameSnapshot } from "../lib/domain/types";
+
+validateJamRounds(jams);
+const now = new Date();
+const rounds = [...jams].sort((left, right) => +new Date(right.startsAt) - +new Date(left.startsAt));
+const snapshots = new Map<string, GameSnapshot>(
+  rounds.map((round) => [round.id, getSnapshotForRound(round)]),
+);
+---
+
+<Layout
+  title="Архив — Один месяц, одна игра"
+  description="Архив ежемесячных раундов челленджа «Один месяц — одна игра»."
+  canonicalPath="/archive/"
+>
+  <section class="page-intro section-shell">
+    <p class="eyebrow">Все раунды</p>
+    <h1>Архив<br /><span>законченных идей.</span></h1>
+    <p>Каждый месяц остаётся здесь — вместе с темой и играми, которые удалось довести до конца.</p>
+  </section>
+  <section class="archive-section section-shell" aria-label="Список раундов">
+    <ArchiveList rounds={rounds} snapshots={snapshots} now={now} />
+  </section>
+</Layout>

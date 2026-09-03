@@ -1,0 +1,46 @@
+---
+import GameGrid from "../../components/GameGrid.astro";
+import Hero from "../../components/Hero.astro";
+import Layout from "../../layouts/Layout.astro";
+import { jams } from "../../config/jams";
+import { getSnapshotForRound } from "../../lib/data/snapshots";
+import type { JamRound } from "../../lib/domain/types";
+import { getJamStatus, validateJamRounds } from "../../lib/jams/status";
+import { withBase } from "../../lib/site";
+
+export function getStaticPaths() {
+  validateJamRounds(jams);
+  return jams.map((round) => ({
+    params: { slug: round.slug },
+    props: { round },
+  }));
+}
+
+const { round } = Astro.props as { round: JamRound };
+const now = new Date();
+const snapshot = getSnapshotForRound(round);
+const status = getJamStatus(round, now);
+---
+
+<Layout
+  title={`${round.monthLabel} — Один месяц, одна игра`}
+  description={`${round.monthLabel}: тема «${round.theme}», игры и ссылки на площадки.`}
+  canonicalPath={`/jam/${round.slug}/`}
+>
+  <div class="round-breadcrumb shell">
+    <a href={withBase("/archive/")}>← Архив</a>
+    <span aria-hidden="true">/</span>
+    <span>{round.monthLabel}</span>
+  </div>
+  <Hero round={round} snapshot={snapshot} status={status} compact />
+  <section class="gallery-section section-shell" aria-labelledby="round-gallery-title">
+    <div class="section-heading section-heading--gallery">
+      <div>
+        <p class="eyebrow">{round.monthLabel}</p>
+        <h2 id="round-gallery-title">Игры раунда</h2>
+      </div>
+      <p class="section-heading__aside">{snapshot.games.length} внешних страниц игр</p>
+    </div>
+    <GameGrid games={snapshot.games} round={round} />
+  </section>
+</Layout>

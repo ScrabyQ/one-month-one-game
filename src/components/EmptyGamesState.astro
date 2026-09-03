@@ -1,0 +1,19 @@
+---
+import type { JamRound } from "../lib/domain/types";
+import ParticipationButtons from "./ParticipationButtons.astro";
+
+interface Props {
+  round: JamRound;
+}
+
+const { round } = Astro.props;
+---
+
+<div class="empty-games" role="status">
+  <span class="empty-games__glyph" aria-hidden="true">✳</span>
+  <div>
+    <p class="empty-games__title">Пока здесь пусто.</p>
+    <p class="empty-games__copy">Стань первым, кто закончит игру в этом месяце.</p>
+  </div>
+  <ParticipationButtons round={round} compact />
+</div>

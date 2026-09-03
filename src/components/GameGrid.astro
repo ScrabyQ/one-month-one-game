@@ -1,0 +1,22 @@
+---
+import type { GameEntry, JamRound } from "../lib/domain/types";
+import EmptyGamesState from "./EmptyGamesState.astro";
+import GameCard from "./GameCard.astro";
+
+interface Props {
+  games: GameEntry[];
+  round: JamRound;
+}
+
+const { games, round } = Astro.props;
+---
+
+{games.length > 0 ? (
+  <div class="game-grid">
+    {games.map((game, index) => (
+      <GameCard game={game} index={index} loading={index < 4 ? "eager" : "lazy"} />
+    ))}
+  </div>
+) : (
+  <EmptyGamesState round={round} />
+)}

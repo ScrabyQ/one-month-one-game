@@ -1,0 +1,39 @@
+---
+import type { GameSnapshot, JamRound } from "../lib/domain/types";
+import { formatGameCount, formatProviderCount } from "../lib/i18n/ru";
+import { getStatusLabel, getJamStatus } from "../lib/jams/status";
+import { withBase } from "../lib/site";
+
+interface Props {
+  rounds: JamRound[];
+  snapshots: Map<string, GameSnapshot>;
+  now: Date;
+}
+
+const { rounds, snapshots, now } = Astro.props;
+---
+
+<div class="archive-list">
+  {rounds.map((round, index) => {
+    const status = getJamStatus(round, now);
+    const snapshot = snapshots.get(round.id);
+    return (
+      <a class="archive-card" href={withBase(`/jam/${round.slug}/`)}>
+        <div class="archive-card__index">{String(index + 1).padStart(2, "0")}</div>
+        <div class="archive-card__main">
+          <div class="archive-card__topline">
+            <span class="eyebrow">{round.monthLabel}</span>
+            <span class:list={["status-badge", `status-badge--${status}`]}>{getStatusLabel(status)}</span>
+          </div>
+          <h2>«{round.theme}»</h2>
+          <p>{round.title}</p>
+        </div>
+        <div class="archive-card__stats">
+          <strong>{formatGameCount(snapshot?.games.length ?? 0)}</strong>
+          <span>{round.dataMode === "demo" ? "Демо-витрина" : formatProviderCount(round.providers.filter((provider) => provider.enabled).length)}</span>
+        </div>
+        <span class="archive-card__arrow" aria-hidden="true">↗</span>
+      </a>
+    );
+  })}
+</div>

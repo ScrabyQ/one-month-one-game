@@ -1,0 +1,52 @@
+---
+import type { JamRound } from "../lib/domain/types";
+import { providerRegistry } from "../lib/providers/registry";
+
+interface Props {
+  round: JamRound;
+  compact?: boolean;
+}
+
+const { round, compact = false } = Astro.props;
+const links = round.providers
+  .filter((config) => config.enabled)
+  .map((config) => {
+    const meta = providerRegistry.getMeta(config.type);
+    const href = providerRegistry.getParticipationUrl(config);
+    return href ? { href, label: `Участвовать на ${meta.label}`, meta } : undefined;
+  })
+  .filter((link): link is NonNullable<typeof link> => Boolean(link));
+const configuredProviders = round.providers.map((config) => providerRegistry.getMeta(config.type));
+---
+
+{links.length > 0 ? (
+  <div class:list={["participation-buttons", { "participation-buttons--compact": compact }]}>
+    {links.map((link) => (
+      <a
+        class="btn btn-primary participation-button"
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>{link.label}</span>
+        <span class="participation-button__arrow" aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+) : (
+  <>
+    {configuredProviders.length > 0 && (
+      <div class:list={["participation-buttons", { "participation-buttons--compact": compact }]}>
+        {configuredProviders.map((meta) => (
+          <span class="btn btn-primary participation-button participation-button--disabled" aria-disabled="true">
+            <span>Участвовать на {meta.label}</span>
+            <span class="participation-button__arrow" aria-hidden="true">↗</span>
+          </span>
+        ))}
+      </div>
+    )}
+    <p class="participation-placeholder" role="status">
+      Ссылка на участие появится после настройки itch.io JAM_ID.
+    </p>
+  </>
+)}

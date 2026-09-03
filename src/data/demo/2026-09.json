@@ -1,0 +1,83 @@
+{
+  "roundId": "2026-09",
+  "syncedAt": "2026-09-03T00:00:00.000Z",
+  "games": [
+    {
+      "id": "itch:demo:514507",
+      "provider": "itch",
+      "providerEntryId": "demo-514507",
+      "providerGameId": "514507",
+      "title": "Find the Light",
+      "author": {
+        "name": "Litza Bronwyn",
+        "url": "https://litzabronwyn.itch.io"
+      },
+      "url": "https://litzabronwyn.itch.io/find-the-light",
+      "coverUrl": "https://img.itch.zone/aW1nLzI2NzIwMzQucG5n/300x240%23cb/63KEOB.png",
+      "description": "A micro RPG about darkness and feelings.",
+      "submittedAt": "2019-11-11 01:45:59",
+      "tags": ["Physical games"]
+    },
+    {
+      "id": "itch:demo:516505",
+      "provider": "itch",
+      "providerEntryId": "demo-516505",
+      "providerGameId": "516505",
+      "title": "THE MONSTER CLUB",
+      "author": {
+        "name": "npckc",
+        "url": "https://npckc.itch.io"
+      },
+      "url": "https://npckc.itch.io/the-monster-club",
+      "coverUrl": "https://img.itch.zone/aW1nLzI2ODIwMjkucG5n/300x240%23cb/vdvnXI.png",
+      "description": "RECRUITING MEMBERS NOW!",
+      "submittedAt": "2019-11-14 05:47:40",
+      "tags": ["Physical games"]
+    },
+    {
+      "id": "itch:demo:512127",
+      "provider": "itch",
+      "providerEntryId": "demo-512127",
+      "providerGameId": "512127",
+      "title": "onomancy",
+      "author": {
+        "name": "blake stone / fenced forest",
+        "url": "https://fencedforest.itch.io"
+      },
+      "url": "https://fencedforest.itch.io/onomancy",
+      "coverUrl": "https://img.itch.zone/aW1nLzI2NTkxMDIucG5n/300x240%23cb/2i5P9p.png",
+      "description": "A system-agnostic modular ruleset for campaign games.",
+      "submittedAt": "2019-11-07 00:01:42",
+      "tags": ["Physical games"]
+    },
+    {
+      "id": "itch:demo:516655",
+      "provider": "itch",
+      "providerEntryId": "demo-516655",
+      "providerGameId": "516655",
+      "title": "Dragon Slayer Card",
+      "author": {
+        "name": "PixelPaladin",
+        "url": "https://pixelpaladin.itch.io"
+      },
+      "url": "https://pixelpaladin.itch.io/dragoncard",
+      "coverUrl": "https://img.itch.zone/aW1nLzI2ODI5NzYucG5n/300x240%23c/f7mvXs.png",
+      "description": "A text based adventure / RPG game with a compact source code.",
+      "submittedAt": "2019-11-14 14:38:26",
+      "platforms": ["web"]
+    },
+    {
+      "id": "itch:demo:empty-cover",
+      "provider": "itch",
+      "providerEntryId": "demo-empty-cover",
+      "providerGameId": "demo-empty-cover",
+      "title": "Тихий протокол",
+      "author": {
+        "name": "Команда демо"
+      },
+      "url": "https://itch.io",
+      "description": "Демо-запись без обложки — для проверки аккуратного fallback.",
+      "submittedAt": "2019-11-05 10:20:00"
+    }
+  ]
+}
