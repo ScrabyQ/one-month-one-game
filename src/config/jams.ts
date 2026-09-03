@@ -5,6 +5,7 @@ export const challengeTitle = "Один месяц/игра";
 export const jams: JamRound[] = [
   {
     id: "2026-09",
+    round: 2,
     slug: "2026-09",
     title: challengeTitle,
     monthLabel: "Сентябрь 2026",
@@ -33,6 +34,7 @@ export const jams: JamRound[] = [
   },
   {
     id: "2026-08",
+    round: 1,
     slug: "2026-08",
     title: challengeTitle,
     monthLabel: "Сентябрь 2026",

@@ -14,3 +14,7 @@ export function formatGameCount(value: number): string {
 export function formatProviderCount(value: number): string {
   return `${value} ${plural(value, "площадка", "площадки", "площадок")}`;
 }
+
+export function formatRoundNumber(value: number): string {
+  return String(value).padStart(3, "0");
+}

@@ -60,6 +60,7 @@ export type ProviderConfig = ItchProviderConfig | MyIndieProviderConfig;
 
 export interface JamRound {
   id: string;
+  round: number;
   slug: string;
   title: string;
   monthLabel: string;

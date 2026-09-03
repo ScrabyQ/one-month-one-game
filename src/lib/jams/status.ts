@@ -17,6 +17,11 @@ function assertRound(round: JamRound): { start: Date; end: Date } {
   if (end <= start) {
     throw new Error(`Jam round ${round.slug} must end after it starts`);
   }
+  if (!Number.isInteger(round.round) || round.round <= 0) {
+    throw new Error(
+      `Jam round ${round.slug || "<unknown>"} needs a positive integer round number`,
+    );
+  }
   if (!round.id || !round.slug || !round.title || !round.monthLabel || !round.theme) {
     throw new Error(`Jam round ${round.slug || "<unknown>"} is missing required metadata`);
   }
@@ -55,12 +60,17 @@ export function validateJamRounds(rounds: readonly JamRound[]): void {
 
   const ids = new Set<string>();
   const slugs = new Set<string>();
+  const roundNumbers = new Set<number>();
   const intervals = rounds.map((round) => {
     if (ids.has(round.id)) throw new Error(`Duplicate jam round id: ${round.id}`);
     if (slugs.has(round.slug)) throw new Error(`Duplicate jam round slug: ${round.slug}`);
     ids.add(round.id);
     slugs.add(round.slug);
     const dates = assertRound(round);
+    if (roundNumbers.has(round.round)) {
+      throw new Error(`Round ${round.round} is configured more than once`);
+    }
+    roundNumbers.add(round.round);
     return { round, ...dates };
   });
 

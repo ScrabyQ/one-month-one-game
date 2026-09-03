@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { jams } from "../src/config/jams";
 import type { JamRound } from "../src/lib/domain/types";
 import {
   formatJamDateRange,
@@ -11,9 +12,15 @@ import {
   validateJamRounds,
 } from "../src/lib/jams/status";
 
-function round(slug: string, startsAt: string, endsAt: string): JamRound {
+function round(
+  slug: string,
+  startsAt: string,
+  endsAt: string,
+  roundNumber = 1,
+): JamRound {
   return {
     id: slug,
+    round: roundNumber,
     slug,
     title: "Один месяц — одна игра",
     monthLabel: slug,
@@ -26,7 +33,7 @@ function round(slug: string, startsAt: string, endsAt: string): JamRound {
 }
 
 describe("jam status", () => {
-  const current = round("current", "2026-09-01T00:00:00Z", "2026-10-01T00:00:00Z");
+  const current = round("current", "2026-09-01T00:00:00Z", "2026-10-01T00:00:00Z", 1);
 
   it("handles upcoming, active, and finished boundaries", () => {
     expect(getJamStatus(current, new Date("2026-08-31T23:59:59Z"))).toBe("upcoming");
@@ -36,15 +43,33 @@ describe("jam status", () => {
   });
 
   it("chooses the active round, otherwise the nearest upcoming or latest finished round", () => {
-    const upcoming = round("upcoming", "2026-11-01T00:00:00Z", "2026-12-01T00:00:00Z");
+    const upcoming = round("upcoming", "2026-11-01T00:00:00Z", "2026-12-01T00:00:00Z", 2);
     expect(getFeaturedRound([current, upcoming], new Date("2026-09-10T00:00:00Z")).slug).toBe("current");
     expect(getFeaturedRound([upcoming], new Date("2026-10-10T00:00:00Z")).slug).toBe("upcoming");
     expect(getFeaturedRound([current], new Date("2026-11-10T00:00:00Z")).slug).toBe("current");
   });
 
   it("rejects overlapping configured rounds", () => {
-    const overlapping = round("overlapping", "2026-09-20T00:00:00Z", "2026-10-20T00:00:00Z");
+    const overlapping = round("overlapping", "2026-09-20T00:00:00Z", "2026-10-20T00:00:00Z", 2);
     expect(() => validateJamRounds([current, overlapping])).toThrow(/overlap/);
+  });
+
+  it("requires positive integer round numbers and rejects duplicates", () => {
+    expect(() => validateJamRounds([{ ...current, round: 0 }])).toThrow(/positive integer/);
+    expect(() => validateJamRounds([{ ...current, round: 1.5 }])).toThrow(/positive integer/);
+
+    const duplicate = round("duplicate", "2026-11-01T00:00:00Z", "2026-12-01T00:00:00Z", 1);
+    expect(() => validateJamRounds([current, duplicate])).toThrow(/configured more than once/);
+  });
+
+  it("keeps configured round numbers on featured and archive rounds", () => {
+    const featured = getFeaturedRound(jams, new Date("2026-09-10T00:00:00+03:00"));
+    const archived = getFinishedRounds(jams, new Date("2026-09-10T00:00:00+03:00"));
+
+    expect(featured).toMatchObject({ slug: "2026-09", round: 2 });
+    expect(archived).toEqual([
+      expect.objectContaining({ slug: "2026-08", round: 1 }),
+    ]);
   });
 
   it("formats dates and switches to a precise clock near the deadline", () => {
@@ -112,7 +137,7 @@ describe("jam status", () => {
   });
 
   it("returns only finished rounds for the archive", () => {
-    const upcoming = round("upcoming", "2026-11-01T00:00:00Z", "2026-12-01T00:00:00Z");
+    const upcoming = round("upcoming", "2026-11-01T00:00:00Z", "2026-12-01T00:00:00Z", 2);
     expect(getFinishedRounds([upcoming, current], new Date("2026-11-10T00:00:00Z")).map((item) => item.slug)).toEqual([
       "current",
     ]);
