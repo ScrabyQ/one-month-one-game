@@ -41,6 +41,8 @@ export const ItchEntriesResponseSchema = z.object({
 
 const normalizedAuthorSchema = z.object({
   name: z.string().min(1),
+  id: z.string().min(1).optional(),
+  alias: z.string().min(1).optional(),
   url: httpUrlSchema.optional(),
 });
 
@@ -52,6 +54,8 @@ export const GameEntrySchema = z.object({
   title: z.string().min(1),
   author: normalizedAuthorSchema,
   url: httpUrlSchema,
+  slug: z.string().min(1).optional(),
+  score: z.number().nullable().optional(),
   coverUrl: httpUrlSchema.optional(),
   description: z.string().min(1).optional(),
   submittedAt: z.string().min(1).optional(),

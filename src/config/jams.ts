@@ -15,14 +15,20 @@ export const jams: JamRound[] = [
       "Небольшой постоянный челлендж для разработчиков игр. Сделай и закончи одну игру за месяц.",
     startsAt: "2026-09-01T00:00:00+03:00",
     endsAt: "2026-09-30T23:59:59+03:00",
-    dataMode: "live",
+    dataMode: "demo",
     providers: [
       {
         type: "itch",
         enabled: true,
         jamId: 405977,
-        jamUrl: "https://itch.io/jam/REPLACE_WITH_REAL_JAM_SLUG",
+        jamUrl: "https://itch.io/jam/evening-jam",
       },
+      {
+        type: "myindie",
+        enabled: true,
+        jamAlias: "myindie-level-10",
+        jamUrl: "https://myindie.net/jams/jam/myindie-level-10"
+     }
     ],
   },
   {

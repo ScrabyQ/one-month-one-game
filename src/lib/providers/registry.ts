@@ -1,5 +1,6 @@
 import type { ProviderConfig, ProviderId } from "../domain/types";
 import { ItchProvider } from "./itch/itch-provider";
+import { MyIndieProvider } from "./myindie/myindie-provider";
 import type { GameProvider, ProviderMeta } from "./types";
 
 interface RegisteredProvider {
@@ -43,4 +44,9 @@ export const providerRegistry = new ProviderRegistry();
 providerRegistry.register(new ItchProvider(), {
   label: "itch.io",
   badgeLabel: "ITCH.IO",
+});
+
+providerRegistry.register(new MyIndieProvider(), {
+  label: "MyIndie.net",
+  badgeLabel: "MYINDIE",
 });

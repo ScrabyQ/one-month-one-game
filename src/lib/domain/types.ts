@@ -1,4 +1,4 @@
-export type ProviderId = "itch" | (string & {});
+export type ProviderId = "itch" | "myindie" | (string & {});
 
 export type JamStatus = "upcoming" | "active" | "finished";
 
@@ -14,9 +14,13 @@ export interface GameEntry {
   title: string;
   author: {
     name: string;
+    id?: string;
+    alias?: string;
     url?: string;
   };
   url: string;
+  slug?: string;
+  score?: number | null;
   coverUrl?: string;
   description?: string;
   submittedAt?: string;
@@ -44,8 +48,15 @@ export type ItchProviderConfig =
       jamUrl: string;
     };
 
+export type MyIndieProviderConfig = {
+  type: "myindie";
+  enabled: boolean;
+  jamAlias: string;
+  jamUrl: string;
+};
+
 // Add future provider-specific config variants here without changing UI models.
-export type ProviderConfig = ItchProviderConfig;
+export type ProviderConfig = ItchProviderConfig | MyIndieProviderConfig;
 
 export interface JamRound {
   id: string;

@@ -24,18 +24,27 @@ function assertRound(round: JamRound): { start: Date; end: Date } {
     throw new Error(`Jam round ${round.slug} has an invalid theme state`);
   }
   for (const provider of round.providers) {
-    try {
-      const providerUrl = new URL(provider.jamUrl);
-      if (providerUrl.protocol !== "http:" && providerUrl.protocol !== "https:") {
-        throw new Error("provider URL must use HTTP(S)");
+    if (provider.type === "itch" || provider.type === "myindie") {
+      try {
+        const providerUrl = new URL(provider.jamUrl);
+        if (providerUrl.protocol !== "http:" && providerUrl.protocol !== "https:") {
+          throw new Error("provider URL must use HTTP(S)");
+        }
+      } catch {
+        throw new Error(`Invalid participation URL for jam round ${round.slug}`);
       }
-    } catch {
-      throw new Error(`Invalid participation URL for jam round ${round.slug}`);
-    }
-    if (provider.enabled && (!Number.isInteger(provider.jamId) || provider.jamId <= 0)) {
-      throw new Error(
-        `Enabled ${provider.type} provider for ${round.slug} needs a positive numeric JAM_ID`,
-      );
+
+      if (provider.type === "itch" && provider.enabled && (!Number.isInteger(provider.jamId) || provider.jamId <= 0)) {
+        throw new Error(
+          `Enabled ${provider.type} provider for ${round.slug} needs a positive numeric JAM_ID`,
+        );
+      }
+
+      if (provider.type === "myindie" && provider.enabled && !provider.jamAlias.trim()) {
+        throw new Error(
+          `Enabled ${provider.type} provider for ${round.slug} needs a non-empty jam alias`,
+        );
+      }
     }
   }
   return { start, end };

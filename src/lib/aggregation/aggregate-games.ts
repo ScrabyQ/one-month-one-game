@@ -41,6 +41,8 @@ export function deduplicateGames(games: readonly GameEntry[]): GameEntry[] {
     // to fill an optional field that was absent in the first occurrence.
     byId.set(game.id, {
       ...existing,
+      slug: existing.slug ?? game.slug,
+      score: existing.score ?? game.score,
       coverUrl: existing.coverUrl ?? game.coverUrl,
       description: existing.description ?? game.description,
       submittedAt: existing.submittedAt ?? game.submittedAt,
@@ -48,6 +50,8 @@ export function deduplicateGames(games: readonly GameEntry[]): GameEntry[] {
       platforms: existing.platforms ?? game.platforms,
       author: {
         ...existing.author,
+        id: existing.author.id ?? game.author.id,
+        alias: existing.author.alias ?? game.author.alias,
         url: existing.author.url ?? game.author.url,
       },
     });

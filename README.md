@@ -2,7 +2,7 @@
 
 Статическая русскоязычная витрина ежемесячного игрового челленджа. Каждый месяц появляется новая тема, разработчики делают одну игру, а сайт собирает ссылки на готовые работы с внешних площадок.
 
-Сейчас подключён только itch.io. Сайт не хранит игровые бинарники и не запрашивает provider API из браузера.
+В проекте есть read-only адаптеры itch.io и MyIndie.net. Сайт не хранит игровые бинарники и не запрашивает provider API из браузера.
 
 ## Как это работает
 
@@ -72,6 +72,19 @@ npm run sync -- --all
 7. Запустите `npm run sync` и проверьте результат.
 8. Закоммитьте новый конфиг и generated snapshot.
 
+Для MyIndie.net указывайте человекочитаемый alias джема и публичный URL:
+
+```ts
+{
+  type: "myindie",
+  enabled: true,
+  jamAlias: "myindie-level-10",
+  jamUrl: "https://myindie.net/jams/jam/myindie-level-10"
+}
+```
+
+При синхронизации provider сначала находит этот alias через постраничный `POST /api/jams`, получает UUID, а затем загружает все submissions через постраничный `POST /api/games`.
+
 Для текущего demo-раунда замените:
 
 ```ts
@@ -94,12 +107,7 @@ https://itch.io/jam/{JAM_ID}/entries.json
 
 Provider-specific code находится в `src/lib/providers/<provider>/`. Адаптер получает внешний payload, валидирует его, нормализует в `GameEntry`, после чего aggregator сохраняет только normalized snapshot.
 
-Для будущего MyIndie потребуется:
-
-1. Добавить `MyIndieProviderConfig` в domain provider config union.
-2. Создать `src/lib/providers/myindie/` с raw schema и normalizer.
-3. Реализовать `GameProvider`.
-4. Зарегистрировать адаптер и presentation metadata в `registry.ts`.
+MyIndie реализован как отдельный `GameProvider`: HTTP/API-логика, DTO-схемы, mapping и provider-level pagination находятся в `src/lib/providers/myindie/`. Адаптер зарегистрирован в `registry.ts`; статические страницы продолжают работать только с normalized snapshots.
 
 `GameCard`, grid, archive, sorting и pages при этом менять не нужно.
 
@@ -146,4 +154,4 @@ PUBLIC_BASE=/
 - `entries.json` — undocumented/internal itch.io endpoint; все предположения о его структуре изолированы в `ItchProvider`.
 - Сайт статический: новые данные появляются после очередного sync/build.
 - Обложки загружаются напрямую с внешних URL и не оптимизируются Astro.
-- В MVP нет голосований, аккаунтов, комментариев, рейтингов, backend, аналитики и MyIndie.
+- В MVP нет голосований, аккаунтов, комментариев, рейтингов, backend и аналитики.

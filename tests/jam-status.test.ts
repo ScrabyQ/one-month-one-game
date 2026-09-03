@@ -117,4 +117,28 @@ describe("jam status", () => {
       "current",
     ]);
   });
+
+  it("validates MyIndie configuration with an alias and participation URL", () => {
+    const myIndieRound = {
+      ...current,
+      providers: [
+        {
+          type: "myindie" as const,
+          enabled: true,
+          jamAlias: "myindie-level-10",
+          jamUrl: "https://myindie.net/jams/jam/myindie-level-10",
+        },
+      ],
+    };
+
+    expect(() => validateJamRounds([myIndieRound])).not.toThrow();
+    expect(() =>
+      validateJamRounds([
+        {
+          ...myIndieRound,
+          providers: [{ ...myIndieRound.providers[0], jamAlias: "   " }],
+        },
+      ]),
+    ).toThrow(/jam alias/);
+  });
 });
