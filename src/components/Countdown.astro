@@ -28,6 +28,18 @@ const initialCountdown = getCountdownParts(round, new Date());
   import { getCountdownPartsForDates } from "../lib/jams/status";
 
   const countdownElements = document.querySelectorAll<HTMLElement>("[data-countdown]");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function animateCountdownValue(element: HTMLElement): void {
+    if (reducedMotionQuery.matches) {
+      element.classList.remove("jam-countdown__value--updated");
+      return;
+    }
+
+    element.classList.remove("jam-countdown__value--updated");
+    void element.offsetWidth;
+    element.classList.add("jam-countdown__value--updated");
+  }
 
   function updateCountdown(element: HTMLElement): void {
     const parts = getCountdownPartsForDates(
@@ -40,10 +52,18 @@ const initialCountdown = getCountdownParts(round, new Date());
 
     if (!label) return;
 
+    const previousLabel = label.textContent ?? "";
+    const previousValue = element.textContent ?? "";
+    const previousStatus = element.dataset.status ?? "";
+    const displayChanged = previousLabel !== parts.label
+      || previousValue !== parts.value
+      || previousStatus !== parts.status;
+
     label.textContent = parts.label;
     element.textContent = parts.value;
     element.dataset.status = parts.status;
     element.setAttribute("datetime", parts.targetAt);
+    if (displayChanged) animateCountdownValue(element);
     window.setTimeout(() => updateCountdown(element), parts.refreshAfterMs);
   }
 

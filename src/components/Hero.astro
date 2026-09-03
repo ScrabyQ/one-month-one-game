@@ -7,6 +7,7 @@ import {
   getThemePresentation,
 } from "../lib/jams/status";
 import Countdown from "./Countdown.astro";
+import HeroAtmosphere from "./HeroAtmosphere.astro";
 import ParticipationButtons from "./ParticipationButtons.astro";
 
 interface Props {
@@ -25,8 +26,9 @@ const providerCount = new Set(
 ---
 
 <section class:list={["hero", { "hero--compact": compact }]}>
+  <HeroAtmosphere />
   <div class="shell">
-    <span class="hero__round-number" aria-hidden="true">{formatRoundNumber(round.round)}</span>
+    <span class="hero__round-number" data-hero-round-number aria-hidden="true">{formatRoundNumber(round.round)}</span>
     <div class="hero__meta">
       <div class="hero__round-context">
         <span class="eyebrow">Раунд {formatRoundNumber(round.round)}</span>

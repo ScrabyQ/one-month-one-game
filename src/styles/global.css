@@ -47,6 +47,10 @@
   --jam-surface-raised: #22221d;
   --jam-border: rgba(242, 239, 229, 0.16);
   --jam-border-strong: rgba(242, 239, 229, 0.32);
+  --motion-fast: 160ms;
+  --motion-normal: 200ms;
+  --motion-slow: 320ms;
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
   color-scheme: dark;
   font-synthesis: none;
 }
@@ -193,7 +197,7 @@ a {
   position: relative;
   min-height: 2.5rem;
   padding-block: 0.75rem 0.5rem;
-  transition: color 160ms ease;
+  transition: color var(--motion-fast) var(--ease-standard);
 }
 
 .site-nav a.site-nav__current {
@@ -215,7 +219,7 @@ a {
   content: "";
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 160ms ease;
+  transition: transform var(--motion-fast) var(--ease-standard);
 }
 
 .site-nav a:hover,
@@ -295,6 +299,18 @@ a {
   overflow: hidden;
   border-bottom: 1px solid var(--jam-border);
   background: var(--jam-bg);
+  isolation: isolate;
+}
+
+.hero__atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.82;
+  pointer-events: none;
 }
 
 .hero__round-number {
@@ -310,6 +326,12 @@ a {
   line-height: 0.75;
   opacity: 0.07;
   pointer-events: none;
+  transform: translate3d(
+    var(--hero-parallax-x, 0px),
+    var(--hero-parallax-y, 0px),
+    0
+  );
+  transition: transform var(--motion-slow) var(--ease-standard);
   user-select: none;
 }
 
@@ -516,6 +538,22 @@ a {
   font-weight: 800;
 }
 
+@keyframes countdown-value-update {
+  from {
+    opacity: 0.72;
+    transform: translateY(1px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.jam-countdown__value--updated {
+  animation: countdown-value-update var(--motion-fast) var(--ease-standard);
+}
+
 .hero__metric--right {
   align-items: flex-start;
   text-align: left;
@@ -576,7 +614,20 @@ a {
   font-weight: 800;
   letter-spacing: 0.02em;
   line-height: 1;
-  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+  transition:
+    transform var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
+}
+
+.motion-arrow {
+  display: inline-block;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+a:hover .motion-arrow,
+a:focus-visible .motion-arrow {
+  transform: translate(2px, -2px);
 }
 
 .btn-primary {
@@ -585,10 +636,15 @@ a {
   color: #151711;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus-visible {
   background: var(--jam-ink);
   color: #151711;
   transform: translateY(-2px);
+}
+
+.btn-primary:not(.participation-button--disabled):active {
+  transform: translateY(0);
 }
 
 .participation-button {
@@ -611,7 +667,10 @@ a {
   letter-spacing: 0.06em;
   line-height: 1;
   text-transform: uppercase;
-  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+  transition:
+    transform var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
 }
 
 .participation-option:hover,
@@ -619,6 +678,10 @@ a {
   background: var(--round-accent, var(--jam-accent));
   color: #151711;
   transform: translateY(-2px);
+}
+
+.participation-option:not(.participation-option--disabled):active {
+  transform: translateY(0);
 }
 
 .participation-option--disabled {
@@ -760,9 +823,11 @@ a {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  transition: color var(--motion-fast) var(--ease-standard);
 }
 
-.text-link:hover {
+.text-link:hover,
+.text-link:focus-visible {
   color: var(--jam-ink);
 }
 
@@ -778,7 +843,10 @@ a {
   min-width: 0;
   border: 1px solid var(--jam-border);
   background: var(--jam-surface);
-  transition: border-color 180ms ease, transform 180ms ease, background-color 180ms ease;
+  transition:
+    border-color var(--motion-normal) var(--ease-standard),
+    transform var(--motion-normal) var(--ease-standard),
+    background-color var(--motion-normal) var(--ease-standard);
 }
 
 .game-card--latest {
@@ -825,7 +893,7 @@ a {
   border: 0;
   background: #292920;
   object-fit: cover;
-  transition: transform 220ms ease;
+  transition: transform var(--motion-normal) var(--ease-standard);
 }
 
 .game-card:hover .game-card__cover img,
@@ -986,7 +1054,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: color 180ms ease;
+  transition: color var(--motion-normal) var(--ease-standard);
 }
 
 .game-card__external span {
@@ -1094,6 +1162,12 @@ a {
   border-right: 1px solid var(--jam-border);
   border-bottom: 1px solid var(--jam-border);
   padding: 1.35rem 1.25rem 1.5rem;
+  transition: background-color var(--motion-normal) var(--ease-standard);
+}
+
+.how-step:hover,
+.how-step:focus-within {
+  background: var(--jam-surface);
 }
 
 .how-step:first-child {
@@ -1119,6 +1193,12 @@ a {
   line-height: 1.3rem;
   text-align: center;
   transform: translateY(-50%);
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+.how-step:hover:not(:last-child)::after,
+.how-step:focus-within:not(:last-child)::after {
+  transform: translate(2px, -50%);
 }
 
 .how-step__number {
@@ -1129,6 +1209,12 @@ a {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+.how-step:hover .how-step__number,
+.how-step:focus-within .how-step__number {
+  transform: translateX(2px);
 }
 
 .how-step h3 {
@@ -1138,7 +1224,14 @@ a {
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1;
+  opacity: 0.9;
   text-transform: uppercase;
+  transition: opacity var(--motion-normal) var(--ease-standard);
+}
+
+.how-step:hover h3,
+.how-step:focus-within h3 {
+  opacity: 1;
 }
 
 .how-step p {
@@ -1175,7 +1268,9 @@ a {
   gap: 1rem;
   min-height: 4.5rem;
   border-bottom: 1px solid var(--jam-border);
-  transition: background-color 160ms ease, color 160ms ease;
+  transition:
+    background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
 }
 
 .archive-row:hover,
@@ -1200,11 +1295,24 @@ a {
 
 .archive-row__index {
   color: var(--round-accent, var(--jam-accent));
+  opacity: 0.86;
+  transition: opacity var(--motion-normal) var(--ease-standard);
 }
 
 .archive-row__theme {
   color: var(--jam-muted);
   font-size: 1rem;
+  transition: color var(--motion-normal) var(--ease-standard);
+}
+
+.archive-row:hover .archive-row__index,
+.archive-row:focus-visible .archive-row__index {
+  opacity: 1;
+}
+
+.archive-row:hover .archive-row__theme,
+.archive-row:focus-visible .archive-row__theme {
+  color: var(--jam-ink);
 }
 
 .archive-row__count {
@@ -1400,6 +1508,11 @@ img[hidden] {
     transform: translateX(50%);
   }
 
+  .how-step:nth-child(3):hover::after,
+  .how-step:nth-child(3):focus-within::after {
+    transform: translate(50%, 2px);
+  }
+
   .archive-row--full {
     grid-template-columns: 2.75rem minmax(0, 1fr) 1.2fr 0.7fr auto;
   }
@@ -1531,6 +1644,11 @@ img[hidden] {
     bottom: -0.65rem;
     content: "↓";
     transform: none;
+  }
+
+  .how-step:hover:not(:last-child)::after,
+  .how-step:focus-within:not(:last-child)::after {
+    transform: translateY(2px);
   }
 
   .game-grid {
@@ -1721,5 +1839,37 @@ img[hidden] {
   .participation-option:hover,
   .participation-option:focus-visible {
     transform: none;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus-visible,
+  .motion-arrow,
+  .hero__round-number,
+  .how-step:hover .how-step__number,
+  .how-step:focus-within .how-step__number {
+    transform: none !important;
+  }
+
+  .how-step:hover:not(:last-child)::after,
+  .how-step:focus-within:not(:last-child)::after {
+    transform: translateY(-50%) !important;
+  }
+
+  .jam-countdown__value--updated {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 900px) {
+  .how-step:nth-child(3):hover::after,
+  .how-step:nth-child(3):focus-within::after {
+    transform: translateX(50%) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 620px) {
+  .how-step:hover:not(:last-child)::after,
+  .how-step:focus-within:not(:last-child)::after {
+    transform: none !important;
   }
 }

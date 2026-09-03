@@ -20,7 +20,7 @@ const { rounds, snapshots } = Astro.props;
       <p class="eyebrow">Следы прошлых месяцев</p>
       <h2>Архив</h2>
     </div>
-    <a class="text-link" href={withBase("/archive/")}>Смотреть весь архив <span aria-hidden="true">↗</span></a>
+    <a class="text-link" href={withBase("/archive/")}>Смотреть весь архив <span class="motion-arrow" aria-hidden="true">↗</span></a>
   </div>
 
   {rounds.length > 0 ? (
@@ -38,7 +38,7 @@ const { rounds, snapshots } = Astro.props;
               <span class="archive-row__month">{round.monthLabel}</span>
               <span class="archive-row__theme">«{getArchiveTheme(round)}»</span>
               <span class="archive-row__count">{formatGameCount(snapshots.get(round.id)?.games.length ?? 0)}</span>
-              <span class="archive-row__arrow" aria-hidden="true">↗</span>
+              <span class="motion-arrow archive-row__arrow" aria-hidden="true">↗</span>
             </a>
           </li>
         );

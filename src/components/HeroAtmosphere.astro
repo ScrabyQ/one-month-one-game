@@ -1,0 +1,19 @@
+<canvas
+  class="hero__atmosphere"
+  data-hero-atmosphere
+  aria-hidden="true"
+></canvas>
+
+<script>
+  import { mountHeroAtmosphere } from "../lib/hero-atmosphere";
+
+  document.querySelectorAll<HTMLCanvasElement>("[data-hero-atmosphere]").forEach((canvas) => {
+    const hero = canvas.closest<HTMLElement>(".hero");
+    const roundNumber = hero?.querySelector<HTMLElement>("[data-hero-round-number]");
+
+    if (hero && roundNumber) {
+      const cleanup = mountHeroAtmosphere(hero, canvas, roundNumber);
+      document.addEventListener("astro:before-swap", cleanup, { once: true });
+    }
+  });
+</script>

@@ -36,7 +36,7 @@ const primaryLink = links[0];
           <strong>Войти в текущий раунд</strong>
           <small>через {primaryLink.meta.label}</small>
         </span>
-        <span class="participation-button__arrow" aria-hidden="true">↗</span>
+        <span class="motion-arrow participation-button__arrow" aria-hidden="true">↗</span>
       </a>
     ) : (
       <span class="btn btn-primary participation-button participation-button--disabled" aria-disabled="true">
@@ -44,7 +44,7 @@ const primaryLink = links[0];
           <strong>Войти в текущий раунд</strong>
           <small>Ссылка появится после настройки</small>
         </span>
-        <span class="participation-button__arrow" aria-hidden="true">↗</span>
+        <span class="motion-arrow participation-button__arrow" aria-hidden="true">↗</span>
       </span>
     )}
     {missingProviders.length > 0 && (
@@ -72,11 +72,11 @@ const primaryLink = links[0];
             rel="noopener noreferrer"
             aria-label={`Войти в текущий раунд через ${meta.label}`}
           >
-            {meta.label} <span aria-hidden="true">↗</span>
+            {meta.label} <span class="motion-arrow" aria-hidden="true">↗</span>
           </a>
         ) : (
           <span class="participation-option participation-option--disabled" aria-disabled="true">
-            {meta.label} <span aria-hidden="true">↗</span>
+            {meta.label} <span class="motion-arrow" aria-hidden="true">↗</span>
           </span>
         )
       ))}

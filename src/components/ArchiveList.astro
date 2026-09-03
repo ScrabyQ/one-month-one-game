@@ -28,7 +28,7 @@ const { rounds, snapshots } = Astro.props;
           <span class="archive-row__month">{round.monthLabel}</span>
           <span class="archive-row__theme">«{getArchiveTheme(round)}»</span>
           <span class="archive-row__count">{formatGameCount(snapshot?.games.length ?? 0)}</span>
-          <span class="archive-row__arrow" aria-hidden="true">↗</span>
+          <span class="motion-arrow archive-row__arrow" aria-hidden="true">↗</span>
         </a>
       </li>
     );
