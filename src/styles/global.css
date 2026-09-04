@@ -568,6 +568,8 @@ a {
 
 .hero__theme-block {
   align-self: center;
+  min-width: 0;
+  container-type: inline-size;
   padding-left: clamp(1.25rem, 3vw, 3rem);
   border-left: 2px solid var(--jam-accent);
 }
@@ -576,28 +578,44 @@ a {
   margin-bottom: 1rem;
 }
 
+.hero__theme,
+.hero__theme-placeholder {
+  max-inline-size: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  word-break: normal;
+  hyphens: none;
+}
+
 .hero__theme {
-  max-width: 10ch;
   margin: 0;
   color: var(--jam-ink);
-  font-size: clamp(2.4rem, 5vw, 5.8rem);
+  font-size: clamp(2.25rem, 5vw, 4.65rem);
   font-weight: 900;
   letter-spacing: -0.07em;
   line-height: 0.9;
-  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 
 .hero__theme-placeholder {
-  max-width: 17ch;
   margin: 0;
   color: var(--jam-muted);
-  font-size: clamp(1.7rem, 3.35vw, 3.6rem);
+  font-size: clamp(1.6rem, 3.35vw, 3.25rem);
   font-weight: 800;
   letter-spacing: -0.055em;
   line-height: 0.98;
-  overflow-wrap: anywhere;
   text-transform: uppercase;
+}
+
+@supports (font-size: 1cqw) {
+  .hero__theme {
+    font-size: clamp(2.25rem, 14cqw, 4.65rem);
+  }
+
+  .hero__theme-placeholder {
+    font-size: clamp(1.6rem, 9.5cqw, 3.25rem);
+  }
 }
 
 .hero__description {
@@ -2138,15 +2156,6 @@ img[hidden] {
   .page-intro h1,
   .not-found h1 {
     font-size: clamp(3.1rem, 17vw, 5.5rem);
-  }
-
-  .hero__theme {
-    font-size: clamp(2.5rem, 13vw, 4.5rem);
-  }
-
-  .hero__theme-placeholder {
-    max-width: 18ch;
-    font-size: clamp(1.6rem, 8.3vw, 2.6rem);
   }
 
   .rules-intro__mark {
