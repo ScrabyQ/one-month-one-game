@@ -1,61 +1,96 @@
 ---
 import type { JamRound } from "../lib/domain/types";
-import { formatRoundNumber } from "../lib/i18n/ru";
-import { withBase } from "../lib/site";
+import { formatRoundNumber, getTranslations, SUPPORTED_LOCALES } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
+import { getLocalizedPath, getLocalizedUrl } from "../lib/site";
 
 interface Props {
   round: JamRound;
   currentRound: JamRound;
+  locale: Locale;
 }
 
-const { round, currentRound } = Astro.props;
+const { round, currentRound, locale } = Astro.props;
+const translations = getTranslations(locale);
 const currentPath = Astro.url.pathname;
-const homePath = new URL(withBase("/"), Astro.url).pathname;
-const archivePath = new URL(withBase("/archive/"), Astro.url).pathname;
-const currentRoundPath = new URL(
-  withBase("/jam/" + currentRound.slug + "/"),
-  Astro.url,
-).pathname;
+const homePath = getLocalizedPath("/", locale);
+const archivePath = getLocalizedPath("/archive/", locale);
+const currentRoundPath = getLocalizedPath(`/jam/${currentRound.slug}/`, locale);
 const isCurrentPath = (path: string) => currentPath === path;
 const isCurrentMonth = currentPath === homePath || currentPath === currentRoundPath;
+const aboutPath = `${homePath}#about`;
 ---
 
 <header class="site-header">
   <div class="shell site-header__inner">
-    <a class="brand" href={withBase("/")} aria-label="Один месяц — одна игра, на главную">
+    <a class="brand" href={homePath} aria-label={`${translations.common.projectTitle}, home`}>
       <span class="brand__mark" aria-hidden="true">{formatRoundNumber(round.round)}</span>
-      <span class="brand__text">Один месяц<br /><span>одна игра</span></span>
+      <span class="brand__text">{translations.hero.titleLineOne.replace(" —", "")}<br /><span>{translations.hero.titleLineTwo}</span></span>
     </a>
 
-    <nav class="site-nav site-nav--desktop" aria-label="Основная навигация">
+    <nav class="site-nav site-nav--desktop" aria-label={translations.nav.primaryLabel}>
       <a
         class:list={{ "site-nav__current": isCurrentMonth }}
-        href={withBase("/")}
+        href={homePath}
         aria-current={isCurrentMonth ? "page" : undefined}
-      >Текущий месяц</a>
+      >{translations.nav.currentMonth}</a>
       <a
         class:list={{ "site-nav__current": isCurrentPath(archivePath) }}
-        href={withBase("/archive/")}
+        href={archivePath}
         aria-current={isCurrentPath(archivePath) ? "page" : undefined}
-      >Архив</a>
-      <a href={withBase("/#about")}>О проекте</a>
+      >{translations.nav.archive}</a>
+      <a href={aboutPath}>{translations.nav.about}</a>
+    </nav>
+
+    <nav class="language-switcher" aria-label={translations.language.label}>
+      {SUPPORTED_LOCALES.map((targetLocale) => (
+        <a
+          href={getLocalizedUrl(Astro.url, targetLocale)}
+          class:list={{ "language-switcher__current": targetLocale === locale }}
+          aria-current={targetLocale === locale ? "page" : undefined}
+          aria-label={targetLocale === locale
+            ? `${translations.language.current} (${targetLocale.toUpperCase()})`
+            : translations.language.switchTo(translations.language.names[targetLocale])}
+          data-locale-choice={targetLocale}
+        >{targetLocale.toUpperCase()}</a>
+      ))}
     </nav>
 
     <details class="mobile-nav">
-      <summary aria-label="Открыть меню"><span aria-hidden="true">Меню</span><span class="mobile-nav__icon" aria-hidden="true">+</span></summary>
-      <nav class="site-nav site-nav--mobile" aria-label="Мобильная навигация">
+      <summary aria-label={translations.nav.openMenu}><span aria-hidden="true">{translations.nav.menu}</span><span class="mobile-nav__icon" aria-hidden="true">+</span></summary>
+      <nav class="site-nav site-nav--mobile" aria-label={translations.nav.mobileLabel}>
         <a
           class:list={{ "site-nav__current": isCurrentMonth }}
-          href={withBase("/")}
+          href={homePath}
           aria-current={isCurrentMonth ? "page" : undefined}
-        >Текущий месяц</a>
+        >{translations.nav.currentMonth}</a>
         <a
           class:list={{ "site-nav__current": isCurrentPath(archivePath) }}
-          href={withBase("/archive/")}
+          href={archivePath}
           aria-current={isCurrentPath(archivePath) ? "page" : undefined}
-        >Архив</a>
-        <a href={withBase("/#about")}>О проекте</a>
+        >{translations.nav.archive}</a>
+        <a href={aboutPath}>{translations.nav.about}</a>
       </nav>
     </details>
   </div>
 </header>
+
+<script>
+  import { getLocalizedUrl } from "../lib/site";
+
+  const localeStorageKey = "one-month-one-game:locale";
+  document.querySelectorAll<HTMLAnchorElement>("[data-locale-choice]").forEach((link) => {
+    link.addEventListener("click", () => {
+      const locale = link.dataset.localeChoice;
+      if (!locale || (locale !== "en" && locale !== "ru")) return;
+
+      try {
+        window.localStorage.setItem(localeStorageKey, locale);
+      } catch {
+        // Continue to the explicitly selected route when storage is unavailable.
+      }
+
+      link.href = getLocalizedUrl(new URL(window.location.href), locale);
+    });
+  });
+</script>

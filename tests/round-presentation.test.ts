@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { JamRound } from "../src/lib/domain/types";
 import {
   DEFAULT_ROUND_ACCENT,
-  DEFAULT_SOCIAL_IMAGE,
+  getDefaultSocialImage,
   getRoundPresentation,
 } from "../src/lib/jams/presentation";
 import { validateJamRounds } from "../src/lib/jams/status";
@@ -12,9 +12,10 @@ function round(overrides: Partial<JamRound> = {}): JamRound {
     id: "2026-09",
     round: 2,
     slug: "2026-09",
-    title: "Один месяц — одна игра",
-    monthLabel: "Сентябрь 2026",
-    theme: "Тест",
+    content: {
+      en: { title: "One Month — One Game", monthLabel: "September 2026", theme: "Test" },
+      ru: { title: "Один месяц — одна игра", monthLabel: "Сентябрь 2026", theme: "Тест" },
+    },
     themeState: "announced",
     startsAt: "2026-09-01T00:00:00Z",
     endsAt: "2026-10-01T00:00:00Z",
@@ -25,20 +26,24 @@ function round(overrides: Partial<JamRound> = {}): JamRound {
 
 describe("round presentation", () => {
   it("provides safe defaults for optional metadata", () => {
-    expect(getRoundPresentation(round())).toEqual({
+    expect(getRoundPresentation(round(), "en")).toEqual({
       accent: DEFAULT_ROUND_ACCENT,
-      socialImage: DEFAULT_SOCIAL_IMAGE,
+      socialImage: "/og/en/round-002.png",
     });
+    expect(getRoundPresentation(round(), "ru").socialImage).toBe("/og/ru/round-002.png");
+    expect(getDefaultSocialImage("en")).toBe("/og/en/default.png");
+    expect(getDefaultSocialImage("ru")).toBe("/og/ru/default.png");
   });
 
-  it("keeps configured accent and social image", () => {
+  it("keeps the configured accent while resolving a locale-specific image", () => {
     expect(
       getRoundPresentation(
         round({
-          presentation: { accent: "#ff8a75", socialImage: "/og/round-001.png" },
+          presentation: { accent: "#ff8a75" },
         }),
+        "ru",
       ),
-    ).toEqual({ accent: "#ff8a75", socialImage: "/og/round-001.png" });
+    ).toEqual({ accent: "#ff8a75", socialImage: "/og/ru/round-002.png" });
   });
 
   it("rejects accents outside the controlled #RRGGBB format", () => {

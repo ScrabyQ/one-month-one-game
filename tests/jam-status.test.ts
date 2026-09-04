@@ -2,13 +2,16 @@ import { describe, expect, it } from "vitest";
 import { jams } from "../src/config/jams";
 import type { JamRound } from "../src/lib/domain/types";
 import {
+  formatCountdownDisplay,
   formatJamDateRange,
   formatRemainingDuration,
+  getThemePresentation,
+} from "../src/lib/i18n";
+import {
   getCountdownPartsForDates,
   getFeaturedRound,
   getFinishedRounds,
   getJamStatus,
-  getThemePresentation,
   validateJamRounds,
 } from "../src/lib/jams/status";
 
@@ -22,9 +25,10 @@ function round(
     id: slug,
     round: roundNumber,
     slug,
-    title: "Один месяц — одна игра",
-    monthLabel: slug,
-    theme: "Тест",
+    content: {
+      en: { title: "One Month — One Game", monthLabel: slug, theme: "Test" },
+      ru: { title: "Один месяц — одна игра", monthLabel: slug, theme: "Тест" },
+    },
     themeState: "announced",
     startsAt,
     endsAt,
@@ -73,9 +77,10 @@ describe("jam status", () => {
   });
 
   it("formats dates and switches to a precise clock near the deadline", () => {
-    expect(formatJamDateRange(current)).toBe("01.09 — 01.10");
-    expect(formatRemainingDuration((4 * 60 * 60 + 32 * 60 + 18) * 1000)).toBe("04:32:18");
-    expect(formatRemainingDuration(24 * 60 * 60 * 1000 - 1)).toBe("23:59:59");
+    expect(formatJamDateRange("ru", current)).toBe("01.09 — 01.10");
+    expect(formatJamDateRange("en", current)).toBe("09/01 — 10/01");
+    expect(formatRemainingDuration("ru", (4 * 60 * 60 + 32 * 60 + 18) * 1000)).toBe("04:32:18");
+    expect(formatRemainingDuration("en", 24 * 60 * 60 * 1000 - 1)).toBe("23:59:59");
 
     expect(
       getCountdownPartsForDates(
@@ -85,10 +90,18 @@ describe("jam status", () => {
       ),
     ).toMatchObject({
       status: "active",
-      label: "До конца",
-      value: "04:32:18",
       refreshAfterMs: 1000,
     });
+    expect(formatCountdownDisplay("ru", getCountdownPartsForDates(
+      "2026-09-01T00:00:00Z",
+      "2026-09-30T23:59:59Z",
+      new Date("2026-09-30T19:27:41Z"),
+    ))).toEqual({ label: "До конца", value: "04:32:18" });
+    expect(formatCountdownDisplay("en", getCountdownPartsForDates(
+      "2026-09-01T00:00:00Z",
+      "2026-09-30T23:59:59Z",
+      new Date("2026-09-30T19:27:41Z"),
+    ))).toEqual({ label: "Until end", value: "04:32:18" });
   });
 
   it("uses the same countdown model before start and after finish", () => {
@@ -100,10 +113,13 @@ describe("jam status", () => {
       ),
     ).toMatchObject({
       status: "upcoming",
-      label: "До старта",
-      value: "2 дня",
       refreshAfterMs: 30_000,
     });
+    expect(formatCountdownDisplay("ru", getCountdownPartsForDates(
+      "2026-09-10T00:00:00Z",
+      "2026-10-01T00:00:00Z",
+      new Date("2026-09-08T00:00:00Z"),
+    ))).toEqual({ label: "До старта", value: "2 дня" });
 
     expect(
       getCountdownPartsForDates(
@@ -113,24 +129,33 @@ describe("jam status", () => {
       ),
     ).toMatchObject({
       status: "finished",
-      label: "Статус",
-      value: "Раунд завершён",
     });
+    expect(formatCountdownDisplay("ru", getCountdownPartsForDates(
+      "2026-09-01T00:00:00Z",
+      "2026-09-10T00:00:00Z",
+      new Date("2026-09-10T00:00:00Z"),
+    ))).toEqual({ label: "Статус", value: "Раунд завершён" });
   });
 
   it("supports announced and pending theme presentations", () => {
-    expect(getThemePresentation(current)).toEqual({ isAnnounced: true, text: "Тест" });
+    expect(getThemePresentation(current, "ru")).toEqual({ isAnnounced: true, text: "Тест" });
 
     const pending = {
       ...current,
       themeState: "pending" as const,
-      themeAnnouncement: "Объявим в начале месяца",
+      content: {
+        ...current.content,
+        ru: { ...current.content.ru, themeAnnouncement: "Объявим в начале месяца" },
+      },
     };
-    expect(getThemePresentation(pending)).toEqual({
+    expect(getThemePresentation(pending, "ru")).toEqual({
       isAnnounced: false,
       text: "Объявим в начале месяца",
     });
-    expect(getThemePresentation({ ...pending, themeAnnouncement: undefined })).toEqual({
+    expect(getThemePresentation({
+      ...pending,
+      content: { ...pending.content, ru: { ...pending.content.ru, themeAnnouncement: undefined } },
+    }, "ru")).toEqual({
       isAnnounced: false,
       text: "Тема появится в начале месяца",
     });

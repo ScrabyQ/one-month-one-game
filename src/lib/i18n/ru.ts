@@ -1,20 +1,167 @@
-function plural(value: number, one: string, few: string, many: string): string {
-  const absolute = Math.abs(value) % 100;
-  const last = absolute % 10;
-  if (absolute >= 11 && absolute <= 19) return many;
-  if (last === 1) return one;
-  if (last >= 2 && last <= 4) return few;
-  return many;
-}
+import type { Translations } from "./types";
 
-export function formatGameCount(value: number): string {
-  return `${value} ${plural(value, "игра", "игры", "игр")}`;
-}
-
-export function formatProviderCount(value: number): string {
-  return `${value} ${plural(value, "площадка", "площадки", "площадок")}`;
-}
-
-export function formatRoundNumber(value: number): string {
-  return String(value).padStart(3, "0");
-}
+export const ru: Translations = {
+  common: {
+    projectTitle: "Один месяц — одна игра",
+    skipToContent: "Перейти к содержимому",
+    initialsFallback: "ОМ",
+  },
+  nav: {
+    primaryLabel: "Основная навигация",
+    mobileLabel: "Мобильная навигация",
+    currentMonth: "Текущий месяц",
+    archive: "Архив",
+    about: "О проекте",
+    menu: "Меню",
+    openMenu: "Открыть меню",
+  },
+  language: {
+    label: "Язык",
+    current: "Русский",
+    names: { en: "английский", ru: "русский" },
+    switchTo: (localeLabel) => `Переключить на ${localeLabel}`,
+  },
+  footer: {
+    linksLabel: "Ссылки в подвале",
+    currentRound: "Текущий раунд",
+    participate: "Принять участие",
+    archive: "Архив",
+    note: "Статическая витрина независимых игр",
+  },
+  home: {
+    galleryTitle: "Галерея месяца",
+    gallerySubheading: "Игры участников текущего раунда",
+    galleryAside: "Каждая игра — ещё одна законченная история.",
+    archiveEyebrow: "Следы прошлых месяцев",
+    archiveTitle: "Архив",
+    archiveLink: "Смотреть весь архив",
+  },
+  about: {
+    label: "О проекте",
+    headingLineOne: "СДЕЛАЙ.",
+    headingLineTwo: "ЗАКОНЧИ.",
+    headingLineThree: "ПОКАЖИ.",
+    firstParagraph:
+      "«Один месяц — одна игра» — постоянный челлендж для разработчиков игр. Каждый месяц новая тема и новый шанс закончить небольшой проект.",
+    secondParagraph: "Движок, жанр и опыт не важны. Важно довести игру до конца и показать результат.",
+  },
+  participation: {
+    eyebrow: "Участие",
+    title: "Как участвовать",
+    aside: "Доведи маленькую идею до конца и покажи результат.",
+    note: "Игры появляются здесь автоматически после отправки в джем.",
+    steps: [
+      { number: "01", title: "Сделай игру", detail: "Одна законченная идея" },
+      { number: "02", title: "Загрузи её", detail: "Страница игры остаётся на площадке" },
+      { number: "03", title: "Отправь в джем", detail: "Добавь игру в текущий раунд" },
+      { number: "04", title: "Появись здесь", detail: "Мы подтянем её автоматически" },
+    ],
+    uploadTo: (providerLabel) => `Загрузи на ${providerLabel}`,
+    supportedPlatform: "поддерживаемую площадку",
+    genericPlatform: "площадку",
+  },
+  hero: {
+    roundLabel: (roundNumber) => `Раунд ${roundNumber}`,
+    demoBadge: "ДЕМО-ДАННЫЕ",
+    titleLineOne: "Один месяц —",
+    titleLineTwo: "одна игра",
+    tagline: "Сделай. Закончи. Покажи.",
+    themeLabel: "Тема месяца",
+    datesLabel: "Даты раунда",
+    providersLabel: "Площадки",
+    inGalleryLabel: "Уже в галерее",
+  },
+  archive: {
+    introEyebrow: "Все раунды",
+    introTitleLineOne: "Архив",
+    introTitleLineTwo: "законченных идей.",
+    introCopy: "Каждый месяц остаётся здесь — вместе с темой и играми, которые удалось довести до конца.",
+    listLabel: "Список раундов",
+    previewEyebrow: "Следы прошлых месяцев",
+    previewTitle: "Архив",
+    previewLink: "Смотреть весь архив",
+    firstRoundTitle: "Это первый раунд.",
+    firstRoundCopy: "Архив начнёт расти уже со следующего месяца.",
+  },
+  round: {
+    archiveLink: "Архив",
+    gamesTitle: "Игры раунда",
+    externalPages: (count) => `${count} внешних ${count === 1 ? "страница игры" : "страницы игр"}`,
+  },
+  emptyGames: {
+    title: "Пока здесь пусто.",
+    copyLineOne: "Стань первым,",
+    copyLineTwo: "кто закончит игру в этом месяце.",
+  },
+  game: {
+    openAria: (title, isLatest) =>
+      `Открыть игру «${title}» на внешней площадке${isLatest ? ", последнее пополнение" : ""}`,
+    coverAlt: (title) => `Обложка игры «${title}»`,
+    fallbackCaptionLineOne: "один месяц",
+    fallbackCaptionLineTwo: "одна игра",
+    latestLabel: "Последнее пополнение",
+    viewGame: "Смотреть игру",
+    newLabel: "NEW",
+    sourceTitle: (providerLabel) => `Источник: ${providerLabel}`,
+  },
+  latest: {
+    ariaLabel: "Последнее пополнение",
+    label: "Последнее пополнение",
+  },
+  participationButtons: {
+    joinCurrentRound: "Войти в текущий раунд",
+    through: (providerLabel) => `через ${providerLabel}`,
+    setupLink: "Ссылка появится после настройки",
+    enterThrough: (providerLabel) => `Войти в текущий раунд через ${providerLabel}`,
+    joinLabels: (providerLabels) => providerLabels.join(" или "),
+    linksWillAppear: (providerLabels) => `Ссылки на участие появятся после настройки ${providerLabels}.`,
+    linkWillAppear: (providerLabel) => `Ссылка на участие появится после настройки ${providerLabel}.`,
+  },
+  status: {
+    upcoming: "Скоро",
+    active: "Идёт сейчас",
+    finished: "Завершён",
+  },
+  countdown: {
+    status: "Статус",
+    untilStart: "До старта",
+    untilEnd: "До конца",
+    roundFinished: "Раунд завершён",
+    days: { one: "день", few: "дня", many: "дней" },
+  },
+  theme: {
+    pendingFallback: "Тема появится в начале месяца",
+    announcedDescription: (text) => `тема «${text}»`,
+  },
+  meta: {
+    homeTitle: (monthLabel) => `${monthLabel} — Один месяц, одна игра`,
+    homeDescription: "Ежемесячный челлендж для разработчиков игр: одна тема, один месяц, одна законченная игра.",
+    archiveTitle: "Архив — Один месяц, одна игра",
+    archiveDescription: "Архив ежемесячных раундов челленджа «Один месяц — одна игра».",
+    roundTitle: (monthLabel) => `${monthLabel} — Один месяц, одна игра`,
+    roundDescription: (monthLabel, themeDescription) =>
+      `${monthLabel}: ${themeDescription}, игры и ссылки на площадки.`,
+    notFoundTitle: "Страница не найдена — Один месяц, одна игра",
+    notFoundDescription: "Такой страницы нет, но есть ещё много игр.",
+  },
+  notFound: {
+    eyebrow: "Ошибка 404",
+    titleLineOne: "Идея",
+    titleLineTwo: "потерялась.",
+    copy: "Вернись на главную и посмотри, что закончили другие.",
+    homeLink: "На главную",
+  },
+  og: {
+    projectTitle: "ОДИН МЕСЯЦ / ОДНА ИГРА",
+    monthlyChallengeLabel: "ЕЖЕМЕСЯЧНЫЙ ЧЕЛЛЕНДЖ",
+    monthlyEditionLabel: "ЕЖЕМЕСЯЧНЫЙ ВЫПУСК",
+    titleLineOne: "ОДИН МЕСЯЦ —",
+    titleLineTwo: "ОДНА ИГРА",
+    tagline: "СДЕЛАЙ. ЗАКОНЧИ. ПОКАЖИ.",
+    defaultGiantLabel: "ОДИН МЕСЯЦ",
+    roundLabel: (roundNumber) => `РАУНД ${roundNumber}`,
+    roundImageAlt: (roundNumber, monthLabel) =>
+      `Один месяц / одна игра, раунд ${roundNumber}, ${monthLabel}`,
+    defaultImageAlt: "Один месяц / одна игра, ежемесячный челлендж",
+  },
+};

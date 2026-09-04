@@ -27,7 +27,7 @@ jobs:
         uses: withastro/action@v6
         with:
           node-version: 22
-          build-cmd: npm run check && npm run sync && npm run build
+          build-cmd: npm run generate:og && npm run check && npm run sync && npm run build
 
   deploy:
     needs: build

@@ -1,8 +1,8 @@
 import type { JamRound, JamStatus } from "../domain/types";
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES, getJamContent } from "../i18n";
 import { getRoundPresentation } from "./presentation";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const SECOND_MS = 1000;
 
 function roundDate(value: string, field: string, slug: string): Date {
   const date = new Date(value);
@@ -23,13 +23,19 @@ function assertRound(round: JamRound): { start: Date; end: Date } {
       `Jam round ${round.slug || "<unknown>"} needs a positive integer round number`,
     );
   }
-  if (!round.id || !round.slug || !round.title || !round.monthLabel || !round.theme) {
+  if (!round.id || !round.slug || !round.content) {
     throw new Error(`Jam round ${round.slug || "<unknown>"} is missing required metadata`);
+  }
+  for (const locale of SUPPORTED_LOCALES) {
+    const content = getJamContent(round, locale);
+    if (!content.title || !content.monthLabel || !content.theme) {
+      throw new Error(`Jam round ${round.slug} is missing required ${locale} content`);
+    }
   }
   if (round.themeState !== "announced" && round.themeState !== "pending") {
     throw new Error(`Jam round ${round.slug} has an invalid theme state`);
   }
-  getRoundPresentation(round);
+  getRoundPresentation(round, DEFAULT_LOCALE);
   for (const provider of round.providers) {
     if (provider.type === "itch" || provider.type === "myindie") {
       try {
@@ -121,20 +127,10 @@ export function getFeaturedRound(rounds: readonly JamRound[], now = new Date()):
   )[0];
 }
 
-function plural(value: number, one: string, few: string, many: string): string {
-  const absolute = Math.abs(value) % 100;
-  const last = absolute % 10;
-  if (absolute >= 11 && absolute <= 19) return many;
-  if (last === 1) return one;
-  if (last >= 2 && last <= 4) return few;
-  return many;
-}
-
 export interface CountdownParts {
   status: JamStatus;
-  label: string;
-  value: string;
   targetAt: string;
+  remainingMs: number;
   refreshAfterMs: number;
 }
 
@@ -143,25 +139,6 @@ function assertDateRange(startsAt: string, endsAt: string): { start: Date; end: 
   const end = roundDate(endsAt, "endsAt", "countdown");
   if (end <= start) throw new Error("Countdown end date must be after its start date");
   return { start, end };
-}
-
-export function formatRemainingDuration(totalMilliseconds: number): string {
-  const milliseconds = Math.max(0, totalMilliseconds);
-  if (milliseconds < DAY_MS) {
-    const totalSeconds = Math.min(
-      DAY_MS / SECOND_MS - 1,
-      Math.ceil(milliseconds / SECOND_MS),
-    );
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-    return [hours, minutes, seconds]
-      .map((value) => String(value).padStart(2, "0"))
-      .join(":");
-  }
-
-  const days = Math.max(1, Math.ceil(milliseconds / DAY_MS));
-  return `${days} ${plural(days, "день", "дня", "дней")}`;
 }
 
 export function getCountdownPartsForDates(
@@ -175,9 +152,8 @@ export function getCountdownPartsForDates(
   if (status === "finished") {
     return {
       status,
-      label: "Статус",
-      value: "Раунд завершён",
       targetAt: endsAt,
+      remainingMs: 0,
       refreshAfterMs: 30_000,
     };
   }
@@ -186,9 +162,8 @@ export function getCountdownPartsForDates(
   const remainingMs = target.getTime() - now.getTime();
   return {
     status,
-    label: status === "upcoming" ? "До старта" : "До конца",
-    value: formatRemainingDuration(remainingMs),
     targetAt: status === "upcoming" ? startsAt : endsAt,
+    remainingMs,
     refreshAfterMs: remainingMs < DAY_MS ? 1000 : 30_000,
   };
 }
@@ -198,54 +173,8 @@ export function getCountdownParts(round: JamRound, now = new Date()): CountdownP
   return getCountdownPartsForDates(round.startsAt, round.endsAt, now);
 }
 
-export function getCountdownLabel(round: JamRound, now = new Date()): string {
-  const parts = getCountdownParts(round, now);
-  return parts.status === "finished" ? parts.value : `${parts.label} ${parts.value}`;
-}
-
-const dateFormatter = new Intl.DateTimeFormat("ru-RU", {
-  day: "2-digit",
-  month: "2-digit",
-});
-
-export function formatJamDate(value: string): string {
-  const isoDate = /^(\d{4})-(\d{2})-(\d{2})/.exec(value);
-  if (isoDate) return `${isoDate[3]}.${isoDate[2]}`;
-  return dateFormatter.format(roundDate(value, "date", "format"));
-}
-
-export function formatJamDateRange(round: JamRound): string {
-  assertRound(round);
-  return `${formatJamDate(round.startsAt)} — ${formatJamDate(round.endsAt)}`;
-}
-
-export function getThemePresentation(round: JamRound): {
-  isAnnounced: boolean;
-  text: string;
-} {
-  if (round.themeState === "announced") {
-    return { isAnnounced: true, text: round.theme };
-  }
-  return {
-    isAnnounced: false,
-    text: round.themeAnnouncement ?? "Тема появится в начале месяца",
-  };
-}
-
-export function getArchiveTheme(round: JamRound): string {
-  return getThemePresentation(round).text;
-}
-
 export function getFinishedRounds(rounds: readonly JamRound[], now = new Date()): JamRound[] {
   return [...rounds]
     .filter((round) => getJamStatus(round, now) === "finished")
     .sort((left, right) => +new Date(right.startsAt) - +new Date(left.startsAt));
-}
-
-export function getStatusLabel(status: JamStatus): string {
-  return {
-    upcoming: "Скоро",
-    active: "Идёт сейчас",
-    finished: "Завершён",
-  }[status];
 }

@@ -1,4 +1,6 @@
 import type { GameEntry } from "../domain/types";
+import { DEFAULT_LOCALE } from "../i18n";
+import type { Locale } from "../i18n/types";
 
 export const RECENT_SUBMISSION_THRESHOLD_MS = 72 * 60 * 60 * 1000;
 
@@ -6,21 +8,26 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 const PRESENTATION_TIME_ZONE = "Europe/Moscow";
 const legacyTimestampPattern =
   /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?$/;
-const dateFormatter = new Intl.DateTimeFormat("ru-RU", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-  timeZone: PRESENTATION_TIME_ZONE,
-});
 const datePartsFormatter = new Intl.DateTimeFormat("en-CA", {
   day: "2-digit",
   month: "2-digit",
   year: "numeric",
   timeZone: PRESENTATION_TIME_ZONE,
 });
-const relativeDayFormatter = new Intl.RelativeTimeFormat("ru-RU", {
-  numeric: "always",
-});
+function getDateFormatter(locale: Locale): Intl.DateTimeFormat {
+  return new Intl.DateTimeFormat(locale === "ru" ? "ru-RU" : "en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: PRESENTATION_TIME_ZONE,
+  });
+}
+
+function getRelativeDayFormatter(locale: Locale): Intl.RelativeTimeFormat {
+  return new Intl.RelativeTimeFormat(locale === "ru" ? "ru-RU" : "en-US", {
+    numeric: "always",
+  });
+}
 
 function hasValidUtcComponents(
   year: number,
@@ -117,11 +124,14 @@ function calendarDayIndex(timestamp: number): number {
   return Date.UTC(values.year, values.month - 1, values.day) / DAY_MS;
 }
 
-export function formatSubmissionDate(value?: string): string | undefined {
+export function formatSubmissionDate(
+  value: string | undefined,
+  locale: Locale = DEFAULT_LOCALE,
+): string | undefined {
   const timestamp = getSubmittedAtTimestamp(value);
   if (timestamp === undefined) return undefined;
 
-  return dateFormatter.format(new Date(timestamp)).replace(/\s+г\.$/, "");
+  return getDateFormatter(locale).format(new Date(timestamp)).replace(/\s+г\.$/, "");
 }
 
 export function isRecentSubmission(
@@ -138,18 +148,19 @@ export function isRecentSubmission(
 export function formatSubmissionLabel(
   value: string | undefined,
   now = new Date(),
+  locale: Locale = DEFAULT_LOCALE,
 ): string | undefined {
   const timestamp = getSubmittedAtTimestamp(value);
   if (timestamp === undefined) return undefined;
 
   if (isRecentSubmission(value, now)) {
     const calendarDays = Math.max(0, calendarDayIndex(now.getTime()) - calendarDayIndex(timestamp));
-    if (calendarDays === 0) return "сегодня";
-    if (calendarDays === 1) return "вчера";
-    return relativeDayFormatter.format(-calendarDays, "day");
+    if (calendarDays === 0) return locale === "ru" ? "сегодня" : "today";
+    if (calendarDays === 1) return locale === "ru" ? "вчера" : "yesterday";
+    return getRelativeDayFormatter(locale).format(-calendarDays, "day");
   }
 
-  return formatSubmissionDate(value);
+  return formatSubmissionDate(value, locale);
 }
 
 export interface SubmissionPresentation {
@@ -163,6 +174,7 @@ export interface SubmissionPresentation {
 export function getSubmissionPresentation(
   value: string | undefined,
   now = new Date(),
+  locale: Locale = DEFAULT_LOCALE,
 ): SubmissionPresentation {
   const timestamp = getSubmittedAtTimestamp(value);
   if (timestamp === undefined) return { isRecent: false };
@@ -170,8 +182,8 @@ export function getSubmissionPresentation(
   return {
     timestamp,
     iso: new Date(timestamp).toISOString(),
-    dateLabel: formatSubmissionDate(value),
-    label: formatSubmissionLabel(value, now),
+    dateLabel: formatSubmissionDate(value, locale),
+    label: formatSubmissionLabel(value, now, locale),
     isRecent: isRecentSubmission(value, now),
   };
 }

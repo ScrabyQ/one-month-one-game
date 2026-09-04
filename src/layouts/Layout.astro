@@ -4,32 +4,55 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { jams } from "../config/jams";
 import type { JamRound } from "../lib/domain/types";
-import { DEFAULT_SOCIAL_IMAGE, getRoundPresentation } from "../lib/jams/presentation";
+import {
+  DEFAULT_LOCALE,
+  getJamContent,
+  getTranslations,
+  OG_LOCALE_CODES,
+  SUPPORTED_LOCALES,
+} from "../lib/i18n";
+import { formatRoundNumber } from "../lib/i18n/formatters";
+import type { Locale } from "../lib/i18n/types";
+import { getDefaultSocialImage, getRoundPresentation } from "../lib/jams/presentation";
 import { getFeaturedRound } from "../lib/jams/status";
-import { getAbsoluteSiteUrl, withBase } from "../lib/site";
+import {
+  getAbsoluteSiteUrl,
+  getLocalizedPath,
+  withBase,
+} from "../lib/site";
 
 interface Props {
   title: string;
   description: string;
   canonicalPath?: string;
   round?: JamRound;
+  locale: Locale;
 }
 
-const { title, description, canonicalPath = "/", round } = Astro.props;
+const { title, description, canonicalPath = "/", round, locale } = Astro.props;
+const translations = getTranslations(locale);
 const featuredRound = getFeaturedRound(jams, new Date());
 const displayRound = round ?? featuredRound;
-const displayPresentation = getRoundPresentation(displayRound);
-const socialImagePath = round ? displayPresentation.socialImage : DEFAULT_SOCIAL_IMAGE;
-const canonicalUrl = getAbsoluteSiteUrl(canonicalPath, Astro.site);
+const displayPresentation = getRoundPresentation(displayRound, locale);
+const socialImagePath = round ? displayPresentation.socialImage : getDefaultSocialImage(locale);
+const canonicalPathForLocale = getLocalizedPath(canonicalPath, locale);
+const canonicalUrl = getAbsoluteSiteUrl(canonicalPathForLocale, Astro.site);
 const socialImageUrl = getAbsoluteSiteUrl(socialImagePath, Astro.site);
 const socialImageAlt = round
-  ? `Один месяц — одна игра, раунд ${displayRound.round}, ${displayRound.monthLabel}`
-  : "Один месяц — одна игра, ежемесячный игровой челлендж";
+  ? translations.og.roundImageAlt(
+    formatRoundNumber(displayRound.round),
+    getJamContent(displayRound, locale).monthLabel,
+  )
+  : translations.og.defaultImageAlt;
+const alternateLinks = SUPPORTED_LOCALES.map((alternateLocale) => ({
+  locale: alternateLocale,
+  url: getAbsoluteSiteUrl(getLocalizedPath(canonicalPath, alternateLocale), Astro.site),
+}));
 ---
 
 <!doctype html>
 <html
-  lang="ru"
+  lang={locale}
   data-theme="one-month"
   style={`--round-accent: ${displayPresentation.accent}`}
 >
@@ -39,7 +62,7 @@ const socialImageAlt = round
     <meta name="theme-color" content="#11110f" />
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:locale" content={OG_LOCALE_CODES[locale]} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
@@ -51,15 +74,55 @@ const socialImageAlt = round
     {socialImageUrl && <meta name="twitter:image:alt" content={socialImageAlt} />}
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {alternateLinks.map(({ locale: alternateLocale, url }) => (
+      url && <link rel="alternate" hreflang={alternateLocale} href={url} />
+    ))}
+    {alternateLinks.find(({ locale: alternateLocale }) => alternateLocale === DEFAULT_LOCALE)?.url && (
+      <link
+        rel="alternate"
+        hreflang="x-default"
+        href={alternateLinks.find(({ locale: alternateLocale }) => alternateLocale === DEFAULT_LOCALE)?.url}
+      />
+    )}
     <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
     <title>{title}</title>
+    <script>
+      import {
+        getLocaleFromPath,
+        getLocalizedUrl,
+        hasExplicitLocalePath,
+        resolveInitialLocale,
+      } from "../lib/site";
+
+      const base = import.meta.env.BASE_URL;
+      const currentUrl = new URL(window.location.href);
+      let storedLocale: string | null = null;
+      try {
+        storedLocale = window.localStorage.getItem("one-month-one-game:locale");
+      } catch {
+        storedLocale = null;
+      }
+
+      const currentLocale = getLocaleFromPath(currentUrl.pathname, base);
+      const initialLocale = resolveInitialLocale(
+        currentUrl.pathname,
+        storedLocale,
+        navigator.languages,
+        navigator.language,
+        base,
+      );
+
+      if (!hasExplicitLocalePath(currentUrl.pathname, base) && initialLocale !== currentLocale) {
+        window.location.replace(getLocalizedUrl(currentUrl, initialLocale, base));
+      }
+    </script>
   </head>
   <body>
-    <a class="skip-link" href="#content">Перейти к содержимому</a>
-    <Header round={displayRound} currentRound={featuredRound} />
+    <a class="skip-link" href="#content">{translations.common.skipToContent}</a>
+    <Header round={displayRound} currentRound={featuredRound} locale={locale} />
     <main id="content">
       <slot />
     </main>
-    <Footer currentRound={featuredRound} />
+    <Footer currentRound={featuredRound} locale={locale} />
   </body>
 </html>

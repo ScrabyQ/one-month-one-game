@@ -1,29 +1,31 @@
-![One Month One Game](public/og/default.png)
+![One Month One Game](public/og/en/default.png)
 
-# Один месяц — одна игра
+English | [Русский](README.ru.md)
 
-Один месяц. Одна тема. Одна законченная игра.
+# One Month — One Game
 
-One Month One Game — постоянный челлендж для независимых разработчиков. Каждый месяц участники делают небольшую игру, доводят её до конца и показывают результат на поддерживаемой площадке.
+One month. One theme. One finished game.
 
-[Live website](https://scrabyq.github.io/one-month-one-game/) · [Текущий раунд — сентябрь 2026](https://scrabyq.github.io/one-month-one-game/jam/2026-09/)
+One Month One Game is an ongoing challenge for independent game developers. Each month, participants make a small game, finish it, and share the result on a supported platform.
 
-Участие: [itch.io](https://itch.io/jam/evening-jam) · [MyIndie.net](https://myindie.net/jams/jam/myindie-level-10)
+[Live website](https://scrabyq.github.io/one-month-one-game/) · [Current round — September 2026](https://scrabyq.github.io/one-month-one-game/jam/2026-09/)
 
-## Что это
+Participation: [itch.io](https://itch.io/jam/evening-jam) · [MyIndie.net](https://myindie.net/jams/jam/myindie-level-10)
 
-Сайт собирает витрину законченных игр из ежемесячных раундов. Игровые страницы остаются на внешних площадках, а здесь появляются normalized links, обложки, авторы, описания и дата отправки.
+## What it is
 
-Это не конкурс и не рейтинг: цель — закончить одну небольшую идею за один месяц.
+The site showcases finished games from monthly rounds. Game pages stay on their external platforms; this site provides normalized links, covers, authors, descriptions, and submission dates.
 
-## Как участвовать
+This is not a contest or a ranking. The goal is to finish one small idea in one month.
 
-1. Сделайте одну небольшую игру.
-2. Загрузите её на поддерживаемую площадку.
-3. Добавьте игру в текущий jam.
-4. После очередной синхронизации она появится в галерее.
+## How to participate
 
-## Как сайт работает
+1. Make one small game.
+2. Upload it to a supported platform.
+3. Submit the game to the current jam.
+4. After the next synchronization, it will appear in the gallery.
+
+## How the site works
 
 ```text
 itch.io ───────┐
@@ -41,57 +43,86 @@ MyIndie.net ───┘                      │
                                 GitHub Pages
 ```
 
-Сайт статический: браузер не обращается к provider API, не используется backend и не хранятся игровые бинарники. Provider-specific payloads валидируются и преобразуются в общую `GameEntry` model до записи snapshot.
+The site is static: the browser never calls provider APIs, there is no backend, and game binaries are not stored here. Provider-specific payloads are validated and converted into the shared `GameEntry` model before a snapshot is written.
 
 ## Providers
 
-Provider-specific код находится в `src/lib/providers/<provider>/`. Каждый адаптер отвечает за HTTP/API-логику, DTO-схемы, pagination и mapping в normalized `GameEntry`.
+Provider-specific code lives in `src/lib/providers/<provider>/`. Each adapter owns HTTP/API logic, DTO schemas, pagination, and mapping into the normalized `GameEntry` model.
 
-`src/lib/providers/registry.ts` хранит registry адаптеров и presentation metadata. UI использует registry для provider label, badge и participation URL, поэтому добавление нового provider не требует переписывать основные страницы и карточки.
+`src/lib/providers/registry.ts` stores provider adapters and presentation metadata. The UI uses the registry for provider labels, badges, and participation URLs, so adding a provider does not require rewriting the main pages or cards.
 
-Сейчас подключены read-only адаптеры:
+The current read-only adapters are:
 
-- `itch.io` — entries endpoint и нормализация game pages;
-- `MyIndie.net` — постраничные `/api/jams` и `/api/games` с разрешением jam alias в UUID.
+- `itch.io` — entries endpoint and game-page normalization;
+- `MyIndie.net` — paginated `/api/jams` and `/api/games`, resolving a jam alias to a UUID.
 
-## Локальный запуск
+## Localization
 
-Требуется Node.js 22 и npm.
+English is the default locale and uses unprefixed routes. Russian is available under `/ru/`:
+
+```text
+/                         English home
+/archive/                 English archive
+/jam/2026-09/             English round
+/ru/                      Russian home
+/ru/archive/              Russian archive
+/ru/jam/2026-09/          Russian round
+```
+
+The header language selector preserves the equivalent page, query string, and hash. A new visitor with a Russian browser is redirected to `/ru/`; an explicit selector choice is stored in `localStorage` under `one-month-one-game:locale`. Direct `/ru/` links always remain Russian.
+
+Translations live in `src/lib/i18n/en.ts` and `src/lib/i18n/ru.ts`, with shared types and formatters in `src/lib/i18n/`. To add a translated jam, keep the round ID, dates, providers, snapshot, and round number shared, then add complete `en` and `ru` entries under that round's `content` field in `src/config/jams.ts`.
+
+## Local development
+
+Node.js 22 and npm are required.
 
 ```bash
 npm install
 npm run dev
 ```
 
-При стандартном project-pages base откройте `http://localhost:4321/OneMonthOneGame/`. Для локального запуска от корня используйте `PUBLIC_BASE=/ npm run dev`.
+With the default project-pages base, open `http://localhost:4321/OneMonthOneGame/`. To run from the domain root, use `PUBLIC_BASE=/ npm run dev`.
 
-Другие команды:
+Other commands:
 
 ```bash
-npm run sync       # текущий и недавние раунды
-npm run test       # Vitest
-npm run check      # Astro type-check
-npm run build      # production static build
-npm run preview    # просмотр production build
-npm run generate:og # regenerate OG cards
+npm run sync        # current and recent rounds
+npm run test        # Vitest
+npm run check       # Astro type-check
+npm run build       # production static build
+npm run preview     # preview the production build
+npm run generate:og # regenerate all localized OG cards
 ```
 
-## Добавление нового раунда
+## Adding a new round
 
-Все canonical-метаданные находятся в [`src/config/jams.ts`](src/config/jams.ts). Новый раунд добавляется с отдельным стабильным номером:
+Canonical round metadata lives in [`src/config/jams.ts`](src/config/jams.ts). Add a stable, unique round number and localized content:
 
 ```ts
 {
   id: "2026-10",
   round: 3,
   slug: "2026-10",
-  title: challengeTitle,
-  monthLabel: "Октябрь 2026",
-  theme: "Новая тема",
+  content: {
+    en: {
+      title: "One Month — One Game",
+      monthLabel: "October 2026",
+      theme: "A new theme",
+      themeAnnouncement: "The theme will appear at the start of the month",
+      description: "One game in one month.",
+    },
+    ru: {
+      title: "Один месяц — одна игра",
+      monthLabel: "Октябрь 2026",
+      theme: "Новая тема",
+      themeAnnouncement: "Тема появится в начале месяца",
+      description: "Одна игра за один месяц.",
+    },
+  },
   themeState: "announced",
   startsAt: "2026-10-01T00:00:00+03:00",
   endsAt: "2026-10-31T23:59:59+03:00",
-  description: "Одна игра за один месяц.",
   dataMode: "live",
   providers: [
     {
@@ -103,33 +134,24 @@ npm run generate:og # regenerate OG cards
   ],
   presentation: {
     accent: "#9ed8ff",
-    socialImage: "/og/round-003.png",
   },
 }
 ```
 
-`round` — стабильный уникальный номер выпуска. Его нельзя вычислять из порядка объектов в массиве. `presentation.accent` задаёт визуальную identity раунда и должен быть в формате `#RRGGBB`. `presentation.socialImage` указывает на PNG Open Graph card в `public/`; если presentation или отдельное поле не задано, используются безопасные defaults.
+`round` is the stable release number; never derive it from array order. `presentation.accent` controls the round's visual identity and must use `#RRGGBB` format. Social-image paths are derived automatically from the locale and round number.
 
-Для каждого нового раунда создайте PNG размером `1200×630`, если хотите отдельный social preview. Минимальные текущие cards: `public/og/default.png`, `public/og/round-001.png` и `public/og/round-002.png`.
+Run `npm run generate:og` after changing the configured rounds. It reads the canonical jam configuration and both translation dictionaries, generating one 1200×630 PNG for every locale and round under `public/og/en/` and `public/og/ru/`. The generator is config-driven and accepts no ad-hoc card metadata flags.
 
-Генератор OG-карточек находится в `scripts/generate-og-cards.mjs`. Без аргументов он пересоздаёт три стандартные карточки. Для нового раунда передайте стабильный номер, месяц и accent:
+The normal order for adding a round is:
 
-```bash
-npm run generate:og -- --round 3 --month "Октябрь 2026" --accent "#9ed8ff"
-```
+1. Create a public jam on itch.io and obtain its numeric `JAM_ID`.
+2. Add the shared round metadata and complete `en`/`ru` content to `jams`.
+3. Use `themeState: "announced"` for a known theme, or `"pending"` with localized `themeAnnouncement` values while it is unavailable.
+4. Set `dataMode: "live"`, real URLs, and enabled providers.
+5. Run `npm run generate:og` and `npm run sync`.
+6. Check the localized static pages and generated snapshots.
 
-Команда создаст `public/og/round-003.png`. При необходимости можно добавить `--tagline "СДЕЛАЙ. ЗАКОНЧИ. ПОКАЖИ."` или указать другой путь через `--output`. Генератор использует `sharp` только как dev-инструмент; сайт не запускает его во время runtime.
-
-Порядок добавления:
-
-1. Создайте новый публичный jam на itch.io и получите числовой `JAM_ID`.
-2. Добавьте объект в `jams`, включая уникальный `round`, даты, тему и presentation metadata.
-3. Для объявленной темы используйте `themeState: "announced"`; пока тема не готова — `themeState: "pending"` и при необходимости `themeAnnouncement`.
-4. Установите `dataMode: "live"`, укажите настоящие URLs и включённые providers.
-5. Запустите `npm run sync` и проверьте generated snapshot.
-6. Закоммитьте конфиг, social card и snapshot.
-
-Для MyIndie.net укажите человекочитаемый alias и публичный URL:
+For MyIndie.net, provide a human-readable alias and public URL:
 
 ```ts
 {
@@ -140,74 +162,66 @@ npm run generate:og -- --round 3 --month "Октябрь 2026" --accent "#9ed8ff
 }
 ```
 
-При синхронизации provider сначала находит alias через постраничный `POST /api/jams`, получает UUID, а затем загружает все submissions через постраничный `POST /api/games`.
+During synchronization, the provider resolves the alias through paginated `POST /api/jams`, obtains the UUID, then loads submissions through paginated `POST /api/games`.
 
-Для текущего demo-раунда замените:
+### Finding `JAM_ID`
 
-```ts
-dataMode: "demo"
-```
-
-на `dataMode: "live"`, замените placeholder URL, поставьте `enabled: true` и укажите настоящий числовой `jamId`.
-
-### Где найти JAM_ID
-
-Внутренний endpoint использует числовой ID:
+The internal endpoint uses a numeric ID:
 
 ```text
 https://itch.io/jam/{JAM_ID}/entries.json
 ```
 
-Число можно увидеть в URL/API-запросе страницы entries или в исходных данных публичного jam. Public slug сам по себе не заменяет числовой ID.
+The number can be found in the entries page URL/API request or in the public jam's source data. A public slug does not replace the numeric ID.
 
-## Синхронизация и demo data
+## Synchronization and demo data
 
 ```bash
 npm run sync
 npm run sync -- --all
 ```
 
-Обычная синхронизация обрабатывает featured и недавние раунды; `--all` обновляет всю историю. При временной ошибке provider существующий snapshot сохраняется, поэтому публикация может использовать stale data.
+The normal synchronization processes the featured and recent rounds; `--all` updates the full history. If a provider temporarily fails, the existing snapshot is kept so a deployment can use the latest available data.
 
-Раунд сентября 2026 использует отдельный normalized snapshot в `src/data/demo/2026-09.json`. Demo entries нужны для проверки UI states, включая карточку без cover и submission dates. Production snapshots находятся в `src/data/generated/` и не содержат raw provider payloads.
+September 2026 uses a separate normalized demo snapshot at `src/data/demo/2026-09.json`. Demo entries exercise UI states such as a missing cover and submission dates. Production snapshots are stored in `src/data/generated/` and contain no raw provider payloads.
 
 ## GitHub Pages
 
-Workflow находится в `.github/workflows/deploy.yml` и запускается:
+The workflow is in `.github/workflows/deploy.yml` and runs:
 
-- при push в `main` или `master`;
-- вручную через `workflow_dispatch`;
-- по расписанию каждые три часа.
+- on pushes to `main` or `master`;
+- manually through `workflow_dispatch`;
+- every three hours on a schedule.
 
-Он выполняет проверку, sync, static build и deploy.
+It generates localized OG cards, checks the project, synchronizes data, builds the static site, and deploys it.
 
-После push в GitHub:
+After pushing to GitHub:
 
-1. Откройте **Settings → Pages**.
-2. В качестве Source выберите **GitHub Actions**.
-3. Дождитесь workflow deployment.
+1. Open **Settings → Pages**.
+2. Select **GitHub Actions** as the source.
+3. Wait for the deployment workflow to finish.
 
-Для project pages используется base path, вычисляемый из имени репозитория. По умолчанию локально это `/OneMonthOneGame/`. Его можно переопределить:
+For project pages, the base path is derived from the repository name. Locally this defaults to `/OneMonthOneGame/`; override it with:
 
 ```env
 PUBLIC_SITE_URL=https://username.github.io
 PUBLIC_BASE=/OneMonthOneGame
 ```
 
-Для custom domain:
+For a custom domain:
 
 ```env
 PUBLIC_SITE_URL=https://example.com
 PUBLIC_BASE=/
 ```
 
-и добавьте домен одной строкой в `public/CNAME`.
+Then add the domain as one line in `public/CNAME`.
 
-Canonical и Open Graph asset URLs строятся через `Astro.site` и `withBase()`, поэтому project-pages base path и custom-domain root поддерживаются одним helper.
+Canonical URLs, localized links, and OpenGraph asset URLs use the shared site helpers, so project-pages bases and custom-domain roots use the same code.
 
-## Ограничения
+## Limitations
 
-- `entries.json` — undocumented/internal itch.io endpoint; все предположения о его структуре изолированы в `ItchProvider`.
-- Сайт статический: новые данные появляются после очередного sync/build.
-- Обложки загружаются напрямую с внешних URL и не оптимизируются Astro.
-- В проекте нет голосований, аккаунтов, комментариев, рейтингов, backend, realtime API requests и аналитики.
+- `entries.json` is an undocumented/internal itch.io endpoint; assumptions about its shape are isolated in `ItchProvider`.
+- The site is static, so new data appears after the next synchronization and build.
+- Covers are loaded directly from external URLs and are not optimized by Astro.
+- There are no votes, accounts, comments, ratings, backend services, realtime API requests, or analytics.

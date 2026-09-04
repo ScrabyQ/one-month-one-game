@@ -1,15 +1,22 @@
+---
+import { getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const translations = getTranslations(locale);
+---
+
 <section id="about" class="about-section section-shell">
-  <div class="about-section__label eyebrow">О проекте</div>
+  <div class="about-section__label eyebrow">{translations.about.label}</div>
   <div class="about-section__content">
-    <h2>СДЕЛАЙ.<br />ЗАКОНЧИ.<br /><span>ПОКАЖИ.</span></h2>
+    <h2>{translations.about.headingLineOne}<br />{translations.about.headingLineTwo}<br /><span>{translations.about.headingLineThree}</span></h2>
     <div class="about-section__copy">
-      <p>
-        «Один месяц — одна игра» — постоянный челлендж для разработчиков игр. Каждый месяц новая
-        тема и новый шанс закончить небольшой проект.
-      </p>
-      <p>
-        Движок, жанр и опыт не важны. Важно довести игру до конца и показать результат.
-      </p>
+      <p>{translations.about.firstParagraph}</p>
+      <p>{translations.about.secondParagraph}</p>
     </div>
   </div>
 </section>

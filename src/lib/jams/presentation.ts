@@ -1,16 +1,26 @@
 import { JamRoundPresentationSchema } from "../domain/schemas";
 import type { JamRound } from "../domain/types";
+import { formatRoundNumber } from "../i18n/formatters";
+import type { Locale } from "../i18n/types";
 
 export const DEFAULT_ROUND_ACCENT = "#d8ff5c";
-export const DEFAULT_SOCIAL_IMAGE = "/og/default.png";
 
 export interface ResolvedRoundPresentation {
   accent: string;
   socialImage: string;
 }
 
+export function getDefaultSocialImage(locale: Locale): string {
+  return `/og/${locale}/default.png`;
+}
+
+export function getRoundSocialImage(roundNumber: number, locale: Locale): string {
+  return `/og/${locale}/round-${formatRoundNumber(roundNumber)}.png`;
+}
+
 export function getRoundPresentation(
-  round: Pick<JamRound, "slug" | "presentation">,
+  round: Pick<JamRound, "slug" | "round" | "presentation">,
+  locale: Locale,
 ): ResolvedRoundPresentation {
   const parsed = JamRoundPresentationSchema.safeParse(round.presentation ?? {});
   if (!parsed.success) {
@@ -21,6 +31,6 @@ export function getRoundPresentation(
 
   return {
     accent: parsed.data.accent ?? DEFAULT_ROUND_ACCENT,
-    socialImage: parsed.data.socialImage ?? DEFAULT_SOCIAL_IMAGE,
+    socialImage: getRoundSocialImage(round.round, locale),
   };
 }

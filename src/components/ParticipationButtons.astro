@@ -1,13 +1,17 @@
 ---
 import type { JamRound } from "../lib/domain/types";
+import { getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
 import { providerRegistry } from "../lib/providers/registry";
 
 interface Props {
   round: JamRound;
   compact?: boolean;
+  locale: Locale;
 }
 
-const { round, compact = false } = Astro.props;
+const { round, compact = false, locale } = Astro.props;
+const { participationButtons } = getTranslations(locale);
 const providers = [
   ...new Map(
     round.providers.map((config) => {
@@ -30,26 +34,26 @@ const primaryLink = links[0];
         href={primaryLink.href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Войти в текущий раунд через ${primaryLink.meta.label}`}
+        aria-label={participationButtons.enterThrough(primaryLink.meta.label)}
       >
         <span class="participation-button__copy">
-          <strong>Войти в текущий раунд</strong>
-          <small>через {primaryLink.meta.label}</small>
+          <strong>{participationButtons.joinCurrentRound}</strong>
+          <small>{participationButtons.through(primaryLink.meta.label)}</small>
         </span>
         <span class="motion-arrow participation-button__arrow" aria-hidden="true">↗</span>
       </a>
     ) : (
       <span class="btn btn-primary participation-button participation-button--disabled" aria-disabled="true">
         <span class="participation-button__copy">
-          <strong>Войти в текущий раунд</strong>
-          <small>Ссылка появится после настройки</small>
+          <strong>{participationButtons.joinCurrentRound}</strong>
+          <small>{participationButtons.setupLink}</small>
         </span>
         <span class="motion-arrow participation-button__arrow" aria-hidden="true">↗</span>
       </span>
     )}
     {missingProviders.length > 0 && (
       <p class="participation-placeholder" role="status">
-        Ссылка на участие появится после настройки {missingProviders[0]?.meta.label}.
+        {participationButtons.linkWillAppear(missingProviders[0]?.meta.label ?? "")}
       </p>
     )}
   </div>
@@ -61,7 +65,7 @@ const primaryLink = links[0];
       { "participation-buttons--compact": compact },
     ]}
   >
-    <strong class="participation-buttons__heading">Войти в текущий раунд</strong>
+    <strong class="participation-buttons__heading">{participationButtons.joinCurrentRound}</strong>
     <div class="participation-buttons__options">
       {providers.map(({ href, meta }) => (
         href ? (
@@ -70,7 +74,7 @@ const primaryLink = links[0];
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Войти в текущий раунд через ${meta.label}`}
+            aria-label={participationButtons.enterThrough(meta.label)}
           >
             {meta.label} <span class="motion-arrow" aria-hidden="true">↗</span>
           </a>
@@ -83,11 +87,11 @@ const primaryLink = links[0];
     </div>
     {links.length === 0 ? (
       <p class="participation-placeholder" role="status">
-        Ссылки на участие появятся после настройки {providers.map(({ meta }) => meta.label).join(" или ")}.
+        {participationButtons.linksWillAppear(participationButtons.joinLabels(providers.map(({ meta }) => meta.label)))}
       </p>
     ) : missingProviders.length > 0 ? (
       <p class="participation-placeholder" role="status">
-        Ссылка на участие появится после настройки {missingProviders.map(({ meta }) => meta.label).join(" или ")}.
+        {participationButtons.linksWillAppear(participationButtons.joinLabels(missingProviders.map(({ meta }) => meta.label)))}
       </p>
     ) : null}
   </div>

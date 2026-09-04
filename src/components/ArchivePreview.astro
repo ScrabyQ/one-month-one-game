@@ -1,43 +1,46 @@
 ---
 import type { GameSnapshot, JamRound } from "../lib/domain/types";
-import { formatGameCount, formatRoundNumber } from "../lib/i18n/ru";
+import { formatGameCount, formatRoundNumber, getArchiveTheme, getJamContent, getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
 import { getRoundPresentation } from "../lib/jams/presentation";
-import { getArchiveTheme } from "../lib/jams/status";
-import { withBase } from "../lib/site";
+import { getLocalizedPath } from "../lib/site";
 import ArchiveEmptyState from "./ArchiveEmptyState.astro";
 
 interface Props {
   rounds: JamRound[];
   snapshots: Map<string, GameSnapshot>;
+  locale: Locale;
 }
 
-const { rounds, snapshots } = Astro.props;
+const { rounds, snapshots, locale } = Astro.props;
+const translations = getTranslations(locale);
 ---
 
 <section class="archive-preview section-shell">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">Следы прошлых месяцев</p>
-      <h2>Архив</h2>
+      <p class="eyebrow">{translations.home.archiveEyebrow}</p>
+      <h2>{translations.home.archiveTitle}</h2>
     </div>
-    <a class="text-link" href={withBase("/archive/")}>Смотреть весь архив <span class="motion-arrow" aria-hidden="true">↗</span></a>
+    <a class="text-link" href={getLocalizedPath("/archive/", locale)}>{translations.home.archiveLink} <span class="motion-arrow" aria-hidden="true">↗</span></a>
   </div>
 
   {rounds.length > 0 ? (
     <ul class="archive-preview__list">
       {rounds.map((round) => {
-        const presentation = getRoundPresentation(round);
+        const content = getJamContent(round, locale);
+        const presentation = getRoundPresentation(round, locale);
         return (
           <li>
             <a
               class="archive-row archive-row--preview"
-              href={withBase(`/jam/${round.slug}/`)}
+              href={getLocalizedPath(`/jam/${round.slug}/`, locale)}
               style={`--round-accent: ${presentation.accent}`}
             >
               <span class="archive-row__index" aria-hidden="true">{formatRoundNumber(round.round)}</span>
-              <span class="archive-row__month">{round.monthLabel}</span>
-              <span class="archive-row__theme">«{getArchiveTheme(round)}»</span>
-              <span class="archive-row__count">{formatGameCount(snapshots.get(round.id)?.games.length ?? 0)}</span>
+              <span class="archive-row__month">{content.monthLabel}</span>
+              <span class="archive-row__theme">«{getArchiveTheme(round, locale)}»</span>
+              <span class="archive-row__count">{formatGameCount(locale, snapshots.get(round.id)?.games.length ?? 0)}</span>
               <span class="motion-arrow archive-row__arrow" aria-hidden="true">↗</span>
             </a>
           </li>
@@ -45,6 +48,6 @@ const { rounds, snapshots } = Astro.props;
       })}
     </ul>
   ) : (
-    <ArchiveEmptyState compact />
+    <ArchiveEmptyState compact locale={locale} />
   )}
 </section>

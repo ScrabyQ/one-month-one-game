@@ -1,11 +1,16 @@
 ---
 import type { GameSnapshot, JamRound, JamStatus } from "../lib/domain/types";
-import { formatGameCount, formatProviderCount, formatRoundNumber } from "../lib/i18n/ru";
 import {
+  formatGameCount,
   formatJamDateRange,
-  getStatusLabel,
+  formatProviderCount,
+  formatRoundNumber,
+  formatStatusLabel,
+  getJamContent,
   getThemePresentation,
-} from "../lib/jams/status";
+  getTranslations,
+} from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
 import Countdown from "./Countdown.astro";
 import HeroAtmosphere from "./HeroAtmosphere.astro";
 import ParticipationButtons from "./ParticipationButtons.astro";
@@ -15,11 +20,14 @@ interface Props {
   snapshot: GameSnapshot;
   status: JamStatus;
   compact?: boolean;
+  locale: Locale;
 }
 
-const { round, snapshot, status, compact = false } = Astro.props;
-const theme = getThemePresentation(round);
-const statusLabel = getStatusLabel(status);
+const { round, snapshot, status, compact = false, locale } = Astro.props;
+const translations = getTranslations(locale);
+const content = getJamContent(round, locale);
+const theme = getThemePresentation(round, locale);
+const statusLabel = formatStatusLabel(locale, status);
 const providerCount = new Set(
   round.providers.filter((provider) => provider.enabled).map((provider) => provider.type),
 ).size;
@@ -31,49 +39,49 @@ const providerCount = new Set(
     <span class="hero__round-number" data-hero-round-number aria-hidden="true">{formatRoundNumber(round.round)}</span>
     <div class="hero__meta">
       <div class="hero__round-context">
-        <span class="eyebrow">Раунд {formatRoundNumber(round.round)}</span>
+        <span class="eyebrow">{translations.hero.roundLabel(formatRoundNumber(round.round))}</span>
         <span class="hero__round-divider" aria-hidden="true">·</span>
-        <span class="eyebrow">{round.monthLabel}</span>
+        <span class="eyebrow">{content.monthLabel}</span>
         <span class="hero__round-divider" aria-hidden="true">·</span>
         <span class:list={["status-badge", `status-badge--${status}`]}>
           <span class="status-badge__dot" aria-hidden="true"></span>
           {statusLabel}
         </span>
       </div>
-      {round.dataMode === "demo" && <span class="demo-badge">ДЕМО-ДАННЫЕ</span>}
+      {round.dataMode === "demo" && <span class="demo-badge">{translations.hero.demoBadge}</span>}
     </div>
 
     <div class="hero__grid">
       <div class="hero__title-block">
-        <h1>Один месяц —<br /><span>одна игра</span></h1>
-        <p class="hero__intro">Сделай. Закончи. Покажи.</p>
+        <h1>{translations.hero.titleLineOne}<br /><span>{translations.hero.titleLineTwo}</span></h1>
+        <p class="hero__intro">{translations.hero.tagline}</p>
       </div>
 
       <div class:list={["hero__theme-block", { "hero__theme-block--pending": !theme.isAnnounced }]}>
-        <p class="eyebrow hero__theme-label">Тема месяца</p>
+        <p class="eyebrow hero__theme-label">{translations.hero.themeLabel}</p>
         {theme.isAnnounced ? (
           <p class="hero__theme">«{theme.text}»</p>
         ) : (
           <p class="hero__theme-placeholder">{theme.text}</p>
         )}
-        <p class="hero__description">{round.description}</p>
-        <ParticipationButtons round={round} />
+        <p class="hero__description">{content.description}</p>
+        <ParticipationButtons round={round} locale={locale} />
       </div>
     </div>
 
     <div class="hero__footer">
       <div class="hero__metric">
-        <span class="hero__metric-label">Даты раунда</span>
-        <strong>{formatJamDateRange(round)}</strong>
+        <span class="hero__metric-label">{translations.hero.datesLabel}</span>
+        <strong>{formatJamDateRange(locale, round)}</strong>
       </div>
-      <Countdown round={round} />
+      <Countdown round={round} locale={locale} />
       <div class="hero__metric">
-        <span class="hero__metric-label">Площадки</span>
-        <strong>{formatProviderCount(providerCount)}</strong>
+        <span class="hero__metric-label">{translations.hero.providersLabel}</span>
+        <strong>{formatProviderCount(locale, providerCount)}</strong>
       </div>
       <div class="hero__metric hero__metric--right">
-        <span class="hero__metric-label">Уже в галерее</span>
-        <strong>{formatGameCount(snapshot.games.length)}</strong>
+        <span class="hero__metric-label">{translations.hero.inGalleryLabel}</span>
+        <strong>{formatGameCount(locale, snapshot.games.length)}</strong>
       </div>
     </div>
   </div>

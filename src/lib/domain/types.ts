@@ -1,3 +1,5 @@
+import type { Locale } from "../i18n/types";
+
 export type ProviderId = "itch" | "myindie" | (string & {});
 
 export type JamStatus = "upcoming" | "active" | "finished";
@@ -5,6 +7,14 @@ export type JamStatus = "upcoming" | "active" | "finished";
 export type JamThemeState = "announced" | "pending";
 
 export type JamDataMode = "live" | "demo";
+
+export interface LocalizedJamContent {
+  title: string;
+  monthLabel: string;
+  theme: string;
+  themeAnnouncement?: string;
+  description?: string;
+}
 
 export interface GameEntry {
   id: string;
@@ -60,19 +70,14 @@ export type ProviderConfig = ItchProviderConfig | MyIndieProviderConfig;
 
 export interface RoundPresentation {
   accent?: string;
-  socialImage?: string;
 }
 
 export interface JamRound {
   id: string;
   round: number;
   slug: string;
-  title: string;
-  monthLabel: string;
-  theme: string;
+  content: Record<Locale, LocalizedJamContent>;
   themeState: JamThemeState;
-  themeAnnouncement?: string;
-  description?: string;
   startsAt: string;
   endsAt: string;
   providers: ProviderConfig[];

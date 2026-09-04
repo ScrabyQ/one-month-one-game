@@ -1,15 +1,20 @@
 ---
+import { getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
+
 interface Props {
   compact?: boolean;
+  locale: Locale;
 }
 
-const { compact = false } = Astro.props;
+const { compact = false, locale } = Astro.props;
+const { archive } = getTranslations(locale);
 ---
 
 <div class:list={["archive-empty-state", { "archive-empty-state--compact": compact }]} role="status">
   <span class="archive-empty-state__index" aria-hidden="true">—</span>
   <div>
-    <p class="archive-empty-state__title">Это первый раунд.</p>
-    <p class="archive-empty-state__copy">Архив начнёт расти уже со следующего месяца.</p>
+    <p class="archive-empty-state__title">{archive.firstRoundTitle}</p>
+    <p class="archive-empty-state__copy">{archive.firstRoundCopy}</p>
   </div>
 </div>

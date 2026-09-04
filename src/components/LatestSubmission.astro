@@ -1,19 +1,23 @@
 ---
 import type { GameEntry } from "../lib/domain/types";
 import { getSubmissionPresentation } from "../lib/games/presentation";
+import { getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
 
 interface Props {
   game?: GameEntry;
   now?: Date;
+  locale: Locale;
 }
 
-const { game, now = new Date() } = Astro.props;
-const submission = game ? getSubmissionPresentation(game.submittedAt, now) : undefined;
+const { game, now = new Date(), locale } = Astro.props;
+const { latest } = getTranslations(locale);
+const submission = game ? getSubmissionPresentation(game.submittedAt, now, locale) : undefined;
 ---
 
 {game && submission?.iso && submission.label && (
-  <div class="latest-submission" aria-label="Последнее пополнение">
-    <span class="eyebrow">Последнее пополнение</span>
+  <div class="latest-submission" aria-label={latest.ariaLabel}>
+    <span class="eyebrow">{latest.label}</span>
     <p>
       <strong>{game.title}</strong>
       <span> · {game.author.name}</span>

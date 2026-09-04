@@ -74,7 +74,6 @@ export const JamRoundPresentationSchema = z.object({
     .string()
     .regex(/^#[\da-f]{6}$/i, "Accent must use #RRGGBB format")
     .optional(),
-  socialImage: z.string().min(1).optional(),
 });
 
 export type ItchEntriesResponse = z.infer<typeof ItchEntriesResponseSchema>;

@@ -1,17 +1,21 @@
 ---
 import type { JamRound } from "../lib/domain/types";
+import { formatCountdownDisplay } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
 import { getCountdownParts } from "../lib/jams/status";
 
 interface Props {
   round: JamRound;
+  locale: Locale;
 }
 
-const { round } = Astro.props;
+const { round, locale } = Astro.props;
 const initialCountdown = getCountdownParts(round, new Date());
+const initialDisplay = formatCountdownDisplay(locale, initialCountdown);
 ---
 
-<div class="jam-countdown" data-countdown-shell>
-  <span class="jam-countdown__label" data-countdown-label>{initialCountdown.label}</span>
+<div class="jam-countdown" data-countdown-shell data-locale={locale}>
+  <span class="jam-countdown__label" data-countdown-label>{initialDisplay.label}</span>
   <time
     class="jam-countdown__value"
     datetime={initialCountdown.targetAt}
@@ -21,11 +25,13 @@ const initialCountdown = getCountdownParts(round, new Date());
     data-status={initialCountdown.status}
     aria-live="polite"
     aria-atomic="true"
-  >{initialCountdown.value}</time>
+  >{initialDisplay.value}</time>
 </div>
 
 <script>
+  import { formatCountdownDisplay } from "../lib/i18n";
   import { getCountdownPartsForDates } from "../lib/jams/status";
+  import type { Locale } from "../lib/i18n/types";
 
   const countdownElements = document.querySelectorAll<HTMLElement>("[data-countdown]");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -47,20 +53,23 @@ const initialCountdown = getCountdownParts(round, new Date());
       element.dataset.end ?? "",
       new Date(),
     );
-    const shell = element.closest("[data-countdown-shell]");
+    const shell = element.closest<HTMLElement>("[data-countdown-shell]");
     const label = shell?.querySelector<HTMLElement>("[data-countdown-label]");
 
     if (!label) return;
 
+    const locale: Locale = shell?.dataset.locale === "ru" ? "ru" : "en";
+    const display = formatCountdownDisplay(locale, parts);
+
     const previousLabel = label.textContent ?? "";
     const previousValue = element.textContent ?? "";
     const previousStatus = element.dataset.status ?? "";
-    const displayChanged = previousLabel !== parts.label
-      || previousValue !== parts.value
+    const displayChanged = previousLabel !== display.label
+      || previousValue !== display.value
       || previousStatus !== parts.status;
 
-    label.textContent = parts.label;
-    element.textContent = parts.value;
+    label.textContent = display.label;
+    element.textContent = display.value;
     element.dataset.status = parts.status;
     element.setAttribute("datetime", parts.targetAt);
     if (displayChanged) animateCountdownValue(element);

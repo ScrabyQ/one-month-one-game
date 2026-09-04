@@ -18,6 +18,13 @@ const base = normalizeBase(
 const config = {
   output: "static",
   base,
+  i18n: {
+    locales: ["en", "ru"],
+    defaultLocale: "en",
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

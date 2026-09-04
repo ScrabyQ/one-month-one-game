@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "generate:og": "node scripts/generate-og-cards.mjs",
+    "generate:og": "tsx scripts/generate-og-cards.ts",
     "sync": "tsx scripts/sync-games.ts",
     "test": "vitest run",
     "test:watch": "vitest",

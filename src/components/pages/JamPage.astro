@@ -1,0 +1,56 @@
+---
+import GameGrid from "../GameGrid.astro";
+import Hero from "../Hero.astro";
+import LatestSubmission from "../LatestSubmission.astro";
+import { getSnapshotForRound } from "../../lib/data/snapshots";
+import { getJamContent, getThemePresentation, getTranslations } from "../../lib/i18n";
+import type { Locale } from "../../lib/i18n/types";
+import type { JamRound } from "../../lib/domain/types";
+import { getLatestGame } from "../../lib/games/presentation";
+import { getJamStatus } from "../../lib/jams/status";
+import { getLocalizedPath } from "../../lib/site";
+import Layout from "../../layouts/Layout.astro";
+
+interface Props {
+  locale: Locale;
+  round: JamRound;
+}
+
+const { locale, round } = Astro.props;
+const translations = getTranslations(locale);
+const content = getJamContent(round, locale);
+const now = new Date();
+const snapshot = getSnapshotForRound(round);
+const latestGame = getLatestGame(snapshot.games);
+const status = getJamStatus(round, now);
+const theme = getThemePresentation(round, locale);
+const themeDescription = theme.isAnnounced
+  ? translations.theme.announcedDescription(theme.text)
+  : theme.text;
+---
+
+<Layout
+  locale={locale}
+  title={translations.meta.roundTitle(content.monthLabel)}
+  description={translations.meta.roundDescription(content.monthLabel, themeDescription)}
+  canonicalPath={`/jam/${round.slug}/`}
+  round={round}
+>
+  <div class="round-breadcrumb shell">
+    <a href={getLocalizedPath("/archive/", locale)}>← {translations.round.archiveLink}</a>
+    <span aria-hidden="true">/</span>
+    <span>{content.monthLabel}</span>
+  </div>
+  <Hero round={round} snapshot={snapshot} status={status} compact locale={locale} />
+  <section class="gallery-section section-shell" aria-labelledby="round-gallery-title">
+    <div class="section-heading section-heading--gallery">
+      <div>
+        <p class="eyebrow">{content.monthLabel}</p>
+        <h2 id="round-gallery-title">{translations.round.gamesTitle}</h2>
+        <LatestSubmission game={latestGame} now={now} locale={locale} />
+      </div>
+      <p class="section-heading__aside">{translations.round.externalPages(snapshot.games.length)}</p>
+    </div>
+    <GameGrid games={snapshot.games} round={round} locale={locale} />
+  </section>
+</Layout>

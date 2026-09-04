@@ -1,0 +1,43 @@
+---
+import ArchiveEmptyState from "../ArchiveEmptyState.astro";
+import ArchiveList from "../ArchiveList.astro";
+import { jams } from "../../config/jams";
+import { getSnapshotForRound } from "../../lib/data/snapshots";
+import type { GameSnapshot } from "../../lib/domain/types";
+import { getTranslations } from "../../lib/i18n";
+import type { Locale } from "../../lib/i18n/types";
+import { getFinishedRounds, validateJamRounds } from "../../lib/jams/status";
+import Layout from "../../layouts/Layout.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const { archive, meta } = getTranslations(locale);
+
+validateJamRounds(jams);
+const now = new Date();
+const rounds = getFinishedRounds(jams, now);
+const snapshots = new Map<string, GameSnapshot>(
+  rounds.map((round) => [round.id, getSnapshotForRound(round)]),
+);
+---
+
+<Layout
+  locale={locale}
+  title={meta.archiveTitle}
+  description={meta.archiveDescription}
+  canonicalPath="/archive/"
+>
+  <section class="page-intro section-shell">
+    <p class="eyebrow">{archive.introEyebrow}</p>
+    <h1>{archive.introTitleLineOne}<br /><span>{archive.introTitleLineTwo}</span></h1>
+    <p>{archive.introCopy}</p>
+  </section>
+  <section class="archive-section section-shell" aria-label={archive.listLabel}>
+    {rounds.length > 0
+      ? <ArchiveList rounds={rounds} snapshots={snapshots} locale={locale} />
+      : <ArchiveEmptyState locale={locale} />}
+  </section>
+</Layout>

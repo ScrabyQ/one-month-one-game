@@ -1,0 +1,27 @@
+---
+import { getTranslations } from "../../lib/i18n";
+import type { Locale } from "../../lib/i18n/types";
+import { getLocalizedPath } from "../../lib/site";
+import Layout from "../../layouts/Layout.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const translations = getTranslations(locale);
+---
+
+<Layout
+  locale={locale}
+  title={translations.meta.notFoundTitle}
+  description={translations.meta.notFoundDescription}
+  canonicalPath="/404/"
+>
+  <section class="not-found section-shell">
+    <p class="eyebrow">{translations.notFound.eyebrow}</p>
+    <h1>{translations.notFound.titleLineOne}<br /><span>{translations.notFound.titleLineTwo}</span></h1>
+    <p>{translations.notFound.copy}</p>
+    <a class="btn btn-primary" href={getLocalizedPath("/", locale)}>{translations.notFound.homeLink} <span class="motion-arrow" aria-hidden="true">↗</span></a>
+  </section>
+</Layout>

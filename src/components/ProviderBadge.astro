@@ -1,16 +1,20 @@
 ---
 import type { ProviderId } from "../lib/domain/types";
+import { getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
 import { providerRegistry } from "../lib/providers/registry";
 
 interface Props {
   provider: ProviderId;
+  locale: Locale;
 }
 
-const { provider } = Astro.props;
+const { provider, locale } = Astro.props;
 const meta = providerRegistry.getMeta(provider);
+const translations = getTranslations(locale);
 ---
 
-<span class="provider-badge" data-provider={provider} title={`Источник: ${meta.label}`}>
+<span class="provider-badge" data-provider={provider} title={translations.game.sourceTitle(meta.label)}>
   <span class="provider-badge__dot" aria-hidden="true"></span>
   {meta.badgeLabel}
 </span>

@@ -1,33 +1,35 @@
 ---
 import type { GameSnapshot, JamRound } from "../lib/domain/types";
-import { formatGameCount, formatRoundNumber } from "../lib/i18n/ru";
+import { formatGameCount, formatRoundNumber, getArchiveTheme, getJamContent } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
 import { getRoundPresentation } from "../lib/jams/presentation";
-import { getArchiveTheme } from "../lib/jams/status";
-import { withBase } from "../lib/site";
+import { getLocalizedPath } from "../lib/site";
 
 interface Props {
   rounds: JamRound[];
   snapshots: Map<string, GameSnapshot>;
+  locale: Locale;
 }
 
-const { rounds, snapshots } = Astro.props;
+const { rounds, snapshots, locale } = Astro.props;
 ---
 
 <ul class="archive-list">
   {rounds.map((round) => {
     const snapshot = snapshots.get(round.id);
-    const presentation = getRoundPresentation(round);
+    const content = getJamContent(round, locale);
+    const presentation = getRoundPresentation(round, locale);
     return (
       <li>
         <a
           class="archive-row archive-row--full"
-          href={withBase(`/jam/${round.slug}/`)}
+          href={getLocalizedPath(`/jam/${round.slug}/`, locale)}
           style={`--round-accent: ${presentation.accent}`}
         >
           <span class="archive-row__index" aria-hidden="true">{formatRoundNumber(round.round)}</span>
-          <span class="archive-row__month">{round.monthLabel}</span>
-          <span class="archive-row__theme">«{getArchiveTheme(round)}»</span>
-          <span class="archive-row__count">{formatGameCount(snapshot?.games.length ?? 0)}</span>
+          <span class="archive-row__month">{content.monthLabel}</span>
+          <span class="archive-row__theme">«{getArchiveTheme(round, locale)}»</span>
+          <span class="archive-row__count">{formatGameCount(locale, snapshot?.games.length ?? 0)}</span>
           <span class="motion-arrow archive-row__arrow" aria-hidden="true">↗</span>
         </a>
       </li>

@@ -42,9 +42,12 @@ describe("game submission presentation", () => {
   it("formats valid dates and returns relative labels for a recent submission", () => {
     const now = new Date("2026-09-03T20:00:00+03:00");
 
-    expect(formatSubmissionDate("2019-11-14 14:38:26")).toContain("14 ноября 2019");
-    expect(formatSubmissionLabel("2026-09-03T09:15:00+03:00", now)).toBe("сегодня");
-    expect(formatSubmissionLabel("2026-09-02T09:15:00+03:00", now)).toBe("вчера");
+    expect(formatSubmissionDate("2019-11-14 14:38:26", "ru")).toContain("14 ноября 2019");
+    expect(formatSubmissionDate("2019-11-14 14:38:26", "en")).toContain("November 14, 2019");
+    expect(formatSubmissionLabel("2026-09-03T09:15:00+03:00", now, "ru")).toBe("сегодня");
+    expect(formatSubmissionLabel("2026-09-02T09:15:00+03:00", now, "ru")).toBe("вчера");
+    expect(formatSubmissionLabel("2026-09-03T09:15:00+03:00", now, "en")).toBe("today");
+    expect(formatSubmissionLabel("2026-09-02T09:15:00+03:00", now, "en")).toBe("yesterday");
     expect(getSubmissionPresentation("not-a-date", now)).toEqual({ isRecent: false });
   });
 

@@ -1,6 +1,8 @@
 ---
 import type { GameEntry } from "../lib/domain/types";
 import { getSubmissionPresentation } from "../lib/games/presentation";
+import { getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
 import { getInitials } from "../lib/ui";
 import ProviderBadge from "./ProviderBadge.astro";
 
@@ -10,11 +12,13 @@ interface Props {
   loading?: "eager" | "lazy";
   isLatest?: boolean;
   now?: Date;
+  locale: Locale;
 }
 
-const { game, index, loading = "lazy", isLatest = false, now = new Date() } = Astro.props;
-const initials = getInitials(game.title);
-const submission = getSubmissionPresentation(game.submittedAt, now);
+const { game, index, loading = "lazy", isLatest = false, now = new Date(), locale } = Astro.props;
+const translations = getTranslations(locale);
+const initials = getInitials(game.title, translations.common.initialsFallback);
+const submission = getSubmissionPresentation(game.submittedAt, now, locale);
 ---
 
 <a
@@ -22,39 +26,39 @@ const submission = getSubmissionPresentation(game.submittedAt, now);
   href={game.url}
   target="_blank"
   rel="noopener noreferrer"
-  aria-label={`Открыть игру «${game.title}» на внешней площадке${isLatest ? ", последнее пополнение" : ""}`}
+  aria-label={translations.game.openAria(game.title, isLatest)}
 >
   <div class="game-card__cover" data-cover-frame>
     <div class="cover-fallback" aria-hidden="true">
       <span class="cover-fallback__mark">{initials}</span>
-      <span class="cover-fallback__caption">один месяц<br />одна игра</span>
+      <span class="cover-fallback__caption">{translations.game.fallbackCaptionLineOne}<br />{translations.game.fallbackCaptionLineTwo}</span>
     </div>
     {game.coverUrl && (
       <img
         src={game.coverUrl}
-        alt={`Обложка игры «${game.title}»`}
+        alt={translations.game.coverAlt(game.title)}
         loading={loading}
         decoding="async"
         data-cover-image
       />
     )}
     <span class="game-card__number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-    {isLatest && <span class="game-card__latest">Последнее пополнение</span>}
+    {isLatest && <span class="game-card__latest">{translations.game.latestLabel}</span>}
   </div>
   <div class="game-card__body">
     <div class="game-card__title-row">
       <h3>{game.title}</h3>
-      <ProviderBadge provider={game.provider} />
+      <ProviderBadge provider={game.provider} locale={locale} />
     </div>
     <p class="game-card__author">{game.author.name}</p>
     {submission.iso && submission.dateLabel && (
       <div class="game-card__submission">
         <time datetime={submission.iso}>{submission.dateLabel}</time>
-        {submission.isRecent && <span class="game-card__new">NEW</span>}
+        {submission.isRecent && <span class="game-card__new">{translations.game.newLabel}</span>}
       </div>
     )}
     {game.description && <p class="game-card__description">{game.description}</p>}
-    <span class="game-card__external" aria-hidden="true">Смотреть игру <span class="motion-arrow">↗</span></span>
+    <span class="game-card__external" aria-hidden="true">{translations.game.viewGame} <span class="motion-arrow">↗</span></span>
   </div>
 </a>
 

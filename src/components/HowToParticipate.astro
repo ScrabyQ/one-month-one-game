@@ -1,34 +1,35 @@
 ---
 import type { JamRound } from "../lib/domain/types";
+import { getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
 import { providerRegistry } from "../lib/providers/registry";
 
 interface Props {
   round: JamRound;
+  locale: Locale;
 }
 
-const { round } = Astro.props;
+const { round, locale } = Astro.props;
+const { participation } = getTranslations(locale);
 const providerLabels = [...new Set(round.providers.map((config) => providerRegistry.getMeta(config.type).label))];
 const uploadDestination = providerLabels.length === 1
   ? providerLabels[0]
   : providerLabels.length > 1
-    ? "поддерживаемую площадку"
-    : "площадку";
+    ? participation.supportedPlatform
+    : participation.genericPlatform;
 
-const steps = [
-  { number: "01", title: "Сделай игру", detail: "Одна законченная идея" },
-  { number: "02", title: `Загрузи на ${uploadDestination}`, detail: "Страница игры остаётся на площадке" },
-  { number: "03", title: "Отправь в джем", detail: "Добавь игру в текущий раунд" },
-  { number: "04", title: "Появись здесь", detail: "Мы подтянем её автоматически" },
-];
+const steps = participation.steps.map((step, index) => index === 1
+  ? { ...step, title: participation.uploadTo(uploadDestination) }
+  : step);
 ---
 
 <section id="participate" class="how-section section-shell" aria-labelledby="how-title">
   <div class="section-heading how-section__heading">
     <div>
-      <p class="eyebrow">Участие</p>
-      <h2 id="how-title">Как участвовать</h2>
+      <p class="eyebrow">{participation.eyebrow}</p>
+      <h2 id="how-title">{participation.title}</h2>
     </div>
-    <p class="section-heading__aside">Доведи маленькую идею до конца и покажи результат.</p>
+    <p class="section-heading__aside">{participation.aside}</p>
   </div>
 
   <ol class="how-steps">
@@ -43,5 +44,5 @@ const steps = [
     ))}
   </ol>
 
-  <p class="how-section__note">Игры появляются здесь автоматически после отправки в джем.</p>
+  <p class="how-section__note">{participation.note}</p>
 </section>

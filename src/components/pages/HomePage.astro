@@ -1,0 +1,80 @@
+---
+import AboutChallenge from "../AboutChallenge.astro";
+import ArchivePreview from "../ArchivePreview.astro";
+import GameGrid from "../GameGrid.astro";
+import Hero from "../Hero.astro";
+import HowToParticipate from "../HowToParticipate.astro";
+import LatestSubmission from "../LatestSubmission.astro";
+import { jams } from "../../config/jams";
+import { getSnapshotForRound } from "../../lib/data/snapshots";
+import { getJamContent, getTranslations } from "../../lib/i18n";
+import type { Locale } from "../../lib/i18n/types";
+import {
+  getFeaturedRound,
+  getFinishedRounds,
+  getJamStatus,
+  validateJamRounds,
+} from "../../lib/jams/status";
+import type { GameSnapshot } from "../../lib/domain/types";
+import { getLatestGame } from "../../lib/games/presentation";
+import Layout from "../../layouts/Layout.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const translations = getTranslations(locale);
+
+validateJamRounds(jams);
+const now = new Date();
+const featuredRound = getFeaturedRound(jams, now);
+const featuredContent = getJamContent(featuredRound, locale);
+const featuredSnapshot = getSnapshotForRound(featuredRound);
+const latestGame = getLatestGame(featuredSnapshot.games);
+const archiveRounds = getFinishedRounds(jams, now)
+  .filter((round) => round.id !== featuredRound.id)
+  .slice(0, 4);
+const archiveSnapshots = new Map<string, GameSnapshot>(
+  archiveRounds.map((round) => [round.id, getSnapshotForRound(round)]),
+);
+---
+
+<Layout
+  locale={locale}
+  title={translations.meta.homeTitle(featuredContent.monthLabel)}
+  description={translations.meta.homeDescription}
+  canonicalPath="/"
+>
+  <Hero
+    round={featuredRound}
+    snapshot={featuredSnapshot}
+    status={getJamStatus(featuredRound, now)}
+    locale={locale}
+  />
+
+  <HowToParticipate round={featuredRound} locale={locale} />
+
+  <section class="gallery-section section-shell" aria-labelledby="gallery-title">
+    <div class="section-heading section-heading--gallery">
+      <div>
+        <p class="eyebrow">{featuredContent.monthLabel}</p>
+        <h2 id="gallery-title">{translations.home.galleryTitle}</h2>
+        <p class="section-heading__subheading">{translations.home.gallerySubheading}</p>
+        <LatestSubmission game={latestGame} now={now} locale={locale} />
+      </div>
+      <p class="section-heading__aside">{translations.home.galleryAside}</p>
+    </div>
+    <GameGrid
+      games={featuredSnapshot.games}
+      round={featuredRound}
+      highlightLatest
+      latestGame={latestGame}
+      now={now}
+      locale={locale}
+    />
+  </section>
+
+  <AboutChallenge locale={locale} />
+  <ArchivePreview rounds={archiveRounds} snapshots={archiveSnapshots} locale={locale} />
+</Layout>

@@ -1,23 +1,28 @@
 ---
 import type { JamRound } from "../lib/domain/types";
-import { withBase } from "../lib/site";
+import { getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
+import { getLocalizedPath as getSiteLocalizedPath } from "../lib/site";
 
 interface Props {
   currentRound: JamRound;
+  locale: Locale;
 }
 
-const { currentRound } = Astro.props;
+const { currentRound, locale } = Astro.props;
+const translations = getTranslations(locale);
 const currentYear = new Date().getFullYear();
+const homePath = getSiteLocalizedPath("/", locale);
 ---
 
 <footer class="site-footer">
   <div class="shell site-footer__inner">
-    <p>Один месяц — одна игра</p>
-    <nav class="site-footer__links" aria-label="Ссылки в подвале">
-      <a href={withBase("/jam/" + currentRound.slug + "/")}>Текущий раунд</a>
-      <a href={withBase("/#participate")}>Принять участие</a>
-      <a href={withBase("/archive/")}>Архив</a>
+    <p>{translations.common.projectTitle}</p>
+    <nav class="site-footer__links" aria-label={translations.footer.linksLabel}>
+      <a href={getSiteLocalizedPath(`/jam/${currentRound.slug}/`, locale)}>{translations.footer.currentRound}</a>
+      <a href={`${homePath}#participate`}>{translations.footer.participate}</a>
+      <a href={getSiteLocalizedPath("/archive/", locale)}>{translations.footer.archive}</a>
     </nav>
-    <p class="site-footer__note">{currentYear} · Статическая витрина независимых игр</p>
+    <p class="site-footer__note">{currentYear} · {translations.footer.note}</p>
   </div>
 </footer>

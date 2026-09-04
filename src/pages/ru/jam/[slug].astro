@@ -1,0 +1,13 @@
+---
+import JamPage from "../../../components/pages/JamPage.astro";
+import type { JamRound } from "../../../lib/domain/types";
+import { getJamStaticPaths } from "../../../lib/jams/routes";
+
+export function getStaticPaths() {
+  return getJamStaticPaths("ru");
+}
+
+const { round } = Astro.props as { round: JamRound };
+---
+
+<JamPage locale="ru" round={round} />

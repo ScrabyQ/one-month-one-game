@@ -1,53 +1,13 @@
 ---
-import GameGrid from "../../components/GameGrid.astro";
-import Hero from "../../components/Hero.astro";
-import Layout from "../../layouts/Layout.astro";
-import LatestSubmission from "../../components/LatestSubmission.astro";
-import { jams } from "../../config/jams";
-import { getSnapshotForRound } from "../../lib/data/snapshots";
+import JamPage from "../../components/pages/JamPage.astro";
 import type { JamRound } from "../../lib/domain/types";
-import { getLatestGame } from "../../lib/games/presentation";
-import { getJamStatus, getThemePresentation, validateJamRounds } from "../../lib/jams/status";
-import { withBase } from "../../lib/site";
+import { getJamStaticPaths } from "../../lib/jams/routes";
 
 export function getStaticPaths() {
-  validateJamRounds(jams);
-  return jams.map((round) => ({
-    params: { slug: round.slug },
-    props: { round },
-  }));
+  return getJamStaticPaths("en");
 }
 
 const { round } = Astro.props as { round: JamRound };
-const now = new Date();
-const snapshot = getSnapshotForRound(round);
-const latestGame = getLatestGame(snapshot.games);
-const status = getJamStatus(round, now);
-const theme = getThemePresentation(round);
-const themeDescription = theme.isAnnounced ? `тема «${theme.text}»` : theme.text;
 ---
 
-<Layout
-  title={`${round.monthLabel} — Один месяц, одна игра`}
-  description={`${round.monthLabel}: ${themeDescription}, игры и ссылки на площадки.`}
-  canonicalPath={`/jam/${round.slug}/`}
-  round={round}
->
-  <div class="round-breadcrumb shell">
-    <a href={withBase("/archive/")}>← Архив</a>
-    <span aria-hidden="true">/</span>
-    <span>{round.monthLabel}</span>
-  </div>
-  <Hero round={round} snapshot={snapshot} status={status} compact />
-  <section class="gallery-section section-shell" aria-labelledby="round-gallery-title">
-    <div class="section-heading section-heading--gallery">
-      <div>
-        <p class="eyebrow">{round.monthLabel}</p>
-        <h2 id="round-gallery-title">Игры раунда</h2>
-        <LatestSubmission game={latestGame} now={now} />
-      </div>
-      <p class="section-heading__aside">{snapshot.games.length} внешних страниц игр</p>
-    </div>
-    <GameGrid games={snapshot.games} round={round} />
-  </section>
-</Layout>
+<JamPage locale="en" round={round} />
