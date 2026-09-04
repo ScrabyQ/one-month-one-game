@@ -13,6 +13,7 @@ const { currentRound, locale } = Astro.props;
 const translations = getTranslations(locale);
 const currentYear = new Date().getFullYear();
 const homePath = getSiteLocalizedPath("/", locale);
+const rulesPath = getSiteLocalizedPath("/rules/", locale);
 ---
 
 <footer class="site-footer">
@@ -20,6 +21,7 @@ const homePath = getSiteLocalizedPath("/", locale);
     <p>{translations.common.projectTitle}</p>
     <nav class="site-footer__links" aria-label={translations.footer.linksLabel}>
       <a href={getSiteLocalizedPath(`/jam/${currentRound.slug}/`, locale)}>{translations.footer.currentRound}</a>
+      <a href={rulesPath}>{translations.footer.rules}</a>
       <a href={`${homePath}#participate`}>{translations.footer.participate}</a>
       <a href={getSiteLocalizedPath("/archive/", locale)}>{translations.footer.archive}</a>
     </nav>

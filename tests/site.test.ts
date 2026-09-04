@@ -42,9 +42,18 @@ describe("localized paths and locale resolution", () => {
   it("switches equivalent routes with a project-pages base", () => {
     expect(getLocalizedPath("/archive/", "ru", "/OneMonthOneGame/")).toBe("/OneMonthOneGame/ru/archive/");
     expect(getLocalizedPath("/OneMonthOneGame/ru/archive/", "en", "/OneMonthOneGame/")).toBe("/OneMonthOneGame/archive/");
+    expect(getLocalizedPath("/rules/", "ru", "/OneMonthOneGame/")).toBe("/OneMonthOneGame/ru/rules/");
+    expect(getLocalizedPath("/OneMonthOneGame/ru/rules/", "en", "/OneMonthOneGame/")).toBe("/OneMonthOneGame/rules/");
     expect(getLocalizedPath("/jam/2026-09/", "ru", "/OneMonthOneGame/")).toBe("/OneMonthOneGame/ru/jam/2026-09/");
     expect(getLocalizedPath("/OneMonthOneGame/ru/jam/2026-09/", "en", "/OneMonthOneGame/")).toBe("/OneMonthOneGame/jam/2026-09/");
     expect(getLocalizedPath("/archive/", "ru", "/")).toBe("/ru/archive/");
+    expect(getLocalizedPath("/rules/", "ru", "/")).toBe("/ru/rules/");
+    expect(getLocalizedPath("/ru/rules/", "en", "/")).toBe("/rules/");
+    expect(getLocalizedUrl(
+      new URL("https://example.com/OneMonthOneGame/ru/rules/?view=all#faq"),
+      "en",
+      "/OneMonthOneGame/",
+    )).toBe("/OneMonthOneGame/rules/?view=all#faq");
   });
 
   it("preserves query strings and hashes while switching locale", () => {

@@ -14,10 +14,12 @@ const { round, currentRound, locale } = Astro.props;
 const translations = getTranslations(locale);
 const currentPath = Astro.url.pathname;
 const homePath = getLocalizedPath("/", locale);
+const rulesPath = getLocalizedPath("/rules/", locale);
 const archivePath = getLocalizedPath("/archive/", locale);
 const currentRoundPath = getLocalizedPath(`/jam/${currentRound.slug}/`, locale);
 const isCurrentPath = (path: string) => currentPath === path;
 const isCurrentMonth = currentPath === homePath || currentPath === currentRoundPath;
+const isRulesPath = isCurrentPath(rulesPath);
 const aboutPath = `${homePath}#about`;
 ---
 
@@ -34,6 +36,11 @@ const aboutPath = `${homePath}#about`;
         href={homePath}
         aria-current={isCurrentMonth ? "page" : undefined}
       >{translations.nav.currentMonth}</a>
+      <a
+        class:list={{ "site-nav__current": isRulesPath }}
+        href={rulesPath}
+        aria-current={isRulesPath ? "page" : undefined}
+      >{translations.nav.rules}</a>
       <a
         class:list={{ "site-nav__current": isCurrentPath(archivePath) }}
         href={archivePath}
@@ -64,6 +71,11 @@ const aboutPath = `${homePath}#about`;
           href={homePath}
           aria-current={isCurrentMonth ? "page" : undefined}
         >{translations.nav.currentMonth}</a>
+        <a
+          class:list={{ "site-nav__current": isRulesPath }}
+          href={rulesPath}
+          aria-current={isRulesPath ? "page" : undefined}
+        >{translations.nav.rules}</a>
         <a
           class:list={{ "site-nav__current": isCurrentPath(archivePath) }}
           href={archivePath}

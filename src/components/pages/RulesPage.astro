@@ -1,0 +1,125 @@
+---
+import { getTranslations } from "../../lib/i18n";
+import type { Locale } from "../../lib/i18n/types";
+import { getLocalizedPath } from "../../lib/site";
+import Layout from "../../layouts/Layout.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const translations = getTranslations(locale);
+const { rules } = translations;
+const homePath = getLocalizedPath("/", locale);
+---
+
+<Layout
+  locale={locale}
+  title={translations.meta.rulesTitle}
+  description={translations.meta.rulesDescription}
+  canonicalPath="/rules/"
+>
+  <article class="rules-page">
+    <section class="rules-intro page-intro section-shell" aria-labelledby="rules-title">
+      <div class="rules-intro__content">
+        <p class="eyebrow">{rules.intro.eyebrow}</p>
+        <h1 id="rules-title">{rules.intro.titleLineOne}<br /><span>{rules.intro.titleLineTwo}</span></h1>
+        <div class="rules-intro__copy">
+          {rules.intro.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+      <span class="rules-intro__mark" aria-hidden="true">{rules.intro.decorativeLabel}</span>
+    </section>
+
+    <section class="rules-summary section-shell" aria-labelledby="rules-short-title">
+      <div class="rules-summary__block">
+        <h2 id="rules-short-title">{rules.shortVersion.label}</h2>
+        <div class="rules-summary__content">
+          <ul class="rules-summary__points">
+            {rules.shortVersion.points.map((point) => <li>{point}</li>)}
+          </ul>
+          <p class="rules-summary__note">{rules.shortVersion.note}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rules-core section-shell" aria-labelledby="rules-core-title">
+      <div class="rules-section__heading">
+        <h2 id="rules-core-title">{rules.core.heading}</h2>
+      </div>
+      <ol class="rules-list">
+        {rules.core.items.map((item) => (
+          <li class="rule-row">
+            <span class="rule-row__number">{item.number}</span>
+            <h3 class="rule-row__title">{item.title}</h3>
+            <p class="rule-row__description">{item.description}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="rules-allowed section-shell" aria-labelledby="rules-allowed-title">
+      <div class="rules-allowed__heading">
+        <p class="eyebrow">{rules.allowed.eyebrow}</p>
+        <h2 id="rules-allowed-title">{rules.allowed.heading}</h2>
+      </div>
+      <div class="rules-allowed__content">
+        <ul class="rules-allowed__list">
+          {rules.allowed.items.map((item) => <li>{item}</li>)}
+        </ul>
+        <div class="rules-allowed__copy">
+          {rules.allowed.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="rules-faq section-shell" aria-labelledby="rules-faq-title">
+      <div class="rules-section__heading">
+        <p class="eyebrow">{rules.faq.eyebrow}</p>
+        <h2 id="rules-faq-title">{rules.faq.heading}</h2>
+      </div>
+      <div class="rules-faq__list">
+        {rules.faq.items.map((item, index) => (
+          <details class:list={["rules-faq__item", { "rules-faq__item--reassurance": index === rules.faq.items.length - 1 }]}>
+            <summary class="rules-faq__summary">
+              <span>{item.question}</span>
+              <span class="rules-faq__indicator" aria-hidden="true">+</span>
+            </summary>
+            <div class="rules-faq__answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="rules-origin section-shell" aria-labelledby="rules-origin-title">
+      <div class="rules-origin__label">
+        <p class="eyebrow">{rules.origin.eyebrow}</p>
+      </div>
+      <div class="rules-origin__content">
+        <h2 id="rules-origin-title">{rules.origin.heading}</h2>
+        <p>{rules.origin.copy}</p>
+        <a
+          class="text-link"
+          href="https://itch.io/jam/one-game-a-month-36"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {rules.origin.linkLabel} <span class="motion-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="rules-cta section-shell" aria-labelledby="rules-cta-title">
+      <div>
+        <h2 id="rules-cta-title">{rules.cta.heading}</h2>
+        <p>{rules.cta.copy}</p>
+      </div>
+      <a class="btn btn-primary" href={`${homePath}#participate`}>
+        {rules.cta.linkLabel} <span class="motion-arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+  </article>
+</Layout>

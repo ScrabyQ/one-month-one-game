@@ -34,6 +34,51 @@ describe("translation dictionaries", () => {
       expect(og.roundImageAlt("002", "September 2026")).toBeTruthy();
     }
   });
+
+  it("contain complete, structurally matching Rules content", () => {
+    const englishRules = getTranslations("en").rules;
+    const russianRules = getTranslations("ru").rules;
+
+    expect(englishRules.core.items).toHaveLength(9);
+    expect(russianRules.core.items).toHaveLength(englishRules.core.items.length);
+    expect(englishRules.faq.items).toHaveLength(9);
+    expect(russianRules.faq.items).toHaveLength(englishRules.faq.items.length);
+
+    for (const locale of SUPPORTED_LOCALES) {
+      const translations = getTranslations(locale);
+      const { nav, footer, participation, meta, rules } = translations;
+
+      expect(nav.rules).toBeTruthy();
+      expect(footer.rules).toBeTruthy();
+      expect(participation.rulesLink).toBeTruthy();
+      expect(meta.rulesTitle).toBeTruthy();
+      expect(meta.rulesDescription).toBeTruthy();
+      expect(rules.intro.eyebrow).toBeTruthy();
+      expect(rules.intro.titleLineOne).toBeTruthy();
+      expect(rules.intro.titleLineTwo).toBeTruthy();
+      expect(rules.intro.decorativeLabel).toBeTruthy();
+      expect(rules.intro.paragraphs.every(Boolean)).toBe(true);
+      expect(rules.shortVersion.label).toBeTruthy();
+      expect(rules.shortVersion.points.every(Boolean)).toBe(true);
+      expect(rules.shortVersion.note).toBeTruthy();
+      expect(rules.core.heading).toBeTruthy();
+      expect(rules.core.items.every(({ number, title, description }) => number && title && description)).toBe(true);
+      expect(rules.allowed.eyebrow).toBeTruthy();
+      expect(rules.allowed.heading).toBeTruthy();
+      expect(rules.allowed.items.every(Boolean)).toBe(true);
+      expect(rules.allowed.paragraphs.every(Boolean)).toBe(true);
+      expect(rules.faq.eyebrow).toBeTruthy();
+      expect(rules.faq.heading).toBeTruthy();
+      expect(rules.faq.items.every(({ question, answer }) => question && answer)).toBe(true);
+      expect(rules.origin.eyebrow).toBeTruthy();
+      expect(rules.origin.heading).toBeTruthy();
+      expect(rules.origin.copy).toBeTruthy();
+      expect(rules.origin.linkLabel).toBeTruthy();
+      expect(rules.cta.heading).toBeTruthy();
+      expect(rules.cta.copy).toBeTruthy();
+      expect(rules.cta.linkLabel).toBeTruthy();
+    }
+  });
 });
 
 describe("localized formatters", () => {

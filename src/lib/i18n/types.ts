@@ -23,6 +23,47 @@ export interface OgTranslations {
   defaultImageAlt: string;
 }
 
+export interface RulesTranslations {
+  intro: {
+    eyebrow: string;
+    titleLineOne: string;
+    titleLineTwo: string;
+    paragraphs: readonly string[];
+    decorativeLabel: string;
+  };
+  shortVersion: {
+    label: string;
+    points: readonly string[];
+    note: string;
+  };
+  core: {
+    heading: string;
+    items: readonly { number: string; title: string; description: string }[];
+  };
+  allowed: {
+    eyebrow: string;
+    heading: string;
+    items: readonly string[];
+    paragraphs: readonly string[];
+  };
+  faq: {
+    eyebrow: string;
+    heading: string;
+    items: readonly { question: string; answer: string }[];
+  };
+  origin: {
+    eyebrow: string;
+    heading: string;
+    copy: string;
+    linkLabel: string;
+  };
+  cta: {
+    heading: string;
+    copy: string;
+    linkLabel: string;
+  };
+}
+
 export interface Translations {
   common: {
     projectTitle: string;
@@ -33,6 +74,7 @@ export interface Translations {
     primaryLabel: string;
     mobileLabel: string;
     currentMonth: string;
+    rules: string;
     archive: string;
     about: string;
     menu: string;
@@ -47,6 +89,7 @@ export interface Translations {
   footer: {
     linksLabel: string;
     currentRound: string;
+    rules: string;
     participate: string;
     archive: string;
     note: string;
@@ -72,6 +115,7 @@ export interface Translations {
     title: string;
     aside: string;
     note: string;
+    rulesLink: string;
     steps: readonly { number: string; title: string; detail: string }[];
     uploadTo: (providerLabel: string) => string;
     supportedPlatform: string;
@@ -150,6 +194,8 @@ export interface Translations {
     homeDescription: string;
     archiveTitle: string;
     archiveDescription: string;
+    rulesTitle: string;
+    rulesDescription: string;
     roundTitle: (monthLabel: string) => string;
     roundDescription: (monthLabel: string, themeDescription: string) => string;
     notFoundTitle: string;
@@ -162,5 +208,6 @@ export interface Translations {
     copy: string;
     homeLink: string;
   };
+  rules: RulesTranslations;
   og: OgTranslations;
 }

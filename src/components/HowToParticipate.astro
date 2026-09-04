@@ -3,6 +3,7 @@ import type { JamRound } from "../lib/domain/types";
 import { getTranslations } from "../lib/i18n";
 import type { Locale } from "../lib/i18n/types";
 import { providerRegistry } from "../lib/providers/registry";
+import { getLocalizedPath } from "../lib/site";
 
 interface Props {
   round: JamRound;
@@ -11,6 +12,7 @@ interface Props {
 
 const { round, locale } = Astro.props;
 const { participation } = getTranslations(locale);
+const rulesPath = getLocalizedPath("/rules/", locale);
 const providerLabels = [...new Set(round.providers.map((config) => providerRegistry.getMeta(config.type).label))];
 const uploadDestination = providerLabels.length === 1
   ? providerLabels[0]
@@ -45,4 +47,7 @@ const steps = participation.steps.map((step, index) => index === 1
   </ol>
 
   <p class="how-section__note">{participation.note}</p>
+  <a class="text-link how-section__rules-link" href={rulesPath}>
+    {participation.rulesLink} <span class="motion-arrow" aria-hidden="true">→</span>
+  </a>
 </section>
