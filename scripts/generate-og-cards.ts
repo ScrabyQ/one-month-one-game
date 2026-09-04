@@ -4,63 +4,32 @@ import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
 
-import { jams } from "../src/config/jams";
-import { getJamContent, getTranslations, SUPPORTED_LOCALES } from "../src/lib/i18n";
-import { formatRoundNumber } from "../src/lib/i18n/formatters";
-import type { Locale } from "../src/lib/i18n/types";
+import { getTranslations, SUPPORTED_LOCALES } from "../src/lib/i18n";
+import { DEFAULT_ROUND_ACCENT, getDefaultSocialImage, getRoundSocialImage } from "../src/lib/jams/presentation";
 import {
-  DEFAULT_ROUND_ACCENT,
-  getDefaultSocialImage,
-  getRoundPresentation,
-} from "../src/lib/jams/presentation";
-import { validateJamRounds } from "../src/lib/jams/status";
+  formatArtworkMonth,
+  getRoundArtworkDefinitions,
+  type RoundArtwork,
+} from "./lib/round-artwork";
+import { publicPathToFilePath } from "./lib/paths";
+import { assertAccent, escapeXml } from "./lib/svg";
 
 export const WIDTH = 1200;
 export const HEIGHT = 630;
 
-const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-
-export interface OgCard {
-  locale: Locale;
+export interface OgCard extends Omit<RoundArtwork, "round"> {
   outputPath: string;
   round?: number;
-  roundNumber: string;
-  projectTitle: string;
-  editionLabel: string;
-  monthLabel: string;
-  titleLineOne: string;
-  titleLineTwo: string;
-  tagline: string;
-  giantLabel: string;
-  accent: string;
-}
-
-function publicPathToFilePath(publicPath: string): string {
-  return resolve(projectRoot, "public", publicPath.replace(/^\/+/, ""));
-}
-
-function escapeXml(value: unknown): string {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&apos;");
-}
-
-function assertAccent(accent: string): void {
-  if (!/^#[\da-f]{6}$/i.test(accent)) {
-    throw new Error(`Accent must use #RRGGBB format: ${accent}`);
-  }
 }
 
 export function getOgCardDefinitions(): OgCard[] {
-  validateJamRounds(jams);
+  const roundArtwork = getRoundArtworkDefinitions();
 
   return SUPPORTED_LOCALES.flatMap((locale) => {
     const translations = getTranslations(locale);
-    const baseCard = {
+    const defaultCard: OgCard = {
       locale,
+      outputPath: getDefaultSocialImage(locale),
       roundNumber: "OG",
       projectTitle: translations.og.projectTitle,
       editionLabel: translations.og.monthlyEditionLabel,
@@ -70,34 +39,14 @@ export function getOgCardDefinitions(): OgCard[] {
       tagline: translations.og.tagline,
       giantLabel: translations.og.defaultGiantLabel,
       accent: DEFAULT_ROUND_ACCENT,
-    } satisfies Omit<OgCard, "outputPath" | "round">;
-
-    const defaultCard: OgCard = {
-      ...baseCard,
-      outputPath: getDefaultSocialImage(locale),
     };
 
-    const roundCards = jams.map((round): OgCard => {
-      const content = getJamContent(round, locale);
-      const presentation = getRoundPresentation(round, locale);
-      const roundNumber = formatRoundNumber(round.round);
-      const roundLabel = translations.og.roundLabel(roundNumber);
-
-      return {
-        locale,
-        outputPath: presentation.socialImage,
-        round: round.round,
-        roundNumber,
-        projectTitle: translations.og.projectTitle,
-        editionLabel: roundLabel,
-        monthLabel: content.monthLabel,
-        titleLineOne: translations.og.titleLineOne,
-        titleLineTwo: translations.og.titleLineTwo,
-        tagline: translations.og.tagline,
-        giantLabel: roundLabel,
-        accent: presentation.accent,
-      };
-    });
+    const roundCards = roundArtwork
+      .filter((artwork) => artwork.locale === locale)
+      .map((artwork): OgCard => ({
+        ...artwork,
+        outputPath: getRoundSocialImage(artwork.round, artwork.locale),
+      }));
 
     return [defaultCard, ...roundCards];
   });
@@ -106,7 +55,8 @@ export function getOgCardDefinitions(): OgCard[] {
 export function createCardSvg(card: OgCard): string {
   assertAccent(card.accent);
   const accent = escapeXml(card.accent);
-  const month = escapeXml(card.monthLabel.toLocaleUpperCase(card.locale === "ru" ? "ru-RU" : "en-US"));
+  const challengeLabel = escapeXml(getTranslations(card.locale).myIndie.challengeLabel);
+  const month = escapeXml(formatArtworkMonth(card));
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">
   <defs>
@@ -119,7 +69,7 @@ export function createCardSvg(card: OgCard): string {
   <rect x="34" y="34" width="1132" height="562" fill="none" stroke="${accent}" stroke-opacity="0.65" stroke-width="2" />
   <rect x="70" y="70" width="16" height="16" fill="${accent}" />
 
-  <text x="108" y="84" fill="#f2efe5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800" letter-spacing="4">${escapeXml(card.projectTitle)}</text>
+  <text x="108" y="84" fill="#f2efe5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800" letter-spacing="4">${challengeLabel}</text>
   <text x="1130" y="88" fill="${accent}" font-family="monospace" font-size="15" font-weight="700" letter-spacing="2" text-anchor="end">${escapeXml(card.editionLabel)}</text>
 
   <text x="68" y="402" fill="#f2efe5" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="900" letter-spacing="-2">${escapeXml(card.titleLineOne)}</text>

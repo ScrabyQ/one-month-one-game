@@ -8,6 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "generate:og": "tsx scripts/generate-og-cards.ts",
+    "generate:myindie": "tsx scripts/generate-myindie-banners.ts",
+    "generate:artwork": "npm run generate:og && npm run generate:myindie",
     "sync": "tsx scripts/sync-games.ts",
     "test": "vitest run",
     "test:watch": "vitest",

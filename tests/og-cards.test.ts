@@ -45,13 +45,15 @@ describe("localized OG card definitions", () => {
     const russian = cards.find((card) => card.outputPath === "/og/ru/round-001.png");
 
     expect(`${WIDTH}x${HEIGHT}`).toBe("1200x630");
-    expect(english && createCardSvg(english)).toContain("ONE MONTH / ONE GAME");
+    expect(english && createCardSvg(english)).toContain("GAMEDEV CHALLENGE");
+    expect(english && createCardSvg(english)).not.toContain("ONE MONTH / ONE GAME");
     expect(english && createCardSvg(english)).toContain("SEPTEMBER 2026");
     expect(english && createCardSvg(english)).toContain("MAKE IT. FINISH IT. SHARE IT.");
-    expect(russian && createCardSvg(russian)).toContain("ОДИН МЕСЯЦ / ОДНА ИГРА");
+    expect(russian && createCardSvg(russian)).toContain("ГЕЙМДЕВ ЧЕЛЛЕНДЖ");
     expect(russian && createCardSvg(russian)).toContain("СЕНТЯБРЬ 2026");
     expect(russian && createCardSvg(russian)).toContain("СДЕЛАЙ. ЗАКОНЧИ. ПОКАЖИ.");
     expect(russian && createCardSvg(russian)).not.toContain("ONE MONTH / ONE GAME");
+    expect(russian && createCardSvg(russian)).not.toContain("ОДИН МЕСЯЦ / ОДНА ИГРА");
   });
 
   it("rejects legacy one-off metadata flags", async () => {

@@ -213,5 +213,8 @@ export interface Translations {
     homeLink: string;
   };
   rules: RulesTranslations;
+  myIndie: {
+    challengeLabel: string;
+  };
   og: OgTranslations;
 }

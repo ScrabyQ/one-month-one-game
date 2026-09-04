@@ -18,6 +18,10 @@ export function getRoundSocialImage(roundNumber: number, locale: Locale): string
   return `/og/${locale}/round-${formatRoundNumber(roundNumber)}.png`;
 }
 
+export function getRoundMyIndieBanner(roundNumber: number, locale: Locale): string {
+  return `/myindie/${locale}/round-${formatRoundNumber(roundNumber)}.png`;
+}
+
 export function getRoundPresentation(
   round: Pick<JamRound, "slug" | "round" | "presentation">,
   locale: Locale,

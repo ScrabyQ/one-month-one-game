@@ -93,6 +93,8 @@ npm run check       # Astro type-check
 npm run build       # production static build
 npm run preview     # preview the production build
 npm run generate:og # regenerate all localized OG cards
+npm run generate:myindie # regenerate all localized MyIndie banners
+npm run generate:artwork # regenerate OG cards and MyIndie banners
 ```
 
 ## Adding a new round
@@ -140,7 +142,7 @@ Canonical round metadata lives in [`src/config/jams.ts`](src/config/jams.ts). Ad
 
 `round` is the stable release number; never derive it from array order. `presentation.accent` controls the round's visual identity and must use `#RRGGBB` format. Social-image paths are derived automatically from the locale and round number.
 
-Run `npm run generate:og` after changing the configured rounds. It reads the canonical jam configuration and both translation dictionaries, generating one 1200×630 PNG for every locale and round under `public/og/en/` and `public/og/ru/`. The generator is config-driven and accepts no ad-hoc card metadata flags.
+Run `npm run generate:og` after changing the configured rounds to generate one 1200×630 PNG for every locale and round under `public/og/en/` and `public/og/ru/`. Run `npm run generate:myindie` for 1200×400 MyIndie banners with a centered 700×400 safe area under `public/myindie/en/` and `public/myindie/ru/`. `npm run generate:artwork` runs both generators. The generators are config-driven and accept no ad-hoc artwork metadata flags.
 
 The normal order for adding a round is:
 
@@ -148,7 +150,7 @@ The normal order for adding a round is:
 2. Add the shared round metadata and complete `en`/`ru` content to `jams`.
 3. Use `themeState: "announced"` for a known theme, or `"pending"` with localized `themeAnnouncement` values while it is unavailable.
 4. Set `dataMode: "live"`, real URLs, and enabled providers.
-5. Run `npm run generate:og` and `npm run sync`.
+5. Run `npm run generate:artwork` and `npm run sync`.
 6. Check the localized static pages and generated snapshots.
 
 For MyIndie.net, provide a human-readable alias and public URL:
@@ -193,7 +195,7 @@ The workflow is in `.github/workflows/deploy.yml` and runs:
 - manually through `workflow_dispatch`;
 - every three hours on a schedule.
 
-It generates localized OG cards, checks the project, synchronizes data, builds the static site, and deploys it.
+It generates localized OG cards and MyIndie banners, checks the project, synchronizes data, builds the static site, and deploys it.
 
 After pushing to GitHub:
 

@@ -82,6 +82,8 @@ npm run check       # проверка типов Astro
 npm run build       # production static build
 npm run preview     # просмотр production build
 npm run generate:og # пересоздать все локализованные OG-карточки
+npm run generate:myindie # пересоздать все локализованные MyIndie-баннеры
+npm run generate:artwork # пересоздать OG-карточки и MyIndie-баннеры
 ```
 
 ## Добавление нового раунда
@@ -129,7 +131,7 @@ npm run generate:og # пересоздать все локализованные
 
 `round` — стабильный номер выпуска; нельзя вычислять его по порядку объектов в массиве. `presentation.accent` задаёт визуальную identity раунда и должен иметь формат `#RRGGBB`. Пути к social images автоматически строятся из языка и номера раунда.
 
-Запускайте `npm run generate:og` после изменения списка раундов. Команда читает canonical-конфигурацию джемов и оба словаря переводов и создаёт PNG размером `1200×630` для каждого языка и раунда в `public/og/en/` и `public/og/ru/`. Генератор работает только от конфигурации и не принимает ручные параметры карточки.
+Запускайте `npm run generate:og` после изменения списка раундов: команда создаёт PNG размером `1200×630` для каждого языка и раунда в `public/og/en/` и `public/og/ru/`. `npm run generate:myindie` создаёт баннеры `1200×400` с центральной safe area `700×400` в `public/myindie/en/` и `public/myindie/ru/`. `npm run generate:artwork` запускает оба генератора. Генераторы работают только от конфигурации и не принимают ручные параметры artwork.
 
 Порядок добавления:
 
@@ -137,7 +139,7 @@ npm run generate:og # пересоздать все локализованные
 2. Добавьте общие метаданные раунда и полный контент `en`/`ru` в `jams`.
 3. Для известной темы используйте `themeState: "announced"`; пока тема не готова — `"pending"` и локализованные `themeAnnouncement`.
 4. Установите `dataMode: "live"`, настоящие URLs и включённые providers.
-5. Запустите `npm run generate:og` и `npm run sync`.
+5. Запустите `npm run generate:artwork` и `npm run sync`.
 6. Проверьте локализованные статические страницы и generated snapshots.
 
 Для MyIndie.net укажите человекочитаемый alias и публичный URL:
@@ -193,7 +195,7 @@ Workflow находится в `.github/workflows/deploy.yml` и запуска�
 - вручную через `workflow_dispatch`;
 - по расписанию каждые три часа.
 
-Он генерирует локализованные OG-карточки, выполняет проверку, sync, static build и deploy.
+Он генерирует локализованные OG-карточки и MyIndie-баннеры, выполняет проверку, sync, static build и deploy.
 
 После push в GitHub:
 

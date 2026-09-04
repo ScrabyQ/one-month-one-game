@@ -3,6 +3,7 @@ import type { JamRound } from "../src/lib/domain/types";
 import {
   DEFAULT_ROUND_ACCENT,
   getDefaultSocialImage,
+  getRoundMyIndieBanner,
   getRoundPresentation,
 } from "../src/lib/jams/presentation";
 import { validateJamRounds } from "../src/lib/jams/status";
@@ -33,6 +34,7 @@ describe("round presentation", () => {
     expect(getRoundPresentation(round(), "ru").socialImage).toBe("/og/ru/round-002.png");
     expect(getDefaultSocialImage("en")).toBe("/og/en/default.png");
     expect(getDefaultSocialImage("ru")).toBe("/og/ru/default.png");
+    expect(getRoundMyIndieBanner(2, "ru")).toBe("/myindie/ru/round-002.png");
   });
 
   it("keeps the configured accent while resolving a locale-specific image", () => {

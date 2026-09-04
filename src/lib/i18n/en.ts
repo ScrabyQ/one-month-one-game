@@ -303,6 +303,9 @@ export const en: Translations = {
       linkLabel: "Join the current round",
     },
   },
+  myIndie: {
+    challengeLabel: "GAMEDEV CHALLENGE",
+  },
   og: {
     projectTitle: "ONE MONTH / ONE GAME",
     monthlyChallengeLabel: "MONTHLY CHALLENGE",

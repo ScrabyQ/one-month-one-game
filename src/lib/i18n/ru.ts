@@ -302,6 +302,9 @@ export const ru: Translations = {
       linkLabel: "Принять участие в текущем раунде",
     },
   },
+  myIndie: {
+    challengeLabel: "ГЕЙМДЕВ ЧЕЛЛЕНДЖ",
+  },
   og: {
     projectTitle: "ОДИН МЕСЯЦ / ОДНА ИГРА",
     monthlyChallengeLabel: "ЕЖЕМЕСЯЧНЫЙ ЧЕЛЛЕНДЖ",
