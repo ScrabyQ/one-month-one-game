@@ -86,6 +86,10 @@ export interface Translations {
     names: Record<Locale, string>;
     switchTo: (localeLabel: string) => string;
   };
+  community: {
+    telegramAriaLabel: string;
+    telegramCaption: string;
+  };
   footer: {
     linksLabel: string;
     currentRound: string;

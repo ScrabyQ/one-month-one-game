@@ -1,5 +1,6 @@
 ---
 import type { JamRound } from "../lib/domain/types";
+import TelegramChannelLink from "./TelegramChannelLink.astro";
 import { getTranslations } from "../lib/i18n";
 import type { Locale } from "../lib/i18n/types";
 import { getLocalizedPath as getSiteLocalizedPath } from "../lib/site";
@@ -18,7 +19,10 @@ const rulesPath = getSiteLocalizedPath("/rules/", locale);
 
 <footer class="site-footer">
   <div class="shell site-footer__inner">
-    <p>{translations.common.projectTitle}</p>
+    <div class="site-footer__brand">
+      <p class="site-footer__title">{translations.common.projectTitle}</p>
+      <TelegramChannelLink variant="footer" locale={locale} />
+    </div>
     <nav class="site-footer__links" aria-label={translations.footer.linksLabel}>
       <a href={getSiteLocalizedPath(`/jam/${currentRound.slug}/`, locale)}>{translations.footer.currentRound}</a>
       <a href={rulesPath}>{translations.footer.rules}</a>

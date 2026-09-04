@@ -19,6 +19,17 @@ describe("round number formatting", () => {
 });
 
 describe("translation dictionaries", () => {
+  it("contain localized Telegram community labels", () => {
+    expect(getTranslations("en").community).toEqual({
+      telegramAriaLabel: "Open the Code & Polygons Telegram channel",
+      telegramCaption: "Code & Polygons · Telegram",
+    });
+    expect(getTranslations("ru").community).toEqual({
+      telegramAriaLabel: "Открыть Telegram-канал «Код & Полигоны»",
+      telegramCaption: "Код & Полигоны · Telegram",
+    });
+  });
+
   it("contain the same required localized OG keys", () => {
     for (const locale of SUPPORTED_LOCALES) {
       const { og } = getTranslations(locale);

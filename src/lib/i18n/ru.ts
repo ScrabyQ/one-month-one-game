@@ -22,6 +22,10 @@ export const ru: Translations = {
     names: { en: "английский", ru: "русский" },
     switchTo: (localeLabel) => `Переключить на ${localeLabel}`,
   },
+  community: {
+    telegramAriaLabel: "Открыть Telegram-канал «Код & Полигоны»",
+    telegramCaption: "Код & Полигоны · Telegram",
+  },
   footer: {
     linksLabel: "Ссылки в подвале",
     currentRound: "Текущий раунд",

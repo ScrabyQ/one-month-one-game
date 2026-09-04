@@ -1,5 +1,6 @@
 ---
 import type { JamRound } from "../lib/domain/types";
+import TelegramChannelLink from "./TelegramChannelLink.astro";
 import { formatRoundNumber, getTranslations, SUPPORTED_LOCALES } from "../lib/i18n";
 import type { Locale } from "../lib/i18n/types";
 import { getLocalizedPath, getLocalizedUrl } from "../lib/site";
@@ -30,42 +31,8 @@ const aboutPath = `${homePath}#about`;
       <span class="brand__text">{translations.hero.titleLineOne.replace(" —", "")}<br /><span>{translations.hero.titleLineTwo}</span></span>
     </a>
 
-    <nav class="site-nav site-nav--desktop" aria-label={translations.nav.primaryLabel}>
-      <a
-        class:list={{ "site-nav__current": isCurrentMonth }}
-        href={homePath}
-        aria-current={isCurrentMonth ? "page" : undefined}
-      >{translations.nav.currentMonth}</a>
-      <a
-        class:list={{ "site-nav__current": isRulesPath }}
-        href={rulesPath}
-        aria-current={isRulesPath ? "page" : undefined}
-      >{translations.nav.rules}</a>
-      <a
-        class:list={{ "site-nav__current": isCurrentPath(archivePath) }}
-        href={archivePath}
-        aria-current={isCurrentPath(archivePath) ? "page" : undefined}
-      >{translations.nav.archive}</a>
-      <a href={aboutPath}>{translations.nav.about}</a>
-    </nav>
-
-    <nav class="language-switcher" aria-label={translations.language.label}>
-      {SUPPORTED_LOCALES.map((targetLocale) => (
-        <a
-          href={getLocalizedUrl(Astro.url, targetLocale)}
-          class:list={{ "language-switcher__current": targetLocale === locale }}
-          aria-current={targetLocale === locale ? "page" : undefined}
-          aria-label={targetLocale === locale
-            ? `${translations.language.current} (${targetLocale.toUpperCase()})`
-            : translations.language.switchTo(translations.language.names[targetLocale])}
-          data-locale-choice={targetLocale}
-        >{targetLocale.toUpperCase()}</a>
-      ))}
-    </nav>
-
-    <details class="mobile-nav">
-      <summary aria-label={translations.nav.openMenu}><span aria-hidden="true">{translations.nav.menu}</span><span class="mobile-nav__icon" aria-hidden="true">+</span></summary>
-      <nav class="site-nav site-nav--mobile" aria-label={translations.nav.mobileLabel}>
+    <div class="site-header__actions">
+      <nav class="site-nav site-nav--desktop" aria-label={translations.nav.primaryLabel}>
         <a
           class:list={{ "site-nav__current": isCurrentMonth }}
           href={homePath}
@@ -83,7 +50,45 @@ const aboutPath = `${homePath}#about`;
         >{translations.nav.archive}</a>
         <a href={aboutPath}>{translations.nav.about}</a>
       </nav>
-    </details>
+
+      <TelegramChannelLink variant="header" locale={locale} />
+
+      <nav class="language-switcher" aria-label={translations.language.label}>
+        {SUPPORTED_LOCALES.map((targetLocale) => (
+          <a
+            href={getLocalizedUrl(Astro.url, targetLocale)}
+            class:list={{ "language-switcher__current": targetLocale === locale }}
+            aria-current={targetLocale === locale ? "page" : undefined}
+            aria-label={targetLocale === locale
+              ? `${translations.language.current} (${targetLocale.toUpperCase()})`
+              : translations.language.switchTo(translations.language.names[targetLocale])}
+            data-locale-choice={targetLocale}
+          >{targetLocale.toUpperCase()}</a>
+        ))}
+      </nav>
+
+      <details class="mobile-nav">
+        <summary aria-label={translations.nav.openMenu}><span aria-hidden="true">{translations.nav.menu}</span><span class="mobile-nav__icon" aria-hidden="true">+</span></summary>
+        <nav class="site-nav site-nav--mobile" aria-label={translations.nav.mobileLabel}>
+          <a
+            class:list={{ "site-nav__current": isCurrentMonth }}
+            href={homePath}
+            aria-current={isCurrentMonth ? "page" : undefined}
+          >{translations.nav.currentMonth}</a>
+          <a
+            class:list={{ "site-nav__current": isRulesPath }}
+            href={rulesPath}
+            aria-current={isRulesPath ? "page" : undefined}
+          >{translations.nav.rules}</a>
+          <a
+            class:list={{ "site-nav__current": isCurrentPath(archivePath) }}
+            href={archivePath}
+            aria-current={isCurrentPath(archivePath) ? "page" : undefined}
+          >{translations.nav.archive}</a>
+          <a href={aboutPath}>{translations.nav.about}</a>
+        </nav>
+      </details>
+    </div>
   </div>
 </header>
 

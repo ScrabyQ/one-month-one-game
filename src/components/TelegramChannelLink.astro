@@ -1,0 +1,41 @@
+---
+import { getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
+import { withBase } from "../lib/site";
+
+interface Props {
+  variant: "header" | "footer";
+  locale: Locale;
+}
+
+const TELEGRAM_CHANNEL_URL = "https://t.me/+Ewdg2hy-9cszYzEy";
+const { variant, locale } = Astro.props;
+const translations = getTranslations(locale);
+const isFooter = variant === "footer";
+---
+
+<a
+  class:list={["telegram-channel-link", `telegram-channel-link--${variant}`]}
+  href={TELEGRAM_CHANNEL_URL}
+  aria-label={translations.community.telegramAriaLabel}
+>
+  <span class="telegram-channel-link__frame">
+    <img
+      class="telegram-channel-link__image telegram-channel-link__image--outline"
+      src={withBase("/community/PrimitivesMascotWhite.png")}
+      width="540"
+      height="250"
+      alt=""
+      aria-hidden="true"
+    />
+    <img
+      class="telegram-channel-link__image telegram-channel-link__image--color"
+      src={withBase("/community/PrimitivesMascot.png")}
+      width="540"
+      height="250"
+      alt=""
+      aria-hidden="true"
+    />
+  </span>
+  {isFooter && <span class="telegram-channel-link__caption">{translations.community.telegramCaption}</span>}
+</a>

@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { jams } from "../src/config/jams";
 import type { JamRound } from "../src/lib/domain/types";
 import {
   formatCountdownDisplay,
@@ -67,8 +66,12 @@ describe("jam status", () => {
   });
 
   it("keeps configured round numbers on featured and archive rounds", () => {
-    const featured = getFeaturedRound(jams, new Date("2026-09-10T00:00:00+03:00"));
-    const archived = getFinishedRounds(jams, new Date("2026-09-10T00:00:00+03:00"));
+    const configuredRounds = [
+      round("2026-08", "2026-08-01T00:00:00Z", "2026-08-31T23:59:59Z", 1),
+      round("2026-09", "2026-09-01T00:00:00Z", "2026-09-30T23:59:59Z", 2),
+    ];
+    const featured = getFeaturedRound(configuredRounds, new Date("2026-09-10T00:00:00+03:00"));
+    const archived = getFinishedRounds(configuredRounds, new Date("2026-09-10T00:00:00+03:00"));
 
     expect(featured).toMatchObject({ slug: "2026-09", round: 2 });
     expect(archived).toEqual([
