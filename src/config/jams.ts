@@ -24,7 +24,7 @@ export const jams: JamRound[] = [
       },
     },
     themeState: "announced",
-    startsAt: "2026-09-05T00:00:00+03:00",
+    startsAt: "2026-09-04T00:00:00+03:00",
     endsAt: "2026-09-30T23:59:59+03:00",
     dataMode: "live",
     providers: [
@@ -32,14 +32,14 @@ export const jams: JamRound[] = [
         type: "itch",
         enabled: true,
         jamId: 419729,
-        jamUrl: "https://itch.io/jam/test",
+        jamUrl: "https://itch.io/jam/one-month-one-game-1",
       },
-    //   {
-    //     type: "myindie",
-    //     enabled: true,
-    //     jamAlias: "test",
-    //     jamUrl: "https://myindie.net/jams/jam/test"
-    //  }
+      {
+        type: "myindie",
+        enabled: true,
+        jamAlias: "odin-mesyac-odna-igra",
+        jamUrl: "https://myindie.net/jams/jam/odin-mesyac-odna-igra"
+     }
     ],
     presentation: {
       accent: "#d8ff5c",
