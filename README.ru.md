@@ -10,7 +10,7 @@
 
 [Сайт](https://scrabyq.github.io/one-month-one-game/) · [Текущий раунд — сентябрь 2026](https://scrabyq.github.io/one-month-one-game/ru/jam/2026-09/)
 
-Участие: [itch.io](https://itch.io/jam/evening-jam) · [MyIndie.net](https://myindie.net/jams/jam/myindie-level-10)
+Участие: [itch.io](https://itch.io/jam/one-month-one-game-1) · [MyIndie.net](https://myindie.net/jams/jam/odin-mesyac-odna-igra)
 
 ## Что это
 

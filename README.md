@@ -10,7 +10,7 @@ One Month One Game is an ongoing challenge for independent game developers. Each
 
 [Live website](https://scrabyq.github.io/one-month-one-game/) · [Current round — September 2026](https://scrabyq.github.io/one-month-one-game/jam/2026-09/)
 
-Participation: [itch.io](https://itch.io/jam/evening-jam) · [MyIndie.net](https://myindie.net/jams/jam/myindie-level-10)
+Participation: [itch.io](https://itch.io/jam/one-month-one-game-1) · [MyIndie.net](https://myindie.net/jams/jam/odin-mesyac-odna-igra)
 
 ## What it is
 
