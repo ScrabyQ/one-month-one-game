@@ -43,7 +43,7 @@ MyIndie.net ───┘                      │
                                 GitHub Pages
 ```
 
-The site is static: the browser never calls provider APIs, there is no backend, and game binaries are not stored here. Provider-specific payloads are validated and converted into the shared `GameEntry` model before a snapshot is written.
+The site is static: the browser never calls provider APIs, there is no backend, and game binaries are not stored here. Provider-specific payloads are validated and converted into the shared `GameEntry` model before a snapshot is written. Round registration statistics are fetched by the build-time sync and stored separately from game entries.
 
 ## Providers
 
@@ -53,8 +53,10 @@ Provider-specific code lives in `src/lib/providers/<provider>/`. Each adapter ow
 
 The current read-only adapters are:
 
-- `itch.io` — entries endpoint and game-page normalization;
-- `MyIndie.net` — paginated `/api/jams` and `/api/games`, resolving a jam alias to a UUID.
+- `itch.io` — entries endpoint and game-page normalization; participant count is read build-time from the jam page;
+- `MyIndie.net` — paginated `/api/jams` and `/api/games`, resolving a jam alias to a UUID. Participant and submission counts come from `/api/jams`.
+
+Snapshots store provider-level `participantsCount` values and an aggregate `registrationsCount`. The aggregate is the sum of registrations across platforms, not a count of unique people: one developer may register on more than one platform. If a provider stats request fails, the previous provider value is reused when available; otherwise the stats block stays unavailable instead of displaying a fabricated zero.
 
 ## Localization
 
@@ -183,7 +185,7 @@ npm run sync
 npm run sync -- --all
 ```
 
-The normal synchronization processes the featured and recent rounds; `--all` updates the full history. If a provider temporarily fails, the existing snapshot is kept so a deployment can use the latest available data.
+The normal synchronization processes the featured and recent rounds; `--all` updates the full history. It fetches games and round stats through the provider adapters. If game data temporarily fails, the existing snapshot is kept. If only stats fail, new games can still be written and the previous provider stats are reused when available. The GitHub Actions schedule runs this same sync before the static build.
 
 September 2026 uses a separate normalized demo snapshot at `src/data/demo/2026-09.json`. Demo entries exercise UI states such as a missing cover and submission dates. Production snapshots are stored in `src/data/generated/` and contain no raw provider payloads.
 

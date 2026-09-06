@@ -101,6 +101,14 @@ export const en: Translations = {
     copyLineOne: "Be the first to",
     copyLineTwo: "finish a game this month.",
   },
+  stats: {
+    registrations: { one: "participant", few: "participants", many: "participants" },
+    participants: { one: "participant", few: "participants", many: "participants" },
+    submissions: { one: "submission", few: "submissions", many: "submissions" },
+    registrationHint:
+      "Total participants across platforms. The same participant may be counted on more than one platform.",
+    statsUnavailable: "Participant stats unavailable",
+  },
   game: {
     openAria: (title, isLatest) =>
       `Open ${title} on the external platform${isLatest ? ", latest addition" : ""}`,

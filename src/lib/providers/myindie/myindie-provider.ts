@@ -7,7 +7,12 @@ import {
   ProviderConfigurationError,
   ProviderResponseError,
 } from "../errors";
-import type { GameProvider, ProviderFetchOptions } from "../types";
+import type {
+  GameProvider,
+  ProviderFetchOptions,
+  ProviderJamStats,
+  ProviderRoundData,
+} from "../types";
 import { MyIndieClient } from "./myindie-client";
 import { mapMyIndieGame, mapMyIndieJam } from "./myindie-mapper";
 import type { MyIndieJam, MyIndieJamDetails } from "./myindie-types";
@@ -68,6 +73,33 @@ export class MyIndieProvider implements GameProvider<ProviderConfig> {
     return this.getSubmissionsWithClient(jam.id, client);
   }
 
+  async fetchJamStats(
+    config: ProviderConfig,
+    options: ProviderFetchOptions = {},
+  ): Promise<ProviderJamStats> {
+    const validConfig = assertConfig(config);
+    const jam = await this.resolveJamWithClient(
+      validConfig.jamAlias,
+      this.createClient(options),
+    );
+    return this.mapJamStats(jam);
+  }
+
+  async fetchRoundData(
+    config: ProviderConfig,
+    options: ProviderFetchOptions = {},
+  ): Promise<ProviderRoundData> {
+    const validConfig = assertConfig(config);
+    const client = this.createClient(options);
+    const jam = await this.resolveJamWithClient(validConfig.jamAlias, client);
+    const entries = await this.getSubmissionsWithClient(jam.id, client);
+
+    return {
+      entries,
+      stats: this.mapJamStats(jam),
+    };
+  }
+
   async resolveJam(alias: string, options: ProviderFetchOptions = {}): Promise<MyIndieJam> {
     return this.resolveJamWithClient(alias, this.createClient(options));
   }
@@ -99,6 +131,14 @@ export class MyIndieProvider implements GameProvider<ProviderConfig> {
       fetchImpl: options.fetchImpl,
       sleep: options.sleep,
     });
+  }
+
+  private mapJamStats(jam: MyIndieJam): ProviderJamStats {
+    return {
+      provider: "myindie",
+      participantsCount: jam.regsCount,
+      submissionsCount: jam.gamesCount,
+    };
   }
 
   private async resolveJamWithClient(alias: string, client: MyIndieClient): Promise<MyIndieJam> {

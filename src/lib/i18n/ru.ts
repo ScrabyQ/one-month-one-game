@@ -100,6 +100,14 @@ export const ru: Translations = {
     copyLineOne: "Стань первым,",
     copyLineTwo: "кто закончит игру в этом месяце.",
   },
+  stats: {
+    registrations: { one: "участник", few: "участника", many: "участников" },
+    participants: { one: "участник", few: "участника", many: "участников" },
+    submissions: { one: "отправка", few: "отправки", many: "отправок" },
+    registrationHint:
+      "Количество участников на площадках. Один участник может быть учтён на нескольких площадках.",
+    statsUnavailable: "Статистика участников недоступна",
+  },
   game: {
     openAria: (title, isLatest) =>
       `Открыть игру «${title}» на внешней площадке${isLatest ? ", последнее пополнение" : ""}`,

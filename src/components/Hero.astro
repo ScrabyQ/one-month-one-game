@@ -3,7 +3,6 @@ import type { GameSnapshot, JamRound, JamStatus } from "../lib/domain/types";
 import {
   formatGameCount,
   formatJamDateRange,
-  formatProviderCount,
   formatRoundNumber,
   formatStatusLabel,
   getJamContent,
@@ -14,6 +13,7 @@ import type { Locale } from "../lib/i18n/types";
 import Countdown from "./Countdown.astro";
 import HeroAtmosphere from "./HeroAtmosphere.astro";
 import ParticipationButtons from "./ParticipationButtons.astro";
+import RoundStats from "./RoundStats.astro";
 
 interface Props {
   round: JamRound;
@@ -28,9 +28,6 @@ const translations = getTranslations(locale);
 const content = getJamContent(round, locale);
 const theme = getThemePresentation(round, locale);
 const statusLabel = formatStatusLabel(locale, status);
-const providerCount = new Set(
-  round.providers.filter((provider) => provider.enabled).map((provider) => provider.type),
-).size;
 ---
 
 <section class:list={["hero", { "hero--compact": compact }]}>
@@ -75,10 +72,7 @@ const providerCount = new Set(
         <strong>{formatJamDateRange(locale, round)}</strong>
       </div>
       <Countdown round={round} locale={locale} />
-      <div class="hero__metric">
-        <span class="hero__metric-label">{translations.hero.providersLabel}</span>
-        <strong>{formatProviderCount(locale, providerCount)}</strong>
-      </div>
+      <RoundStats round={round} stats={snapshot.stats} locale={locale} />
       <div class="hero__metric hero__metric--right">
         <span class="hero__metric-label">{translations.hero.inGalleryLabel}</span>
         <strong>{formatGameCount(locale, snapshot.games.length)}</strong>

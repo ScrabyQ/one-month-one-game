@@ -95,6 +95,42 @@ describe("MyIndieProvider", () => {
     });
   });
 
+  it("maps jam registration stats from /api/jams", async () => {
+    const { fetchImpl, requests } = createFetch((request) => {
+      expect(request.path).toBe("/api/jams");
+      return jsonResponse({ jams: [publishedJam], count: 1 });
+    });
+
+    await expect(
+      new MyIndieProvider().fetchJamStats(enabledConfig, { fetchImpl }),
+    ).resolves.toEqual({
+      provider: "myindie",
+      participantsCount: publishedJam.regsCount,
+      submissionsCount: publishedJam.gamesCount,
+    });
+    expect(requests).toHaveLength(1);
+  });
+
+  it("resolves the jam once when fetching both entries and stats", async () => {
+    const { fetchImpl, requests } = createFetch((request) => {
+      if (request.path === "/api/jams") {
+        return jsonResponse({ jams: [publishedJam], count: 1 });
+      }
+      return jsonResponse({ games: [], count: 0 });
+    });
+
+    const result = await new MyIndieProvider().fetchRoundData(enabledConfig, { fetchImpl });
+
+    expect(result.entries).toEqual([]);
+    expect(result.stats).toEqual({
+      provider: "myindie",
+      participantsCount: publishedJam.regsCount,
+      submissionsCount: publishedJam.gamesCount,
+    });
+    expect(requests.filter((request) => request.path === "/api/jams")).toHaveLength(1);
+    expect(requests.filter((request) => request.path === "/api/games")).toHaveLength(1);
+  });
+
   it("continues jam alias resolution onto later pages", async () => {
     const { fetchImpl, requests } = createFetch((request) => {
       if (request.path === "/api/jams") {

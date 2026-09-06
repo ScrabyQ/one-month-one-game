@@ -33,6 +33,10 @@ export function formatProviderCount(locale: Locale, value: number): string {
   return `${value} ${plural(value, forms)}`;
 }
 
+export function formatRegistrationCount(locale: Locale, value: number): string {
+  return `${value} ${plural(value, getTranslations(locale).stats.participants)}`;
+}
+
 export function formatRemainingDuration(locale: Locale, totalMilliseconds: number): string {
   const milliseconds = Math.max(0, totalMilliseconds);
   if (milliseconds < DAY_MS) {

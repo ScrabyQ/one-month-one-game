@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   formatGameCount,
   formatProviderCount,
+  formatRegistrationCount,
   formatRemainingDuration,
   formatRoundNumber,
   formatStatusLabel,
@@ -101,6 +102,11 @@ describe("localized formatters", () => {
     expect(formatGameCount("ru", 5)).toBe("5 игр");
     expect(formatProviderCount("en", 2)).toBe("2 platforms");
     expect(formatProviderCount("ru", 5)).toBe("5 площадок");
+    expect(formatRegistrationCount("en", 1)).toBe("1 participant");
+    expect(formatRegistrationCount("en", 12)).toBe("12 participants");
+    expect(formatRegistrationCount("ru", 1)).toBe("1 участник");
+    expect(formatRegistrationCount("ru", 2)).toBe("2 участника");
+    expect(formatRegistrationCount("ru", 5)).toBe("5 участников");
   });
 
   it("formats countdown durations and status labels in both locales", () => {

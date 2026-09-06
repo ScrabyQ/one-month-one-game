@@ -158,6 +158,13 @@ export interface Translations {
     copyLineOne: string;
     copyLineTwo: string;
   };
+  stats: {
+    registrations: DurationForms;
+    participants: DurationForms;
+    submissions: DurationForms;
+    registrationHint: string;
+    statsUnavailable: string;
+  };
   game: {
     openAria: (title: string, isLatest: boolean) => string;
     coverAlt: (title: string) => string;

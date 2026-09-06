@@ -63,9 +63,22 @@ export const GameEntrySchema = z.object({
   platforms: z.array(z.string().min(1)).optional(),
 });
 
+export const ProviderRoundStatsSchema = z.object({
+  provider: z.string().min(1),
+  participantsCount: z.number().int().nonnegative(),
+  submissionsCount: z.number().int().nonnegative().optional(),
+});
+
+export const RoundStatsSchema = z.object({
+  registrationsCount: z.number().int().nonnegative(),
+  submissionsCount: z.number().int().nonnegative().optional(),
+  providers: z.array(ProviderRoundStatsSchema),
+});
+
 export const GameSnapshotSchema = z.object({
   roundId: z.string().min(1),
   syncedAt: z.string().min(1),
+  stats: RoundStatsSchema.optional(),
   games: z.array(GameEntrySchema),
 });
 

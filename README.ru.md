@@ -43,7 +43,20 @@ MyIndie.net ───┘                      │
                                 GitHub Pages
 ```
 
-Сайт статический: браузер не обращается к API площадок, backend не используется, игровые бинарные файлы здесь не хранятся. Внешние payload-ы валидируются и преобразуются в общую модель `GameEntry` до записи snapshot.
+Сайт статический: браузер не обращается к API площадок, backend не используется, игровые бинарные файлы здесь не хранятся. Внешние payload-ы валидируются и преобразуются в общую модель `GameEntry` до записи snapshot. Статистика регистраций раунда запрашивается во время build-time sync и хранится отдельно от списка игр.
+
+В snapshot сохраняются provider-level значения `participantsCount` и агрегированный `registrationsCount`. Агрегат означает сумму регистраций на площадках, а не количество уникальных людей: один разработчик может зарегистрироваться на нескольких площадках. Если статистика provider временно недоступна, используется предыдущее значение, когда оно есть; иначе блок статистики остаётся недоступным, без искусственного нуля.
+
+## Providers
+
+Provider-specific код находится в `src/lib/providers/<provider>/`. Каждый адаптер отвечает за HTTP/API-логику, DTO-схемы, pagination, mapping игр и доступную статистику раунда.
+
+`src/lib/providers/registry.ts` хранит registry адаптеров и presentation metadata. UI использует registry для provider label, badge и participation URL, поэтому добавление нового provider не требует переписывать основные страницы и карточки.
+
+Сейчас подключены read-only адаптеры:
+
+- `itch.io` — entries endpoint и нормализация игр; количество участников извлекается во время build-time с HTML-страницы джема;
+- `MyIndie.net` — постраничные `/api/jams` и `/api/games` с разрешением jam alias в UUID. Количество участников и submissions берётся из `/api/jams`.
 
 ## Локализация
 
@@ -172,20 +185,9 @@ npm run sync
 npm run sync -- --all
 ```
 
-Обычная синхронизация обрабатывает featured и недавние раунды; `--all` обновляет всю историю. При временной ошибке provider существующий snapshot сохраняется, поэтому публикация может использовать последние доступные данные.
+Обычная синхронизация обрабатывает featured и недавние раунды; `--all` обновляет всю историю. Она получает игры и статистику через provider adapters. При ошибке загрузки игр существующий snapshot сохраняется. Если не удалось получить только статистику, новые игры всё равно записываются, а предыдущая статистика provider используется при наличии. GitHub Actions запускает тот же sync перед static build по расписанию.
 
 Раунд сентября 2026 использует отдельный normalized demo snapshot в `src/data/demo/2026-09.json`. Demo entries нужны для проверки UI-состояний, включая карточку без cover и даты отправки. Production snapshots находятся в `src/data/generated/` и не содержат raw provider payloads.
-
-## Providers
-
-Provider-specific код находится в `src/lib/providers/<provider>/`. Каждый адаптер отвечает за HTTP/API-логику, DTO-схемы, pagination и mapping в normalized `GameEntry`.
-
-`src/lib/providers/registry.ts` хранит registry адаптеров и presentation metadata. UI использует registry для provider label, badge и participation URL, поэтому добавление нового provider не требует переписывать основные страницы и карточки.
-
-Сейчас подключены read-only адаптеры:
-
-- `itch.io` — entries endpoint и нормализация game pages;
-- `MyIndie.net` — постраничные `/api/jams` и `/api/games` с разрешением jam alias в UUID.
 
 ## GitHub Pages
 

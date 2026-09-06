@@ -1,5 +1,21 @@
 {
   "roundId": "2026-09",
-  "syncedAt": "2026-09-04T13:58:44.525Z",
+  "syncedAt": "2026-09-06T07:35:07.740Z",
+  "stats": {
+    "registrationsCount": 13,
+    "submissionsCount": 0,
+    "providers": [
+      {
+        "provider": "itch",
+        "participantsCount": 5,
+        "submissionsCount": 0
+      },
+      {
+        "provider": "myindie",
+        "participantsCount": 8,
+        "submissionsCount": 0
+      }
+    ]
+  },
   "games": []
 }

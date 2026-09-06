@@ -38,9 +38,22 @@ export interface GameEntry {
   platforms?: string[];
 }
 
+export interface ProviderRoundStats {
+  provider: ProviderId;
+  participantsCount: number;
+  submissionsCount?: number;
+}
+
+export interface RoundStats {
+  registrationsCount: number;
+  submissionsCount?: number;
+  providers: ProviderRoundStats[];
+}
+
 export interface GameSnapshot {
   roundId: string;
   syncedAt: string;
+  stats?: RoundStats;
   games: GameEntry[];
 }
 

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { GameEntry } from "../src/lib/domain/types";
 import { aggregateGames } from "../src/lib/aggregation/aggregate-games";
+import { aggregateProviderStats } from "../src/lib/aggregation/aggregate-stats";
 
 function game(overrides: Partial<GameEntry>): GameEntry {
   return {
@@ -53,5 +54,38 @@ describe("aggregateGames", () => {
     ]);
 
     expect(result.map((entry) => entry.id)).toEqual(["itch:dated", "itch:missing"]);
+  });
+});
+
+describe("aggregateProviderStats", () => {
+  it("sums registrations across providers without deduplicating people", () => {
+    expect(
+      aggregateProviderStats([
+        { provider: "itch", participantsCount: 5, submissionsCount: 3 },
+        { provider: "myindie", participantsCount: 7, submissionsCount: 4 },
+      ]),
+    ).toEqual({
+      registrationsCount: 12,
+      submissionsCount: 7,
+      providers: [
+        { provider: "itch", participantsCount: 5, submissionsCount: 3 },
+        { provider: "myindie", participantsCount: 7, submissionsCount: 4 },
+      ],
+    });
+  });
+
+  it("supports providers that do not expose submissions counts", () => {
+    expect(
+      aggregateProviderStats([
+        { provider: "itch", participantsCount: 5 },
+        { provider: "future-provider", participantsCount: 2 },
+      ]),
+    ).toEqual({
+      registrationsCount: 7,
+      providers: [
+        { provider: "itch", participantsCount: 5 },
+        { provider: "future-provider", participantsCount: 2 },
+      ],
+    });
   });
 });

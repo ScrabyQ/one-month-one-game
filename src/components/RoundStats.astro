@@ -1,0 +1,66 @@
+---
+import type { JamRound, RoundStats } from "../lib/domain/types";
+import { formatRegistrationCount, getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
+import { providerRegistry } from "../lib/providers/registry";
+
+interface Props {
+  round: JamRound;
+  stats?: RoundStats;
+  locale: Locale;
+}
+
+const { round, stats, locale } = Astro.props;
+const translations = getTranslations(locale);
+const configuredProviders = new Map<string, JamRound["providers"][number]>(
+  round.providers.map((config) => [config.type, config]),
+);
+---
+
+<div class="hero__metric round-stats">
+  <span class="hero__metric-label">{translations.stats.participants.many}</span>
+  {stats ? (
+    <>
+      <strong class="round-stats__total">
+        {formatRegistrationCount(locale, stats.registrationsCount)}
+        <span
+          class="round-stats__hint"
+          title={translations.stats.registrationHint}
+          tabindex="0"
+          aria-label={translations.stats.registrationHint}
+        >i</span>
+      </strong>
+      <span class="round-stats__breakdown">
+        {stats.providers.map((providerStats, index) => {
+          const config = configuredProviders.get(providerStats.provider);
+          const href = config
+            ? providerRegistry.getParticipationUrl(config)
+            : undefined;
+          const label = providerRegistry.getMeta(providerStats.provider).label;
+
+          return (
+            <>
+              {index > 0 && <span aria-hidden="true"> · </span>}
+              {href ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-provider={providerStats.provider}
+                >
+                  {label} {providerStats.participantsCount}
+                </a>
+              ) : (
+                <span data-provider={providerStats.provider}>
+                  {label} {providerStats.participantsCount}
+                </span>
+              )}
+            </>
+          );
+        })}
+      </span>
+    </>
+  ) : (
+    <span class="round-stats__unavailable">{translations.stats.statsUnavailable}</span>
+  )}
+</div>
