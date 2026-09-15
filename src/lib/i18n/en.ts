@@ -314,6 +314,9 @@ export const en: Translations = {
   myIndie: {
     challengeLabel: "GAMEDEV CHALLENGE",
   },
+  participants: {
+    eyebrow: "ROUND PARTICIPANTS",
+  },
   og: {
     projectTitle: "ONE MONTH / ONE GAME",
     monthlyChallengeLabel: "MONTHLY CHALLENGE",

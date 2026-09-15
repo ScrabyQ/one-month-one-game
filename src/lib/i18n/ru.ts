@@ -313,6 +313,9 @@ export const ru: Translations = {
   myIndie: {
     challengeLabel: "ГЕЙМДЕВ ЧЕЛЛЕНДЖ",
   },
+  participants: {
+    eyebrow: "УЧАСТНИКИ РАУНДА",
+  },
   og: {
     projectTitle: "ОДИН МЕСЯЦ / ОДНА ИГРА",
     monthlyChallengeLabel: "ЕЖЕМЕСЯЧНЫЙ ЧЕЛЛЕНДЖ",

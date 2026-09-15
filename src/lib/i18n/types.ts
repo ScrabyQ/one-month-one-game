@@ -23,6 +23,10 @@ export interface OgTranslations {
   defaultImageAlt: string;
 }
 
+export interface ParticipantsTranslations {
+  eyebrow: string;
+}
+
 export interface RulesTranslations {
   intro: {
     eyebrow: string;
@@ -223,5 +227,6 @@ export interface Translations {
   myIndie: {
     challengeLabel: string;
   };
+  participants: ParticipantsTranslations;
   og: OgTranslations;
 }

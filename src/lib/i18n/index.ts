@@ -16,7 +16,7 @@ export const LOCALE_LABELS: Record<Locale, string> = {
 };
 
 export { DEFAULT_LOCALE, SUPPORTED_LOCALES } from "./types";
-export type { Locale, Translations } from "./types";
+export type { Locale, ParticipantsTranslations, Translations } from "./types";
 export * from "./formatters";
 
 export function isLocale(value: unknown): value is Locale {
