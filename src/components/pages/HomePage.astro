@@ -5,14 +5,17 @@ import GameGrid from "../GameGrid.astro";
 import Hero from "../Hero.astro";
 import HowToParticipate from "../HowToParticipate.astro";
 import LatestSubmission from "../LatestSubmission.astro";
+import RegistrationDrawer from "../RegistrationDrawer.astro";
 import { jams } from "../../config/jams";
 import { getSnapshotForRound } from "../../lib/data/snapshots";
 import { getJamContent, getTranslations } from "../../lib/i18n";
 import type { Locale } from "../../lib/i18n/types";
 import {
+  getActiveRound,
   getFeaturedRound,
   getFinishedRounds,
   getJamStatus,
+  getRegistrationOpenRound,
   validateJamRounds,
 } from "../../lib/jams/status";
 import type { GameSnapshot } from "../../lib/domain/types";
@@ -28,12 +31,14 @@ const translations = getTranslations(locale);
 
 validateJamRounds(jams);
 const now = new Date();
-const featuredRound = getFeaturedRound(jams, now);
-const featuredContent = getJamContent(featuredRound, locale);
-const featuredSnapshot = getSnapshotForRound(featuredRound);
-const latestGame = getLatestGame(featuredSnapshot.games);
+const activeRound = getActiveRound(jams, now);
+const currentRound = activeRound ?? getFeaturedRound(jams, now);
+const registrationOpenRound = getRegistrationOpenRound(jams, now);
+const currentContent = getJamContent(currentRound, locale);
+const currentSnapshot = getSnapshotForRound(currentRound);
+const latestGame = getLatestGame(currentSnapshot.games);
 const archiveRounds = getFinishedRounds(jams, now)
-  .filter((round) => round.id !== featuredRound.id)
+  .filter((round) => round.id !== currentRound.id)
   .slice(0, 4);
 const archiveSnapshots = new Map<string, GameSnapshot>(
   archiveRounds.map((round) => [round.id, getSnapshotForRound(round)]),
@@ -42,23 +47,28 @@ const archiveSnapshots = new Map<string, GameSnapshot>(
 
 <Layout
   locale={locale}
-  title={translations.meta.homeTitle(featuredContent.monthLabel)}
+  title={translations.meta.homeTitle(currentContent.monthLabel)}
   description={translations.meta.homeDescription}
   canonicalPath="/"
 >
   <Hero
-    round={featuredRound}
-    snapshot={featuredSnapshot}
-    status={getJamStatus(featuredRound, now)}
+    round={currentRound}
+    snapshot={currentSnapshot}
+    status={getJamStatus(currentRound, now)}
+    showRoundLink
     locale={locale}
   />
 
-  <HowToParticipate round={featuredRound} locale={locale} />
+  {registrationOpenRound && registrationOpenRound.id !== currentRound.id && (
+    <RegistrationDrawer round={registrationOpenRound} locale={locale} />
+  )}
+
+  <HowToParticipate round={currentRound} locale={locale} />
 
   <section class="gallery-section section-shell" aria-labelledby="gallery-title">
     <div class="section-heading section-heading--gallery">
       <div>
-        <p class="eyebrow">{featuredContent.monthLabel}</p>
+        <p class="eyebrow">{currentContent.monthLabel}</p>
         <h2 id="gallery-title">{translations.home.galleryTitle}</h2>
         <p class="section-heading__subheading">{translations.home.gallerySubheading}</p>
         <LatestSubmission game={latestGame} now={now} locale={locale} />
@@ -66,8 +76,8 @@ const archiveSnapshots = new Map<string, GameSnapshot>(
       <p class="section-heading__aside">{translations.home.galleryAside}</p>
     </div>
     <GameGrid
-      games={featuredSnapshot.games}
-      round={featuredRound}
+      games={currentSnapshot.games}
+      round={currentRound}
       highlightLatest
       latestGame={latestGame}
       now={now}

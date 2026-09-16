@@ -14,20 +14,23 @@ import Countdown from "./Countdown.astro";
 import HeroAtmosphere from "./HeroAtmosphere.astro";
 import ParticipationButtons from "./ParticipationButtons.astro";
 import RoundStats from "./RoundStats.astro";
+import { getLocalizedPath } from "../lib/site";
 
 interface Props {
   round: JamRound;
   snapshot: GameSnapshot;
   status: JamStatus;
   compact?: boolean;
+  showRoundLink?: boolean;
   locale: Locale;
 }
 
-const { round, snapshot, status, compact = false, locale } = Astro.props;
+const { round, snapshot, status, compact = false, showRoundLink = false, locale } = Astro.props;
 const translations = getTranslations(locale);
 const content = getJamContent(round, locale);
 const theme = getThemePresentation(round, locale);
 const statusLabel = formatStatusLabel(locale, status);
+const roundPath = getLocalizedPath(`/jam/${round.slug}/`, locale);
 ---
 
 <section class:list={["hero", { "hero--compact": compact }]}>
@@ -52,6 +55,11 @@ const statusLabel = formatStatusLabel(locale, status);
       <div class="hero__title-block">
         <h1>{translations.hero.titleLineOne}<br /><span>{translations.hero.titleLineTwo}</span></h1>
         <p class="hero__intro">{translations.hero.tagline}</p>
+        {showRoundLink && (
+          <a class="text-link hero__round-link" href={roundPath}>
+            {translations.home.viewRound} <span class="motion-arrow" aria-hidden="true">↗</span>
+          </a>
+        )}
       </div>
 
       <div class:list={["hero__theme-block", { "hero__theme-block--pending": !theme.isAnnounced }]}>

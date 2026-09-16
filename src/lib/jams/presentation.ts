@@ -22,6 +22,10 @@ export function getRoundMyIndieBanner(roundNumber: number, locale: Locale): stri
   return `/myindie/${locale}/round-${formatRoundNumber(roundNumber)}.png`;
 }
 
+export function getRoundParticipantsImage(roundNumber: number, locale: Locale): string {
+  return `/participants/${locale}/round-${formatRoundNumber(roundNumber)}.png`;
+}
+
 export function getRoundPresentation(
   round: Pick<JamRound, "slug" | "round" | "presentation">,
   locale: Locale,

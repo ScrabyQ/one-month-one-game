@@ -12,11 +12,17 @@ function roundDate(value: string, field: string, slug: string): Date {
   return date;
 }
 
-function assertRound(round: JamRound): { start: Date; end: Date } {
+function assertRound(round: JamRound): { start: Date; end: Date; registrationStart?: Date } {
   const start = roundDate(round.startsAt, "startsAt", round.slug);
   const end = roundDate(round.endsAt, "endsAt", round.slug);
+  const registrationStart = round.registrationStartsAt !== undefined
+    ? roundDate(round.registrationStartsAt, "registrationStartsAt", round.slug)
+    : undefined;
   if (end <= start) {
     throw new Error(`Jam round ${round.slug} must end after it starts`);
+  }
+  if (registrationStart && registrationStart >= start) {
+    throw new Error(`Jam round ${round.slug} must open registration before it starts`);
   }
   if (!Number.isInteger(round.round) || round.round <= 0) {
     throw new Error(
@@ -60,7 +66,7 @@ function assertRound(round: JamRound): { start: Date; end: Date } {
       }
     }
   }
-  return { start, end };
+  return { start, end, registrationStart };
 }
 
 export function validateJamRounds(rounds: readonly JamRound[]): void {
@@ -106,7 +112,16 @@ export function getJamStatus(round: JamRound, now = new Date()): JamStatus {
   return getJamStatusForDates(start, end, now);
 }
 
-export function getFeaturedRound(rounds: readonly JamRound[], now = new Date()): JamRound {
+export function isRegistrationOpen(round: JamRound, now = new Date()): boolean {
+  const { start, registrationStart } = assertRound(round);
+  if (!registrationStart) return false;
+  return registrationStart <= now && now < start;
+}
+
+export function getActiveRound(
+  rounds: readonly JamRound[],
+  now = new Date(),
+): JamRound | undefined {
   validateJamRounds(rounds);
 
   const active = rounds.filter((round) => getJamStatus(round, now) === "active");
@@ -115,7 +130,29 @@ export function getFeaturedRound(rounds: readonly JamRound[], now = new Date()):
       `More than one active jam round is configured: ${active.map((round) => round.slug).join(", ")}`,
     );
   }
-  if (active[0]) return active[0];
+  return active[0];
+}
+
+export function getRegistrationOpenRound(
+  rounds: readonly JamRound[],
+  now = new Date(),
+): JamRound | undefined {
+  validateJamRounds(rounds);
+
+  return rounds
+    .filter((round) => isRegistrationOpen(round, now))
+    .sort((left, right) => {
+      const leftStart = new Date(left.startsAt).getTime();
+      const rightStart = new Date(right.startsAt).getTime();
+      return leftStart - rightStart;
+    })[0];
+}
+
+export function getFeaturedRound(rounds: readonly JamRound[], now = new Date()): JamRound {
+  validateJamRounds(rounds);
+
+  const active = getActiveRound(rounds, now);
+  if (active) return active;
 
   const upcoming = rounds
     .filter((round) => getJamStatus(round, now) === "upcoming")

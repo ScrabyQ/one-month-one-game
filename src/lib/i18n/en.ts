@@ -35,6 +35,7 @@ export const en: Translations = {
     note: "Static showcase of independent games",
   },
   home: {
+    viewRound: "View round",
     galleryTitle: "This Month's Gallery",
     gallerySubheading: "Games from the current round",
     galleryAside: "Every game is another finished story.",
@@ -313,6 +314,18 @@ export const en: Translations = {
   },
   myIndie: {
     challengeLabel: "GAMEDEV CHALLENGE",
+  },
+  participants: {
+    eyebrow: "ROUND PARTICIPANTS",
+  },
+  registrationDrawer: {
+    eyebrow: "Next round",
+    title: "Registration for the next round is already open!",
+    roundLabel: (roundNumber, monthLabel) => `Round ${roundNumber} · ${monthLabel}`,
+    startsAt: "Starts",
+    button: "View next round",
+    close: "Hide next-round registration",
+    open: "Show next-round registration",
   },
   og: {
     projectTitle: "ONE MONTH / ONE GAME",

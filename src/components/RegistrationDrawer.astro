@@ -1,0 +1,86 @@
+---
+import type { JamRound } from "../lib/domain/types";
+import { formatJamStartDate, formatRoundNumber, getJamContent, getTranslations } from "../lib/i18n";
+import type { Locale } from "../lib/i18n/types";
+import { getRoundPresentation } from "../lib/jams/presentation";
+import { getLocalizedPath } from "../lib/site";
+import Countdown from "./Countdown.astro";
+
+interface Props {
+  round: JamRound;
+  locale: Locale;
+}
+
+const { round, locale } = Astro.props;
+const translations = getTranslations(locale);
+const content = getJamContent(round, locale);
+const presentation = getRoundPresentation(round, locale);
+const roundPath = getLocalizedPath(`/jam/${round.slug}/`, locale);
+const drawerTitleId = `registration-drawer-title-${round.slug}`;
+const drawerPanelId = `registration-drawer-panel-${round.slug}`;
+---
+
+<aside
+  class="registration-drawer"
+  style={`--round-accent: ${presentation.accent}`}
+  aria-labelledby={drawerTitleId}
+  data-registration-drawer
+  data-round-id={round.id}
+>
+  <div class="registration-drawer__panel" id={drawerPanelId}>
+    <button
+      class="registration-drawer__close"
+      type="button"
+      aria-label={translations.registrationDrawer.close}
+      aria-controls={drawerPanelId}
+      aria-expanded="true"
+      data-registration-close
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+
+    <p class="eyebrow">{translations.registrationDrawer.eyebrow}</p>
+    <h2 id={drawerTitleId}>{translations.registrationDrawer.title}</h2>
+    <p class="registration-drawer__round">
+      {translations.registrationDrawer.roundLabel(formatRoundNumber(round.round), content.monthLabel)}
+    </p>
+    <p class="registration-drawer__starts">
+      {translations.registrationDrawer.startsAt} <strong>{formatJamStartDate(locale, round.startsAt)}</strong>
+    </p>
+    <Countdown round={round} locale={locale} />
+
+    <a class="btn btn-primary registration-drawer__link" href={roundPath}>
+      {translations.registrationDrawer.button}
+      <span class="motion-arrow" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <button
+    class="registration-drawer__reopen"
+    type="button"
+    aria-label={translations.registrationDrawer.open}
+    aria-controls={drawerPanelId}
+    aria-expanded="false"
+    data-registration-open
+  >
+    <span aria-hidden="true">↗</span>
+    <span>{translations.registrationDrawer.open}</span>
+  </button>
+</aside>
+
+<script>
+  const drawer = document.querySelector<HTMLElement>("[data-registration-drawer]");
+  const closeButton = drawer?.querySelector<HTMLButtonElement>("[data-registration-close]");
+  const openButton = drawer?.querySelector<HTMLButtonElement>("[data-registration-open]");
+
+  function setDrawerHidden(hidden: boolean): void {
+    if (!drawer || !closeButton || !openButton) return;
+
+    drawer.classList.toggle("registration-drawer--hidden", hidden);
+    closeButton.setAttribute("aria-expanded", String(!hidden));
+    openButton.setAttribute("aria-expanded", String(hidden));
+  }
+
+  closeButton?.addEventListener("click", () => setDrawerHidden(true));
+  openButton?.addEventListener("click", () => setDrawerHidden(false));
+</script>

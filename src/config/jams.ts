@@ -38,11 +38,56 @@ export const jams: JamRound[] = [
         type: "myindie",
         enabled: true,
         jamAlias: "odin-mesyac-odna-igra",
-        jamUrl: "https://myindie.net/jams/jam/odin-mesyac-odna-igra"
-     }
+        jamUrl: "https://myindie.net/jams/jam/odin-mesyac-odna-igra",
+      },
     ],
     presentation: {
       accent: "#d8ff5c",
     },
-  }
+  },
+  {
+    id: "2026-10",
+    round: 2,
+    slug: "2026-10",
+    content: {
+      en: {
+        title: "One Month — One Game",
+        monthLabel: "October 2026",
+        theme: "To be announced",
+        themeAnnouncement: "The theme will be announced before the round starts",
+        description:
+          "A small ongoing challenge for game developers. Make and finish one game in a month.",
+      },
+      ru: {
+        title: "Один месяц — одна игра",
+        monthLabel: "Октябрь 2026",
+        theme: "Тема не объявлена",
+        themeAnnouncement: "Тема будет объявлена до начала раунда",
+        description:
+          "Небольшой постоянный челлендж для разработчиков игр. Сделай и закончи одну игру за месяц.",
+      },
+    },
+    themeState: "pending",
+    startsAt: "2026-10-01T00:00:00+03:00",
+    endsAt: "2026-10-31T23:59:59+03:00",
+    registrationStartsAt: "2026-09-15T00:00:00+03:00",
+    dataMode: "live",
+    providers: [
+      {
+        type: "itch",
+        enabled: true,
+        jamId: 420051,
+        jamUrl: "https://itch.io/jam/one-month-one-game-2",
+      },
+      {
+        type: "myindie",
+        enabled: true,
+        jamAlias: "odin-mesyac-odna-igra-2",
+        jamUrl: "https://myindie.net/jams/jam/odin-mesyac-odna-igra-2",
+      },
+    ],
+    presentation: {
+      accent: "#d8ff5c",
+    },
+  },
 ];

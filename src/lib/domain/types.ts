@@ -93,6 +93,7 @@ export interface JamRound {
   themeState: JamThemeState;
   startsAt: string;
   endsAt: string;
+  registrationStartsAt?: string;
   providers: ProviderConfig[];
   dataMode?: JamDataMode;
   presentation?: RoundPresentation;

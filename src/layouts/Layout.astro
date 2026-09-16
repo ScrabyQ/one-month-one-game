@@ -14,7 +14,7 @@ import {
 import { formatRoundNumber } from "../lib/i18n/formatters";
 import type { Locale } from "../lib/i18n/types";
 import { getDefaultSocialImage, getRoundPresentation } from "../lib/jams/presentation";
-import { getFeaturedRound } from "../lib/jams/status";
+import { getActiveRound, getFeaturedRound } from "../lib/jams/status";
 import {
   getAbsoluteSiteUrl,
   getLocalizedPath,
@@ -31,8 +31,10 @@ interface Props {
 
 const { title, description, canonicalPath = "/", round, locale } = Astro.props;
 const translations = getTranslations(locale);
-const featuredRound = getFeaturedRound(jams, new Date());
-const displayRound = round ?? featuredRound;
+const now = new Date();
+const activeRound = getActiveRound(jams, now);
+const currentRound = activeRound ?? getFeaturedRound(jams, now);
+const displayRound = round ?? currentRound;
 const displayPresentation = getRoundPresentation(displayRound, locale);
 const socialImagePath = round ? displayPresentation.socialImage : getDefaultSocialImage(locale);
 const canonicalPathForLocale = getLocalizedPath(canonicalPath, locale);
@@ -119,10 +121,10 @@ const alternateLinks = SUPPORTED_LOCALES.map((alternateLocale) => ({
   </head>
   <body>
     <a class="skip-link" href="#content">{translations.common.skipToContent}</a>
-    <Header round={displayRound} currentRound={featuredRound} locale={locale} />
+    <Header round={displayRound} currentRound={currentRound} locale={locale} />
     <main id="content">
       <slot />
     </main>
-    <Footer currentRound={featuredRound} locale={locale} />
+    <Footer currentRound={currentRound} locale={locale} />
   </body>
 </html>

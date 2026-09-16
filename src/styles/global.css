@@ -566,6 +566,10 @@ a {
   font-size: clamp(1rem, 1.5vw, 1.35rem);
 }
 
+.hero__round-link {
+  margin-top: 1.25rem;
+}
+
 .hero__theme-block {
   align-self: center;
   min-width: 0;
@@ -798,6 +802,171 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+}
+
+.registration-drawer {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 30;
+  width: min(25rem, calc(100vw - 1rem));
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.registration-drawer__panel {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid var(--jam-border-strong);
+  border-right: 0;
+  border-left: 3px solid var(--round-accent, var(--jam-accent));
+  background: var(--jam-surface-raised);
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.42);
+  padding: 1.35rem 1.5rem 1.5rem;
+  pointer-events: auto;
+  animation: registration-drawer-in var(--motion-slow) var(--ease-standard) 420ms both;
+  transition:
+    opacity var(--motion-normal) var(--ease-standard),
+    transform var(--motion-normal) var(--ease-standard),
+    visibility var(--motion-normal) var(--ease-standard);
+}
+
+@keyframes registration-drawer-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + 1rem));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.registration-drawer--hidden .registration-drawer__panel {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(calc(100% + 1rem));
+}
+
+.registration-drawer__close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  place-items: center;
+  border: 1px solid var(--jam-border-strong);
+  background: transparent;
+  color: var(--jam-muted);
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition:
+    background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
+}
+
+.registration-drawer__close:hover,
+.registration-drawer__close:focus-visible {
+  background: var(--round-accent, var(--jam-accent));
+  color: #151711;
+}
+
+.registration-drawer h2 {
+  max-width: 17ch;
+  margin: 0;
+  color: var(--jam-ink);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.registration-drawer__round,
+.registration-drawer__starts {
+  margin: 0;
+  color: var(--jam-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.registration-drawer__round {
+  color: var(--round-accent, var(--jam-accent));
+}
+
+.registration-drawer__starts strong {
+  color: var(--jam-ink);
+}
+
+.registration-drawer .jam-countdown {
+  min-height: 0;
+  padding: 0.5rem 0 0;
+  border-top: 1px solid var(--jam-border);
+}
+
+.registration-drawer .jam-countdown__value {
+  color: var(--round-accent, var(--jam-accent));
+}
+
+.registration-drawer__link {
+  width: 100%;
+  margin-top: 0.35rem;
+  justify-content: space-between;
+}
+
+.registration-drawer__reopen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  min-height: 9rem;
+  gap: 0.75rem;
+  border: 1px solid var(--jam-border-strong);
+  border-right: 0;
+  background: var(--jam-surface-raised);
+  color: var(--round-accent, var(--jam-accent));
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  transition:
+    opacity var(--motion-normal) var(--ease-standard),
+    transform var(--motion-normal) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard);
+}
+
+.registration-drawer__reopen span:last-child {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.registration-drawer__reopen:hover,
+.registration-drawer__reopen:focus-visible {
+  background: var(--round-accent, var(--jam-accent));
+  color: #151711;
+}
+
+.registration-drawer--hidden .registration-drawer__reopen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
 }
 
 .btn {
@@ -2393,6 +2562,17 @@ img[hidden] {
   .participation-buttons__options {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .registration-drawer {
+    top: auto;
+    bottom: 0.75rem;
+    width: min(25rem, calc(100vw - 0.75rem));
+    transform: none;
+  }
+
+  .registration-drawer__panel {
+    padding: 1.15rem 1.1rem 1.25rem;
   }
 
   .participation-option {

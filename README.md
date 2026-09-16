@@ -51,6 +51,8 @@ Provider-specific code lives in `src/lib/providers/<provider>/`. Each adapter ow
 
 `src/lib/providers/registry.ts` stores provider adapters and presentation metadata. The UI uses the registry for provider labels, badges, and participation URLs, so adding a provider does not require rewriting the main pages or cards.
 
+Provider configuration belongs to each `JamRound`. A new round can have its own itch.io JAM ID and MyIndie alias; no provider identifiers are shared globally between rounds.
+
 The current read-only adapters are:
 
 - `itch.io` — entries endpoint and game-page normalization; participant count is read build-time from the jam page;
@@ -127,6 +129,7 @@ Canonical round metadata lives in [`src/config/jams.ts`](src/config/jams.ts). Ad
   themeState: "announced",
   startsAt: "2026-10-01T00:00:00+03:00",
   endsAt: "2026-10-31T23:59:59+03:00",
+  registrationStartsAt: "2026-09-15T00:00:00+03:00",
   dataMode: "live",
   providers: [
     {
@@ -143,6 +146,10 @@ Canonical round metadata lives in [`src/config/jams.ts`](src/config/jams.ts). Ad
 ```
 
 `round` is the stable release number; never derive it from array order. `presentation.accent` controls the round's visual identity and must use `#RRGGBB` format. Social-image paths are derived automatically from the locale and round number.
+
+`registrationStartsAt` is optional. When present, registration is open from that timestamp up to (but not including) `startsAt`. When it is absent, the site treats registration as unavailable for that round. The homepage selects the active round separately from the round whose registration window is open.
+
+The selection helpers are `getActiveRound`, `getRegistrationOpenRound`, and `getFinishedRounds`. The first two return independent round entities, so the current showcase can remain active while registration for the next round is already available.
 
 Run `npm run generate:og` after changing the configured rounds to generate one 1200×630 PNG for every locale and round under `public/og/en/` and `public/og/ru/`. Run `npm run generate:myindie` for 1200×400 MyIndie banners with a centered 700×400 safe area under `public/myindie/en/` and `public/myindie/ru/`. `npm run generate:artwork` runs both generators. The generators are config-driven and accept no ad-hoc artwork metadata flags.
 
@@ -185,7 +192,7 @@ npm run sync
 npm run sync -- --all
 ```
 
-The normal synchronization processes the featured and recent rounds; `--all` updates the full history. It fetches games and round stats through the provider adapters. If game data temporarily fails, the existing snapshot is kept. If only stats fail, new games can still be written and the previous provider stats are reused when available. The GitHub Actions schedule runs this same sync before the static build.
+The normal synchronization processes the active round, the round with an open registration window, and recent rounds; `--all` updates the full history. It fetches games and round stats through the provider adapters. If game data temporarily fails, the existing snapshot is kept. If only stats fail, new games can still be written and the previous provider stats are reused when available. The GitHub Actions schedule runs this same sync before the static build.
 
 September 2026 uses a separate normalized demo snapshot at `src/data/demo/2026-09.json`. Demo entries exercise UI states such as a missing cover and submission dates. Production snapshots are stored in `src/data/generated/` and contain no raw provider payloads.
 
