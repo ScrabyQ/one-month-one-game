@@ -35,6 +35,7 @@ export const ru: Translations = {
     note: "Статическая витрина независимых игр",
   },
   home: {
+    viewRound: "Открыть раунд",
     galleryTitle: "Галерея месяца",
     gallerySubheading: "Игры участников текущего раунда",
     galleryAside: "Каждая игра — ещё одна законченная история.",
@@ -315,6 +316,15 @@ export const ru: Translations = {
   },
   participants: {
     eyebrow: "УЧАСТНИКИ РАУНДА",
+  },
+  registrationDrawer: {
+    eyebrow: "Следующий раунд",
+    title: "Регистрация на следующий раунд уже открыта!",
+    roundLabel: (roundNumber, monthLabel) => `Раунд ${roundNumber} · ${monthLabel}`,
+    startsAt: "Старт",
+    button: "Открыть следующий раунд",
+    close: "Скрыть уведомление о регистрации",
+    open: "Показать регистрацию следующего раунда",
   },
   og: {
     projectTitle: "ОДИН МЕСЯЦ / ОДНА ИГРА",

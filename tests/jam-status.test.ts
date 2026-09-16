@@ -1,16 +1,21 @@
 import { describe, expect, it } from "vitest";
+import { jams } from "../src/config/jams";
 import type { JamRound } from "../src/lib/domain/types";
 import {
   formatCountdownDisplay,
+  formatJamStartDate,
   formatJamDateRange,
   formatRemainingDuration,
   getThemePresentation,
 } from "../src/lib/i18n";
 import {
+  getActiveRound,
   getCountdownPartsForDates,
   getFeaturedRound,
   getFinishedRounds,
   getJamStatus,
+  getRegistrationOpenRound,
+  isRegistrationOpen,
   validateJamRounds,
 } from "../src/lib/jams/status";
 
@@ -45,6 +50,57 @@ describe("jam status", () => {
     expect(getJamStatus(current, new Date("2026-10-01T00:00:00Z"))).toBe("finished");
   });
 
+  it("opens registration only within the configured window", () => {
+    const next = {
+      ...current,
+      startsAt: "2026-10-01T00:00:00Z",
+      endsAt: "2026-10-31T23:59:59Z",
+      registrationStartsAt: "2026-09-15T00:00:00Z",
+    };
+
+    expect(isRegistrationOpen(next, new Date("2026-09-14T23:59:59Z"))).toBe(false);
+    expect(isRegistrationOpen(next, new Date("2026-09-15T00:00:00Z"))).toBe(true);
+    expect(isRegistrationOpen(next, new Date("2026-09-30T23:59:59Z"))).toBe(true);
+    expect(isRegistrationOpen(next, new Date("2026-10-01T00:00:00Z"))).toBe(false);
+    expect(isRegistrationOpen(current, new Date("2026-09-15T00:00:00Z"))).toBe(false);
+  });
+
+  it("selects active and registration-open rounds independently", () => {
+    const next = round("next", "2026-10-01T00:00:00Z", "2026-10-31T23:59:59Z", 2);
+    const registrationOpen = {
+      ...next,
+      registrationStartsAt: "2026-09-15T00:00:00Z",
+    };
+
+    expect(getActiveRound([current, registrationOpen], new Date("2026-09-15T00:00:00Z"))).toMatchObject({
+      slug: "current",
+    });
+    expect(getRegistrationOpenRound([current, registrationOpen], new Date("2026-09-15T00:00:00Z"))).toMatchObject({
+      slug: "next",
+    });
+
+    const third = round("third", "2026-11-01T00:00:00Z", "2026-11-30T23:59:59Z", 3);
+    const thirdRegistrationOpen = {
+      ...third,
+      registrationStartsAt: "2026-10-15T00:00:00Z",
+    };
+    expect(getActiveRound([current, registrationOpen, thirdRegistrationOpen], new Date("2026-10-15T00:00:00Z"))).toMatchObject({
+      slug: "next",
+    });
+    expect(getRegistrationOpenRound([current, registrationOpen, thirdRegistrationOpen], new Date("2026-10-15T00:00:00Z"))).toMatchObject({
+      slug: "third",
+    });
+
+    const laterRound = {
+      ...round("later", "2026-12-01T00:00:00Z", "2026-12-31T23:59:59Z", 4),
+      registrationStartsAt: "2026-09-01T00:00:00Z",
+    };
+    expect(getRegistrationOpenRound([thirdRegistrationOpen, laterRound], new Date("2026-10-15T00:00:00Z"))).toMatchObject({
+      slug: "third",
+    });
+    expect(getRegistrationOpenRound([current], new Date("2026-09-15T00:00:00Z"))).toBeUndefined();
+  });
+
   it("chooses the active round, otherwise the nearest upcoming or latest finished round", () => {
     const upcoming = round("upcoming", "2026-11-01T00:00:00Z", "2026-12-01T00:00:00Z", 2);
     expect(getFeaturedRound([current, upcoming], new Date("2026-09-10T00:00:00Z")).slug).toBe("current");
@@ -63,6 +119,28 @@ describe("jam status", () => {
 
     const duplicate = round("duplicate", "2026-11-01T00:00:00Z", "2026-12-01T00:00:00Z", 1);
     expect(() => validateJamRounds([current, duplicate])).toThrow(/configured more than once/);
+    expect(() => validateJamRounds([{ ...current, registrationStartsAt: "not-a-date" }])).toThrow(
+      /Invalid registrationStartsAt date/,
+    );
+  });
+
+  it("keeps provider configuration scoped to each configured round", () => {
+    expect(() => validateJamRounds(jams)).not.toThrow();
+
+    const firstRound = jams.find((round) => round.id === "2026-09");
+    const secondRound = jams.find((round) => round.id === "2026-10");
+    const firstItch = firstRound?.providers.find((provider) => provider.type === "itch");
+    const secondItch = secondRound?.providers.find((provider) => provider.type === "itch");
+    const firstMyIndie = firstRound?.providers.find((provider) => provider.type === "myindie");
+    const secondMyIndie = secondRound?.providers.find((provider) => provider.type === "myindie");
+
+    expect(firstItch).toMatchObject({ jamId: 419729 });
+    expect(secondItch).toMatchObject({ jamId: 420051 });
+    expect(firstMyIndie).toMatchObject({ jamAlias: "odin-mesyac-odna-igra", enabled: true });
+    expect(secondMyIndie).toMatchObject({
+      jamAlias: "REPLACE_WITH_ROUND_002_JAM_ALIAS",
+      enabled: false,
+    });
   });
 
   it("keeps configured round numbers on featured and archive rounds", () => {
@@ -82,6 +160,13 @@ describe("jam status", () => {
   it("formats dates and switches to a precise clock near the deadline", () => {
     expect(formatJamDateRange("ru", current)).toBe("01.09 — 01.10");
     expect(formatJamDateRange("en", current)).toBe("09/01 — 10/01");
+    expect(formatJamDateRange("en", {
+      ...current,
+      startsAt: "2026-10-01T00:00:00+03:00",
+      endsAt: "2026-10-31T23:59:59+03:00",
+    })).toBe("10/01 — 10/31");
+    expect(formatJamStartDate("en", "2026-10-01T00:00:00+03:00")).toBe("October 1");
+    expect(formatJamStartDate("ru", "2026-10-01T00:00:00+03:00")).toBe("1 октября");
     expect(formatRemainingDuration("ru", (4 * 60 * 60 + 32 * 60 + 18) * 1000)).toBe("04:32:18");
     expect(formatRemainingDuration("en", 24 * 60 * 60 * 1000 - 1)).toBe("23:59:59");
 

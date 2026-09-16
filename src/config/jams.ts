@@ -70,6 +70,7 @@ export const jams: JamRound[] = [
     themeState: "pending",
     startsAt: "2026-10-01T00:00:00+03:00",
     endsAt: "2026-10-31T23:59:59+03:00",
+    registrationStartsAt: "2026-09-15T00:00:00+03:00",
     dataMode: "live",
     providers: [
       {
@@ -80,9 +81,9 @@ export const jams: JamRound[] = [
       },
       {
         type: "myindie",
-        enabled: false,
-        jamAlias: "REPLACE_WITH_ROUND_002_JAM_ALIAS",
-        jamUrl: "https://myindie.net/jams/jam/REPLACE_WITH_ROUND_002_JAM_ALIAS",
+        enabled: true,
+        jamAlias: "odin-mesyac-odna-igra-2",
+        jamUrl: "https://myindie.net/jams/jam/odin-mesyac-odna-igra-2",
       },
     ],
     presentation: {

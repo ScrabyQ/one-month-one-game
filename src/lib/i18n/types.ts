@@ -103,6 +103,7 @@ export interface Translations {
     note: string;
   };
   home: {
+    viewRound: string;
     galleryTitle: string;
     gallerySubheading: string;
     galleryAside: string;
@@ -228,5 +229,14 @@ export interface Translations {
     challengeLabel: string;
   };
   participants: ParticipantsTranslations;
+  registrationDrawer: {
+    eyebrow: string;
+    title: string;
+    roundLabel: (roundNumber: string, monthLabel: string) => string;
+    startsAt: string;
+    button: string;
+    close: string;
+    open: string;
+  };
   og: OgTranslations;
 }

@@ -64,8 +64,15 @@ function parseDate(value: string): Date {
   return date;
 }
 
+function getCalendarDate(value: string): Date {
+  parseDate(value);
+  const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(value);
+  if (!match) return new Date(value);
+  return new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+}
+
 export function formatJamDate(locale: Locale, value: string): string {
-  const date = parseDate(value);
+  const date = getCalendarDate(value);
   return new Intl.DateTimeFormat(locale === "ru" ? "ru-RU" : "en-US", {
     day: "2-digit",
     month: "2-digit",
@@ -75,6 +82,14 @@ export function formatJamDate(locale: Locale, value: string): string {
 
 export function formatJamDateRange(locale: Locale, round: Pick<JamRound, "startsAt" | "endsAt">): string {
   return `${formatJamDate(locale, round.startsAt)} — ${formatJamDate(locale, round.endsAt)}`;
+}
+
+export function formatJamStartDate(locale: Locale, value: string): string {
+  return new Intl.DateTimeFormat(locale === "ru" ? "ru-RU" : "en-US", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(getCalendarDate(value));
 }
 
 export function formatStatusLabel(locale: Locale, status: JamStatus): string {
