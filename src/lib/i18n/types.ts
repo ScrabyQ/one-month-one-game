@@ -27,6 +27,11 @@ export interface ParticipantsTranslations {
   eyebrow: string;
 }
 
+export interface ThemeCardTranslations {
+  eyebrow: string;
+  announcementEyebrow: string;
+}
+
 export interface RulesTranslations {
   intro: {
     eyebrow: string;
@@ -229,6 +234,7 @@ export interface Translations {
     challengeLabel: string;
   };
   participants: ParticipantsTranslations;
+  themeCard: ThemeCardTranslations;
   registrationDrawer: {
     eyebrow: string;
     title: string;

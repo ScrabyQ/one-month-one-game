@@ -10,6 +10,7 @@
     "generate:og": "tsx scripts/generate-og-cards.ts",
     "generate:myindie": "tsx scripts/generate-myindie-banners.ts",
     "generate:participants": "tsx scripts/generate-participants-cards.ts",
+    "generate:theme": "tsx scripts/generate-theme-cards.ts",
     "generate:artwork": "npm run generate:og && npm run generate:myindie",
     "sync": "tsx scripts/sync-games.ts",
     "test": "vitest run",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
+    "@resvg/resvg-js": "2.6.2",
     "@tailwindcss/vite": "^4.1.0",
     "@types/node": "^22.0.0",
     "daisyui": "^5.0.0",

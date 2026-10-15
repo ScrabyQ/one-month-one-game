@@ -1,8 +1,6 @@
-import { mkdir } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-
-import sharp from "sharp";
 
 import { getTranslations, SUPPORTED_LOCALES } from "../src/lib/i18n";
 import { DEFAULT_ROUND_ACCENT, getDefaultSocialImage, getRoundSocialImage } from "../src/lib/jams/presentation";
@@ -13,6 +11,7 @@ import {
 } from "./lib/round-artwork";
 import { publicPathToFilePath } from "./lib/paths";
 import { assertAccent, escapeXml } from "./lib/svg";
+import { ARTWORK_FONTS, renderArtworkPng } from "./lib/artwork-renderer";
 
 export const WIDTH = 1200;
 export const HEIGHT = 630;
@@ -69,23 +68,23 @@ export function createCardSvg(card: OgCard): string {
   <rect x="34" y="34" width="1132" height="562" fill="none" stroke="${accent}" stroke-opacity="0.65" stroke-width="2" />
   <rect x="70" y="70" width="16" height="16" fill="${accent}" />
 
-  <text x="108" y="84" fill="#f2efe5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800" letter-spacing="4">${challengeLabel}</text>
-  <text x="1130" y="88" fill="${accent}" font-family="monospace" font-size="15" font-weight="700" letter-spacing="2" text-anchor="end">${escapeXml(card.editionLabel)}</text>
+  <text x="108" y="84" fill="#f2efe5" font-family="${ARTWORK_FONTS.sans}" font-size="18" font-weight="700" letter-spacing="4">${challengeLabel}</text>
+  <text x="1130" y="88" fill="${accent}" font-family="${ARTWORK_FONTS.mono}" font-size="15" font-weight="700" letter-spacing="2" text-anchor="end">${escapeXml(card.editionLabel)}</text>
 
-  <text x="68" y="402" fill="#f2efe5" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="900" letter-spacing="-2">${escapeXml(card.titleLineOne)}</text>
-  <text x="68" y="492" fill="${accent}" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="900" letter-spacing="-2">${escapeXml(card.titleLineTwo)}</text>
+  <text x="68" y="402" fill="#f2efe5" font-family="${ARTWORK_FONTS.display}" font-size="86" font-weight="900" letter-spacing="-2">${escapeXml(card.titleLineOne)}</text>
+  <text x="68" y="492" fill="${accent}" font-family="${ARTWORK_FONTS.display}" font-size="86" font-weight="900" letter-spacing="-2">${escapeXml(card.titleLineTwo)}</text>
 
-  <text x="68" y="548" fill="#9a988e" font-family="monospace" font-size="18" letter-spacing="3">${month}</text>
-  <text x="1134" y="566" fill="${accent}" font-family="monospace" font-size="18" letter-spacing="2" text-anchor="end">${escapeXml(card.tagline)}</text>
-  <text x="1180" y="485" fill="${accent}" fill-opacity="0.08" font-family="monospace" font-size="270" font-weight="800" letter-spacing="-24" text-anchor="end">${escapeXml(card.giantLabel)}</text>
-  <text x="1130" y="548" fill="#f2efe5" fill-opacity="0.35" font-family="monospace" font-size="16" letter-spacing="2" text-anchor="end">${escapeXml(card.roundNumber)}</text>
+  <text x="68" y="548" fill="#9a988e" font-family="${ARTWORK_FONTS.mono}" font-size="18" letter-spacing="3">${month}</text>
+  <text x="1134" y="566" fill="${accent}" font-family="${ARTWORK_FONTS.mono}" font-size="18" letter-spacing="2" text-anchor="end">${escapeXml(card.tagline)}</text>
+  <text x="1180" y="485" fill="${accent}" fill-opacity="0.08" font-family="${ARTWORK_FONTS.background}" font-size="270" font-weight="800" letter-spacing="-24" text-anchor="end">${escapeXml(card.giantLabel)}</text>
+  <text x="1130" y="548" fill="#f2efe5" fill-opacity="0.35" font-family="${ARTWORK_FONTS.mono}" font-size="16" letter-spacing="2" text-anchor="end">${escapeXml(card.roundNumber)}</text>
 </svg>`;
 }
 
 async function generateCard(card: OgCard): Promise<void> {
   const outputPath = publicPathToFilePath(card.outputPath);
   await mkdir(dirname(outputPath), { recursive: true });
-  await sharp(Buffer.from(createCardSvg(card))).png().toFile(outputPath);
+  await writeFile(outputPath, renderArtworkPng(createCardSvg(card)));
   console.log(`${outputPath} (${WIDTH}x${HEIGHT})`);
 }
 

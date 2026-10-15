@@ -43,6 +43,8 @@ function assertRound(round: JamRound): { start: Date; end: Date; registrationSta
   }
   getRoundPresentation(round, DEFAULT_LOCALE);
   for (const provider of round.providers) {
+    if (!provider.enabled) continue;
+
     if (provider.type === "itch" || provider.type === "myindie") {
       try {
         const providerUrl = new URL(provider.jamUrl);

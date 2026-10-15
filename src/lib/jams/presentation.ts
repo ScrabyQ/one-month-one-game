@@ -26,6 +26,10 @@ export function getRoundParticipantsImage(roundNumber: number, locale: Locale): 
   return `/participants/${locale}/round-${formatRoundNumber(roundNumber)}.png`;
 }
 
+export function getRoundThemeImage(roundNumber: number, locale: Locale): string {
+  return `/themes/${locale}/round-${formatRoundNumber(roundNumber)}.png`;
+}
+
 export function getRoundPresentation(
   round: Pick<JamRound, "slug" | "round" | "presentation">,
   locale: Locale,

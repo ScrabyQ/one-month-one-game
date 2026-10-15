@@ -317,6 +317,10 @@ export const ru: Translations = {
   participants: {
     eyebrow: "УЧАСТНИКИ РАУНДА",
   },
+  themeCard: {
+    eyebrow: "ТЕМА РАУНДА",
+    announcementEyebrow: "АНОНС ТЕМЫ",
+  },
   registrationDrawer: {
     eyebrow: "Следующий раунд",
     title: "Регистрация на следующий раунд уже открыта!",

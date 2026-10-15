@@ -98,38 +98,62 @@ npm run build       # production static build
 npm run preview     # preview the production build
 npm run generate:og # regenerate all localized OG cards
 npm run generate:myindie # regenerate all localized MyIndie banners
+npm run generate:theme -- --round 2 # generate the selected round's theme card
 npm run generate:artwork # regenerate OG cards and MyIndie banners
 ```
 
+Add `--locale en` or `--locale ru` to generate one language; otherwise the theme-card generator writes both localized PNGs to `public/themes/`.
+For a round whose theme is pending, it uses that locale's `themeAnnouncement` and reports an error if the announcement is missing.
+
+All image generators use `scripts/lib/artwork-renderer.ts` and the font files in `scripts/assets/fonts/`, with system font discovery disabled. Large background round labels and numbers use Montserrat ExtraBold, matching the first two rounds; small labels use Cascadia Code and headings use Arial. Font provenance and individual terms are listed in `scripts/assets/fonts/README.md`. Update the shared module and run `tests/artwork-fonts.test.ts` when changing typography.
+
 ## Adding a new round
+
+### Round 003 — November 2026
+
+Round `2026-11` is prepared for November 1–30, 2026, in Moscow time (`UTC+3`). The `/jam/2026-11/` and `/ru/jam/2026-11/` pages are generated automatically. Its theme is `pending`, and `src/data/generated/2026-11.json` contains an empty game list without invented stats.
+
+Both platforms are enabled (`enabled: true`): itch.io uses `one-month-one-game-3` with `jamId: 421092`, and MyIndie uses the alias `odin-mesyac-odna-igra-2_r4z`. Full URLs are configured in `src/config/jams.ts`; participation buttons link to these jams and synchronization fetches data from both platforms. Registration opens on October 15, 2026, at 00:00 Moscow time (`registrationStartsAt`), so the homepage shows the registration announcement until round 003 starts.
+
+To announce the theme, fill in `content.en.theme` and `content.ru.theme`, set `themeState: "announced"`, and regenerate the cards:
+
+```bash
+npm run generate:artwork
+npm run generate:theme -- --round 3
+npm run sync
+```
+
+OG cards, MyIndie banners, and theme placeholders are already in `public/og/{en,ru}/round-003.png`, `public/myindie/{en,ru}/round-003.png`, and `public/themes/{en,ru}/round-003.png`. Generate a participant card with `npm run generate:participants -- --round 3` once real stats are available.
+
+### Round configuration
 
 Canonical round metadata lives in [`src/config/jams.ts`](src/config/jams.ts). Add a stable, unique round number and localized content:
 
 ```ts
 {
-  id: "2026-10",
+  id: "2026-11",
   round: 3,
-  slug: "2026-10",
+  slug: "2026-11",
   content: {
     en: {
       title: "One Month — One Game",
-      monthLabel: "October 2026",
+      monthLabel: "November 2026",
       theme: "A new theme",
       themeAnnouncement: "The theme will appear at the start of the month",
       description: "One game in one month.",
     },
     ru: {
       title: "Один месяц — одна игра",
-      monthLabel: "Октябрь 2026",
+      monthLabel: "Ноябрь 2026",
       theme: "Новая тема",
       themeAnnouncement: "Тема появится в начале месяца",
       description: "Одна игра за один месяц.",
     },
   },
   themeState: "announced",
-  startsAt: "2026-10-01T00:00:00+03:00",
-  endsAt: "2026-10-31T23:59:59+03:00",
-  registrationStartsAt: "2026-09-15T00:00:00+03:00",
+  startsAt: "2026-11-01T00:00:00+03:00",
+  endsAt: "2026-11-30T23:59:59+03:00",
+  registrationStartsAt: "2026-10-15T00:00:00+03:00",
   dataMode: "live",
   providers: [
     {

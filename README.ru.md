@@ -98,38 +98,62 @@ npm run build       # production static build
 npm run preview     # просмотр production build
 npm run generate:og # пересоздать все локализованные OG-карточки
 npm run generate:myindie # пересоздать все локализованные MyIndie-баннеры
+npm run generate:theme -- --round 2 # создать карточку темы выбранного раунда
 npm run generate:artwork # пересоздать OG-карточки и MyIndie-баннеры
 ```
 
+Добавьте `--locale en` или `--locale ru`, чтобы создать карточку на одном языке. Без этого генератор темы создаёт обе локализации в `public/themes/`.
+Для раунда со статусом `pending` он использует локализованный `themeAnnouncement` и выдаёт ошибку, если анонс не задан.
+
+Все генераторы изображений используют общий `scripts/lib/artwork-renderer.ts` и файлы шрифтов из `scripts/assets/fonts/`. Поиск системных шрифтов отключён. Крупные фоновые номера и надписи используют Montserrat ExtraBold, как в первых двух раундах; подписи — Cascadia Code, заголовки — Arial. Происхождение файлов и условия их использования перечислены в `scripts/assets/fonts/README.md`. Для изменения типографики меняйте общий модуль и проверяйте тест `tests/artwork-fonts.test.ts`.
+
 ## Добавление нового раунда
+
+### Раунд 003 — ноябрь 2026
+
+Раунд `2026-11` подготовлен на 1–30 ноября 2026, время московское (`UTC+3`). Страницы `/jam/2026-11/` и `/ru/jam/2026-11/` создаются автоматически. Тема пока имеет статус `pending`, а snapshot в `src/data/generated/2026-11.json` содержит пустой список игр без выдуманной статистики.
+
+Обе площадки включены (`enabled: true`): itch.io использует джем `one-month-one-game-3` с `jamId: 421092`, MyIndie — alias `odin-mesyac-odna-igra-2_r4z`. Полные ссылки находятся в `src/config/jams.ts`; кнопки участия ведут на соответствующие джемы, а синхронизация получает данные с обеих площадок. Регистрация открыта с 15 октября 2026, 00:00 МСК (`registrationStartsAt`), поэтому до старта третьего раунда на главной показывается уведомление об открытой регистрации.
+
+Для объявления темы заполните `content.en.theme` и `content.ru.theme`, установите `themeState: "announced"` и пересоздайте карточки:
+
+```bash
+npm run generate:artwork
+npm run generate:theme -- --round 3
+npm run sync
+```
+
+OG-карточки, MyIndie-баннеры и заглушки темы уже находятся в `public/og/{en,ru}/round-003.png`, `public/myindie/{en,ru}/round-003.png` и `public/themes/{en,ru}/round-003.png`. Карточку участников можно создать через `npm run generate:participants -- --round 3`, когда появится реальная статистика.
+
+### Конфигурация раунда
 
 Все canonical-метаданные находятся в [`src/config/jams.ts`](src/config/jams.ts). Добавьте стабильный уникальный номер и локализованный контент:
 
 ```ts
 {
-  id: "2026-10",
+  id: "2026-11",
   round: 3,
-  slug: "2026-10",
+  slug: "2026-11",
   content: {
     en: {
       title: "One Month — One Game",
-      monthLabel: "October 2026",
+      monthLabel: "November 2026",
       theme: "A new theme",
       themeAnnouncement: "The theme will appear at the start of the month",
       description: "One game in one month.",
     },
     ru: {
       title: "Один месяц — одна игра",
-      monthLabel: "Октябрь 2026",
+      monthLabel: "Ноябрь 2026",
       theme: "Новая тема",
       themeAnnouncement: "Тема появится в начале месяца",
       description: "Одна игра за один месяц.",
     },
   },
   themeState: "announced",
-  startsAt: "2026-10-01T00:00:00+03:00",
-  endsAt: "2026-10-31T23:59:59+03:00",
-  registrationStartsAt: "2026-09-15T00:00:00+03:00",
+  startsAt: "2026-11-01T00:00:00+03:00",
+  endsAt: "2026-11-30T23:59:59+03:00",
+  registrationStartsAt: "2026-10-15T00:00:00+03:00",
   dataMode: "live",
   providers: [
     {

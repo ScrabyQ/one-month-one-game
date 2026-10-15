@@ -318,6 +318,10 @@ export const en: Translations = {
   participants: {
     eyebrow: "ROUND PARTICIPANTS",
   },
+  themeCard: {
+    eyebrow: "ROUND THEME",
+    announcementEyebrow: "THEME ANNOUNCEMENT",
+  },
   registrationDrawer: {
     eyebrow: "Next round",
     title: "Registration for the next round is already open!",

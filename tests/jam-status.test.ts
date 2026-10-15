@@ -138,9 +138,32 @@ describe("jam status", () => {
     expect(secondItch).toMatchObject({ jamId: 420051 });
     expect(firstMyIndie).toMatchObject({ jamAlias: "odin-mesyac-odna-igra", enabled: true });
     expect(secondMyIndie).toMatchObject({
-      jamAlias: "REPLACE_WITH_ROUND_002_JAM_ALIAS",
-      enabled: false,
+      jamAlias: "odin-mesyac-odna-igra-2",
+      enabled: true,
     });
+  });
+
+  it("allows blank URLs for disabled platforms and requires real URLs before enabling them", () => {
+    const unconfiguredRound: JamRound = {
+      ...current,
+      providers: [
+        { type: "itch", enabled: false, jamId: null, jamUrl: "" },
+        { type: "myindie", enabled: false, jamAlias: "", jamUrl: "" },
+      ],
+    };
+
+    expect(() => validateJamRounds([unconfiguredRound])).not.toThrow();
+
+    for (const jamUrl of ["", "#", "ftp://example.com/jam"]) {
+      expect(() => validateJamRounds([{
+        ...current,
+        providers: [{ type: "itch", enabled: true, jamId: 123, jamUrl }],
+      }])).toThrow(/Invalid participation URL/);
+      expect(() => validateJamRounds([{
+        ...current,
+        providers: [{ type: "myindie", enabled: true, jamAlias: "example", jamUrl }],
+      }])).toThrow(/Invalid participation URL/);
+    }
   });
 
   it("keeps configured round numbers on featured and archive rounds", () => {

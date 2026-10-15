@@ -13,6 +13,7 @@ import {
 } from "./lib/round-artwork";
 import { publicPathToFilePath } from "./lib/paths";
 import { assertAccent, escapeXml } from "./lib/svg";
+import { ARTWORK_FONTS, renderArtworkPng } from "./lib/artwork-renderer";
 import { getRoundMyIndieBanner } from "../src/lib/jams/presentation";
 
 export const WIDTH = 1200;
@@ -95,7 +96,7 @@ export function getMyIndieBannerDefinitions(): MyIndieBannerDefinition[] {
 }
 
 function textAttributes(layout: CriticalTextLayout): string {
-  return `x="${layout.anchorX}" y="${layout.y}" text-anchor="${layout.anchor}" textLength="${layout.width}" lengthAdjust="spacingAndGlyphs"`;
+  return `x="${layout.anchorX}" y="${layout.y}" text-anchor="${layout.anchor}"`;
 }
 
 export function createMyIndieBannerSvg(artwork: RoundArtwork): string {
@@ -127,18 +128,18 @@ export function createMyIndieBannerSvg(artwork: RoundArtwork): string {
   </g>
   <image x="${MASCOT_LAYOUT.x}" y="${MASCOT_LAYOUT.y}" width="${MASCOT_LAYOUT.width}" height="${MASCOT_LAYOUT.height}" preserveAspectRatio="xMidYMid meet" opacity="${MASCOT_LAYOUT.opacity}" href="${MASCOT_DATA_URI}" />
 
-  <text x="1190" y="366" fill="${accent}" fill-opacity="0.08" font-family="monospace" font-size="220" font-weight="800" letter-spacing="-18" text-anchor="end">${escapeXml(artwork.roundNumber)}</text>
+  <text x="1190" y="366" fill="${accent}" fill-opacity="0.08" font-family="${ARTWORK_FONTS.background}" font-size="220" font-weight="800" letter-spacing="-18" text-anchor="end">${escapeXml(artwork.roundNumber)}</text>
 
   <path d="M ${FRAME_LEFT} 58 V ${FRAME_TOP} H ${FRAME_LEFT + 34} M ${FRAME_RIGHT} 58 V ${FRAME_TOP} H ${FRAME_RIGHT - 34} M ${FRAME_LEFT} 342 V ${FRAME_BOTTOM} H ${FRAME_LEFT + 34} M ${FRAME_RIGHT} 342 V ${FRAME_BOTTOM} H ${FRAME_RIGHT - 34}" fill="none" stroke="${accent}" stroke-opacity="0.65" stroke-width="2" />
   <path d="M ${FRAME_LEFT + 80} ${FRAME_TOP} H ${FRAME_RIGHT - 80} M ${FRAME_LEFT + 80} ${FRAME_BOTTOM} H ${FRAME_RIGHT - 80}" fill="none" stroke="#f2efe5" stroke-opacity="0.12" stroke-width="1" />
 
-  <text ${textAttributes(layout.challengeLabel)} fill="#f2efe5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="800" letter-spacing="2">${escapeXml(translations.myIndie.challengeLabel)}</text>
-  <text ${textAttributes(layout.roundLabel)} fill="${accent}" font-family="monospace" font-size="14" font-weight="700" letter-spacing="2">${escapeXml(artwork.editionLabel)}</text>
+  <text ${textAttributes(layout.challengeLabel)} fill="#f2efe5" font-family="${ARTWORK_FONTS.sans}" font-size="15" font-weight="700" letter-spacing="2">${escapeXml(translations.myIndie.challengeLabel)}</text>
+  <text ${textAttributes(layout.roundLabel)} fill="${accent}" font-family="${ARTWORK_FONTS.mono}" font-size="14" font-weight="700" letter-spacing="2">${escapeXml(artwork.editionLabel)}</text>
 
-  <text ${textAttributes(layout.titleLineOne)} fill="#f2efe5" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="-1">${escapeXml(artwork.titleLineOne)}</text>
-  <text ${textAttributes(layout.titleLineTwo)} fill="${accent}" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="-1">${escapeXml(artwork.titleLineTwo)}</text>
+  <text ${textAttributes(layout.titleLineOne)} fill="#f2efe5" font-family="${ARTWORK_FONTS.display}" font-size="58" font-weight="900" letter-spacing="-1">${escapeXml(artwork.titleLineOne)}</text>
+  <text ${textAttributes(layout.titleLineTwo)} fill="${accent}" font-family="${ARTWORK_FONTS.display}" font-size="58" font-weight="900" letter-spacing="-1">${escapeXml(artwork.titleLineTwo)}</text>
 
-  <text ${textAttributes(layout.monthLabel)} fill="#9a988e" font-family="monospace" font-size="16" letter-spacing="3">${escapeXml(formatArtworkMonth(artwork))}</text>
+  <text ${textAttributes(layout.monthLabel)} fill="#9a988e" font-family="${ARTWORK_FONTS.mono}" font-size="16" letter-spacing="3">${escapeXml(formatArtworkMonth(artwork))}</text>
   <path d="M 548 350 H 652" fill="none" stroke="${accent}" stroke-opacity="0.55" stroke-width="2" />
 </svg>`;
 }
@@ -151,7 +152,7 @@ async function generateBanner(banner: MyIndieBannerDefinition): Promise<void> {
   const outputPath = publicPathToFilePath(banner.outputPath);
   await mkdir(dirname(outputPath), { recursive: true });
 
-  const png = await sharp(Buffer.from(createMyIndieBannerSvg(banner))).png().toBuffer();
+  const png = renderArtworkPng(createMyIndieBannerSvg(banner));
   const metadata = await sharp(png).metadata();
   if (metadata.width !== WIDTH || metadata.height !== HEIGHT) {
     throw new Error(

@@ -81,7 +81,7 @@ describe("participants card definitions and SVG", () => {
     expect(englishSvg).not.toContain("data-participant-marker");
     expect(englishSvg).not.toContain(">+5</text>");
     expect(englishSvg).toContain(
-      `<text x="${ROUND_NUMBER_LAYOUT.x}" y="${ROUND_NUMBER_LAYOUT.y}" fill="#ff8a75" fill-opacity="${ROUND_NUMBER_LAYOUT.opacity}" font-family="monospace" font-size="${ROUND_NUMBER_LAYOUT.fontSize}"`,
+      `<text x="${ROUND_NUMBER_LAYOUT.x}" y="${ROUND_NUMBER_LAYOUT.y}" fill="#ff8a75" fill-opacity="${ROUND_NUMBER_LAYOUT.opacity}" font-family="Montserrat" font-size="${ROUND_NUMBER_LAYOUT.fontSize}"`,
     );
     expect(englishSvg.indexOf(`font-size="${ROUND_NUMBER_LAYOUT.fontSize}"`)).toBeLessThan(
       englishSvg.indexOf("SEPTEMBER 2026"),

@@ -16,6 +16,7 @@ import { readRoundSnapshot, syncRound } from "./lib/round-sync";
 import { formatArtworkMonth, getRoundArtwork } from "./lib/round-artwork";
 import { publicPathToFilePath } from "./lib/paths";
 import { assertAccent, escapeXml } from "./lib/svg";
+import { ARTWORK_FONTS, renderArtworkPng } from "./lib/artwork-renderer";
 import { validateJamRounds } from "../src/lib/jams/status";
 
 export const WIDTH = 1200;
@@ -154,17 +155,17 @@ export function createParticipantsCardSvg(card: ParticipantsCardDefinition): str
   <rect x="34" y="34" width="1132" height="562" fill="none" stroke="${accent}" stroke-opacity="0.65" stroke-width="2" />
   <rect x="70" y="70" width="16" height="16" fill="${accent}" />
 
-  <text x="108" y="84" fill="#f2efe5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800" letter-spacing="4">${escapeXml(translations.myIndie.challengeLabel)}</text>
-  <text x="1130" y="88" fill="${accent}" font-family="monospace" font-size="15" font-weight="700" letter-spacing="2" text-anchor="end">${escapeXml(card.roundLabel)}</text>
+  <text x="108" y="84" fill="#f2efe5" font-family="${ARTWORK_FONTS.sans}" font-size="18" font-weight="700" letter-spacing="4">${escapeXml(translations.myIndie.challengeLabel)}</text>
+  <text x="1130" y="88" fill="${accent}" font-family="${ARTWORK_FONTS.mono}" font-size="15" font-weight="700" letter-spacing="2" text-anchor="end">${escapeXml(card.roundLabel)}</text>
 
-  <text x="${ROUND_NUMBER_LAYOUT.x}" y="${ROUND_NUMBER_LAYOUT.y}" fill="${accent}" fill-opacity="${ROUND_NUMBER_LAYOUT.opacity}" font-family="monospace" font-size="${ROUND_NUMBER_LAYOUT.fontSize}" font-weight="800" letter-spacing="${ROUND_NUMBER_LAYOUT.letterSpacing}" text-anchor="middle">${roundNumber}</text>
-  <text x="600" y="185" text-anchor="middle" fill="#9a988e" font-family="monospace" font-size="18" font-weight="700" letter-spacing="3">${escapeXml(translations.participants.eyebrow)}</text>
-  <text x="600" y="405" text-anchor="middle" fill="${accent}" font-family="Arial, Helvetica, sans-serif" font-size="${mainNumberFontSize(card.registrationsCount)}" font-weight="900" letter-spacing="-6">${number}</text>
+  <text x="${ROUND_NUMBER_LAYOUT.x}" y="${ROUND_NUMBER_LAYOUT.y}" fill="${accent}" fill-opacity="${ROUND_NUMBER_LAYOUT.opacity}" font-family="${ARTWORK_FONTS.background}" font-size="${ROUND_NUMBER_LAYOUT.fontSize}" font-weight="800" letter-spacing="${ROUND_NUMBER_LAYOUT.letterSpacing}" text-anchor="middle">${roundNumber}</text>
+  <text x="600" y="185" text-anchor="middle" fill="#9a988e" font-family="${ARTWORK_FONTS.mono}" font-size="18" font-weight="700" letter-spacing="3">${escapeXml(translations.participants.eyebrow)}</text>
+  <text x="600" y="405" text-anchor="middle" fill="${accent}" font-family="${ARTWORK_FONTS.display}" font-size="${mainNumberFontSize(card.registrationsCount)}" font-weight="900" letter-spacing="-6">${number}</text>
 
-  <text x="600" y="465" text-anchor="middle" font-family="monospace" font-size="19" font-weight="700" letter-spacing="1">${providerBreakdown}</text>
+  <text x="600" y="465" text-anchor="middle" font-family="${ARTWORK_FONTS.mono}" font-size="19" font-weight="700" letter-spacing="1">${providerBreakdown}</text>
   <path d="M 310 505 H 890" fill="none" stroke="#f2efe5" stroke-opacity="0.12" stroke-width="1" />
 
-  <text x="600" y="555" text-anchor="middle" fill="#9a988e" font-family="monospace" font-size="17" letter-spacing="3">${month}</text>
+  <text x="600" y="555" text-anchor="middle" fill="#9a988e" font-family="${ARTWORK_FONTS.mono}" font-size="17" letter-spacing="3">${month}</text>
 
   <image x="${MASCOT_LAYOUT.x}" y="${MASCOT_LAYOUT.y}" width="${MASCOT_LAYOUT.width}" height="${MASCOT_LAYOUT.height}" preserveAspectRatio="xMidYMid meet" opacity="${MASCOT_LAYOUT.opacity}" href="${MASCOT_DATA_URI}" />
 </svg>`;
@@ -239,7 +240,7 @@ without making network requests.
 async function generateCard(card: ParticipantsCardDefinition): Promise<void> {
   const outputPath = publicPathToFilePath(card.outputPath);
   await mkdir(dirname(outputPath), { recursive: true });
-  const png = await sharp(Buffer.from(createParticipantsCardSvg(card))).png().toBuffer();
+  const png = renderArtworkPng(createParticipantsCardSvg(card));
   const metadata = await sharp(png).metadata();
   if (metadata.width !== WIDTH || metadata.height !== HEIGHT) {
     throw new Error(
